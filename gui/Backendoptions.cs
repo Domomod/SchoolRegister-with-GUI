@@ -11,9 +11,11 @@ namespace gui
         private static MySqlDataReader dataReader;
         private static PersonPanel user;
         private static MySqlCommand command;
+        private static SQLChecker checker;
 
         public Backendoptions()
         {
+            checker = new SQLChecker(); 
         }
 
         public bool OpenConnection()
@@ -36,6 +38,9 @@ namespace gui
         {
             try
             {
+
+                if (!checker.IsCorrect(pesel))
+                    return false;
             command.CommandText = $"select * from uczen where dane_osobowe_pesel='{pesel}'";
                         dataReader = command.ExecuteReader();
                         if (dataReader.Read())
