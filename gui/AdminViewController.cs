@@ -6,19 +6,25 @@ using AppKit;
 
 namespace gui
 {
-    public partial class AdminViewController : AppKit.NSView
+    public partial class AdminViewControllerController : AppKit.NSViewController
     {
         #region Constructors
 
         // Called when created from unmanaged code
-        public AdminViewController(IntPtr handle) : base(handle)
+        public AdminViewControllerController(IntPtr handle) : base(handle)
         {
             Initialize();
         }
 
         // Called when created directly from a XIB file
         [Export("initWithCoder:")]
-        public AdminViewController(NSCoder coder) : base(coder)
+        public AdminViewControllerController(NSCoder coder) : base(coder)
+        {
+            Initialize();
+        }
+
+        // Call to load from the XIB/NIB file
+        public AdminViewControllerController() : base("AdminViewController", NSBundle.MainBundle)
         {
             Initialize();
         }
@@ -29,5 +35,14 @@ namespace gui
         }
 
         #endregion
+
+        //strongly typed view accessor
+        public new AdminViewController View
+        {
+            get
+            {
+                return (AdminViewController)base.View;
+            }
+        }
     }
 }

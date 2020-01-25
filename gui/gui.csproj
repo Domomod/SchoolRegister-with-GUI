@@ -116,13 +116,13 @@
     <Compile Include="StudentPanel.cs" />
     <Compile Include="ParentPanel.cs" />
     <Compile Include="HeadmasterPanel.cs" />
+    <Compile Include="AdminView.cs" />
     <Compile Include="AdminViewController.cs" />
-    <Compile Include="AdminViewControllerController.cs" />
+    <Compile Include="AdminView.designer.cs">
+      <DependentUpon>AdminView.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminViewController.designer.cs">
       <DependentUpon>AdminViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AdminViewControllerController.designer.cs">
-      <DependentUpon>AdminViewControllerController.cs</DependentUpon>
     </Compile>
     <Compile Include="SQLChecker.cs" />
     <Compile Include="StudentViewController.cs" />
@@ -161,7 +161,7 @@
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Main.storyboard" />
-    <InterfaceDefinition Include="AdminViewController.xib" />
+    <InterfaceDefinition Include="AdminView.xib" />
     <InterfaceDefinition Include="Resources\Admin.storyboard" />
     <InterfaceDefinition Include="StudentViewController.xib" />
     <InterfaceDefinition Include="ParentViewController.xib" />
@@ -1916,6 +1916,7 @@
     <BundleResource Include="Resources\Index\DataStore\v5\units\Security-2RB2R7QDU33DQ.pcm-E07106EO3HVZ" />
     <BundleResource Include="Resources\Index\DataStore\v5\units\TeaacherViewControllerController.o-1RHJO0BDAFID" />
     <BundleResource Include="Resources\Index\DataStore\v5\units\_Builtin_intrinsics-3FD15YQY6KNNR.pcm-XIIHAOD5A2UO" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\SK\TeaacherViewControllerController.h-20WN2I6UCPHSK" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
 </Project>

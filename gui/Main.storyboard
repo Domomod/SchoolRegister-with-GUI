@@ -216,6 +216,12 @@
                             </button>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="ChangePresanceApply" destination="mrk-ST-agQ" id="Sny-ya-n57"/>
+                        <outlet property="ChangePresanceClass" destination="PKr-q0-Zf1" id="AdE-41-75t"/>
+                        <outlet property="ChangePresanceFindStudent" destination="rDA-pD-qpz" id="ywb-nl-uAf"/>
+                        <outlet property="ChangePresanceStudent" destination="kgt-pN-Lc9" id="ohS-9F-Ql7"/>
+                    </connections>
                 </viewController>
                 <customObject id="Edg-so-DgV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -418,6 +424,14 @@
                             </textField>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="ChangePresanceLookForUnits" destination="Luy-X4-nLP" id="p1h-Fi-tLr"/>
+                        <outlet property="CheckPresanceApply" destination="gka-Dt-Ic9" id="K1z-KR-CuI"/>
+                        <outlet property="CheckPresanceUnit" destination="9CE-Kg-y9v" id="Jjj-4J-C09"/>
+                        <outlet property="ClassLetter" destination="a0y-yZ-c0C" id="RH5-eZ-n0R"/>
+                        <outlet property="ClassYear" destination="8EK-qw-ZhU" id="1hF-HY-yoT"/>
+                        <outlet property="Day" destination="cmM-KX-yQ2" id="3db-ay-9zV"/>
+                    </connections>
                 </viewController>
                 <customObject id="bYX-0A-M62" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -950,10 +964,10 @@
             </objects>
             <point key="canvasLocation" x="-736" y="600"/>
         </scene>
-        <!--View Controller-->
+        <!--Student View Controller Controller-->
         <scene sceneID="bfK-Kj-N5Z">
             <objects>
-                <viewController id="Qoy-uX-6ds" sceneMemberID="viewController">
+                <viewController id="Qoy-uX-6ds" customClass="StudentViewControllerController" sceneMemberID="viewController">
                     <view key="view" id="Mlw-7J-rNr">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1099,15 +1113,19 @@
                             </scrollView>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="NotesTab" destination="TKh-Iz-8xV" id="jpY-ST-F2Z"/>
+                        <outlet property="WarningsTab" destination="TKh-Iz-8xV" id="aeS-h7-xW9"/>
+                    </connections>
                 </viewController>
                 <customObject id="Ouh-W6-ExR" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-391" y="1091"/>
         </scene>
-        <!--View Controller-->
+        <!--Student View Controller Controller-->
         <scene sceneID="yf0-kd-dqQ">
             <objects>
-                <viewController id="ms9-I3-eBs" sceneMemberID="viewController">
+                <viewController id="ms9-I3-eBs" customClass="StudentViewControllerController" sceneMemberID="viewController">
                     <view key="view" id="n1L-1j-KsS">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1260,17 +1278,30 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MIA-ow-LRu">
+                                <rect key="frame" x="131" y="279" width="42" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Points" id="9zh-cW-uwz">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="Points" destination="MIA-ow-LRu" id="1Fn-0u-msl"/>
+                        <outlet property="WarningsTab" destination="b5p-in-oc8" id="rUN-bG-p36"/>
+                    </connections>
                 </viewController>
                 <customObject id="41U-fh-mvc" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="1426"/>
         </scene>
-        <!--View Controller-->
+        <!--Student View Controller Controller-->
         <scene sceneID="DhS-kE-92C">
             <objects>
-                <viewController id="g7b-d7-lfK" sceneMemberID="viewController">
+                <viewController id="g7b-d7-lfK" customClass="StudentViewControllerController" sceneMemberID="viewController">
                     <view key="view" id="S4I-4d-2IK">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1407,6 +1438,9 @@
                             </scrollView>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="PresanceTab" destination="WfY-rQ-L8n" id="6a5-nD-cZP"/>
+                    </connections>
                 </viewController>
                 <customObject id="cEh-8x-jiN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1449,7 +1483,7 @@
                                 </comboBoxCell>
                             </comboBox>
                             <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="otp-Bc-xET">
-                                <rect key="frame" x="315" y="139" width="99" height="26"/>
+                                <rect key="frame" x="298" y="50" width="99" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="ojb-v9-VcB">
                                     <font key="font" metaFont="system"/>
@@ -1462,22 +1496,8 @@
                                     </objectValues>
                                 </comboBoxCell>
                             </comboBox>
-                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fBT-DP-p7a">
-                                <rect key="frame" x="31" y="41" width="99" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="fOo-6u-Bor">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <objectValues>
-                                        <string>Item 1</string>
-                                        <string>Item 2</string>
-                                        <string>Item 3</string>
-                                    </objectValues>
-                                </comboBoxCell>
-                            </comboBox>
                             <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uO9-rq-ZIb">
-                                <rect key="frame" x="169" y="38" width="99" height="26"/>
+                                <rect key="frame" x="162" y="50" width="99" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="ctl-vc-IM2">
                                     <font key="font" metaFont="system"/>
@@ -1518,7 +1538,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xhs-iD-8x2">
-                                <rect key="frame" x="345" y="118" width="44" height="17"/>
+                                <rect key="frame" x="328" y="29" width="44" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Ocena" id="6aM-p3-65I">
                                     <font key="font" metaFont="system"/>
@@ -1527,7 +1547,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eOr-YI-VJf">
-                                <rect key="frame" x="345" y="63" width="32" height="17"/>
+                                <rect key="frame" x="381" y="118" width="32" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Opis" id="Uqp-s9-sJw">
                                     <font key="font" metaFont="system"/>
@@ -1535,17 +1555,8 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wrG-go-sQd">
-                                <rect key="frame" x="44" y="20" width="66" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Przedmiot" id="52V-cw-eX6">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r08-Db-iwy">
-                                <rect key="frame" x="177" y="20" width="62" height="17"/>
+                                <rect key="frame" x="170" y="32" width="62" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Kategoria" id="S9K-b5-Jc4">
                                     <font key="font" metaFont="system"/>
@@ -1561,17 +1572,57 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aew-r4-ago">
+                                <rect key="frame" x="280" y="135" width="80" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Szukaj" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RyU-bH-Uek">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fBT-DP-p7a">
+                                <rect key="frame" x="31" y="50" width="99" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="fOo-6u-Bor">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <objectValues>
+                                        <string>Item 1</string>
+                                        <string>Item 2</string>
+                                        <string>Item 3</string>
+                                    </objectValues>
+                                </comboBoxCell>
+                            </comboBox>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wrG-go-sQd">
+                                <rect key="frame" x="44" y="29" width="66" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Przedmiot" id="52V-cw-eX6">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="AddNoteCategory" destination="uO9-rq-ZIb" id="hZH-Ei-6rj"/>
+                        <outlet property="AddNoteClass" destination="UTb-m8-NUW" id="urs-7t-gsB"/>
+                        <outlet property="AddNoteDescription" destination="fp8-5i-ogm" id="ZoY-a8-w65"/>
+                        <outlet property="AddNoteStudent" destination="XuK-er-Ot0" id="Zp5-LQ-fP4"/>
+                        <outlet property="AddNoteSubject" destination="fBT-DP-p7a" id="nn2-qG-Jhi"/>
+                        <outlet property="AddNoteValue" destination="otp-Bc-xET" id="i8j-Es-h7T"/>
+                        <outlet property="AddWarningApply" destination="UDg-k0-35X" id="oEr-Vb-5dq"/>
+                    </connections>
                 </viewController>
                 <customObject id="wQb-VX-yBk" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="606" y="-679"/>
         </scene>
-        <!--View Controller-->
+        <!--Teaacher View Controller Controller-->
         <scene sceneID="FG4-zb-j9A">
             <objects>
-                <viewController id="F3p-Xh-fQk" sceneMemberID="viewController">
+                <viewController id="F3p-Xh-fQk" customClass="TeaacherViewControllerController" sceneMemberID="viewController">
                     <view key="view" id="gM6-CG-CBq" customClass="TeaacherViewController">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="193"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1605,37 +1656,9 @@
                                 </comboBoxCell>
                             </comboBox>
                             <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mQ7-D4-AHZ">
-                                <rect key="frame" x="318" y="149" width="99" height="26"/>
+                                <rect key="frame" x="311" y="70" width="99" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="8uV-Nf-dmX">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <objectValues>
-                                        <string>Item 1</string>
-                                        <string>Item 2</string>
-                                        <string>Item 3</string>
-                                    </objectValues>
-                                </comboBoxCell>
-                            </comboBox>
-                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZwL-Ej-cxs">
-                                <rect key="frame" x="38" y="41" width="99" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="tMA-Ul-o2M">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <objectValues>
-                                        <string>Item 1</string>
-                                        <string>Item 2</string>
-                                        <string>Item 3</string>
-                                    </objectValues>
-                                </comboBoxCell>
-                            </comboBox>
-                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NIl-Q9-9ug">
-                                <rect key="frame" x="163" y="41" width="99" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="bRC-pw-1zz">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1674,7 +1697,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ylc-Uy-zWT">
-                                <rect key="frame" x="344" y="132" width="44" height="17"/>
+                                <rect key="frame" x="337" y="53" width="44" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Ocena" id="Hbr-3T-wbD">
                                     <font key="font" metaFont="system"/>
@@ -1683,7 +1706,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u7c-oV-mQ0">
-                                <rect key="frame" x="366" y="70" width="32" height="17"/>
+                                <rect key="frame" x="384" y="132" width="32" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Opis" id="Pys-Ch-Xt2">
                                     <font key="font" metaFont="system"/>
@@ -1691,8 +1714,52 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d3v-NC-hxe">
+                                <rect key="frame" x="326" y="9" width="101" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Zatwierdź" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rlC-xb-VQ1">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xus-3v-kVE">
+                                <rect key="frame" x="273" y="143" width="80" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Szukaj" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1P4-cH-B04">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZwL-Ej-cxs">
+                                <rect key="frame" x="49" y="70" width="99" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="tMA-Ul-o2M">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <objectValues>
+                                        <string>Item 1</string>
+                                        <string>Item 2</string>
+                                        <string>Item 3</string>
+                                    </objectValues>
+                                </comboBoxCell>
+                            </comboBox>
+                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NIl-Q9-9ug">
+                                <rect key="frame" x="174" y="70" width="99" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="bRC-pw-1zz">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <objectValues>
+                                        <string>Item 1</string>
+                                        <string>Item 2</string>
+                                        <string>Item 3</string>
+                                    </objectValues>
+                                </comboBoxCell>
+                            </comboBox>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M4C-aR-hrx">
-                                <rect key="frame" x="60" y="20" width="66" height="17"/>
+                                <rect key="frame" x="71" y="49" width="66" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Przedmiot" id="bma-7w-BwR">
                                     <font key="font" metaFont="system"/>
@@ -1701,7 +1768,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hhM-NK-8ab">
-                                <rect key="frame" x="189" y="20" width="62" height="17"/>
+                                <rect key="frame" x="200" y="49" width="62" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Kategoria" id="I7b-j2-PDh">
                                     <font key="font" metaFont="system"/>
@@ -1709,16 +1776,18 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d3v-NC-hxe">
-                                <rect key="frame" x="291" y="9" width="101" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Zatwierdź" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rlC-xb-VQ1">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="ChangeNoteApply" destination="d3v-NC-hxe" id="Yiz-dR-RVE"/>
+                        <outlet property="ChangeNoteCategory" destination="NIl-Q9-9ug" id="eml-F1-LZH"/>
+                        <outlet property="ChangeNoteClass" destination="Bqu-S6-6mA" id="MEN-Ve-1dJ"/>
+                        <outlet property="ChangeNoteDescription" destination="qdv-1k-iwj" id="Uo2-NW-ExP"/>
+                        <outlet property="ChangeNoteFindStudent" destination="Xus-3v-kVE" id="Ctc-8S-Eky"/>
+                        <outlet property="ChangeNoteStudent" destination="Vp2-G5-a8k" id="Whl-ZO-eBf"/>
+                        <outlet property="ChangeNoteSubject" destination="ZwL-Ej-cxs" id="3pP-jQ-LTV"/>
+                        <outlet property="ChangeNoteValue" destination="mQ7-D4-AHZ" id="in6-AD-g8S"/>
+                    </connections>
                 </viewController>
                 <customObject id="vgi-e9-73T" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1787,7 +1856,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bwL-Tr-hq2">
-                                <rect key="frame" x="20" y="20" width="410" height="134"/>
+                                <rect key="frame" x="20" y="20" width="410" height="101"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="SCo-pt-vkb">
                                     <font key="font" metaFont="system"/>
@@ -1795,8 +1864,42 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hDT-35-iQQ">
+                                <rect key="frame" x="18" y="128" width="123" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Szukaj ucznia" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HWN-eu-CQt">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kld-A2-cXv">
+                                <rect key="frame" x="158" y="135" width="59" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="bvC-yH-P2V">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Sq-jU-jUf">
+                                <rect key="frame" x="215" y="135" width="46" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Punkty" id="8Ac-qt-8MS">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="AddWarningApply" destination="9jc-kp-eHO" id="oPy-8D-aua"/>
+                        <outlet property="AddWarningClass" destination="tep-C2-UMf" id="Iyw-Vn-FSX"/>
+                        <outlet property="AddWarningDescription" destination="bwL-Tr-hq2" id="x30-hk-hqv"/>
+                        <outlet property="AddWarningFindStudent" destination="hDT-35-iQQ" id="6ij-yl-FbK"/>
+                        <outlet property="AddWarningPoints" destination="Kld-A2-cXv" id="sSt-Nb-Yti"/>
+                        <outlet property="AddWarningStudent" destination="WIQ-AH-Xdc" id="SOT-lj-Hyq"/>
+                    </connections>
                 </viewController>
                 <customObject id="dse-6I-LK8" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1873,7 +1976,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="khj-oi-WpQ">
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="khj-oi-WpQ" customClass="NSSearchField">
                                 <rect key="frame" x="20" y="115" width="410" height="110"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="Moje dane" drawsBackground="YES" id="0q1-hy-URc">
@@ -1884,6 +1987,9 @@
                             </textField>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="MyData" destination="0q1-hy-URc" id="I9v-dR-2r6"/>
+                    </connections>
                 </viewController>
                 <customObject id="wqa-1c-eBN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2071,6 +2177,9 @@
                             </scrollView>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="NotesTab" destination="mhd-BM-1AT" id="fBS-BE-I78"/>
+                    </connections>
                 </viewController>
                 <customObject id="KuL-33-9q0" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2258,6 +2367,9 @@
                             </scrollView>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="PresanceTab" destination="q6d-tv-ykt" id="orw-hW-WHL"/>
+                    </connections>
                 </viewController>
                 <customObject id="S8m-aR-yFz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2403,6 +2515,9 @@
                             </scrollView>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="WarningsTab" destination="rtF-0h-NRr" id="GV8-tn-exg"/>
+                    </connections>
                 </viewController>
                 <customObject id="yG4-7H-8bZ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2463,15 +2578,29 @@
                                 </comboBoxCell>
                             </comboBox>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="grE-Uh-QZp">
-                                <rect key="frame" x="237" y="29" width="101" height="32"/>
+                                <rect key="frame" x="262" y="0.0" width="101" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Zatwierdź" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9s8-SU-QBU">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I5b-aS-rdd">
+                                <rect key="frame" x="194" y="47" width="80" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Szukaj" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="rOX-RL-gVL">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="Absent" destination="vsS-qW-eLC" id="Qlr-Dm-gEV"/>
+                        <outlet property="FindAbsence" destination="I5b-aS-rdd" id="sUU-5V-eBz"/>
+                        <outlet property="LegitimizeApply" destination="grE-Uh-QZp" id="VG9-oF-Pm4"/>
+                        <outlet property="Name" destination="ze6-N0-Jbf" id="dms-Dw-uKr"/>
+                    </connections>
                 </viewController>
                 <customObject id="oKd-4o-Cmi" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2652,6 +2781,17 @@
                             </textField>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="CreateLessonApply" destination="tEZ-hj-l3B" id="PYj-yD-bA7"/>
+                        <outlet property="CreateLessonClassLetter" destination="Ec8-Ad-xra" id="icg-bG-Kjb"/>
+                        <outlet property="CreateLessonClassNum" destination="l0a-5h-ys7" id="IvX-xB-sru"/>
+                        <outlet property="CreateLessonDay" destination="2vd-wS-x2n" id="QZO-EL-Aem"/>
+                        <outlet property="CreateLessonFloor" destination="jUO-th-LDv" id="08R-US-vlZ"/>
+                        <outlet property="CreateLessonRoom" destination="f1Q-1b-TB1" id="O93-fB-dPI"/>
+                        <outlet property="CreateLessonSubject" destination="ASt-9g-Jbc" id="Hsb-GO-FnE"/>
+                        <outlet property="CreateLessonUnit" destination="dIb-Bx-zLe" id="het-X9-jav"/>
+                        <outlet property="CreateLessonUnitMinute" destination="Xda-u2-R36" id="PeN-9i-M9s"/>
+                    </connections>
                 </viewController>
                 <customObject id="PKa-oK-8DS" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2716,6 +2856,11 @@
                             </button>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="AddUnitApply" destination="KU2-H2-kUj" id="LQO-C8-84A"/>
+                        <outlet property="AddUnitHour" destination="qkv-k3-9ZU" id="oU7-aU-oD3"/>
+                        <outlet property="AddUnitMinute" destination="zyo-2B-ogE" id="h3S-bs-hM9"/>
+                    </connections>
                 </viewController>
                 <customObject id="13n-l7-BXV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2757,6 +2902,10 @@
                             </button>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="AddSubjectApply" destination="HFp-OY-Iaa" id="BX3-xc-uqR"/>
+                        <outlet property="AddSubjectName" destination="K3S-Nd-014" id="cMc-oI-p9S"/>
+                    </connections>
                 </viewController>
                 <customObject id="b3S-6M-B7p" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2834,6 +2983,12 @@
                             </button>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="CreateRoomApply" destination="OXY-Hh-pbB" id="AE6-uN-bAI"/>
+                        <outlet property="CreateRoomChairs" destination="1dQ-mO-34Z" id="3Ug-GU-tGR"/>
+                        <outlet property="CreateRoomFloor" destination="gB8-DB-df0" id="fWO-cf-UiX"/>
+                        <outlet property="CreateRoomRoom" destination="h2h-1C-0jD" id="EaP-nF-vOi"/>
+                    </connections>
                 </viewController>
                 <customObject id="ftH-GT-0WV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2939,6 +3094,13 @@
                             </button>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="CreateClassApply" destination="17O-fg-Isj" id="Ex7-Xd-A9I"/>
+                        <outlet property="CreateClassFormTutor" destination="oYg-65-RQW" id="GdB-nc-auJ"/>
+                        <outlet property="CreateClassLetter" destination="l6N-aJ-8a8" id="qkI-Qy-OMY"/>
+                        <outlet property="CreateClassProfile" destination="3to-SU-OZj" id="k5d-md-nWD"/>
+                        <outlet property="CreateClassYear" destination="ncv-Ey-ANt" id="XQs-O2-Mfo"/>
+                    </connections>
                 </viewController>
                 <customObject id="feC-2D-Gf5" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3068,8 +3230,52 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v5U-jP-RP7">
+                                <rect key="frame" x="326" y="247" width="76" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="JKt-xo-gWW" id="wZY-03-ldE">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="iut-Yt-rsB">
+                                        <items>
+                                            <menuItem title="Item 1" state="on" id="JKt-xo-gWW"/>
+                                            <menuItem title="Item 2" id="oQQ-WQ-cbH"/>
+                                            <menuItem title="Item 3" id="2qb-hL-DU6"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                            </popUpButton>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uDU-m5-fRg">
+                                <rect key="frame" x="315" y="208" width="96" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="GCC-8y-ZEx">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vdt-ic-rev">
+                                <rect key="frame" x="306" y="183" width="115" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="NumerWdzienniku" id="GTp-JH-3Jm">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="AddStudentApply" destination="iRR-GV-66X" id="AYa-mA-gBJ"/>
+                        <outlet property="AddStudentClass" destination="v5U-jP-RP7" id="jel-6F-dZK"/>
+                        <outlet property="AddStudentEMail" destination="CqJ-EX-EMJ" id="W2z-tV-73u"/>
+                        <outlet property="AddStudentHome" destination="EqH-QY-9hU" id="H3K-N6-Kz6"/>
+                        <outlet property="AddStudentLastName" destination="LI9-q2-SoH" id="YNF-PT-1op"/>
+                        <outlet property="AddStudentName" destination="aLr-U5-jCq" id="ZP4-OF-rAm"/>
+                        <outlet property="AddStudentNum" destination="uDU-m5-fRg" id="mKG-Fh-ynJ"/>
+                        <outlet property="AddStudentPesel" destination="vAX-m2-Je9" id="rHQ-sn-Dgj"/>
+                        <outlet property="AddStudentPhone" destination="F85-rB-kGR" id="lk2-gy-Dus"/>
+                    </connections>
                 </viewController>
                 <customObject id="SLL-ny-auw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3148,6 +3354,11 @@
                             </button>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="ChangeFormTutorApply" destination="woF-Jx-eKy" id="UQ2-a6-sFq"/>
+                        <outlet property="ChangeFormTutorClass" destination="qPx-YW-m7u" id="CHk-pt-79G"/>
+                        <outlet property="ChangeFormTutorTutor" destination="AyT-eW-LEp" id="oIe-BR-WjA"/>
+                    </connections>
                 </viewController>
                 <customObject id="dvT-JQ-01Z" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3217,6 +3428,11 @@
                             </button>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="GrillApply" destination="5OQ-cR-J7w" id="j4s-Qu-KZn"/>
+                        <outlet property="GrillParent" destination="ZlV-Zn-6UK" id="a7y-9C-FHe"/>
+                        <outlet property="GrillStudent" destination="J6c-Vo-Cac" id="6Mz-H1-Zbe"/>
+                    </connections>
                 </viewController>
                 <customObject id="Jz1-cW-ist" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3305,6 +3521,9 @@
                             </button>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="MyData" destination="voQ-8h-o3G" id="MxA-of-TVM"/>
+                    </connections>
                 </viewController>
                 <customObject id="1Xu-hZ-JSJ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3648,6 +3867,16 @@
                             </textField>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="AddTeacherEMail" destination="idp-xs-zQa" id="m3H-8K-Aqu"/>
+                        <outlet property="AddTeacherHome" destination="wIb-mA-JV2" id="h0V-ZA-LRy"/>
+                        <outlet property="AddTeacherHour" destination="Qp7-IJ-UgY" id="NN7-ze-dSA"/>
+                        <outlet property="AddTeacherLastName" destination="Lrg-t0-ugO" id="UNe-eG-2RZ"/>
+                        <outlet property="AddTeacherName" destination="ITH-vj-3wp" id="Ydv-os-vro"/>
+                        <outlet property="AddTeacherPesel" destination="a9h-2s-SS5" id="xbi-HJ-TQc"/>
+                        <outlet property="AddTeacherPhone" destination="hzu-IO-0HK" id="CsH-du-CfO"/>
+                        <outlet property="AddteacherApply" destination="dd5-qH-YlF" id="2hc-pQ-4lk"/>
+                    </connections>
                 </viewController>
                 <customObject id="sdu-qe-Rd7" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3864,10 +4093,31 @@
             </objects>
             <point key="canvasLocation" x="640" y="507"/>
         </scene>
-        <!--View Controller-->
+        <!--Window Controller-->
+        <scene sceneID="u7m-fx-qtp">
+            <objects>
+                <windowController id="fuK-ia-SFD" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="z1I-bQ-gwh">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+                        <connections>
+                            <outlet property="delegate" destination="fuK-ia-SFD" id="gCa-YO-FU3"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="p1L-L6-3tP" kind="relationship" relationship="window.shadowedContentViewController" id="qUv-dP-ytt"/>
+                    </connections>
+                </windowController>
+                <customObject id="28o-Na-fjC" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="69" y="705"/>
+        </scene>
+        <!--Student View Controller Controller-->
         <scene sceneID="0So-sD-yAT">
             <objects>
-                <viewController id="p1L-L6-3tP" sceneMemberID="viewController">
+                <viewController id="p1L-L6-3tP" customClass="StudentViewControllerController" sceneMemberID="viewController">
                     <view key="view" id="MAp-EK-RTP">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="159"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -4073,6 +4323,16 @@
                             </textField>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="AddParentApply" destination="fJ4-U4-Gjg" id="krR-i7-GcC"/>
+                        <outlet property="AddParentEMail" destination="snc-jz-AE6" id="XuN-cx-SlV"/>
+                        <outlet property="AddParentHome" destination="7bt-Bu-sbU" id="SW5-a1-qHH"/>
+                        <outlet property="AddParentIncome" destination="quY-AA-K37" id="Gx8-oT-eyr"/>
+                        <outlet property="AddParentLastName" destination="wnC-Yt-r6p" id="1sC-s0-Ecb"/>
+                        <outlet property="AddParentName" destination="Jtz-Kn-dsU" id="P7w-XZ-fQO"/>
+                        <outlet property="AddParentPesel" destination="uGE-JO-Je2" id="x2P-bV-zi5"/>
+                        <outlet property="AddParentPhone" destination="Fs1-4Z-wuo" id="852-3Q-luk"/>
+                    </connections>
                 </viewController>
                 <customObject id="2Ji-60-3yl" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

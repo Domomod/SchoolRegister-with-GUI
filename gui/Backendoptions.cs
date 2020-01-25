@@ -46,7 +46,7 @@ namespace gui
                         if (dataReader.Read())
                         {
                             dataReader.Close();
-                            user = new StudentPanel(pesel);
+                            user = new StudentPanel(pesel, command, dataReader);
                             return true;
                         }
                         dataReader.Close();
@@ -68,7 +68,7 @@ namespace gui
                 if (dataReader.Read())
                 {
                     dataReader.Close();
-                    user = new ParentPanel(pesel);
+                    user = new ParentPanel(pesel, command, dataReader);
                     return true;
                 }
 
@@ -91,7 +91,7 @@ namespace gui
                         if (dataReader.Read())
                         {
                             dataReader.Close();
-                            user = new ParentPanel(pesel);
+                            user = new ParentPanel(pesel,command, dataReader);
                             return true;
                         }
                         dataReader.Close();
