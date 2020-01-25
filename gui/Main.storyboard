@@ -5,10 +5,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Teaacher View Controller Controller-->
         <scene sceneID="JUb-0D-jWZ">
             <objects>
-                <viewController id="XFu-wj-2oS" sceneMemberID="viewController">
+                <viewController id="XFu-wj-2oS" customClass="TeaacherViewControllerController" sceneMemberID="viewController">
                     <view key="view" id="dtm-Mw-plk">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -206,6 +206,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rDA-pD-qpz">
+                                <rect key="frame" x="263" y="252" width="133" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Szukaj uczniów" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5f5-C7-AEO">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
                     </view>
                 </viewController>
@@ -213,10 +221,10 @@
             </objects>
             <point key="canvasLocation" x="110" y="-576"/>
         </scene>
-        <!--View Controller-->
+        <!--Teaacher View Controller Controller-->
         <scene sceneID="aCN-2U-aiV">
             <objects>
-                <viewController id="XZN-ae-p3I" sceneMemberID="viewController">
+                <viewController id="XZN-ae-p3I" customClass="TeaacherViewControllerController" sceneMemberID="viewController">
                     <view key="view" id="P21-4Z-5xG">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -257,15 +265,6 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OIi-Ym-Ydb">
-                                <rect key="frame" x="64" y="235" width="116" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Klasa" id="eXr-gi-FWT">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a0y-yZ-c0C">
                                 <rect key="frame" x="132" y="256" width="49" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -400,12 +399,50 @@
                                     </objectValues>
                                 </comboBoxCell>
                             </comboBox>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Luy-X4-nLP">
+                                <rect key="frame" x="81" y="228" width="150" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Szukaj zajęć klasy" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9ug-1k-z06">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OIi-Ym-Ydb">
+                                <rect key="frame" x="18" y="235" width="116" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Klasa" id="eXr-gi-FWT">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                 </viewController>
                 <customObject id="bYX-0A-M62" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="116" y="-233"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="srw-pq-a5L">
+            <objects>
+                <windowController id="oqT-Yh-Dy4" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="vu0-iT-0U0">
+                        <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+                        <connections>
+                            <outlet property="delegate" destination="oqT-Yh-Dy4" id="Ox7-Cy-nmz"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="UEd-ey-Ddx" kind="relationship" relationship="window.shadowedContentViewController" id="sD7-vv-cnI"/>
+                    </connections>
+                </windowController>
+                <customObject id="cfN-5n-S4F" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-433" y="-251"/>
         </scene>
         <!--Application-->
         <scene sceneID="JPo-4y-FX3">
@@ -819,7 +856,7 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-683" y="210"/>
+            <point key="canvasLocation" x="-736" y="193"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
@@ -911,7 +948,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-683" y="670"/>
+            <point key="canvasLocation" x="-736" y="600"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="bfK-Kj-N5Z">
@@ -1065,7 +1102,7 @@
                 </viewController>
                 <customObject id="Ouh-W6-ExR" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="73" y="1041"/>
+            <point key="canvasLocation" x="-391" y="1091"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="yf0-kd-dqQ">
@@ -1373,12 +1410,12 @@
                 </viewController>
                 <customObject id="cEh-8x-jiN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="79" y="1795"/>
+            <point key="canvasLocation" x="-391" y="1464"/>
         </scene>
-        <!--View Controller-->
+        <!--Teaacher View Controller Controller-->
         <scene sceneID="n86-ru-s4o">
             <objects>
-                <viewController id="I3K-wh-f5s" sceneMemberID="viewController">
+                <viewController id="I3K-wh-f5s" customClass="TeaacherViewControllerController" sceneMemberID="viewController">
                     <view key="view" id="kjH-gw-j6O">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="183"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1535,7 +1572,7 @@
         <scene sceneID="FG4-zb-j9A">
             <objects>
                 <viewController id="F3p-Xh-fQk" sceneMemberID="viewController">
-                    <view key="view" id="gM6-CG-CBq">
+                    <view key="view" id="gM6-CG-CBq" customClass="TeaacherViewController">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="193"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -1687,10 +1724,10 @@
             </objects>
             <point key="canvasLocation" x="606" y="-431"/>
         </scene>
-        <!--View Controller-->
+        <!--Teaacher View Controller Controller-->
         <scene sceneID="hWf-x8-ZRx">
             <objects>
-                <viewController id="lPG-Cu-X5p" sceneMemberID="viewController">
+                <viewController id="lPG-Cu-X5p" customClass="TeaacherViewControllerController" sceneMemberID="viewController">
                     <view key="view" id="cpF-G5-zAT">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="237"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1765,10 +1802,10 @@
             </objects>
             <point key="canvasLocation" x="606" y="-145.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Teaacher View Controller Controller-->
         <scene sceneID="7re-4o-CxY">
             <objects>
-                <viewController id="UEd-ey-Ddx" sceneMemberID="viewController">
+                <viewController id="UEd-ey-Ddx" customClass="TeaacherViewControllerController" sceneMemberID="viewController">
                     <view key="view" id="0LN-vZ-F37">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="245"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1835,9 +1872,6 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
-                                <connections>
-                                    <segue destination="BPx-Vi-tNO" kind="popover" popoverAnchorView="5p5-Nq-BnR" popoverBehavior="t" preferredEdge="maxY" id="LIs-gU-49W"/>
-                                </connections>
                             </button>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="khj-oi-WpQ">
                                 <rect key="frame" x="20" y="115" width="410" height="110"/>
@@ -1855,10 +1889,10 @@
             </objects>
             <point key="canvasLocation" x="110" y="123"/>
         </scene>
-        <!--View Controller-->
+        <!--Parent View Controller Controller-->
         <scene sceneID="UkW-aS-RG8">
             <objects>
-                <viewController id="ASh-CP-bUX" sceneMemberID="viewController">
+                <viewController id="ASh-CP-bUX" customClass="ParentViewControllerController" sceneMemberID="viewController">
                     <view key="view" id="p5O-UB-UHT">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="265"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2042,10 +2076,10 @@
             </objects>
             <point key="canvasLocation" x="1118" y="-505.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Parent View Controller Controller-->
         <scene sceneID="S58-3O-yNo">
             <objects>
-                <viewController id="XDA-NG-QkY" sceneMemberID="viewController">
+                <viewController id="XDA-NG-QkY" customClass="ParentViewControllerController" sceneMemberID="viewController">
                     <view key="view" id="baV-tp-g2m">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2229,10 +2263,10 @@
             </objects>
             <point key="canvasLocation" x="1611" y="-114"/>
         </scene>
-        <!--View Controller-->
+        <!--Parent View Controller Controller-->
         <scene sceneID="vBv-if-xAr">
             <objects>
-                <viewController id="wpH-Sg-Itd" sceneMemberID="viewController">
+                <viewController id="wpH-Sg-Itd" customClass="ParentViewControllerController" sceneMemberID="viewController">
                     <view key="view" id="ULM-Kq-fur">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="233"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2374,10 +2408,10 @@
             </objects>
             <point key="canvasLocation" x="1618" y="-610"/>
         </scene>
-        <!--View Controller-->
+        <!--Parent View Controller Controller-->
         <scene sceneID="iWd-X1-Tsr">
             <objects>
-                <viewController id="bSe-tV-Pjl" sceneMemberID="viewController">
+                <viewController id="bSe-tV-Pjl" customClass="ParentViewControllerController" sceneMemberID="viewController">
                     <view key="view" id="whM-CO-ZGg">
                         <rect key="frame" x="0.0" y="0.0" width="377" height="129"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2443,10 +2477,10 @@
             </objects>
             <point key="canvasLocation" x="1612" y="-372"/>
         </scene>
-        <!--View Controller-->
+        <!--Admin View Controller Controller-->
         <scene sceneID="g7m-8p-RlC">
             <objects>
-                <viewController id="yod-Xi-sfr" sceneMemberID="viewController">
+                <viewController id="yod-Xi-sfr" customClass="AdminViewControllerController" sceneMemberID="viewController">
                     <view key="view" id="9ub-Oz-muu">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2623,10 +2657,10 @@
             </objects>
             <point key="canvasLocation" x="2141" y="773"/>
         </scene>
-        <!--View Controller-->
+        <!--Admin View Controller Controller-->
         <scene sceneID="SAD-SU-Ey9">
             <objects>
-                <viewController id="R3w-5n-awA" sceneMemberID="viewController">
+                <viewController id="R3w-5n-awA" customClass="AdminViewControllerController" sceneMemberID="viewController">
                     <view key="view" id="bjO-MD-bZJ">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="104"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2687,10 +2721,10 @@
             </objects>
             <point key="canvasLocation" x="1669" y="517"/>
         </scene>
-        <!--View Controller-->
+        <!--Admin View Controller Controller-->
         <scene sceneID="qmM-lp-WUw">
             <objects>
-                <viewController id="q8S-HF-qQi" sceneMemberID="viewController">
+                <viewController id="q8S-HF-qQi" customClass="AdminViewControllerController" sceneMemberID="viewController">
                     <view key="view" id="q9l-8G-iXM">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="62"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2728,10 +2762,10 @@
             </objects>
             <point key="canvasLocation" x="1669" y="877"/>
         </scene>
-        <!--View Controller-->
+        <!--Admin View Controller Controller-->
         <scene sceneID="zpV-nL-0fI">
             <objects>
-                <viewController id="Q53-Ck-Cek" sceneMemberID="viewController">
+                <viewController id="Q53-Ck-Cek" customClass="AdminViewControllerController" sceneMemberID="viewController">
                     <view key="view" id="4Bd-k0-m9w">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="166"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2805,10 +2839,10 @@
             </objects>
             <point key="canvasLocation" x="1661" y="339"/>
         </scene>
-        <!--View Controller-->
+        <!--Admin View Controller Controller-->
         <scene sceneID="GJ2-XB-dgr">
             <objects>
-                <viewController id="Eyk-F9-7ud" sceneMemberID="viewController">
+                <viewController id="Eyk-F9-7ud" customClass="AdminViewControllerController" sceneMemberID="viewController">
                     <view key="view" id="eQG-kl-IFF">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="164"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2910,10 +2944,10 @@
             </objects>
             <point key="canvasLocation" x="1669" y="705"/>
         </scene>
-        <!--View Controller-->
+        <!--Admin View Controller Controller-->
         <scene sceneID="gkk-wC-6ks">
             <objects>
-                <viewController id="reu-32-xDu" sceneMemberID="viewController">
+                <viewController id="reu-32-xDu" customClass="AdminViewControllerController" sceneMemberID="viewController">
                     <view key="view" id="noX-JH-41c">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -3041,10 +3075,10 @@
             </objects>
             <point key="canvasLocation" x="1669" y="1116"/>
         </scene>
-        <!--View Controller-->
+        <!--Admin View Controller Controller-->
         <scene sceneID="GOW-4Q-WZ6">
             <objects>
-                <viewController id="rEP-nV-TyM" sceneMemberID="viewController">
+                <viewController id="rEP-nV-TyM" customClass="AdminViewControllerController" sceneMemberID="viewController">
                     <view key="view" id="ueo-Ot-2kR">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="107"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -3119,10 +3153,10 @@
             </objects>
             <point key="canvasLocation" x="1661" y="1381"/>
         </scene>
-        <!--View Controller-->
+        <!--Admin View Controller Controller-->
         <scene sceneID="lK6-xp-erI">
             <objects>
-                <viewController id="bOp-5e-xyJ" sceneMemberID="viewController">
+                <viewController id="bOp-5e-xyJ" customClass="AdminViewControllerController" sceneMemberID="viewController">
                     <view key="view" id="Cnl-VG-5hZ">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="109"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -3188,10 +3222,10 @@
             </objects>
             <point key="canvasLocation" x="1161" y="1305"/>
         </scene>
-        <!--View Controller-->
+        <!--Parent View Controller Controller-->
         <scene sceneID="StC-LP-q6M">
             <objects>
-                <viewController id="LQe-HY-W2e" sceneMemberID="viewController">
+                <viewController id="LQe-HY-W2e" customClass="ParentViewControllerController" sceneMemberID="viewController">
                     <view key="view" id="0St-F9-o12">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -3276,10 +3310,31 @@
             </objects>
             <point key="canvasLocation" x="1073" y="-146"/>
         </scene>
-        <!--View Controller-->
+        <!--Window Controller-->
+        <scene sceneID="Xq7-Ne-61p">
+            <objects>
+                <windowController id="tbG-bR-rPc" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="Feg-k9-t0o">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+                        <connections>
+                            <outlet property="delegate" destination="tbG-bR-rPc" id="3Xw-ve-9eH"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="LQe-HY-W2e" kind="relationship" relationship="window.shadowedContentViewController" id="duE-dX-I5Z"/>
+                    </connections>
+                </windowController>
+                <customObject id="2xu-ax-LFl" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1077" y="249"/>
+        </scene>
+        <!--Admin View Controller Controller-->
         <scene sceneID="vdZ-PK-Ogo">
             <objects>
-                <viewController id="EtR-OK-VEZ" sceneMemberID="viewController">
+                <viewController id="EtR-OK-VEZ" customClass="AdminViewControllerController" sceneMemberID="viewController">
                     <view key="view" id="ep7-Rk-fET">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -3428,10 +3483,31 @@
             </objects>
             <point key="canvasLocation" x="1151" y="670"/>
         </scene>
-        <!--View Controller-->
+        <!--Window Controller-->
+        <scene sceneID="Mmh-jt-OgF">
+            <objects>
+                <windowController id="GDR-f2-DDa" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="IDZ-pg-9Mb">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+                        <connections>
+                            <outlet property="delegate" destination="GDR-f2-DDa" id="Rkf-uB-KpH"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="EtR-OK-VEZ" kind="relationship" relationship="window.shadowedContentViewController" id="2B9-Vi-NWb"/>
+                    </connections>
+                </windowController>
+                <customObject id="ghN-Lg-P51" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="625" y="981"/>
+        </scene>
+        <!--Admin View Controller Controller-->
         <scene sceneID="FUt-ad-QD4">
             <objects>
-                <viewController id="OGQ-eg-xGV" sceneMemberID="viewController">
+                <viewController id="OGQ-eg-xGV" customClass="AdminViewControllerController" sceneMemberID="viewController">
                     <view key="view" id="DMb-dJ-rLY">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -3834,9 +3910,6 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
-                                <connections>
-                                    <segue destination="BPx-Vi-tNO" kind="popover" popoverAnchorView="Tmt-Hl-WSa" popoverBehavior="t" preferredEdge="maxY" id="YLC-qC-xJy"/>
-                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sew-tp-rWq">
                                 <rect key="frame" x="8" y="31" width="166" height="32"/>
@@ -3854,12 +3927,12 @@
                 </viewController>
                 <customObject id="HAP-Xf-puU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="110" y="631"/>
+            <point key="canvasLocation" x="95" y="1021"/>
         </scene>
-        <!--View Controller-->
+        <!--Admin View Controller Controller-->
         <scene sceneID="vRf-8q-WTQ">
             <objects>
-                <viewController id="nED-mx-Pop" sceneMemberID="viewController">
+                <viewController id="nED-mx-Pop" customClass="AdminViewControllerController" sceneMemberID="viewController">
                     <view key="view" id="quY-AA-K37">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -4006,7 +4079,4 @@
             <point key="canvasLocation" x="2141" y="1148"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="Wxh-vk-gDI"/>
-    </inferredMetricsTieBreakers>
 </document>

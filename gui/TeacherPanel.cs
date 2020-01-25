@@ -57,18 +57,20 @@ namespace gui
 
         public void ShowEverythingNeededToCheckPresanceA()
         {
-            command.CommandText = "SELECT klasa_rocznik, klasa_literka, dzientygodnia, jednostka_godzina, jednostka_minuta from lekcja";
+           
+        }
+
+        public void ShowEverythingNeededToCheckPresanceB(string classNum, string classLetter)
+        {
+            command.CommandText = $"SELECT imie, nazwisko from dane_osobowe join uczen on pesel=dane_osobowe_pesel WHERE klasa_rocznik={classNum} and klasa_literka='{classLetter}'";
             dataReader = command.ExecuteReader();
-            List<(string, string, string, string)> list = new List<(string, string, string, string)>();
+            List<string> list = new List<string>();
             while (dataReader.Read())
-                list.Add((dataReader[0].ToString(), dataReader[1].ToString(), dataReader[2].ToString(), dataReader[3].ToString() + ":" + dataReader[4].ToString()));
+                list.Add(dataReader[0].ToString() + " " + dataReader[1].ToString());
             dataReader.Close();
         }
 
-        public void ShowEverythingNeededToCheckPresanceB()
-        {
 
-        }
 
         public void ShowEverythingNeededToChangePresance()
         {

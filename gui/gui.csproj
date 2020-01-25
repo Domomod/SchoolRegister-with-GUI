@@ -125,10 +125,48 @@
       <DependentUpon>AdminViewControllerController.cs</DependentUpon>
     </Compile>
     <Compile Include="SQLChecker.cs" />
+    <Compile Include="StudentViewController.cs" />
+    <Compile Include="StudentViewControllerController.cs" />
+    <Compile Include="StudentViewController.designer.cs">
+      <DependentUpon>StudentViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StudentViewControllerController.designer.cs">
+      <DependentUpon>StudentViewControllerController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ParentViewController.cs" />
+    <Compile Include="ParentViewControllerController.cs" />
+    <Compile Include="ParentViewController.designer.cs">
+      <DependentUpon>ParentViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ParentViewControllerController.designer.cs">
+      <DependentUpon>ParentViewControllerController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TeaacherViewController.cs" />
+    <Compile Include="TeaacherViewControllerController.cs" />
+    <Compile Include="TeaacherViewController.designer.cs">
+      <DependentUpon>TeaacherViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TeaacherViewControllerController.designer.cs">
+      <DependentUpon>TeaacherViewControllerController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View.cs" />
+    <Compile Include="Viewe.cs" />
+    <Compile Include="VieweController.cs" />
+    <Compile Include="Viewe.designer.cs">
+      <DependentUpon>Viewe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VieweController.designer.cs">
+      <DependentUpon>VieweController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Main.storyboard" />
     <InterfaceDefinition Include="AdminViewController.xib" />
+    <InterfaceDefinition Include="Resources\Admin.storyboard" />
+    <InterfaceDefinition Include="StudentViewController.xib" />
+    <InterfaceDefinition Include="ParentViewController.xib" />
+    <InterfaceDefinition Include="TeaacherViewController.xib" />
+    <InterfaceDefinition Include="Viewe.xib" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Index\DataStore\v5\records\3K\AXError.h-27CHS5IM2TO3K" />
@@ -1752,6 +1790,132 @@
     <BundleResource Include="Resources\Index\DataStore\v5\units\CoreVideo-J9HZM7HTOIXH.pcm-230YEFDI7O2V" />
     <BundleResource Include="Resources\Index\DataStore\v5\units\ApplicationServices-SV8UEN8TMBAR.pcm-4H9WYDWRKL7F" />
     <BundleResource Include="Resources\Index\DataStore\v5\units\OpenGL-2SRSU83KOCQ0D.pcm-2TF5WM3P1QZTJ" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreGraphics-MC4FPA2MN9QR.pcm-D1P3O9UJOOQX" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AdminViewControllerController.o-2M1OK54YZTH5" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreServices-2SRTBNLRER772.pcm-CXV9J1STYFB4" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\ColorSync-SV8UEN8TMBAR.pcm-LFOT2EEBS5PE" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\XPC-3LIAJY90PG03M.pcm-2JRRBKNQCDQRW" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\launch-1IVCWVLR6MT9T.pcm-1UY6AJMYDFOIG" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreData-1DHIL9VVBSYDQ.pcm-2B84XE3I62UQ1" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\IOSurface-GCVS5NOA7EOF.pcm-1JC5U2CFX6YMJ" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AppKit-1LWHB1MWS5AWP.pcm-235Z99VDBDTLL" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\DiskArbitration-1YS8ZT252YZXQ.pcm-3VZL77TTXHLB3" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\Metal-LZGKTAAK5A7P.pcm-3MWQOTHRPNPKZ" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\MachO-2UHIFKDZCI0YX.pcm-2BLTB4CHIOPMO" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\ApplicationServices-SV8UEN8TMBAR.pcm-3S8LTPJ9040XG" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreFoundation-RZX25862PY17.pcm-3HUHVXI2QD4SY" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\_Builtin_stddef_max_align_t-3FD15YQY6KNNR.pcm-15DVLUSVL38LG" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\os_object-1IVCWVLR6MT9T.pcm-DJIQIGS39YT3" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\_Builtin_intrinsics-3FD15YQY6KNNR.pcm-1661M2TE61997" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\Security-2RB2R7QDU33DQ.pcm-2Z1SDRENSPM9" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreImage-2H41H5QLPV8GG.pcm-V191F1XCIQPY" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\ImageIO-SV8UEN8TMBAR.pcm-JXGI9G5RGJNO" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CFNetwork-WOPYBVYTVV3P.pcm-LBV3VJCZZWNM" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\ViewController.o-VL4PE8MXQRBP" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\Dispatch-2M9AOUJY3TW9V.pcm-2SF1B6SP50XJQ" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\OpenGL-2SRSU83KOCQ0D.pcm-YOLXR75XS2VY" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AppDelegate.o-14Z4GF5QECA8Z" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreText-4BX5WGXMXE7W.pcm-9UE9CK90ESA5" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AdminViewController.o-2L7OYFBCFYI35" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\Foundation-2FJBXN8U6QRTS.pcm-QVS92AFPHODA" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\libkern-1IVCWVLR6MT9T.pcm-3G7WG1N8HP3SR" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\ObjectiveC-1A3ZNHZR9RRLF.pcm-GJG72V26G1TB" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreVideo-J9HZM7HTOIXH.pcm-5V1EN75SLCOM" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\QuartzCore-1LT8XAPDT2LBF.pcm-1QWE463X2FBGE" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\IOKit-2OU2NY71U259J.pcm-3VI3Y6Z6NQ45" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\Darwin-1IVCWVLR6MT9T.pcm-29OVRSL4CEKTQ" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\Foundation-2FJBXN8U6QRTS.pcm-XS4GRXANBK82" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\Dispatch-2M9AOUJY3TW9V.pcm-EXIG9AYZXF6B" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreImage-2H41H5QLPV8GG.pcm-55SZKKM4GBDO" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\libkern-1IVCWVLR6MT9T.pcm-KV64KFNX7UR" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\ObjectiveC-1A3ZNHZR9RRLF.pcm-2YYSVBI0BC7GF" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AdminViewControllerController.o-E2N6PGUGC2TJ" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AppKit-1LWHB1MWS5AWP.pcm-1LMGEP00Y0HFP" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AdminViewController.o-37OUAP7B9WNPT" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\_Builtin_intrinsics-3FD15YQY6KNNR.pcm-32PE2IJIKG69C" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreGraphics-MC4FPA2MN9QR.pcm-2WNCFUQEX9TRI" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AppDelegate.o-2S4CR6DI0FNW2" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\XPC-3LIAJY90PG03M.pcm-2A7Q7FFEZRIM2" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\IOSurface-GCVS5NOA7EOF.pcm-30AVNPLF1L2SU" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreData-1DHIL9VVBSYDQ.pcm-2131NWTVONF8B" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreServices-2SRTBNLRER772.pcm-2JHUY2WJE2FBG" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreText-4BX5WGXMXE7W.pcm-WMLU9LKD811I" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\Security-2RB2R7QDU33DQ.pcm-2LRITXH6N7LEM" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CFNetwork-WOPYBVYTVV3P.pcm-LUX1DVDQK0BF" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreVideo-J9HZM7HTOIXH.pcm-16T7S0LVJRMSJ" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\ImageIO-SV8UEN8TMBAR.pcm-13ACPCRV3N193" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\MachO-2UHIFKDZCI0YX.pcm-1YQLSEVL2IVB9" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\os_object-1IVCWVLR6MT9T.pcm-BNUBSCF133T" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\IOKit-2OU2NY71U259J.pcm-2L0CH4QKGU71E" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\_Builtin_stddef_max_align_t-3FD15YQY6KNNR.pcm-AQTK9VC0E2KP" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\ColorSync-SV8UEN8TMBAR.pcm-2NJK4HOZ8NYC2" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\OpenGL-2SRSU83KOCQ0D.pcm-2XDMO7EHHX6GH" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\launch-1IVCWVLR6MT9T.pcm-1GIV12PG0BW5D" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\DiskArbitration-1YS8ZT252YZXQ.pcm-329IPO2W433LN" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\ApplicationServices-SV8UEN8TMBAR.pcm-10HEMF7VKJI4F" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreFoundation-RZX25862PY17.pcm-31B77ILIEFINJ" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\QuartzCore-1LT8XAPDT2LBF.pcm-1HJI3791Y6H2B" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\Metal-LZGKTAAK5A7P.pcm-3SQIZOW0G6SJB" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\Darwin-1IVCWVLR6MT9T.pcm-3GP3K5NL3L58V" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\ViewController.o-2XMQKD7D8KE60" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\ZW\Viewe.h-2W1VMOLYGJ7ZW" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\HP\VieweController.m-224WBKBWN9LHP" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\F4\StudentViewControllerController.h-39YXMPEETQ1F4" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\C9\ParentViewController.m-152HZYELQS8C9" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\I1\ParentViewControllerController.m-2EJVSFK1WCYI1" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\R7\StudentViewController.m-W6M5WZ8A6RR7" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\1O\TeaacherViewController.m-21VMSBA5HY91O" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\Q7\ParentViewControllerController.h-3FD4XQJ6PI6Q7" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\2F\ParentViewController.h-DKM2N0SMZD2F" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\0I\TeaacherViewControllerController.m-1Q762VB5R110I" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\97\TeaacherViewControllerController.h-16JRLJSDKHZ97" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\PF\StudentViewController.h-2AO0NH6TM3ZPF" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\JL\StudentViewControllerController.m-3FDBINRUJBXJL" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\JC\TeaacherViewController.h-2KX16FH8VSJJC" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\24\Viewe.m-1337IJ2KMA24" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\QQ\VieweController.h-36PDFQILWLIQQ" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\IOSurface-GCVS5NOA7EOF.pcm-1OCLLG4FVLXC5" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\QuartzCore-1LT8XAPDT2LBF.pcm-3DIYQI867PMQR" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\libkern-1IVCWVLR6MT9T.pcm-3JM05VM69G5Z7" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreImage-2H41H5QLPV8GG.pcm-2DHY5UFC6TGVO" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CFNetwork-WOPYBVYTVV3P.pcm-3ID4OYGZ9JW3T" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\ApplicationServices-SV8UEN8TMBAR.pcm-2MNX20008A49Y" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\Foundation-2FJBXN8U6QRTS.pcm-1PLNQNEGVZ4D2" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\ParentViewControllerController.o-LO64BKPDIG1A" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\Metal-LZGKTAAK5A7P.pcm-3A14FVHHX1HG" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\os_object-1IVCWVLR6MT9T.pcm-2QCEGHWPX2LJ6" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreVideo-J9HZM7HTOIXH.pcm-3I8ZQOSC1QJ6O" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\XPC-3LIAJY90PG03M.pcm-20C80R89HMLLX" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\OpenGL-2SRSU83KOCQ0D.pcm-1NJHSX55OATRQ" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\Dispatch-2M9AOUJY3TW9V.pcm-3UICM252G41H0" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\launch-1IVCWVLR6MT9T.pcm-3V1OMH4SWZIM8" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\_Builtin_stddef_max_align_t-3FD15YQY6KNNR.pcm-YPW7YTGONQN3" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\VieweController.o-20J1LO26KC2UY" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AppDelegate.o-31N63Y71X4QNT" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\Viewe.o-FLBE5U9406ZY" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\ColorSync-SV8UEN8TMBAR.pcm-29JECV7NKS80T" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\StudentViewControllerController.o-UDN6E47TZ3ME" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreText-4BX5WGXMXE7W.pcm-2E0PFC78N7CBW" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\TeaacherViewController.o-3PF2OT0ZTZQJI" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\ObjectiveC-1A3ZNHZR9RRLF.pcm-OYCACLPC7G1K" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AppKit-1LWHB1MWS5AWP.pcm-2LBZB1RL29K3O" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\Darwin-1IVCWVLR6MT9T.pcm-2G5XZ24O3WJ7H" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\IOKit-2OU2NY71U259J.pcm-3F3TUVHDY3FR7" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreFoundation-RZX25862PY17.pcm-RAF0QC2YNU1D" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AdminViewController.o-2NA8C6I4CAW9P" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\ImageIO-SV8UEN8TMBAR.pcm-31VHC0XYT6HQV" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreGraphics-MC4FPA2MN9QR.pcm-1YRO261D5TPDP" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreData-1DHIL9VVBSYDQ.pcm-3Q4ECMPAG4ASO" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\StudentViewController.o-85YBPCKV1NZH" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\DiskArbitration-1YS8ZT252YZXQ.pcm-2YGA9M8C2I0X0" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\ParentViewController.o-1GFP6DA24QGZJ" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\MachO-2UHIFKDZCI0YX.pcm-1CO0Y715E7DNW" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\ViewController.o-BPGETR3NB06N" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreServices-2SRTBNLRER772.pcm-1OVAEG5FG99U1" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AdminViewControllerController.o-XUWS5JSK6DM8" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\Security-2RB2R7QDU33DQ.pcm-E07106EO3HVZ" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\TeaacherViewControllerController.o-1RHJO0BDAFID" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\_Builtin_intrinsics-3FD15YQY6KNNR.pcm-XIIHAOD5A2UO" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
 </Project>

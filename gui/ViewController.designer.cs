@@ -15,7 +15,6 @@ namespace gui
 		[Outlet]
 		AppKit.NSTextFieldCell PeselInput { get; set; }
 
-
 		[Outlet]
 		AppKit.NSTextField TextOnFirstPage { get; set; }
 
@@ -40,7 +39,6 @@ namespace gui
 				PeselInput.Dispose ();
 				PeselInput = null;
 			}
-
 
 			if (TextOnFirstPage != null) {
 				TextOnFirstPage.Dispose ();
