@@ -50,19 +50,9 @@ namespace gui
 
         }
 
-        public void AddSubject(string name)
+        public void AddSubject()
         {
-            command.CommandText = $"SELECT * from przedmiot where nazwa_przedmiotu='{name}'";
-            dataReader = command.ExecuteReader();
-            if (dataReader.Read())
-            {
-                dataReader.Close();
-                return;
-            }
-            dataReader.Close();
-            command.CommandText = $"INSERT INTO przedmiot VALUES ('{name}')";
-            dataReader = command.ExecuteReader();
-            dataReader.Close();
+
         }
 
         public void ShowParentsAndChildren()

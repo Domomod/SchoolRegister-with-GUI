@@ -114,6 +114,7 @@
     <Compile Include="PersonPanel.cs" />
     <Compile Include="TeacherPanel.cs" />
     <Compile Include="StudentPanel.cs" />
+    <Compile Include="ParentPanel.cs" />
     <Compile Include="HeadmasterPanel.cs" />
     <Compile Include="SQLChecker.cs" />
     <Compile Include="View.cs" />
@@ -121,7 +122,6 @@
     <Compile Include="TeaacherViewController.designer.cs">
       <DependentUpon>TeaacherViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ParentPanel.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Main.storyboard" />
@@ -2123,27 +2123,6 @@
     <BundleResource Include="Resources\Index\DataStore\v5\records\07\ViewController.m-1EIEW8OSGHD07" />
     <BundleResource Include="Resources\Index\DataStore\v5\records\64\ViewController.m-31YR0SH3ODY64" />
     <BundleResource Include="Resources\Index\DataStore\v5\records\B9\ViewController.m-G74LXEUBB7B9" />
-    <BundleResource Include="Resources\Index\DataStore\v5\records\YQ\ViewController.m-3TY89AU3EPKYQ" />
-    <BundleResource Include="Resources\Index\DataStore\v5\records\3G\ViewController.h-1PM5K2QNXBX3G" />
-    <BundleResource Include="Resources\Index\DataStore\v5\records\MC\ViewController.m-128Y1UNU3EPMC" />
-    <BundleResource Include="Resources\Index\DataStore\v5\records\JW\ViewController.h-3PCTZA684ZBJW" />
-    <BundleResource Include="Resources\Index\DataStore\v5\units\TeaacherViewController.o-F837TW2BQH44" />
-    <BundleResource Include="Resources\Index\DataStore\v5\records\0E\ViewController.h-2V7I3T5IZ0I0E" />
-    <BundleResource Include="Resources\Index\DataStore\v5\records\QR\ViewController.m-1XHYZY210GTQR" />
-    <BundleResource Include="Resources\Index\DataStore\v5\units\TeaacherViewController.o-2MAWWEW3HDFZN" />
-    <BundleResource Include="Resources\Index\DataStore\v5\records\L3\ViewController.h-7KP85Q383WL3" />
-    <BundleResource Include="Resources\Index\DataStore\v5\records\RA\ViewController.m-1K3Y5Q57CRQRA" />
-    <BundleResource Include="Resources\Index\DataStore\v5\records\91\ViewController.h-3DEU9CQG88891" />
-    <BundleResource Include="Resources\Index\DataStore\v5\records\90\ViewController.m-1W4X2GLEFYM90" />
-    <BundleResource Include="Resources\Index\DataStore\v5\records\GP\ViewController.h-18G414LPED3GP" />
-    <BundleResource Include="Resources\Index\DataStore\v5\records\M2\ViewController.h-3FXTZ7925VYM2" />
-    <BundleResource Include="Resources\Index\DataStore\v5\records\AS\ViewController.m-31IDWJUMMQ6AS" />
-    <BundleResource Include="Resources\Index\DataStore\v5\records\O3\ViewController.h-1M0SRBOQNDJO3" />
-    <BundleResource Include="Resources\Index\DataStore\v5\records\YZ\ViewController.m-50224OOW7BYZ" />
-    <BundleResource Include="Resources\Index\DataStore\v5\records\21\ViewController.h-3C7UKJU464P21" />
-    <BundleResource Include="Resources\Index\DataStore\v5\records\JE\ViewController.m-3CZS3PQ8FJ6JE" />
-    <BundleResource Include="Resources\Index\DataStore\v5\records\ZC\ViewController.h-3HCYC8V6SHKZC" />
-    <BundleResource Include="Resources\Index\DataStore\v5\records\KJ\ViewController.m-LAS4OEC0Q1KJ" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
 </Project>
