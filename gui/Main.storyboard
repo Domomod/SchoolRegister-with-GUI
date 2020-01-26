@@ -5,10 +5,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Teaacher View Controller Controller-->
+        <!--View Controller-->
         <scene sceneID="JUb-0D-jWZ">
             <objects>
-                <viewController id="XFu-wj-2oS" customClass="TeaacherViewControllerController" sceneMemberID="viewController">
+                <viewController id="XFu-wj-2oS" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="dtm-Mw-plk">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -221,16 +221,21 @@
                         <outlet property="ChangePresanceClass" destination="PKr-q0-Zf1" id="AdE-41-75t"/>
                         <outlet property="ChangePresanceFindStudent" destination="rDA-pD-qpz" id="ywb-nl-uAf"/>
                         <outlet property="ChangePresanceStudent" destination="kgt-pN-Lc9" id="ohS-9F-Ql7"/>
+                        <outlet property="TEditPresanceApply" destination="mrk-ST-agQ" id="oqf-de-D4h"/>
+                        <outlet property="TEditPresanceClass" destination="PKr-q0-Zf1" id="Qtx-xE-mvz"/>
+                        <outlet property="TEditPresanceFindStudent" destination="rDA-pD-qpz" id="fgh-ed-49Y"/>
+                        <outlet property="TEditPresanceList" destination="1g7-Va-vGO" id="z5K-te-ygf"/>
+                        <outlet property="TEditPresanceStudent" destination="kgt-pN-Lc9" id="6Du-jp-Anp"/>
                     </connections>
                 </viewController>
                 <customObject id="Edg-so-DgV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="110" y="-576"/>
         </scene>
-        <!--Teaacher View Controller Controller-->
+        <!--View Controller-->
         <scene sceneID="aCN-2U-aiV">
             <objects>
-                <viewController id="XZN-ae-p3I" customClass="TeaacherViewControllerController" sceneMemberID="viewController">
+                <viewController id="XZN-ae-p3I" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="P21-4Z-5xG">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -431,6 +436,13 @@
                         <outlet property="ClassLetter" destination="a0y-yZ-c0C" id="RH5-eZ-n0R"/>
                         <outlet property="ClassYear" destination="8EK-qw-ZhU" id="1hF-HY-yoT"/>
                         <outlet property="Day" destination="cmM-KX-yQ2" id="3db-ay-9zV"/>
+                        <outlet property="TCheckPresanceApply" destination="gka-Dt-Ic9" id="BLP-Ci-TmB"/>
+                        <outlet property="TeacherCheckClasses" destination="Luy-X4-nLP" id="hDp-Ul-omE"/>
+                        <outlet property="TeacherCheckPresanceClassLetter" destination="a0y-yZ-c0C" id="yqU-Nv-emL"/>
+                        <outlet property="TeacherCheckPresanceClassNum" destination="8EK-qw-ZhU" id="p1N-aa-jaF"/>
+                        <outlet property="TeacherCheckPresanceLessonDay" destination="cmM-KX-yQ2" id="BrV-Z1-J6U"/>
+                        <outlet property="TeacherCheckPresanceLessonUnit" destination="P21-4Z-5xG" id="IV0-Pk-IZf"/>
+                        <outlet property="TeacherCheckPresanceStudentList" destination="t1F-7O-rS6" id="Rvd-1E-Tmn"/>
                     </connections>
                 </viewController>
                 <customObject id="bYX-0A-M62" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -964,10 +976,10 @@
             </objects>
             <point key="canvasLocation" x="-736" y="600"/>
         </scene>
-        <!--Student View Controller Controller-->
+        <!--View Controller-->
         <scene sceneID="bfK-Kj-N5Z">
             <objects>
-                <viewController id="Qoy-uX-6ds" customClass="StudentViewControllerController" sceneMemberID="viewController">
+                <viewController id="Qoy-uX-6ds" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="Mlw-7J-rNr">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1115,6 +1127,7 @@
                     </view>
                     <connections>
                         <outlet property="NotesTab" destination="TKh-Iz-8xV" id="jpY-ST-F2Z"/>
+                        <outlet property="StudentShowMyNotes" destination="TKh-Iz-8xV" id="sRi-rh-x0u"/>
                         <outlet property="WarningsTab" destination="TKh-Iz-8xV" id="aeS-h7-xW9"/>
                     </connections>
                 </viewController>
@@ -1122,10 +1135,10 @@
             </objects>
             <point key="canvasLocation" x="-391" y="1091"/>
         </scene>
-        <!--Student View Controller Controller-->
+        <!--View Controller-->
         <scene sceneID="yf0-kd-dqQ">
             <objects>
-                <viewController id="ms9-I3-eBs" customClass="StudentViewControllerController" sceneMemberID="viewController">
+                <viewController id="ms9-I3-eBs" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="n1L-1j-KsS">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1291,6 +1304,8 @@
                     </view>
                     <connections>
                         <outlet property="Points" destination="MIA-ow-LRu" id="1Fn-0u-msl"/>
+                        <outlet property="StudentShowMyWarningsPoints" destination="MIA-ow-LRu" id="SV4-ji-Le5"/>
+                        <outlet property="StudentShowMyWarningsTab" destination="b5p-in-oc8" id="Aw7-Lc-YFB"/>
                         <outlet property="WarningsTab" destination="b5p-in-oc8" id="rUN-bG-p36"/>
                     </connections>
                 </viewController>
@@ -1298,10 +1313,10 @@
             </objects>
             <point key="canvasLocation" x="75" y="1426"/>
         </scene>
-        <!--Student View Controller Controller-->
+        <!--View Controller-->
         <scene sceneID="DhS-kE-92C">
             <objects>
-                <viewController id="g7b-d7-lfK" customClass="StudentViewControllerController" sceneMemberID="viewController">
+                <viewController id="g7b-d7-lfK" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="S4I-4d-2IK">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1440,16 +1455,17 @@
                     </view>
                     <connections>
                         <outlet property="PresanceTab" destination="WfY-rQ-L8n" id="6a5-nD-cZP"/>
+                        <outlet property="StudentShowMyWarnings" destination="WfY-rQ-L8n" id="u0F-zT-PdS"/>
                     </connections>
                 </viewController>
                 <customObject id="cEh-8x-jiN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-391" y="1464"/>
         </scene>
-        <!--Teaacher View Controller Controller-->
+        <!--View Controller-->
         <scene sceneID="n86-ru-s4o">
             <objects>
-                <viewController id="I3K-wh-f5s" customClass="TeaacherViewControllerController" sceneMemberID="viewController">
+                <viewController id="I3K-wh-f5s" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="kjH-gw-j6O">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="183"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1603,6 +1619,20 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0gl-mK-wtP">
+                                <rect key="frame" x="29" y="139" width="99" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="ZSx-qs-idq">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <objectValues>
+                                        <string>Item 1</string>
+                                        <string>Item 2</string>
+                                        <string>Item 3</string>
+                                    </objectValues>
+                                </comboBoxCell>
+                            </comboBox>
                         </subviews>
                     </view>
                     <connections>
@@ -1613,16 +1643,24 @@
                         <outlet property="AddNoteSubject" destination="fBT-DP-p7a" id="nn2-qG-Jhi"/>
                         <outlet property="AddNoteValue" destination="otp-Bc-xET" id="i8j-Es-h7T"/>
                         <outlet property="AddWarningApply" destination="UDg-k0-35X" id="oEr-Vb-5dq"/>
+                        <outlet property="TAddNoteApply" destination="UDg-k0-35X" id="4Uh-HC-ZdI"/>
+                        <outlet property="TAddNoteCat" destination="uO9-rq-ZIb" id="n0h-2j-pJQ"/>
+                        <outlet property="TAddNoteClass" destination="0gl-mK-wtP" id="MES-bY-yUW"/>
+                        <outlet property="TAddNoteDesc" destination="fp8-5i-ogm" id="yiP-Ni-tpX"/>
+                        <outlet property="TAddNoteSearch" destination="aew-r4-ago" id="VCz-Dj-Ybf"/>
+                        <outlet property="TAddNoteStudent" destination="XuK-er-Ot0" id="Q9I-tn-WCm"/>
+                        <outlet property="TAddNoteSub" destination="kjH-gw-j6O" id="Pbh-hk-WqT"/>
+                        <outlet property="TAddNotevalue" destination="otp-Bc-xET" id="6Vd-bG-t4X"/>
                     </connections>
                 </viewController>
                 <customObject id="wQb-VX-yBk" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="606" y="-679"/>
         </scene>
-        <!--Teaacher View Controller Controller-->
+        <!--View Controller-->
         <scene sceneID="FG4-zb-j9A">
             <objects>
-                <viewController id="F3p-Xh-fQk" customClass="TeaacherViewControllerController" sceneMemberID="viewController">
+                <viewController id="F3p-Xh-fQk" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="gM6-CG-CBq" customClass="TeaacherViewController">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="193"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1793,10 +1831,10 @@
             </objects>
             <point key="canvasLocation" x="606" y="-431"/>
         </scene>
-        <!--Teaacher View Controller Controller-->
+        <!--View Controller-->
         <scene sceneID="hWf-x8-ZRx">
             <objects>
-                <viewController id="lPG-Cu-X5p" customClass="TeaacherViewControllerController" sceneMemberID="viewController">
+                <viewController id="lPG-Cu-X5p" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="cpF-G5-zAT">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="237"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1899,16 +1937,22 @@
                         <outlet property="AddWarningFindStudent" destination="hDT-35-iQQ" id="6ij-yl-FbK"/>
                         <outlet property="AddWarningPoints" destination="Kld-A2-cXv" id="sSt-Nb-Yti"/>
                         <outlet property="AddWarningStudent" destination="WIQ-AH-Xdc" id="SOT-lj-Hyq"/>
+                        <outlet property="TAddWarningApply" destination="9jc-kp-eHO" id="hxY-Oc-Dcj"/>
+                        <outlet property="TAddWarningClass" destination="tep-C2-UMf" id="KPD-Gh-xzR"/>
+                        <outlet property="TAddWarningDesc" destination="bwL-Tr-hq2" id="4uo-I5-GeL"/>
+                        <outlet property="TAddWarningFindStudent" destination="hDT-35-iQQ" id="MPm-bk-Rvc"/>
+                        <outlet property="TAddWarningPoints" destination="Kld-A2-cXv" id="faM-sJ-6gg"/>
+                        <outlet property="TAddWarningStudent" destination="WIQ-AH-Xdc" id="cEr-r0-i9x"/>
                     </connections>
                 </viewController>
                 <customObject id="dse-6I-LK8" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="606" y="-145.5"/>
         </scene>
-        <!--Teaacher View Controller Controller-->
+        <!--View Controller-->
         <scene sceneID="7re-4o-CxY">
             <objects>
-                <viewController id="UEd-ey-Ddx" customClass="TeaacherViewControllerController" sceneMemberID="viewController">
+                <viewController id="UEd-ey-Ddx" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="0LN-vZ-F37">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="245"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1981,16 +2025,17 @@
                     </view>
                     <connections>
                         <outlet property="MyData" destination="0q1-hy-URc" id="I9v-dR-2r6"/>
+                        <outlet property="TeacherMyData" destination="khj-oi-WpQ" id="oYW-p6-Rea"/>
                     </connections>
                 </viewController>
                 <customObject id="wqa-1c-eBN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="110" y="123"/>
         </scene>
-        <!--Parent View Controller Controller-->
+        <!--View Controller-->
         <scene sceneID="UkW-aS-RG8">
             <objects>
-                <viewController id="ASh-CP-bUX" customClass="ParentViewControllerController" sceneMemberID="viewController">
+                <viewController id="ASh-CP-bUX" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="p5O-UB-UHT">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="265"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2171,16 +2216,17 @@
                     </view>
                     <connections>
                         <outlet property="NotesTab" destination="mhd-BM-1AT" id="fBS-BE-I78"/>
+                        <outlet property="PMyChildrenNotes" destination="mhd-BM-1AT" id="FRm-FF-3py"/>
                     </connections>
                 </viewController>
                 <customObject id="KuL-33-9q0" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1118" y="-505.5"/>
         </scene>
-        <!--Parent View Controller Controller-->
+        <!--View Controller-->
         <scene sceneID="S58-3O-yNo">
             <objects>
-                <viewController id="XDA-NG-QkY" customClass="ParentViewControllerController" sceneMemberID="viewController">
+                <viewController id="XDA-NG-QkY" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="baV-tp-g2m">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2360,6 +2406,7 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="PMyChildrenPresance" destination="q6d-tv-ykt" id="PTi-t0-ydc"/>
                         <outlet property="PresanceTab" destination="q6d-tv-ykt" id="orw-hW-WHL"/>
                     </connections>
                 </viewController>
@@ -2367,10 +2414,10 @@
             </objects>
             <point key="canvasLocation" x="1611" y="-114"/>
         </scene>
-        <!--Parent View Controller Controller-->
+        <!--View Controller-->
         <scene sceneID="vBv-if-xAr">
             <objects>
-                <viewController id="wpH-Sg-Itd" customClass="ParentViewControllerController" sceneMemberID="viewController">
+                <viewController id="wpH-Sg-Itd" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="ULM-Kq-fur">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="233"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2508,6 +2555,7 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="PMyChildrenWarnings" destination="rtF-0h-NRr" id="JPd-m9-ErD"/>
                         <outlet property="WarningsTab" destination="rtF-0h-NRr" id="GV8-tn-exg"/>
                     </connections>
                 </viewController>
@@ -2515,10 +2563,10 @@
             </objects>
             <point key="canvasLocation" x="1618" y="-610"/>
         </scene>
-        <!--Parent View Controller Controller-->
+        <!--View Controller-->
         <scene sceneID="iWd-X1-Tsr">
             <objects>
-                <viewController id="bSe-tV-Pjl" customClass="ParentViewControllerController" sceneMemberID="viewController">
+                <viewController id="bSe-tV-Pjl" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="whM-CO-ZGg">
                         <rect key="frame" x="0.0" y="0.0" width="377" height="129"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2592,16 +2640,20 @@
                         <outlet property="FindAbsence" destination="I5b-aS-rdd" id="sUU-5V-eBz"/>
                         <outlet property="LegitimizeApply" destination="grE-Uh-QZp" id="VG9-oF-Pm4"/>
                         <outlet property="Name" destination="ze6-N0-Jbf" id="dms-Dw-uKr"/>
+                        <outlet property="PLegitimizeApply" destination="grE-Uh-QZp" id="mz4-bI-ST1"/>
+                        <outlet property="PLegitimizeData" destination="vsS-qW-eLC" id="C2e-BX-Nye"/>
+                        <outlet property="PLegitimizeName" destination="ze6-N0-Jbf" id="cUZ-KN-MyK"/>
+                        <outlet property="PLegitimizeSearch" destination="I5b-aS-rdd" id="9Xx-cI-EDC"/>
                     </connections>
                 </viewController>
                 <customObject id="oKd-4o-Cmi" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1612" y="-372"/>
+            <point key="canvasLocation" x="1611.5" y="-372.5"/>
         </scene>
-        <!--Admin View Controller Controller-->
+        <!--View Controller-->
         <scene sceneID="g7m-8p-RlC">
             <objects>
-                <viewController id="yod-Xi-sfr" customClass="AdminViewControllerController" sceneMemberID="viewController">
+                <viewController id="yod-Xi-sfr" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="9ub-Oz-muu">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2789,10 +2841,10 @@
             </objects>
             <point key="canvasLocation" x="2141" y="773"/>
         </scene>
-        <!--Admin View Controller Controller-->
+        <!--View Controller-->
         <scene sceneID="SAD-SU-Ey9">
             <objects>
-                <viewController id="R3w-5n-awA" customClass="AdminViewControllerController" sceneMemberID="viewController">
+                <viewController id="R3w-5n-awA" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="bjO-MD-bZJ">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="104"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2858,10 +2910,10 @@
             </objects>
             <point key="canvasLocation" x="1669" y="517"/>
         </scene>
-        <!--Admin View Controller Controller-->
+        <!--View Controller-->
         <scene sceneID="qmM-lp-WUw">
             <objects>
-                <viewController id="q8S-HF-qQi" customClass="AdminViewControllerController" sceneMemberID="viewController">
+                <viewController id="q8S-HF-qQi" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="q9l-8G-iXM">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="62"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2903,10 +2955,10 @@
             </objects>
             <point key="canvasLocation" x="1669" y="877"/>
         </scene>
-        <!--Admin View Controller Controller-->
+        <!--View Controller-->
         <scene sceneID="zpV-nL-0fI">
             <objects>
-                <viewController id="Q53-Ck-Cek" customClass="AdminViewControllerController" sceneMemberID="viewController">
+                <viewController id="Q53-Ck-Cek" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="4Bd-k0-m9w">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="166"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2986,10 +3038,10 @@
             </objects>
             <point key="canvasLocation" x="1661" y="339"/>
         </scene>
-        <!--Admin View Controller Controller-->
+        <!--View Controller-->
         <scene sceneID="GJ2-XB-dgr">
             <objects>
-                <viewController id="Eyk-F9-7ud" customClass="AdminViewControllerController" sceneMemberID="viewController">
+                <viewController id="Eyk-F9-7ud" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="eQG-kl-IFF">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="164"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -3098,10 +3150,10 @@
             </objects>
             <point key="canvasLocation" x="1669" y="705"/>
         </scene>
-        <!--Admin View Controller Controller-->
+        <!--View Controller-->
         <scene sceneID="gkk-wC-6ks">
             <objects>
-                <viewController id="reu-32-xDu" customClass="AdminViewControllerController" sceneMemberID="viewController">
+                <viewController id="reu-32-xDu" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="noX-JH-41c">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -3258,6 +3310,14 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="AAddStClass" destination="v5U-jP-RP7" id="9wV-tx-JO8"/>
+                        <outlet property="AAddStHome" destination="EqH-QY-9hU" id="b2f-lK-Jr4"/>
+                        <outlet property="AAddStLast" destination="LI9-q2-SoH" id="xHo-xS-zTX"/>
+                        <outlet property="AAddStMail" destination="CqJ-EX-EMJ" id="WdP-CH-uU5"/>
+                        <outlet property="AAddStName" destination="aLr-U5-jCq" id="qjy-lT-ysU"/>
+                        <outlet property="AAddStNum" destination="F85-rB-kGR" id="UQ7-mq-Nh5"/>
+                        <outlet property="AAddStPesel" destination="vAX-m2-Je9" id="g0W-Zy-chf"/>
+                        <outlet property="AAddStRegNum" destination="uDU-m5-fRg" id="6We-9N-jgx"/>
                         <outlet property="AddStudentApply" destination="iRR-GV-66X" id="AYa-mA-gBJ"/>
                         <outlet property="AddStudentClass" destination="v5U-jP-RP7" id="jel-6F-dZK"/>
                         <outlet property="AddStudentEMail" destination="CqJ-EX-EMJ" id="W2z-tV-73u"/>
@@ -3273,10 +3333,10 @@
             </objects>
             <point key="canvasLocation" x="1669" y="1116"/>
         </scene>
-        <!--Admin View Controller Controller-->
+        <!--View Controller-->
         <scene sceneID="GOW-4Q-WZ6">
             <objects>
-                <viewController id="rEP-nV-TyM" customClass="AdminViewControllerController" sceneMemberID="viewController">
+                <viewController id="rEP-nV-TyM" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="ueo-Ot-2kR">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="107"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -3356,10 +3416,10 @@
             </objects>
             <point key="canvasLocation" x="1661" y="1381"/>
         </scene>
-        <!--Admin View Controller Controller-->
+        <!--View Controller-->
         <scene sceneID="lK6-xp-erI">
             <objects>
-                <viewController id="bOp-5e-xyJ" customClass="AdminViewControllerController" sceneMemberID="viewController">
+                <viewController id="bOp-5e-xyJ" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="Cnl-VG-5hZ">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="109"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -3430,10 +3490,10 @@
             </objects>
             <point key="canvasLocation" x="1161" y="1305"/>
         </scene>
-        <!--Parent View Controller Controller-->
+        <!--View Controller-->
         <scene sceneID="StC-LP-q6M">
             <objects>
-                <viewController id="LQe-HY-W2e" customClass="ParentViewControllerController" sceneMemberID="viewController">
+                <viewController id="LQe-HY-W2e" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="0St-F9-o12">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -3515,6 +3575,7 @@
                     </view>
                     <connections>
                         <outlet property="MyData" destination="voQ-8h-o3G" id="MxA-of-TVM"/>
+                        <outlet property="PMyInfo" destination="voQ-8h-o3G" id="diY-sP-Prs"/>
                     </connections>
                 </viewController>
                 <customObject id="1Xu-hZ-JSJ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -3542,10 +3603,10 @@
             </objects>
             <point key="canvasLocation" x="1077" y="249"/>
         </scene>
-        <!--Admin View Controller Controller-->
+        <!--View Controller-->
         <scene sceneID="vdZ-PK-Ogo">
             <objects>
-                <viewController id="EtR-OK-VEZ" customClass="AdminViewControllerController" sceneMemberID="viewController">
+                <viewController id="EtR-OK-VEZ" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="ep7-Rk-fET">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -3715,10 +3776,10 @@
             </objects>
             <point key="canvasLocation" x="625" y="981"/>
         </scene>
-        <!--Admin View Controller Controller-->
+        <!--View Controller-->
         <scene sceneID="FUt-ad-QD4">
             <objects>
-                <viewController id="OGQ-eg-xGV" customClass="AdminViewControllerController" sceneMemberID="viewController">
+                <viewController id="OGQ-eg-xGV" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="DMb-dJ-rLY">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -4106,10 +4167,10 @@
             </objects>
             <point key="canvasLocation" x="69" y="705"/>
         </scene>
-        <!--Student View Controller Controller-->
+        <!--View Controller-->
         <scene sceneID="0So-sD-yAT">
             <objects>
-                <viewController id="p1L-L6-3tP" customClass="StudentViewControllerController" sceneMemberID="viewController">
+                <viewController id="p1L-L6-3tP" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="MAp-EK-RTP">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="159"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -4171,10 +4232,10 @@
             </objects>
             <point key="canvasLocation" x="95" y="1021"/>
         </scene>
-        <!--Admin View Controller Controller-->
+        <!--View Controller-->
         <scene sceneID="vRf-8q-WTQ">
             <objects>
-                <viewController id="nED-mx-Pop" customClass="AdminViewControllerController" sceneMemberID="viewController">
+                <viewController id="nED-mx-Pop" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="quY-AA-K37">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>

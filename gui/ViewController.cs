@@ -8,6 +8,10 @@ namespace gui
     public partial class ViewController : NSViewController
     {
         Backendoptions back;
+        ParentPanel parent;
+        StudentPanel student;
+        TeacherPanel teacher;
+        HeadmasterPanel admin;
 
         public ViewController(IntPtr handle) : base(handle)
         {
