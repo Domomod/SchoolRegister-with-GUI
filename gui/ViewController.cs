@@ -12,12 +12,13 @@ namespace gui
         StudentPanel student;
         TeacherPanel teacher;
         HeadmasterPanel admin;
+        SQLChecker checker;
 
         public ViewController(IntPtr handle) : base(handle)
         {
             back = new Backendoptions();
             back.OpenConnection();
-
+            checker = new SQLChecker();
         }
 
         public override void ViewDidLoad()
@@ -56,6 +57,7 @@ namespace gui
                 var storyboard = NSStoryboard.FromName("Main", null);
                 var controller = storyboard.InstantiateControllerWithIdentifier("2") as NSWindowController;
                 controller.ShowWindow(this);
+                admin = new HeadmasterPanel(back.GetCommand(), back.GetReader());
             }
             else
                 TextOnFirstPage.StringValue = "Illigal valju";
@@ -63,11 +65,14 @@ namespace gui
 
         partial void LogInAsParent(AppKit.NSButton sender)
         {
-            //if (back.LogInAsParent(PeselInput.StringValue))
+            //if (checker.IsCorrect(PeselInput.StringValue) & back.LogInAsParent(PeselInput.StringValue))
             {
                 var storyboard = NSStoryboard.FromName("Main", null);
                 var controller = storyboard.InstantiateControllerWithIdentifier("5") as NSWindowController;
                 controller.ShowWindow(this);
+                parent = new ParentPanel("99999999999", back.GetCommand(), back.GetReader());
+                
+                
             }
                 
             //else
@@ -82,6 +87,8 @@ namespace gui
                 var storyboard = NSStoryboard.FromName("Main", null);
                 var controller = storyboard.InstantiateControllerWithIdentifier("3") as NSWindowController;
                 controller.ShowWindow(this);
+                student = new StudentPanel(PeselInput.StringValue, back.GetCommand(), back.GetReader());
+               // StudentShowMyNotes.
             }
                 
             else
@@ -96,9 +103,26 @@ namespace gui
                 var storyboard = NSStoryboard.FromName("Main", null);
                 var controller = storyboard.InstantiateControllerWithIdentifier("9") as NSWindowController;
                 controller.ShowWindow(this);
+                teacher = new TeacherPanel(PeselInput.StringValue, back.GetCommand(), back.GetReader());
+                TeacherMyData.StringValue = teacher.MyData();
             }
            // else
                 TextOnFirstPage.StringValue = "Błędny pesel";
         }
+
+        partial void AASubApply(Foundation.NSObject sender)
+        {
+            if (AASub.StringValue != "" & checker.IsCorrect(AASub.StringValue))
+                back.AddSubject(AASub.StringValue);
+
+
+        }
+
+
+
+
     }
+
+
+    
 }

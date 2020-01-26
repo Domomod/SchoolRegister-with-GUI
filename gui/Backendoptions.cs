@@ -9,14 +9,26 @@ namespace gui
 
         private static MySqlConnection sqlConnection;
         private static MySqlDataReader dataReader;
-        private static PersonPanel user;
         private static MySqlCommand command;
-        private static SQLChecker checker;
+        ParentPanel parent;
+        StudentPanel student;
+        TeacherPanel teacher;
+        HeadmasterPanel admin;
 
         public Backendoptions()
         {
-            checker = new SQLChecker(); 
         }
+
+        public MySqlDataReader GetReader()
+        {
+            return dataReader;
+        }
+
+        public MySqlCommand GetCommand()
+        {
+            return command;
+        }
+
 
         public bool OpenConnection()
         {
@@ -34,19 +46,32 @@ namespace gui
             }
         }
 
+
+        public void AddSubject(string name)
+        {
+            command.CommandText = $"SELECT * from przedmiot where nazwa_przedmiotu='{name}'";
+            dataReader = command.ExecuteReader();
+            if (dataReader.Read())
+            {
+                dataReader.Close();
+                return;
+            }
+            dataReader.Close();
+            command.CommandText = $"INSERT INTO przedmiot VALUES ('{name}')";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
+        }
+
         public bool LogInAsStudent(string pesel)
         {
             try
             {
 
-                if (!checker.IsCorrect(pesel))
-                    return false;
             command.CommandText = $"select * from uczen where dane_osobowe_pesel='{pesel}'";
                         dataReader = command.ExecuteReader();
                         if (dataReader.Read())
                         {
                             dataReader.Close();
-                            user = new StudentPanel(pesel, command, dataReader);
                             return true;
                         }
                         dataReader.Close();
@@ -59,6 +84,8 @@ namespace gui
             
         }
 
+
+
         public bool LogInAsParent(string pesel)
         {
             try
@@ -68,7 +95,6 @@ namespace gui
                 if (dataReader.Read())
                 {
                     dataReader.Close();
-                    user = new ParentPanel(pesel, command, dataReader);
                     return true;
                 }
 
@@ -91,7 +117,6 @@ namespace gui
                         if (dataReader.Read())
                         {
                             dataReader.Close();
-                            user = new ParentPanel(pesel,command, dataReader);
                             return true;
                         }
                         dataReader.Close();

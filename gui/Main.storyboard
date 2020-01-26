@@ -2943,10 +2943,15 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="AASubApply:" target="q8S-HF-qQi" id="G2u-73-rch"/>
+                                </connections>
                             </button>
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="AASub" destination="K3S-Nd-014" id="EMa-9b-mQt"/>
+                        <outlet property="AASubApply" destination="HFp-OY-Iaa" id="fUc-5a-BuK"/>
                         <outlet property="AddSubjectApply" destination="HFp-OY-Iaa" id="BX3-xc-uqR"/>
                         <outlet property="AddSubjectName" destination="K3S-Nd-014" id="cMc-oI-p9S"/>
                     </connections>
@@ -3310,6 +3315,7 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="AAddStApply" destination="iRR-GV-66X" id="zXZ-tc-jBS"/>
                         <outlet property="AAddStClass" destination="v5U-jP-RP7" id="9wV-tx-JO8"/>
                         <outlet property="AAddStHome" destination="EqH-QY-9hU" id="b2f-lK-Jr4"/>
                         <outlet property="AAddStLast" destination="LI9-q2-SoH" id="xHo-xS-zTX"/>
@@ -3481,6 +3487,9 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="AGrillApply" destination="5OQ-cR-J7w" id="gDm-Re-rXv"/>
+                        <outlet property="AGrillParent" destination="ZlV-Zn-6UK" id="hd9-cV-gFs"/>
+                        <outlet property="AGrillStudent" destination="J6c-Vo-Cac" id="04d-SS-vgy"/>
                         <outlet property="GrillApply" destination="5OQ-cR-J7w" id="j4s-Qu-KZn"/>
                         <outlet property="GrillParent" destination="ZlV-Zn-6UK" id="a7y-9C-FHe"/>
                         <outlet property="GrillStudent" destination="J6c-Vo-Cac" id="6Mz-H1-Zbe"/>
@@ -3575,7 +3584,7 @@
                     </view>
                     <connections>
                         <outlet property="MyData" destination="voQ-8h-o3G" id="MxA-of-TVM"/>
-                        <outlet property="PMyInfo" destination="voQ-8h-o3G" id="diY-sP-Prs"/>
+                        <outlet property="PMyInfo" destination="voQ-8h-o3G" id="v5n-ee-c52"/>
                     </connections>
                 </viewController>
                 <customObject id="1Xu-hZ-JSJ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -3921,6 +3930,14 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="AATaNa" destination="ITH-vj-3wp" id="jIw-Gb-g1l"/>
+                        <outlet property="AATeaApply" destination="dd5-qH-YlF" id="jcq-9Q-gns"/>
+                        <outlet property="AATeaHome" destination="wIb-mA-JV2" id="jdO-jz-ucl"/>
+                        <outlet property="AATeaLast" destination="Lrg-t0-ugO" id="e7h-bD-xKr"/>
+                        <outlet property="AATeaMail" destination="DMb-dJ-rLY" id="XZW-C9-f6M"/>
+                        <outlet property="AATeaPe" destination="a9h-2s-SS5" id="mmr-2k-WjE"/>
+                        <outlet property="AATeaPhone" destination="hzu-IO-0HK" id="fQ5-vW-xma"/>
+                        <outlet property="AATeaWork" destination="Qp7-IJ-UgY" id="ep8-0M-dOA"/>
                         <outlet property="AddTeacherEMail" destination="idp-xs-zQa" id="m3H-8K-Aqu"/>
                         <outlet property="AddTeacherHome" destination="wIb-mA-JV2" id="h0V-ZA-LRy"/>
                         <outlet property="AddTeacherHour" destination="Qp7-IJ-UgY" id="NN7-ze-dSA"/>
