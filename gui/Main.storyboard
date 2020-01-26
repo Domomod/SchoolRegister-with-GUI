@@ -1654,6 +1654,7 @@
                         <outlet property="TAddNoteSearch" destination="aew-r4-ago" id="VCz-Dj-Ybf"/>
                         <outlet property="TAddNoteStudent" destination="XuK-er-Ot0" id="Q9I-tn-WCm"/>
                         <outlet property="TAddNoteSub" destination="kjH-gw-j6O" id="Pbh-hk-WqT"/>
+                        <outlet property="TAddNoteSubj" destination="uO9-rq-ZIb" id="3ze-Uw-X9p"/>
                         <outlet property="TAddNotevalue" destination="otp-Bc-xET" id="6Vd-bG-t4X"/>
                     </connections>
                 </viewController>

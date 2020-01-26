@@ -194,6 +194,8 @@ namespace gui
 
         partial void PLegitimizeApply(Foundation.NSObject sender)
         {
+            back.LegitimizeAbsence(PLegitimizeName[PLegitimizeName.SelectedIndex].ToString(), PLegitimizeData[PLegitimizeData.SelectedIndex].ToString());
+
         }
 
         partial void AAddParApply(Foundation.NSObject sender)
@@ -212,23 +214,46 @@ namespace gui
 
         partial void PLegitimizeSearch(Foundation.NSObject sender) {
 
+            var pesel = back.ChildPesel(PLegitimizeName[PLegitimizeName.SelectedIndex].ToString());
+            back.GetAbsence(pesel); 
         }
         partial void TANoteApply(Foundation.NSObject sender) {
+            if (checker.IsCorrect(TAddNoteDesc.ToString()))
+            { var pesel = back.GetPeselFromNames(TAddNoteStudent[TAddNoteStudent.SelectedIndex].ToString());
+                back.AddNote(TAddNotevalue[TAddNotevalue.SelectedIndex].ToString(),
+                    TAddNoteDesc.ToString(), TAddNoteCat[TAddNoteCat.SelectedIndex].ToString(),
+                    TAddNoteSubj[TAddNoteSubj.SelectedIndex].ToString(), pesel);
+            }
+                
         }
         partial void TANoteSearch(Foundation.NSObject sender) {
+            back.GetStudents(TAddNoteClass[TAddNoteClass.SelectedIndex].ToString());
         }
         partial void TAWarningApply(Foundation.NSObject sender) {
+            int t;
+            if (checker.IsCorrect(TAddWarningDesc.ToString()) &(TAddWarningPoints.ToString()=="" | int.TryParse(TAddWarningPoints.ToString(),out t)))
+            {
+                var pesel = TAddWarningStudent[TAddWarningStudent.SelectedIndex].ToString();
+                back.AddWarning(TAddWarningDesc.ToString(), TAddWarningPoints.ToString(), pesel);
+
+            }
         }
         partial void TAWarningSearch(Foundation.NSObject sender) {
+            back.GetStudents(TAddWarningClass[TAddWarningClass.SelectedIndex].ToString());
+
         }
         partial void TCheckPrApply(Foundation.NSObject sender) {
 
+
         }
         partial void TCheckPrSearch(Foundation.NSObject sender) {
+
         }
         partial void TChePrApply(Foundation.NSObject sender) {
+
         }
         partial void TChePrSearch(Foundation.NSObject sender) {
+            
         }
 
 

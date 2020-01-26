@@ -113,10 +113,6 @@
     <Compile Include="Backendoptions.cs" />
     <Compile Include="SQLChecker.cs" />
     <Compile Include="View.cs" />
-    <Compile Include="TeaacherViewController.cs" />
-    <Compile Include="TeaacherViewController.designer.cs">
-      <DependentUpon>TeaacherViewController.cs</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Main.storyboard" />
@@ -2386,6 +2382,28 @@
     <BundleResource Include="Resources\Index\DataStore\v5\units\os_object-1IVCWVLR6MT9T.pcm-2JMCTQZPJIJ99" />
     <BundleResource Include="Resources\Index\DataStore\v5\units\CoreServices-2SRTBNLRER772.pcm-20K3P4UMICU1X" />
     <BundleResource Include="Resources\Index\DataStore\v5\units\_Builtin_intrinsics-3FD15YQY6KNNR.pcm-1UQODY7BBIERR" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\Foundation-2FJBXN8U6QRTS.pcm-2M9T05M5KOIDS" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\XPC-3LIAJY90PG03M.pcm-2G020011M3YLZ" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreText-4BX5WGXMXE7W.pcm-1R25F3E7W7PTE" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\ApplicationServices-SV8UEN8TMBAR.pcm-5GZUB8XDB9V" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\ImageIO-SV8UEN8TMBAR.pcm-Y92Y9GU4UJIA" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AppDelegate.o-3G0H44HH11RYR" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\Metal-LZGKTAAK5A7P.pcm-YWU42NQCYP59" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\ViewController.o-1J7JLZCIZB77S" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AppKit-1LWHB1MWS5AWP.pcm-1JW5S84651PA5" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\launch-1IVCWVLR6MT9T.pcm-EFASXCUAQXE8" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\IOSurface-GCVS5NOA7EOF.pcm-F0L32MJIOZ53" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\TeaacherViewController.o-GVFAM4NOD9E3" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreVideo-J9HZM7HTOIXH.pcm-1EP6BMO116BFU" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\QuartzCore-1LT8XAPDT2LBF.pcm-31HHH7CJU4N1A" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreData-1DHIL9VVBSYDQ.pcm-1ZUINY86WKWY7" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\ColorSync-SV8UEN8TMBAR.pcm-3O7R5QSZYECSN" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\OpenGL-2SRSU83KOCQ0D.pcm-1Y1I020OSVQLV" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreImage-2H41H5QLPV8GG.pcm-3VANVIGXXTZ36" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\IG\ViewController.h-3OBM55WWJQEIG" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\G5\ViewController.m-452EDAECHBG5" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\O5\ViewController.m-1GP4SLZ7O0GO5" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\BT\ViewController.h-1K32K99H4FUBT" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
 </Project>

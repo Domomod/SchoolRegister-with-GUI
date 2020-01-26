@@ -202,6 +202,9 @@ namespace gui
 		AppKit.NSView TAddNoteSub { get; set; }
 
 		[Outlet]
+		AppKit.NSComboBox TAddNoteSubj { get; set; }
+
+		[Outlet]
 		AppKit.NSComboBox TAddNotevalue { get; set; }
 
 		[Outlet]
@@ -344,39 +347,9 @@ namespace gui
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (AAParPe != null) {
-				AAParPe.Dispose ();
-				AAParPe = null;
-			}
-
-			if (AAParNa != null) {
-				AAParNa.Dispose ();
-				AAParNa = null;
-			}
-
-			if (AAParHome != null) {
-				AAParHome.Dispose ();
-				AAParHome = null;
-			}
-
-			if (AAParMoney != null) {
-				AAParMoney.Dispose ();
-				AAParMoney = null;
-			}
-
-			if (AAParNum != null) {
-				AAParNum.Dispose ();
-				AAParNum = null;
-			}
-
-			if (AAParMail != null) {
-				AAParMail.Dispose ();
-				AAParMail = null;
-			}
-
-			if (AAParLast != null) {
-				AAParLast.Dispose ();
-				AAParLast = null;
+			if (TAddNoteSubj != null) {
+				TAddNoteSubj.Dispose ();
+				TAddNoteSubj = null;
 			}
 
 			if (AAClassForm != null) {
@@ -477,6 +450,41 @@ namespace gui
 			if (AALessUM != null) {
 				AALessUM.Dispose ();
 				AALessUM = null;
+			}
+
+			if (AAParHome != null) {
+				AAParHome.Dispose ();
+				AAParHome = null;
+			}
+
+			if (AAParLast != null) {
+				AAParLast.Dispose ();
+				AAParLast = null;
+			}
+
+			if (AAParMail != null) {
+				AAParMail.Dispose ();
+				AAParMail = null;
+			}
+
+			if (AAParMoney != null) {
+				AAParMoney.Dispose ();
+				AAParMoney = null;
+			}
+
+			if (AAParNa != null) {
+				AAParNa.Dispose ();
+				AAParNa = null;
+			}
+
+			if (AAParNum != null) {
+				AAParNum.Dispose ();
+				AAParNum = null;
+			}
+
+			if (AAParPe != null) {
+				AAParPe.Dispose ();
+				AAParPe = null;
 			}
 
 			if (AARoomChairs != null) {

@@ -34,6 +34,90 @@ namespace gui
             }
         }
 
+
+        public void AddWarning(string whatDidStudentDo, string points, string pesel)
+        {
+            command.CommandText = $"INSERT INTO uwaga VALUES(NEXTVAL(uwagaSeq),'{whatDidStudentDo}', {points}, {currentPesel}, {pesel}, CURRENT_DATE) ";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
+        }
+
+        public void AddNote(string value, string description,string category, string subject, string pesel)
+        {
+            command.CommandText = $"INSERT INTO ocena VALUES(NEXTVAL(ocenaSeq),{value},CURRENT_DAY,'{description}','{category}','{subject}',{pesel},{currentPesel})";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
+        }
+
+        public void LegitimizeAbsence(string pesel, string data)
+        {
+            command.CommandText = $"UPDATE obecnosc SET status = 'usprawiedliwiony' WHERE  status='nieobecny' and data={data} and uczen_pesel={pesel}";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
+
+        }
+
+        public string ChildPesel(string imie)
+        {
+            command.CommandText = $"SELECT pesel from dane_osobowe join opieka on pesel=uczen_pesel where imie='{imie}' and opiekun_pesel={currentPesel}";
+            dataReader = command.ExecuteReader();
+            var pesel = dataReader[0].ToString();
+            dataReader.Close();
+            return pesel;
+        }
+
+        public string GetPeselFromNames(string dane)
+        {
+            var lst = dane.Split(" ");
+            command.CommandText = $"SELECT pesel FROM dane_osobowe WHERE imie='{lst[0]}' and nazwisko='{lst[1]}'";
+            dataReader = command.ExecuteReader();
+            var pesel = dataReader[0].ToString();
+            dataReader.Close();
+            return pesel;
+        }
+        public List<(string, string)> GetUnits()
+        {
+            command.CommandText = $"SELECT * FROM jednostka";
+            dataReader = command.ExecuteReader();
+            List<(string, string)> list = new List<(string, string)>();
+            while (dataReader.Read())
+                list.Add((dataReader[0].ToString(), dataReader[1].ToString()));
+            dataReader.Close();
+            return list;
+        }
+
+        public List<(string,string)> GetRooms()
+        {
+            command.CommandText = $"SELECT * FROM sala";
+            dataReader = command.ExecuteReader();
+            List<(string, string)> list = new List<(string, string)>();
+            while (dataReader.Read())
+                list.Add((dataReader[0].ToString() , dataReader[1].ToString()));
+            dataReader.Close();
+            return list;
+        } 
+
+        public List<string> GetCategories()
+        {
+            command.CommandText = $"SELECT * from kategoria_oceny";
+            dataReader = command.ExecuteReader();
+            List<string> list = new List<string>();
+            while (dataReader.Read())
+                list.Add(dataReader[0].ToString());
+            dataReader.Close();
+            return list;
+        }
+
+        public List<string> GetSubjects()
+        {
+            command.CommandText = $"SELECT * from przedmiot";
+            dataReader = command.ExecuteReader();
+            List<string> list = new List<string>();
+            while (dataReader.Read())
+                list.Add(dataReader[0].ToString());
+            dataReader.Close();
+            return list;
+        }
         public List<(string, string)> GetTeachers()
         {
             command.CommandText = $"SELECT imie, nazwisko, pesel FROM dane_osobowe JOIN nauczyciel on pesel=dane_osobowe_pesel ";
