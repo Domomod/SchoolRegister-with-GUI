@@ -13,7 +13,19 @@ namespace gui
 	partial class ViewController
 	{
 		[Outlet]
-		AppKit.NSPopUpButton AAddStClass { get; set; }
+		AppKit.NSComboBox AAClassForm { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField AAClassLetter { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox AAClassProfile { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField AAClassYear { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox AAddStClass { get; set; }
 
 		[Outlet]
 		AppKit.NSTextField AAddStHome { get; set; }
@@ -37,19 +49,88 @@ namespace gui
 		AppKit.NSTextField AAddStRegNum { get; set; }
 
 		[Outlet]
-		AppKit.NSTextFieldCell PeselInput { get; set; }
+		AppKit.NSComboBox AALessClL { get; set; }
 
 		[Outlet]
-		AppKit.NSButton PLegitimizeApply { get; set; }
+		AppKit.NSComboBox AALessClY { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox AALessDay { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox AALessRF { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox AALessRR { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox AALessSub { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox AALessUH { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox AALessUM { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField AARoomChairs { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField AARoomFloor { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField AARoomRoom { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField AASub { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField AATaNa { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField AATeaHome { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField AATeaLast { get; set; }
+
+		[Outlet]
+		AppKit.NSView AATeaMail { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField AATeaPe { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField AATeaPhone { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField AATeaWork { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox AAUnitH { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField AAUnitM { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox ACClass { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox ACForm { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox AGrillParent { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox AGrillStudent { get; set; }
+
+		[Outlet]
+		AppKit.NSTextFieldCell PeselInput { get; set; }
 
 		[Outlet]
 		AppKit.NSComboBox PLegitimizeData { get; set; }
 
 		[Outlet]
 		AppKit.NSComboBox PLegitimizeName { get; set; }
-
-		[Outlet]
-		AppKit.NSButton PLegitimizeSearch { get; set; }
 
 		[Outlet]
 		AppKit.NSScrollView PMyChildrenNotes { get; set; }
@@ -159,6 +240,36 @@ namespace gui
 		[Outlet]
 		AppKit.NSTextField TextOnFirstPage { get; set; }
 
+		[Action ("AAClassApply:")]
+		partial void AAClassApply (Foundation.NSObject sender);
+
+		[Action ("AAFOrmApply:")]
+		partial void AAFOrmApply (Foundation.NSObject sender);
+
+		[Action ("AAGrilApply:")]
+		partial void AAGrilApply (Foundation.NSObject sender);
+
+		[Action ("AAGrillApply:")]
+		partial void AAGrillApply (Foundation.NSObject sender);
+
+		[Action ("AALessonApply:")]
+		partial void AALessonApply (Foundation.NSObject sender);
+
+		[Action ("AARoomAPply:")]
+		partial void AARoomAPply (Foundation.NSObject sender);
+
+		[Action ("AAStudentApply:")]
+		partial void AAStudentApply (Foundation.NSObject sender);
+
+		[Action ("AASubApply:")]
+		partial void AASubApply (Foundation.NSObject sender);
+
+		[Action ("AATeacher:")]
+		partial void AATeacher (Foundation.NSObject sender);
+
+		[Action ("AAUnitApply:")]
+		partial void AAUnitApply (Foundation.NSObject sender);
+
 		[Action ("FirstUseButton:")]
 		partial void FirstUseButton (AppKit.NSButton sender);
 
@@ -173,9 +284,264 @@ namespace gui
 
 		[Action ("LogInAsTeacher:")]
 		partial void LogInAsTeacher (AppKit.NSButton sender);
+
+		[Action ("PLegitimizeApply:")]
+		partial void PLegitimizeApply (Foundation.NSObject sender);
+
+		[Action ("PLegitimizeSearch:")]
+		partial void PLegitimizeSearch (Foundation.NSObject sender);
+
+		[Action ("TANoteApply:")]
+		partial void TANoteApply (Foundation.NSObject sender);
+
+		[Action ("TANoteSearch:")]
+		partial void TANoteSearch (Foundation.NSObject sender);
+
+		[Action ("TAWarningApply:")]
+		partial void TAWarningApply (Foundation.NSObject sender);
+
+		[Action ("TAWarningSearch:")]
+		partial void TAWarningSearch (Foundation.NSObject sender);
+
+		[Action ("TCheckPrApply:")]
+		partial void TCheckPrApply (Foundation.NSObject sender);
+
+		[Action ("TCheckPrSearch:")]
+		partial void TCheckPrSearch (Foundation.NSObject sender);
+
+		[Action ("TChePrApply:")]
+		partial void TChePrApply (Foundation.NSObject sender);
+
+		[Action ("TChePrSearch:")]
+		partial void TChePrSearch (Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (AAddStClass != null) {
+				AAddStClass.Dispose ();
+				AAddStClass = null;
+			}
+
+			if (AAClassForm != null) {
+				AAClassForm.Dispose ();
+				AAClassForm = null;
+			}
+
+			if (AAClassLetter != null) {
+				AAClassLetter.Dispose ();
+				AAClassLetter = null;
+			}
+
+			if (AAClassProfile != null) {
+				AAClassProfile.Dispose ();
+				AAClassProfile = null;
+			}
+
+			if (AAClassYear != null) {
+				AAClassYear.Dispose ();
+				AAClassYear = null;
+			}
+
+			if (AAddStClass != null) {
+				AAddStClass.Dispose ();
+				AAddStClass = null;
+			}
+
+			if (AAddStHome != null) {
+				AAddStHome.Dispose ();
+				AAddStHome = null;
+			}
+
+			if (AAddStLast != null) {
+				AAddStLast.Dispose ();
+				AAddStLast = null;
+			}
+
+			if (AAddStMail != null) {
+				AAddStMail.Dispose ();
+				AAddStMail = null;
+			}
+
+			if (AAddStName != null) {
+				AAddStName.Dispose ();
+				AAddStName = null;
+			}
+
+			if (AAddStNum != null) {
+				AAddStNum.Dispose ();
+				AAddStNum = null;
+			}
+
+			if (AAddStPesel != null) {
+				AAddStPesel.Dispose ();
+				AAddStPesel = null;
+			}
+
+			if (AAddStRegNum != null) {
+				AAddStRegNum.Dispose ();
+				AAddStRegNum = null;
+			}
+
+			if (AALessClL != null) {
+				AALessClL.Dispose ();
+				AALessClL = null;
+			}
+
+			if (AALessClY != null) {
+				AALessClY.Dispose ();
+				AALessClY = null;
+			}
+
+			if (AALessDay != null) {
+				AALessDay.Dispose ();
+				AALessDay = null;
+			}
+
+			if (AALessRF != null) {
+				AALessRF.Dispose ();
+				AALessRF = null;
+			}
+
+			if (AALessRR != null) {
+				AALessRR.Dispose ();
+				AALessRR = null;
+			}
+
+			if (AALessSub != null) {
+				AALessSub.Dispose ();
+				AALessSub = null;
+			}
+
+			if (AALessUH != null) {
+				AALessUH.Dispose ();
+				AALessUH = null;
+			}
+
+			if (AALessUM != null) {
+				AALessUM.Dispose ();
+				AALessUM = null;
+			}
+
+			if (AARoomChairs != null) {
+				AARoomChairs.Dispose ();
+				AARoomChairs = null;
+			}
+
+			if (AARoomFloor != null) {
+				AARoomFloor.Dispose ();
+				AARoomFloor = null;
+			}
+
+			if (AARoomRoom != null) {
+				AARoomRoom.Dispose ();
+				AARoomRoom = null;
+			}
+
+			if (AASub != null) {
+				AASub.Dispose ();
+				AASub = null;
+			}
+
+			if (AATaNa != null) {
+				AATaNa.Dispose ();
+				AATaNa = null;
+			}
+
+			if (AATeaHome != null) {
+				AATeaHome.Dispose ();
+				AATeaHome = null;
+			}
+
+			if (AATeaLast != null) {
+				AATeaLast.Dispose ();
+				AATeaLast = null;
+			}
+
+			if (AATeaMail != null) {
+				AATeaMail.Dispose ();
+				AATeaMail = null;
+			}
+
+			if (AATeaPe != null) {
+				AATeaPe.Dispose ();
+				AATeaPe = null;
+			}
+
+			if (AATeaPhone != null) {
+				AATeaPhone.Dispose ();
+				AATeaPhone = null;
+			}
+
+			if (AATeaWork != null) {
+				AATeaWork.Dispose ();
+				AATeaWork = null;
+			}
+
+			if (AAUnitH != null) {
+				AAUnitH.Dispose ();
+				AAUnitH = null;
+			}
+
+			if (AAUnitM != null) {
+				AAUnitM.Dispose ();
+				AAUnitM = null;
+			}
+
+			if (ACClass != null) {
+				ACClass.Dispose ();
+				ACClass = null;
+			}
+
+			if (ACForm != null) {
+				ACForm.Dispose ();
+				ACForm = null;
+			}
+
+			if (AGrillParent != null) {
+				AGrillParent.Dispose ();
+				AGrillParent = null;
+			}
+
+			if (AGrillStudent != null) {
+				AGrillStudent.Dispose ();
+				AGrillStudent = null;
+			}
+
+			if (PeselInput != null) {
+				PeselInput.Dispose ();
+				PeselInput = null;
+			}
+
+			if (PLegitimizeData != null) {
+				PLegitimizeData.Dispose ();
+				PLegitimizeData = null;
+			}
+
+			if (PLegitimizeName != null) {
+				PLegitimizeName.Dispose ();
+				PLegitimizeName = null;
+			}
+
+			if (PMyChildrenNotes != null) {
+				PMyChildrenNotes.Dispose ();
+				PMyChildrenNotes = null;
+			}
+
+			if (PMyChildrenPresance != null) {
+				PMyChildrenPresance.Dispose ();
+				PMyChildrenPresance = null;
+			}
+
+			if (PMyChildrenWarnings != null) {
+				PMyChildrenWarnings.Dispose ();
+				PMyChildrenWarnings = null;
+			}
+
+			if (PMyInfo != null) {
+				PMyInfo.Dispose ();
+				PMyInfo = null;
+			}
+
 			if (StudentShowMyNotes != null) {
 				StudentShowMyNotes.Dispose ();
 				StudentShowMyNotes = null;
@@ -186,29 +552,104 @@ namespace gui
 				StudentShowMyPresance = null;
 			}
 
-			if (StudentShowMyWarningsTab != null) {
-				StudentShowMyWarningsTab.Dispose ();
-				StudentShowMyWarningsTab = null;
-			}
-
 			if (StudentShowMyWarningsPoints != null) {
 				StudentShowMyWarningsPoints.Dispose ();
 				StudentShowMyWarningsPoints = null;
 			}
 
-			if (TeacherMyData != null) {
-				TeacherMyData.Dispose ();
-				TeacherMyData = null;
+			if (StudentShowMyWarningsTab != null) {
+				StudentShowMyWarningsTab.Dispose ();
+				StudentShowMyWarningsTab = null;
 			}
 
-			if (TeacherCheckPresanceClassNum != null) {
-				TeacherCheckPresanceClassNum.Dispose ();
-				TeacherCheckPresanceClassNum = null;
+			if (TAddNoteApply != null) {
+				TAddNoteApply.Dispose ();
+				TAddNoteApply = null;
+			}
+
+			if (TAddNoteCat != null) {
+				TAddNoteCat.Dispose ();
+				TAddNoteCat = null;
+			}
+
+			if (TAddNoteClass != null) {
+				TAddNoteClass.Dispose ();
+				TAddNoteClass = null;
+			}
+
+			if (TAddNoteDesc != null) {
+				TAddNoteDesc.Dispose ();
+				TAddNoteDesc = null;
+			}
+
+			if (TAddNoteSearch != null) {
+				TAddNoteSearch.Dispose ();
+				TAddNoteSearch = null;
+			}
+
+			if (TAddNoteStudent != null) {
+				TAddNoteStudent.Dispose ();
+				TAddNoteStudent = null;
+			}
+
+			if (TAddNoteSub != null) {
+				TAddNoteSub.Dispose ();
+				TAddNoteSub = null;
+			}
+
+			if (TAddNotevalue != null) {
+				TAddNotevalue.Dispose ();
+				TAddNotevalue = null;
+			}
+
+			if (TAddWarningApply != null) {
+				TAddWarningApply.Dispose ();
+				TAddWarningApply = null;
+			}
+
+			if (TAddWarningClass != null) {
+				TAddWarningClass.Dispose ();
+				TAddWarningClass = null;
+			}
+
+			if (TAddWarningDesc != null) {
+				TAddWarningDesc.Dispose ();
+				TAddWarningDesc = null;
+			}
+
+			if (TAddWarningFindStudent != null) {
+				TAddWarningFindStudent.Dispose ();
+				TAddWarningFindStudent = null;
+			}
+
+			if (TAddWarningPoints != null) {
+				TAddWarningPoints.Dispose ();
+				TAddWarningPoints = null;
+			}
+
+			if (TAddWarningStudent != null) {
+				TAddWarningStudent.Dispose ();
+				TAddWarningStudent = null;
+			}
+
+			if (TCheckPresanceApply != null) {
+				TCheckPresanceApply.Dispose ();
+				TCheckPresanceApply = null;
+			}
+
+			if (TeacherCheckPresanceClasses != null) {
+				TeacherCheckPresanceClasses.Dispose ();
+				TeacherCheckPresanceClasses = null;
 			}
 
 			if (TeacherCheckPresanceClassLetter != null) {
 				TeacherCheckPresanceClassLetter.Dispose ();
 				TeacherCheckPresanceClassLetter = null;
+			}
+
+			if (TeacherCheckPresanceClassNum != null) {
+				TeacherCheckPresanceClassNum.Dispose ();
+				TeacherCheckPresanceClassNum = null;
 			}
 
 			if (TeacherCheckPresanceLessonDay != null) {
@@ -226,159 +667,9 @@ namespace gui
 				TeacherCheckPresanceStudentList = null;
 			}
 
-			if (TAddNoteClass != null) {
-				TAddNoteClass.Dispose ();
-				TAddNoteClass = null;
-			}
-
-			if (TAddNoteStudent != null) {
-				TAddNoteStudent.Dispose ();
-				TAddNoteStudent = null;
-			}
-
-			if (TAddNoteDesc != null) {
-				TAddNoteDesc.Dispose ();
-				TAddNoteDesc = null;
-			}
-
-			if (TAddNoteSub != null) {
-				TAddNoteSub.Dispose ();
-				TAddNoteSub = null;
-			}
-
-			if (TAddNoteCat != null) {
-				TAddNoteCat.Dispose ();
-				TAddNoteCat = null;
-			}
-
-			if (TAddNotevalue != null) {
-				TAddNotevalue.Dispose ();
-				TAddNotevalue = null;
-			}
-
-			if (TEditPresanceClass != null) {
-				TEditPresanceClass.Dispose ();
-				TEditPresanceClass = null;
-			}
-
-			if (TEditPresanceStudent != null) {
-				TEditPresanceStudent.Dispose ();
-				TEditPresanceStudent = null;
-			}
-
-			if (TEditPresanceList != null) {
-				TEditPresanceList.Dispose ();
-				TEditPresanceList = null;
-			}
-
-			if (TAddWarningClass != null) {
-				TAddWarningClass.Dispose ();
-				TAddWarningClass = null;
-			}
-
-			if (TAddWarningStudent != null) {
-				TAddWarningStudent.Dispose ();
-				TAddWarningStudent = null;
-			}
-
-			if (TAddWarningPoints != null) {
-				TAddWarningPoints.Dispose ();
-				TAddWarningPoints = null;
-			}
-
-			if (TAddWarningDesc != null) {
-				TAddWarningDesc.Dispose ();
-				TAddWarningDesc = null;
-			}
-
-			if (PMyInfo != null) {
-				PMyInfo.Dispose ();
-				PMyInfo = null;
-			}
-
-			if (PMyChildrenNotes != null) {
-				PMyChildrenNotes.Dispose ();
-				PMyChildrenNotes = null;
-			}
-
-			if (PMyChildrenWarnings != null) {
-				PMyChildrenWarnings.Dispose ();
-				PMyChildrenWarnings = null;
-			}
-
-			if (PMyChildrenPresance != null) {
-				PMyChildrenPresance.Dispose ();
-				PMyChildrenPresance = null;
-			}
-
-			if (PLegitimizeName != null) {
-				PLegitimizeName.Dispose ();
-				PLegitimizeName = null;
-			}
-
-			if (PLegitimizeData != null) {
-				PLegitimizeData.Dispose ();
-				PLegitimizeData = null;
-			}
-
-			if (AAddStPesel != null) {
-				AAddStPesel.Dispose ();
-				AAddStPesel = null;
-			}
-
-			if (AAddStName != null) {
-				AAddStName.Dispose ();
-				AAddStName = null;
-			}
-
-			if (AAddStRegNum != null) {
-				AAddStRegNum.Dispose ();
-				AAddStRegNum = null;
-			}
-
-			if (AAddStClass != null) {
-				AAddStClass.Dispose ();
-				AAddStClass = null;
-			}
-
-			if (AAddStMail != null) {
-				AAddStMail.Dispose ();
-				AAddStMail = null;
-			}
-
-			if (AAddStLast != null) {
-				AAddStLast.Dispose ();
-				AAddStLast = null;
-			}
-
-			if (AAddStHome != null) {
-				AAddStHome.Dispose ();
-				AAddStHome = null;
-			}
-
-			if (AAddStNum != null) {
-				AAddStNum.Dispose ();
-				AAddStNum = null;
-			}
-
-			if (PLegitimizeApply != null) {
-				PLegitimizeApply.Dispose ();
-				PLegitimizeApply = null;
-			}
-
-			if (PLegitimizeSearch != null) {
-				PLegitimizeSearch.Dispose ();
-				PLegitimizeSearch = null;
-			}
-
-			if (TAddNoteApply != null) {
-				TAddNoteApply.Dispose ();
-				TAddNoteApply = null;
-			}
-
-			if (TEditPresanceFindStudent != null) {
-				TEditPresanceFindStudent.Dispose ();
-				TEditPresanceFindStudent = null;
+			if (TeacherMyData != null) {
+				TeacherMyData.Dispose ();
+				TeacherMyData = null;
 			}
 
 			if (TEditPresanceApply != null) {
@@ -386,34 +677,24 @@ namespace gui
 				TEditPresanceApply = null;
 			}
 
-			if (TAddWarningFindStudent != null) {
-				TAddWarningFindStudent.Dispose ();
-				TAddWarningFindStudent = null;
+			if (TEditPresanceClass != null) {
+				TEditPresanceClass.Dispose ();
+				TEditPresanceClass = null;
 			}
 
-			if (TAddWarningApply != null) {
-				TAddWarningApply.Dispose ();
-				TAddWarningApply = null;
+			if (TEditPresanceFindStudent != null) {
+				TEditPresanceFindStudent.Dispose ();
+				TEditPresanceFindStudent = null;
 			}
 
-			if (TAddNoteSearch != null) {
-				TAddNoteSearch.Dispose ();
-				TAddNoteSearch = null;
+			if (TEditPresanceList != null) {
+				TEditPresanceList.Dispose ();
+				TEditPresanceList = null;
 			}
 
-			if (TCheckPresanceApply != null) {
-				TCheckPresanceApply.Dispose ();
-				TCheckPresanceApply = null;
-			}
-
-			if (TeacherCheckPresanceClasses != null) {
-				TeacherCheckPresanceClasses.Dispose ();
-				TeacherCheckPresanceClasses = null;
-			}
-
-			if (PeselInput != null) {
-				PeselInput.Dispose ();
-				PeselInput = null;
+			if (TEditPresanceStudent != null) {
+				TEditPresanceStudent.Dispose ();
+				TEditPresanceStudent = null;
 			}
 
 			if (TextOnFirstPage != null) {

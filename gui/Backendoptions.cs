@@ -6,17 +6,17 @@ namespace gui
 {
     public class Backendoptions
     {
-
+        private string currentPesel;
         private static MySqlConnection sqlConnection;
         private static MySqlDataReader dataReader;
-        private static PersonPanel user;
         private static MySqlCommand command;
-        private static SQLChecker checker;
 
         public Backendoptions()
         {
-            checker = new SQLChecker(); 
         }
+
+
+
 
         public bool OpenConnection()
         {
@@ -34,19 +34,77 @@ namespace gui
             }
         }
 
+        public void AddStudent(string pesel, string names, string lastName, string home, string phoneNum, string mail, string classYear, string numberInRegister, string classLetter )
+        {
+            command.CommandText = $"INSERT INTO dane_osobowe VALUES('{pesel}','{names}','{lastName}','{home}',{phoneNum},'{mail}')";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
+            command.CommandText = $"INSERT INTO uczen VALUES ({pesel},{classYear},{numberInRegister},'{classLetter}')";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
+        }
+
+        public void AddRoom( string floor, string number, string chairs)
+        {
+            command.CommandText = $"INSERT INTO sala VALUES ({floor},{number},{chairs})";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
+        }
+
+        public void AddLesson(string dayOfUnit, string hourOfUnit, string minuteOfUnit, string classYear, string classLetter, string roomFloor, string roomNumber, string subject)
+        {
+            command.CommandText = $"INSERT INTO lekcja VALUES ('{dayOfUnit}', {hourOfUnit}, {minuteOfUnit},{classYear},'{classLetter}', {roomFloor},{roomNumber},'{subject}')";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
+        }
+
+        public void Grill(string guardian, string child)
+        {
+            command.CommandText = $"INSERT INTO opieka VALUES ({child},{guardian})";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
+        }
+
+        public void ChangeFormTutor(string newFormTutor, string classYear, string classLetter)
+        {
+            command.CommandText = $"UPDATE klasa SET nauczyciel_pesel={newFormTutor} WHERE rocznik={classYear} and literka='{classLetter}'";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
+        }
+
+        public void AddClass(string classYear, string classLetter, string formTutorPesel, string profile)
+        {
+            command.CommandText = $"INSERT INTO klasa VALUES ({classYear},'{classLetter}', {formTutorPesel},'{profile}') ";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
+        }
+
+        public void AddSubject(string name)
+        {
+            command.CommandText = $"SELECT * from przedmiot where nazwa_przedmiotu='{name}'";
+            dataReader = command.ExecuteReader();
+            if (dataReader.Read())
+            {
+                dataReader.Close();
+                return;
+            }
+            dataReader.Close();
+            command.CommandText = $"INSERT INTO przedmiot VALUES ('{name}')";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
+        }
+
         public bool LogInAsStudent(string pesel)
         {
             try
             {
 
-                if (!checker.IsCorrect(pesel))
-                    return false;
             command.CommandText = $"select * from uczen where dane_osobowe_pesel='{pesel}'";
                         dataReader = command.ExecuteReader();
                         if (dataReader.Read())
                         {
                             dataReader.Close();
-                            user = new StudentPanel(pesel, command, dataReader);
+                            currentPesel = pesel;
                             return true;
                         }
                         dataReader.Close();
@@ -59,6 +117,8 @@ namespace gui
             
         }
 
+
+
         public bool LogInAsParent(string pesel)
         {
             try
@@ -68,7 +128,7 @@ namespace gui
                 if (dataReader.Read())
                 {
                     dataReader.Close();
-                    user = new ParentPanel(pesel, command, dataReader);
+                    currentPesel = pesel;
                     return true;
                 }
 
@@ -91,8 +151,8 @@ namespace gui
                         if (dataReader.Read())
                         {
                             dataReader.Close();
-                            user = new ParentPanel(pesel,command, dataReader);
-                            return true;
+                    currentPesel = pesel;
+                    return true;
                         }
                         dataReader.Close();
                         return false;

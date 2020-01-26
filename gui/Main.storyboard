@@ -43,6 +43,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="TCheckPrApply:" target="XFu-wj-2oS" id="odN-CW-MXH"/>
+                                </connections>
                             </button>
                             <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kgt-pN-Lc9">
                                 <rect key="frame" x="165" y="256" width="99" height="26"/>
@@ -213,6 +216,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="TCheckPrSearch:" target="XFu-wj-2oS" id="Ufh-xB-Ily"/>
+                                </connections>
                             </button>
                         </subviews>
                     </view>
@@ -221,6 +227,7 @@
                         <outlet property="ChangePresanceClass" destination="PKr-q0-Zf1" id="AdE-41-75t"/>
                         <outlet property="ChangePresanceFindStudent" destination="rDA-pD-qpz" id="ywb-nl-uAf"/>
                         <outlet property="ChangePresanceStudent" destination="kgt-pN-Lc9" id="ohS-9F-Ql7"/>
+                        <outlet property="TCheckPrSearch" destination="rDA-pD-qpz" id="DsY-Nc-S2t"/>
                         <outlet property="TEditPresanceApply" destination="mrk-ST-agQ" id="oqf-de-D4h"/>
                         <outlet property="TEditPresanceClass" destination="PKr-q0-Zf1" id="Qtx-xE-mvz"/>
                         <outlet property="TEditPresanceFindStudent" destination="rDA-pD-qpz" id="fgh-ed-49Y"/>
@@ -275,6 +282,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="TChePrApply:" target="XZN-ae-p3I" id="ldZ-GL-4YQ"/>
+                                </connections>
                             </button>
                             <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a0y-yZ-c0C">
                                 <rect key="frame" x="132" y="256" width="49" height="26"/>
@@ -426,6 +436,9 @@
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <action selector="TChePrSearch:" target="XZN-ae-p3I" id="SgB-di-q47"/>
+                                </connections>
                             </textField>
                         </subviews>
                     </view>
@@ -436,6 +449,7 @@
                         <outlet property="ClassLetter" destination="a0y-yZ-c0C" id="RH5-eZ-n0R"/>
                         <outlet property="ClassYear" destination="8EK-qw-ZhU" id="1hF-HY-yoT"/>
                         <outlet property="Day" destination="cmM-KX-yQ2" id="3db-ay-9zV"/>
+                        <outlet property="TCheckPSearch" destination="Luy-X4-nLP" id="Qmo-a8-ufn"/>
                         <outlet property="TCheckPresanceApply" destination="gka-Dt-Ic9" id="BLP-Ci-TmB"/>
                         <outlet property="TeacherCheckClasses" destination="Luy-X4-nLP" id="hDp-Ul-omE"/>
                         <outlet property="TeacherCheckPresanceClassLetter" destination="a0y-yZ-c0C" id="yqU-Nv-emL"/>
@@ -1587,6 +1601,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="TANoteApply:" target="I3K-wh-f5s" id="5HS-P3-aq5"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aew-r4-ago">
                                 <rect key="frame" x="280" y="135" width="80" height="32"/>
@@ -1595,6 +1612,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="TANoteSearch:" target="I3K-wh-f5s" id="09p-i5-xJU"/>
+                                </connections>
                             </button>
                             <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fBT-DP-p7a">
                                 <rect key="frame" x="31" y="50" width="99" height="26"/>
@@ -1874,6 +1894,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="TAWarningApply:" target="lPG-Cu-X5p" id="WAh-F1-XQd"/>
+                                </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3vN-Hh-oG0">
                                 <rect key="frame" x="61" y="171" width="37" height="17"/>
@@ -1909,6 +1932,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="TAWarningSearch:" target="lPG-Cu-X5p" id="NsP-qN-LEP"/>
+                                </connections>
                             </button>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kld-A2-cXv">
                                 <rect key="frame" x="158" y="135" width="59" height="18"/>
@@ -1937,6 +1963,7 @@
                         <outlet property="AddWarningFindStudent" destination="hDT-35-iQQ" id="6ij-yl-FbK"/>
                         <outlet property="AddWarningPoints" destination="Kld-A2-cXv" id="sSt-Nb-Yti"/>
                         <outlet property="AddWarningStudent" destination="WIQ-AH-Xdc" id="SOT-lj-Hyq"/>
+                        <outlet property="TAWarningSearch" destination="hDT-35-iQQ" id="0TA-db-gdM"/>
                         <outlet property="TAddWarningApply" destination="9jc-kp-eHO" id="hxY-Oc-Dcj"/>
                         <outlet property="TAddWarningClass" destination="tep-C2-UMf" id="KPD-Gh-xzR"/>
                         <outlet property="TAddWarningDesc" destination="bwL-Tr-hq2" id="4uo-I5-GeL"/>
@@ -2624,6 +2651,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="PLegitimizeApply:" target="bSe-tV-Pjl" id="zJm-XG-Uqv"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I5b-aS-rdd">
                                 <rect key="frame" x="194" y="47" width="80" height="32"/>
@@ -2632,6 +2662,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="PLegitimizeSearch:" target="bSe-tV-Pjl" id="jay-T5-2RA"/>
+                                </connections>
                             </button>
                         </subviews>
                     </view>
@@ -2804,6 +2837,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="AALessonApply:" target="yod-Xi-sfr" id="TMP-v0-d95"/>
+                                </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iAQ-IP-7bk">
                                 <rect key="frame" x="293" y="143" width="95" height="17"/>
@@ -2826,6 +2862,16 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="AALessApply" destination="tEZ-hj-l3B" id="Fi2-H1-UpP"/>
+                        <outlet property="AALessClL" destination="Ec8-Ad-xra" id="CrB-Xl-u2k"/>
+                        <outlet property="AALessClY" destination="l0a-5h-ys7" id="90d-BU-wlJ"/>
+                        <outlet property="AALessDay" destination="2vd-wS-x2n" id="gXi-lw-wbW"/>
+                        <outlet property="AALessRF" destination="jUO-th-LDv" id="Sej-8Q-iEB"/>
+                        <outlet property="AALessRR" destination="f1Q-1b-TB1" id="Ptb-AE-0Mh"/>
+                        <outlet property="AALessSub" destination="ASt-9g-Jbc" id="2G1-ua-MSe"/>
+                        <outlet property="AALessUH" destination="dIb-Bx-zLe" id="6Um-da-JjQ"/>
+                        <outlet property="AALessUM" destination="Xda-u2-R36" id="dsK-a6-x57"/>
+                        <outlet property="AALessonApply" destination="tEZ-hj-l3B" id="fbw-lM-wld"/>
                         <outlet property="CreateLessonApply" destination="tEZ-hj-l3B" id="PYj-yD-bA7"/>
                         <outlet property="CreateLessonClassLetter" destination="Ec8-Ad-xra" id="icg-bG-Kjb"/>
                         <outlet property="CreateLessonClassNum" destination="l0a-5h-ys7" id="IvX-xB-sru"/>
@@ -2897,10 +2943,16 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="AAUnitApply:" target="R3w-5n-awA" id="WxA-ZR-9Gd"/>
+                                </connections>
                             </button>
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="AAUnitApply" destination="KU2-H2-kUj" id="qwr-Ng-pPd"/>
+                        <outlet property="AAUnitH" destination="qkv-k3-9ZU" id="ggW-Be-zit"/>
+                        <outlet property="AAUnitM" destination="zyo-2B-ogE" id="BCH-sb-632"/>
                         <outlet property="AddUnitApply" destination="KU2-H2-kUj" id="LQO-C8-84A"/>
                         <outlet property="AddUnitHour" destination="qkv-k3-9ZU" id="oU7-aU-oD3"/>
                         <outlet property="AddUnitMinute" destination="zyo-2B-ogE" id="h3S-bs-hM9"/>
@@ -2943,10 +2995,15 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="AASubApply:" target="q8S-HF-qQi" id="G2u-73-rch"/>
+                                </connections>
                             </button>
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="AASub" destination="K3S-Nd-014" id="EMa-9b-mQt"/>
+                        <outlet property="AASubApply" destination="HFp-OY-Iaa" id="fUc-5a-BuK"/>
                         <outlet property="AddSubjectApply" destination="HFp-OY-Iaa" id="BX3-xc-uqR"/>
                         <outlet property="AddSubjectName" destination="K3S-Nd-014" id="cMc-oI-p9S"/>
                     </connections>
@@ -3024,10 +3081,17 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="AARoomAPply:" target="Q53-Ck-Cek" id="BfT-uN-6Lp"/>
+                                </connections>
                             </button>
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="AARoomApply" destination="OXY-Hh-pbB" id="UvX-oa-oYa"/>
+                        <outlet property="AARoomChairs" destination="1dQ-mO-34Z" id="6xg-Fu-9ji"/>
+                        <outlet property="AARoomFloor" destination="gB8-DB-df0" id="kMb-d3-VTA"/>
+                        <outlet property="AARoomRoom" destination="h2h-1C-0jD" id="ero-jb-hhJ"/>
                         <outlet property="CreateRoomApply" destination="OXY-Hh-pbB" id="AE6-uN-bAI"/>
                         <outlet property="CreateRoomChairs" destination="1dQ-mO-34Z" id="3Ug-GU-tGR"/>
                         <outlet property="CreateRoomFloor" destination="gB8-DB-df0" id="fWO-cf-UiX"/>
@@ -3135,10 +3199,18 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="AAClassApply:" target="Eyk-F9-7ud" id="zP3-0R-Efn"/>
+                                </connections>
                             </button>
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="AAClassApply" destination="17O-fg-Isj" id="Lwc-Qc-yPD"/>
+                        <outlet property="AAClassForm" destination="oYg-65-RQW" id="7JK-1b-dXS"/>
+                        <outlet property="AAClassLetter" destination="l6N-aJ-8a8" id="sdP-xP-XAD"/>
+                        <outlet property="AAClassProfile" destination="3to-SU-OZj" id="Fi3-Ch-sOx"/>
+                        <outlet property="AAClassYear" destination="ncv-Ey-ANt" id="h91-lx-L7b"/>
                         <outlet property="CreateClassApply" destination="17O-fg-Isj" id="Ex7-Xd-A9I"/>
                         <outlet property="CreateClassFormTutor" destination="oYg-65-RQW" id="GdB-nc-auJ"/>
                         <outlet property="CreateClassLetter" destination="l6N-aJ-8a8" id="qkI-Qy-OMY"/>
@@ -3165,6 +3237,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="AAStudentApply:" target="reu-32-xDu" id="wU8-IG-iPU"/>
+                                </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="73X-3j-Dys">
                                 <rect key="frame" x="150" y="254" width="37" height="17"/>
@@ -3274,21 +3349,6 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v5U-jP-RP7">
-                                <rect key="frame" x="326" y="247" width="76" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="JKt-xo-gWW" id="wZY-03-ldE">
-                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
-                                    <menu key="menu" id="iut-Yt-rsB">
-                                        <items>
-                                            <menuItem title="Item 1" state="on" id="JKt-xo-gWW"/>
-                                            <menuItem title="Item 2" id="oQQ-WQ-cbH"/>
-                                            <menuItem title="Item 3" id="2qb-hL-DU6"/>
-                                        </items>
-                                    </menu>
-                                </popUpButtonCell>
-                            </popUpButton>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uDU-m5-fRg">
                                 <rect key="frame" x="315" y="208" width="96" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -3307,10 +3367,26 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lzu-3E-3Tx">
+                                <rect key="frame" x="315" y="256" width="99" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="nna-Y3-x5H">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <objectValues>
+                                        <string>Item 1</string>
+                                        <string>Item 2</string>
+                                        <string>Item 3</string>
+                                    </objectValues>
+                                </comboBoxCell>
+                            </comboBox>
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="AAddStClass" destination="v5U-jP-RP7" id="9wV-tx-JO8"/>
+                        <outlet property="AAStApply" destination="iRR-GV-66X" id="hCS-77-nKV"/>
+                        <outlet property="AAddStApply" destination="iRR-GV-66X" id="zXZ-tc-jBS"/>
+                        <outlet property="AAddStClass" destination="Lzu-3E-3Tx" id="2ky-2D-LOc"/>
                         <outlet property="AAddStHome" destination="EqH-QY-9hU" id="b2f-lK-Jr4"/>
                         <outlet property="AAddStLast" destination="LI9-q2-SoH" id="xHo-xS-zTX"/>
                         <outlet property="AAddStMail" destination="CqJ-EX-EMJ" id="WdP-CH-uU5"/>
@@ -3319,7 +3395,6 @@
                         <outlet property="AAddStPesel" destination="vAX-m2-Je9" id="g0W-Zy-chf"/>
                         <outlet property="AAddStRegNum" destination="uDU-m5-fRg" id="6We-9N-jgx"/>
                         <outlet property="AddStudentApply" destination="iRR-GV-66X" id="AYa-mA-gBJ"/>
-                        <outlet property="AddStudentClass" destination="v5U-jP-RP7" id="jel-6F-dZK"/>
                         <outlet property="AddStudentEMail" destination="CqJ-EX-EMJ" id="W2z-tV-73u"/>
                         <outlet property="AddStudentHome" destination="EqH-QY-9hU" id="H3K-N6-Kz6"/>
                         <outlet property="AddStudentLastName" destination="LI9-q2-SoH" id="YNF-PT-1op"/>
@@ -3403,10 +3478,15 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="AAFOrmApply:" target="rEP-nV-TyM" id="Aep-9D-zsT"/>
+                                </connections>
                             </button>
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="ACClass" destination="qPx-YW-m7u" id="F9f-zJ-k7A"/>
+                        <outlet property="ACForm" destination="AyT-eW-LEp" id="Lg1-My-xmx"/>
                         <outlet property="ChangeFormTutorApply" destination="woF-Jx-eKy" id="UQ2-a6-sFq"/>
                         <outlet property="ChangeFormTutorClass" destination="qPx-YW-m7u" id="CHk-pt-79G"/>
                         <outlet property="ChangeFormTutorTutor" destination="AyT-eW-LEp" id="oIe-BR-WjA"/>
@@ -3477,10 +3557,17 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="AAGrilApply:" target="bOp-5e-xyJ" id="3ml-LF-Mox"/>
+                                </connections>
                             </button>
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="AAGrillApply" destination="5OQ-cR-J7w" id="m6G-xF-Utj"/>
+                        <outlet property="AGrillApply" destination="5OQ-cR-J7w" id="gDm-Re-rXv"/>
+                        <outlet property="AGrillParent" destination="ZlV-Zn-6UK" id="hd9-cV-gFs"/>
+                        <outlet property="AGrillStudent" destination="J6c-Vo-Cac" id="04d-SS-vgy"/>
                         <outlet property="GrillApply" destination="5OQ-cR-J7w" id="j4s-Qu-KZn"/>
                         <outlet property="GrillParent" destination="ZlV-Zn-6UK" id="a7y-9C-FHe"/>
                         <outlet property="GrillStudent" destination="J6c-Vo-Cac" id="6Mz-H1-Zbe"/>
@@ -3575,7 +3662,7 @@
                     </view>
                     <connections>
                         <outlet property="MyData" destination="voQ-8h-o3G" id="MxA-of-TVM"/>
-                        <outlet property="PMyInfo" destination="voQ-8h-o3G" id="diY-sP-Prs"/>
+                        <outlet property="PMyInfo" destination="voQ-8h-o3G" id="v5n-ee-c52"/>
                     </connections>
                 </viewController>
                 <customObject id="1Xu-hZ-JSJ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -3908,6 +3995,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="AATeacher:" target="OGQ-eg-xGV" id="bsq-54-QuU"/>
+                                </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9wa-2m-8jb">
                                 <rect key="frame" x="164" y="55" width="45" height="17"/>
@@ -3921,6 +4011,14 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="AATaNa" destination="ITH-vj-3wp" id="jIw-Gb-g1l"/>
+                        <outlet property="AATeaApply" destination="dd5-qH-YlF" id="jcq-9Q-gns"/>
+                        <outlet property="AATeaHome" destination="wIb-mA-JV2" id="jdO-jz-ucl"/>
+                        <outlet property="AATeaLast" destination="Lrg-t0-ugO" id="e7h-bD-xKr"/>
+                        <outlet property="AATeaMail" destination="DMb-dJ-rLY" id="XZW-C9-f6M"/>
+                        <outlet property="AATeaPe" destination="a9h-2s-SS5" id="mmr-2k-WjE"/>
+                        <outlet property="AATeaPhone" destination="hzu-IO-0HK" id="fQ5-vW-xma"/>
+                        <outlet property="AATeaWork" destination="Qp7-IJ-UgY" id="ep8-0M-dOA"/>
                         <outlet property="AddTeacherEMail" destination="idp-xs-zQa" id="m3H-8K-Aqu"/>
                         <outlet property="AddTeacherHome" destination="wIb-mA-JV2" id="h0V-ZA-LRy"/>
                         <outlet property="AddTeacherHour" destination="Qp7-IJ-UgY" id="NN7-ze-dSA"/>
@@ -4377,6 +4475,7 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="AAParApply" destination="fJ4-U4-Gjg" id="Fng-EO-ncz"/>
                         <outlet property="AddParentApply" destination="fJ4-U4-Gjg" id="krR-i7-GcC"/>
                         <outlet property="AddParentEMail" destination="snc-jz-AE6" id="XuN-cx-SlV"/>
                         <outlet property="AddParentHome" destination="7bt-Bu-sbU" id="SW5-a1-qHH"/>
