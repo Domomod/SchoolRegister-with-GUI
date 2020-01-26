@@ -29,9 +29,125 @@ namespace gui
                 command.CommandText = "SELECT CURRENT_DATE FROM dual";
                 return true;
             }
-            catch (Exception ex){
+            catch (Exception ex) {
                 return false;
             }
+        }
+
+        public List<(string, string)> GetTeachers()
+        {
+            command.CommandText = $"SELECT imie, nazwisko, pesel FROM dane_osobowe JOIN nauczyciel on pesel=dane_osobowe_pesel ";
+            dataReader = command.ExecuteReader();
+            List<(string, string)> list = new List<(string, string)>();
+            while (dataReader.Read())
+                list.Add((dataReader[0].ToString()+" "+dataReader[1].ToString(), dataReader[2].ToString()));
+            dataReader.Close();
+            return list;
+        }
+
+        public List<string> GetProfiles(){
+             command.CommandText = $"SELECT * from profil";
+            dataReader = command.ExecuteReader();
+            List<string> list = new List<string>();
+            while (dataReader.Read())
+                list.Add(dataReader[0].ToString());
+            dataReader.Close();
+            return list;
+        }
+
+        public List <(string, string)> GetLessonsForClass(string clas)
+        {
+            var classyear = clas[0].ToString() + clas[1].ToString() + clas[2].ToString() + clas[3].ToString();
+            command.CommandText = $"SELECT dzien_tygodnia, lekcja_dzien_tygodnia, lekcja_jednostka_godzina, lekcja_jednostka_minuta FROM lekcja where klasa_rocznik={classyear} and klasa_literka={clas[4].ToString()} ";
+            dataReader = command.ExecuteReader();
+            List<(string,string)> list = new List<(string,string)>();
+            while (dataReader.Read())
+                list.Add((dataReader[0].ToString(), dataReader[1].ToString()+dataReader[2].ToString()));
+            dataReader.Close();
+            return list;
+        }
+
+        public List<string> GetAbsence(string pesel)
+        {
+            command.CommandText = $"SELECT data, lekcja_dzien_tygodnia, lekcja_jednostka_godzina, lekcja_jednostka_minuta FROM obecnosc where uczen_pesel={pesel} and status='nieobecny' and CURRENT_DATE-data <14";
+            dataReader = command.ExecuteReader();
+            List<string> list = new List<string>();
+            while (dataReader.Read())
+                list.Add(dataReader[0].ToString());
+            dataReader.Close();
+            return list;
+        }
+
+        public List<string> GetChildren()
+        {
+            command.CommandText = $"SELECT imie FROM dane_osobowe JOIN opieka on pesel=uczen_pesel where opiekun_pesel={currentPesel}";
+            dataReader = command.ExecuteReader();
+            List<string> list = new List<string>();
+            while (dataReader.Read())
+                list.Add(dataReader[0].ToString());
+            dataReader.Close();
+            return list;
+        }
+
+        public List<string> GetStudents(string clas)
+        {
+            var classyear = clas[0].ToString() + clas[1].ToString() + clas[2].ToString() + clas[3].ToString();
+            command.CommandText = $"SELECT imie, nazwisko FROM dane_osobowe JOIn uczen where pesel=dane_osobowe_penel WHERE klasa_rocznik={classyear} and klasa_literka={clas[4].ToString()}";
+            dataReader = command.ExecuteReader();
+            List<string> list = new List<string>();
+            while (dataReader.Read())
+            {
+                list.Add(dataReader[0].ToString() + " " + dataReader[1].ToString());
+            }
+            dataReader.Close();
+            return list;
+        }
+
+        public List<string> GetClasses()
+        {
+            command.CommandText = "SELECT rocznik, literka FROM klasa";
+            dataReader = command.ExecuteReader();
+            List<string> list = new List<string>();
+            while (dataReader.Read())
+                list.Add(dataReader[0].ToString() + dataReader[1].ToString());
+            dataReader.Close();
+            return list;
+        } 
+
+        public void AddParent(string pesel, string names, string lastName, string home, string phoneNum, string mail, string Money)
+        {
+            command.CommandText = $"SELECT * FROM dane_osobowe where pesel={pesel}";
+            dataReader = command.ExecuteReader();
+            if (!dataReader.Read())
+            {
+                dataReader.Close();
+                command.CommandText = $"INSERT INTO dane_osobowe VALUES({pesel},'{names}','{lastName}','{home}',{phoneNum},'{mail}')";
+                dataReader = command.ExecuteReader();
+                }
+            dataReader.Close();
+            command.CommandText = $"INSERT INTO opiekun VALUES ({Money}, {pesel})";
+        }
+
+        public void AddUnit(string hour, string minute)
+        {
+            command.CommandText = $"INSERT INTO jednostka VALUES ({hour},{minute})";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
+        }
+
+        public void AddTeacher(string pesel, string names, string lastName, string home, string phoneNum, string mail, string etat)
+        {
+            command.CommandText = $"SELECT * FROM dane_osobowe where pesel={pesel}";
+            dataReader = command.ExecuteReader();
+                if (!dataReader.Read()) {
+                dataReader.Close();
+                command.CommandText = $"INSERT INTO dane_osobowe VALUES({pesel},'{names}','{lastName}','{home}',{phoneNum},'{mail}')";
+                dataReader = command.ExecuteReader();
+                 }
+            dataReader.Close();
+            command.CommandText = $"INSERT INTO nauczyciel VALUES ({etat},{pesel})";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
         }
 
         public void AddStudent(string pesel, string names, string lastName, string home, string phoneNum, string mail, string classYear, string numberInRegister, string classLetter )

@@ -73,6 +73,27 @@ namespace gui
 		AppKit.NSComboBox AALessUM { get; set; }
 
 		[Outlet]
+		AppKit.NSTextField AAParHome { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField AAParLast { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField AAParMail { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField AAParMoney { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField AAParNa { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField AAParNum { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField AAParPe { get; set; }
+
+		[Outlet]
 		AppKit.NSTextField AARoomChairs { get; set; }
 
 		[Outlet]
@@ -94,7 +115,10 @@ namespace gui
 		AppKit.NSTextField AATeaLast { get; set; }
 
 		[Outlet]
-		AppKit.NSView AATeaMail { get; set; }
+		AppKit.NSTextField AATeaMail { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField AATeaName { get; set; }
 
 		[Outlet]
 		AppKit.NSTextField AATeaPe { get; set; }
@@ -243,6 +267,9 @@ namespace gui
 		[Action ("AAClassApply:")]
 		partial void AAClassApply (Foundation.NSObject sender);
 
+		[Action ("AAddParApply:")]
+		partial void AAddParApply (Foundation.NSObject sender);
+
 		[Action ("AAFOrmApply:")]
 		partial void AAFOrmApply (Foundation.NSObject sender);
 
@@ -317,9 +344,39 @@ namespace gui
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (AAddStClass != null) {
-				AAddStClass.Dispose ();
-				AAddStClass = null;
+			if (AAParPe != null) {
+				AAParPe.Dispose ();
+				AAParPe = null;
+			}
+
+			if (AAParNa != null) {
+				AAParNa.Dispose ();
+				AAParNa = null;
+			}
+
+			if (AAParHome != null) {
+				AAParHome.Dispose ();
+				AAParHome = null;
+			}
+
+			if (AAParMoney != null) {
+				AAParMoney.Dispose ();
+				AAParMoney = null;
+			}
+
+			if (AAParNum != null) {
+				AAParNum.Dispose ();
+				AAParNum = null;
+			}
+
+			if (AAParMail != null) {
+				AAParMail.Dispose ();
+				AAParMail = null;
+			}
+
+			if (AAParLast != null) {
+				AAParLast.Dispose ();
+				AAParLast = null;
 			}
 
 			if (AAClassForm != null) {
@@ -460,6 +517,11 @@ namespace gui
 			if (AATeaMail != null) {
 				AATeaMail.Dispose ();
 				AATeaMail = null;
+			}
+
+			if (AATeaName != null) {
+				AATeaName.Dispose ();
+				AATeaName = null;
 			}
 
 			if (AATeaPe != null) {

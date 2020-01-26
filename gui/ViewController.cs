@@ -16,6 +16,7 @@ namespace gui
             back = new Backendoptions();
             back.OpenConnection();
             checker = new SQLChecker();
+            SetClasses();
         }
 
         public override void ViewDidLoad()
@@ -173,19 +174,44 @@ namespace gui
 
         partial void AATeacher(Foundation.NSObject sender)
         {
+            int t;
+            decimal d;
+            if (int.TryParse(AATeaPe.StringValue, out t))
+                if (checker.IsCorrect(AATeaName.StringValue) & checker.IsCorrect(AATeaLast.StringValue))
+                    if (AATeaHome.StringValue == "" | checker.IsCorrect(AATeaHome.StringValue))
+                        if (AATeaMail.StringValue == "" | checker.IsCorrect(AATeaMail.StringValue))
+                            if (AATeaPhone.StringValue == "" | int.TryParse(AATeaPhone.StringValue, out t))
+                                if (AATeaWork.StringValue == "" | decimal.TryParse(AATeaWork.StringValue, out d))
+                                    back.AddTeacher(AATeaPe.StringValue, AATeaName.StringValue, AATeaLast.StringValue, AATeaHome.StringValue, AATeaPhone.StringValue, AATeaMail.StringValue, AATeaWork.StringValue);
         }
 
         partial void AAUnitApply(Foundation.NSObject sender)
         {
-
+            int t;
+            if (int.TryParse(AAUnitM.StringValue, out t))
+                back.AddUnit(AAUnitH[AAUnitH.SelectedIndex].ToString(), AAUnitM.StringValue);
         }
 
         partial void PLegitimizeApply(Foundation.NSObject sender)
         {
         }
 
+        partial void AAddParApply(Foundation.NSObject sender)
+        {
+            int t;
+            decimal d;
+            if (int.TryParse(AAParPe.StringValue, out t))
+                if (checker.IsCorrect(AAParNa.StringValue) & checker.IsCorrect(AAParLast.StringValue))
+                    if (AAParHome.StringValue == "" | checker.IsCorrect(AAParHome.StringValue))
+                        if (AAParMail.StringValue == "" | checker.IsCorrect(AAParMail.StringValue))
+                            if (AAParNum.StringValue == "" | int.TryParse(AAParNum.StringValue, out t))
+                                if (AAParMoney.StringValue == "" | decimal.TryParse(AAParMoney.StringValue, out d))
+                                    back.AddParent(AAParPe.StringValue, AAParNa.StringValue, AAParLast.StringValue, AAParHome.StringValue, AAParNum.StringValue, AAParMail.StringValue, AAParMoney.StringValue);
+        }
+
 
         partial void PLegitimizeSearch(Foundation.NSObject sender) {
+
         }
         partial void TANoteApply(Foundation.NSObject sender) {
         }
@@ -205,6 +231,17 @@ namespace gui
         partial void TChePrSearch(Foundation.NSObject sender) {
         }
 
+
+
+        void SetClasses()
+        {
+            
+        }
+
+        void SetChildrenNames()
+        {
+
+        }
     }
 
 

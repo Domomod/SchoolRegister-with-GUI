@@ -286,20 +286,6 @@
                                     <action selector="TChePrApply:" target="XZN-ae-p3I" id="ldZ-GL-4YQ"/>
                                 </connections>
                             </button>
-                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a0y-yZ-c0C">
-                                <rect key="frame" x="132" y="256" width="49" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="bqr-IL-mMa">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <objectValues>
-                                        <string>Item 1</string>
-                                        <string>Item 2</string>
-                                        <string>Item 3</string>
-                                    </objectValues>
-                                </comboBoxCell>
-                            </comboBox>
                             <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t1F-7O-rS6">
                                 <rect key="frame" x="20" y="20" width="297" height="207"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -446,13 +432,11 @@
                         <outlet property="ChangePresanceLookForUnits" destination="Luy-X4-nLP" id="p1h-Fi-tLr"/>
                         <outlet property="CheckPresanceApply" destination="gka-Dt-Ic9" id="K1z-KR-CuI"/>
                         <outlet property="CheckPresanceUnit" destination="9CE-Kg-y9v" id="Jjj-4J-C09"/>
-                        <outlet property="ClassLetter" destination="a0y-yZ-c0C" id="RH5-eZ-n0R"/>
                         <outlet property="ClassYear" destination="8EK-qw-ZhU" id="1hF-HY-yoT"/>
                         <outlet property="Day" destination="cmM-KX-yQ2" id="3db-ay-9zV"/>
                         <outlet property="TCheckPSearch" destination="Luy-X4-nLP" id="Qmo-a8-ufn"/>
                         <outlet property="TCheckPresanceApply" destination="gka-Dt-Ic9" id="BLP-Ci-TmB"/>
                         <outlet property="TeacherCheckClasses" destination="Luy-X4-nLP" id="hDp-Ul-omE"/>
-                        <outlet property="TeacherCheckPresanceClassLetter" destination="a0y-yZ-c0C" id="yqU-Nv-emL"/>
                         <outlet property="TeacherCheckPresanceClassNum" destination="8EK-qw-ZhU" id="p1N-aa-jaF"/>
                         <outlet property="TeacherCheckPresanceLessonDay" destination="cmM-KX-yQ2" id="BrV-Z1-J6U"/>
                         <outlet property="TeacherCheckPresanceLessonUnit" destination="P21-4Z-5xG" id="IV0-Pk-IZf"/>
@@ -3432,11 +3416,6 @@
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <objectValues>
-                                        <string>Item 1</string>
-                                        <string>Item 2</string>
-                                        <string>Item 3</string>
-                                    </objectValues>
                                 </comboBoxCell>
                             </comboBox>
                             <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qPx-YW-m7u">
@@ -3446,11 +3425,6 @@
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <objectValues>
-                                        <string>Item 1</string>
-                                        <string>Item 2</string>
-                                        <string>Item 3</string>
-                                    </objectValues>
                                 </comboBoxCell>
                             </comboBox>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WRQ-jU-TJK">
@@ -4015,7 +3989,8 @@
                         <outlet property="AATeaApply" destination="dd5-qH-YlF" id="jcq-9Q-gns"/>
                         <outlet property="AATeaHome" destination="wIb-mA-JV2" id="jdO-jz-ucl"/>
                         <outlet property="AATeaLast" destination="Lrg-t0-ugO" id="e7h-bD-xKr"/>
-                        <outlet property="AATeaMail" destination="DMb-dJ-rLY" id="XZW-C9-f6M"/>
+                        <outlet property="AATeaMail" destination="idp-xs-zQa" id="NL5-U2-9FK"/>
+                        <outlet property="AATeaName" destination="ITH-vj-3wp" id="Gkk-0f-qnH"/>
                         <outlet property="AATeaPe" destination="a9h-2s-SS5" id="mmr-2k-WjE"/>
                         <outlet property="AATeaPhone" destination="hzu-IO-0HK" id="fQ5-vW-xma"/>
                         <outlet property="AATeaWork" destination="Qp7-IJ-UgY" id="ep8-0M-dOA"/>
@@ -4345,6 +4320,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="AAddParApply:" target="nED-mx-Pop" id="U6F-sG-dXU"/>
+                                </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vW7-A2-JZM">
                                 <rect key="frame" x="143" y="260" width="37" height="17"/>
@@ -4476,6 +4454,13 @@
                     </view>
                     <connections>
                         <outlet property="AAParApply" destination="fJ4-U4-Gjg" id="Fng-EO-ncz"/>
+                        <outlet property="AAParHome" destination="7bt-Bu-sbU" id="ULF-UF-6WF"/>
+                        <outlet property="AAParLast" destination="wnC-Yt-r6p" id="xcI-I0-7F1"/>
+                        <outlet property="AAParMail" destination="snc-jz-AE6" id="K5D-j6-3RL"/>
+                        <outlet property="AAParMoney" destination="Jrq-ef-yGO" id="KcC-hT-Fvf"/>
+                        <outlet property="AAParNa" destination="Jtz-Kn-dsU" id="gMC-ux-eKC"/>
+                        <outlet property="AAParNum" destination="Fs1-4Z-wuo" id="kA6-sy-5ky"/>
+                        <outlet property="AAParPe" destination="uGE-JO-Je2" id="MLj-zm-cDn"/>
                         <outlet property="AddParentApply" destination="fJ4-U4-Gjg" id="krR-i7-GcC"/>
                         <outlet property="AddParentEMail" destination="snc-jz-AE6" id="XuN-cx-SlV"/>
                         <outlet property="AddParentHome" destination="7bt-Bu-sbU" id="SW5-a1-qHH"/>
