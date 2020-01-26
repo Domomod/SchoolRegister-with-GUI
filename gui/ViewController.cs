@@ -13,13 +13,16 @@ namespace gui
         {
             back = new Backendoptions();
             back.OpenConnection();
+
         }
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            
+
             // Do any additional setup after loading the view.
+
+
         }
 
         public override NSObject RepresentedObject
@@ -45,14 +48,25 @@ namespace gui
         partial void LogInAdminMode(AppKit.NSButton sender)
         {
             if (PeselInput.StringValue == "666")
+            {
+                var storyboard = NSStoryboard.FromName("Main", null);
+                var controller = storyboard.InstantiateControllerWithIdentifier("2") as NSWindowController;
+                controller.ShowWindow(this);
+            }
+            else
                 TextOnFirstPage.StringValue = "Illigal valju";
         }
 
         partial void LogInAsParent(AppKit.NSButton sender)
         {
-            if (back.LogInAsParent(PeselInput.StringValue))
-                TextOnFirstPage.StringValue = "Zalogowano";
-            else
+            //if (back.LogInAsParent(PeselInput.StringValue))
+            {
+                var storyboard = NSStoryboard.FromName("Main", null);
+                var controller = storyboard.InstantiateControllerWithIdentifier("5") as NSWindowController;
+                controller.ShowWindow(this);
+            }
+                
+            //else
                 TextOnFirstPage.StringValue = "Błędny pesel";
 
         }
@@ -60,7 +74,12 @@ namespace gui
         partial void LogInAsStudent(AppKit.NSButton sender)
         {
             if (back.LogInAsStudent(PeselInput.StringValue))
-                TextOnFirstPage.StringValue = "Zalogowano";
+            {
+                var storyboard = NSStoryboard.FromName("Main", null);
+                var controller = storyboard.InstantiateControllerWithIdentifier("3") as NSWindowController;
+                controller.ShowWindow(this);
+            }
+                
             else
                 TextOnFirstPage.StringValue = "Błędny pesel";
         }
@@ -68,9 +87,13 @@ namespace gui
 
         partial void LogInAsTeacher(AppKit.NSButton sender)
         {
-            if (back.LogInAsTeacher(PeselInput.StringValue))
-                TextOnFirstPage.StringValue = "Zalogowano";
-            else
+            //if (back.LogInAsTeacher(PeselInput.StringValue))
+            {
+                var storyboard = NSStoryboard.FromName("Main", null);
+                var controller = storyboard.InstantiateControllerWithIdentifier("9") as NSWindowController;
+                controller.ShowWindow(this);
+            }
+           // else
                 TextOnFirstPage.StringValue = "Błędny pesel";
         }
     }

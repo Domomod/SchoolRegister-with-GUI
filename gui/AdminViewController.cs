@@ -16,18 +16,6 @@ namespace gui
             Initialize();
         }
 
-        // Called when created directly from a XIB file
-        [Export("initWithCoder:")]
-        public AdminViewControllerController(NSCoder coder) : base(coder)
-        {
-            Initialize();
-        }
-
-        // Call to load from the XIB/NIB file
-        public AdminViewControllerController() : base("AdminViewController", NSBundle.MainBundle)
-        {
-            Initialize();
-        }
 
         // Shared initialization code
         void Initialize()

@@ -440,7 +440,7 @@
         <!--Window Controller-->
         <scene sceneID="srw-pq-a5L">
             <objects>
-                <windowController id="oqT-Yh-Dy4" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="9" id="oqT-Yh-Dy4" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="vu0-iT-0U0">
                         <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -854,7 +854,7 @@
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="1" id="B8D-0N-5wS" sceneMemberID="viewController">
                     <window key="window" title="Dziennik" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -1967,14 +1967,6 @@
                                 <connections>
                                     <segue destination="lPG-Cu-X5p" kind="popover" popoverAnchorView="Tl2-sQ-7DU" popoverBehavior="t" preferredEdge="maxY" id="mju-Fu-ubO"/>
                                 </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5p5-Nq-BnR">
-                                <rect key="frame" x="211" y="13" width="223" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Wyświetl najlepszych uczniów" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8wg-jl-oZg">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
                             </button>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="khj-oi-WpQ" customClass="NSSearchField">
                                 <rect key="frame" x="20" y="115" width="410" height="110"/>
@@ -3532,7 +3524,7 @@
         <!--Window Controller-->
         <scene sceneID="Xq7-Ne-61p">
             <objects>
-                <windowController id="tbG-bR-rPc" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="5" id="tbG-bR-rPc" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="Feg-k9-t0o">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -3705,7 +3697,7 @@
         <!--Window Controller-->
         <scene sceneID="Mmh-jt-OgF">
             <objects>
-                <windowController id="GDR-f2-DDa" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="2" id="GDR-f2-DDa" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="IDZ-pg-9Mb">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -4096,7 +4088,7 @@
         <!--Window Controller-->
         <scene sceneID="u7m-fx-qtp">
             <objects>
-                <windowController id="fuK-ia-SFD" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="3" id="fuK-ia-SFD" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="z1I-bQ-gwh">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
