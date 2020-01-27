@@ -51,6 +51,8 @@ namespace gui
 
         public void LegitimizeAbsence(string pesel, string data)
         {
+            var lst = pesel.Split("(");
+            lst[1].Remove(lst[1].Length - 1);
             command.CommandText = $"UPDATE obecnosc SET status = 'usprawiedliwiony' WHERE  status='nieobecny' and data={data} and uczen_pesel={pesel}";
             dataReader = command.ExecuteReader();
             dataReader.Close();
@@ -75,24 +77,24 @@ namespace gui
             dataReader.Close();
             return pesel;
         }
-        public List<(string, string)> GetUnits()
+        public List<string> GetUnits()
         {
             command.CommandText = $"SELECT * FROM jednostka";
             dataReader = command.ExecuteReader();
-            List<(string, string)> list = new List<(string, string)>();
+            List<string> list = new List<string>();
             while (dataReader.Read())
-                list.Add((dataReader[0].ToString(), dataReader[1].ToString()));
+                list.Add(dataReader[0].ToString()+":" +dataReader[1].ToString());
             dataReader.Close();
             return list;
         }
 
-        public List<(string,string)> GetRooms()
+        public List<string> GetRooms()
         {
             command.CommandText = $"SELECT * FROM sala";
             dataReader = command.ExecuteReader();
-            List<(string, string)> list = new List<(string, string)>();
+            List<string> list = new List<string>();
             while (dataReader.Read())
-                list.Add((dataReader[0].ToString() , dataReader[1].ToString()));
+                list.Add(dataReader[0].ToString() +"." +dataReader[1].ToString());
             dataReader.Close();
             return list;
         }
@@ -176,7 +178,9 @@ namespace gui
 
         public List<string> GetAbsence(string pesel)
         {
-            command.CommandText = $"SELECT data, lekcja_dzien_tygodnia, lekcja_jednostka_godzina, lekcja_jednostka_minuta FROM obecnosc where uczen_pesel={pesel} and status='nieobecny' and CURRENT_DATE-data <14";
+            var lst = pesel.Split("(");
+            lst[1].Remove(lst[1].Length - 1);
+            command.CommandText = $"SELECT data, lekcja_dzien_tygodnia, lekcja_jednostka_godzina, lekcja_jednostka_minuta FROM obecnosc where uczen_pesel={lst[1]} and status='nieobecny' and CURRENT_DATE-data <14";
             dataReader = command.ExecuteReader();
             List<string> list = new List<string>();
             while (dataReader.Read())
@@ -187,11 +191,11 @@ namespace gui
 
         public List<string> GetChildren()
         {
-            command.CommandText = $"SELECT imie FROM dane_osobowe JOIN opieka on pesel=uczen_pesel where opiekun_pesel={currentPesel}";
+            command.CommandText = $"SELECT imie, pesel FROM dane_osobowe JOIN opieka on pesel=uczen_pesel where opiekun_pesel=99999999999";
             dataReader = command.ExecuteReader();
             List<string> list = new List<string>();
             while (dataReader.Read())
-                list.Add(dataReader[0].ToString());
+                list.Add(dataReader[0].ToString()+"("+dataReader[1].ToString()+")");
             dataReader.Close();
             return list;
         }
@@ -259,11 +263,13 @@ namespace gui
             dataReader.Close();
         }
 
-        public void AddStudent(string pesel, string names, string lastName, string home, string phoneNum, string mail, string classYear, string numberInRegister, string classLetter )
+        public void AddStudent(string pesel, string names, string lastName, string home, string phoneNum, string mail, string clas, string numberInRegister )
         {
             command.CommandText = $"INSERT INTO dane_osobowe VALUES('{pesel}','{names}','{lastName}','{home}',{phoneNum},'{mail}')";
             dataReader = command.ExecuteReader();
             dataReader.Close();
+            var classLetter = clas[4].ToString();
+            var classYear = clas.Remove(4);
             command.CommandText = $"INSERT INTO uczen VALUES ({pesel},{classYear},{numberInRegister},'{classLetter}')";
             dataReader = command.ExecuteReader();
             dataReader.Close();
@@ -276,30 +282,44 @@ namespace gui
             dataReader.Close();
         }
 
-        public void AddLesson(string dayOfUnit, string hourOfUnit, string minuteOfUnit, string classYear, string classLetter, string roomFloor, string roomNumber, string subject)
+        public void AddLesson(string dayOfUnit, string hourOfUnit, string classLetter, string roomNumber, string subject)
         {
-            command.CommandText = $"INSERT INTO lekcja VALUES ('{dayOfUnit}', {hourOfUnit}, {minuteOfUnit},{classYear},'{classLetter}', {roomFloor},{roomNumber},'{subject}')";
+            var unit = hourOfUnit.Split(":");
+            var clas = classLetter[4].ToString();
+            var classYear = classLetter.Remove(4);
+            var room = roomNumber.Split(".");
+            command.CommandText = $"INSERT INTO lekcja VALUES ('{dayOfUnit}', {unit[0]}, {unit[1]},{classYear},'{clas}', {room[0]},{room[1]},'{subject}')";
             dataReader = command.ExecuteReader();
             dataReader.Close();
         }
 
         public void Grill(string guardian, string child)
         {
-            command.CommandText = $"INSERT INTO opieka VALUES ({child},{guardian})";
+            var lst = guardian.Split("(");
+            var pesel = lst[1].Remove(lst[1].Length - 1);
+            lst = child.Split("(");
+            var chpesel= lst[1].Remove(lst[1].Length - 1);
+            command.CommandText = $"INSERT INTO opieka VALUES ({chpesel},{pesel})";
             dataReader = command.ExecuteReader();
             dataReader.Close();
         }
 
-        public void ChangeFormTutor(string newFormTutor, string classYear, string classLetter)
+        public void ChangeFormTutor(string newFormTutor, string clas)
         {
-            command.CommandText = $"UPDATE klasa SET nauczyciel_pesel={newFormTutor} WHERE rocznik={classYear} and literka='{classLetter}'";
+            var lst = newFormTutor.Split("(");
+            var pesel = lst[1].Remove(lst[1].Length - 1);
+            var letter = clas[4].ToString();
+            var year = clas.Remove(clas.Length - 1);
+            command.CommandText = $"UPDATE klasa SET nauczyciel_dane_osobowe_pesel={pesel} WHERE literka='{letter}' and rocznik={year} ";
             dataReader = command.ExecuteReader();
             dataReader.Close();
         }
 
         public void AddClass(string classYear, string classLetter, string formTutorPesel, string profile)
         {
-            command.CommandText = $"INSERT INTO klasa VALUES ({classYear},'{classLetter}', {formTutorPesel},'{profile}') ";
+            var lst = formTutorPesel.Split("(");
+            lst[1].Remove(lst[1].Length - 1);
+            command.CommandText = $"INSERT INTO klasa VALUES ({classYear},'{classLetter}', {lst[1]}, '{profile}')";
             dataReader = command.ExecuteReader();
             dataReader.Close();
         }
@@ -324,7 +344,7 @@ namespace gui
             try
             {
 
-            command.CommandText = $"select * from uczen where dane_osobowe_pesel='{pesel}'";
+            command.CommandText = $"select * from uczen where dane_osobowe_pesel={pesel}";
                         dataReader = command.ExecuteReader();
                         if (dataReader.Read())
                         {
@@ -348,7 +368,7 @@ namespace gui
         {
             try
             {
-                command.CommandText = $"select * from opiekun where dane_osobowe_pesel='{pesel}'";
+                command.CommandText = $"select * from opiekun where pesel={pesel}";
                 dataReader = command.ExecuteReader();
                 if (dataReader.Read())
                 {
@@ -362,6 +382,7 @@ namespace gui
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return false;
             }
             
@@ -371,7 +392,7 @@ namespace gui
         {
             try
             {
-            command.CommandText = $"select * from nauczyciel where dane_osobowe_pesel='{pesel}'";
+            command.CommandText = $"select * from nauczyciel where dane_osobowe_pesel={pesel}";
              dataReader = command.ExecuteReader();
                         if (dataReader.Read())
                         {

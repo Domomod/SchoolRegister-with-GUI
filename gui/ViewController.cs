@@ -23,6 +23,15 @@ namespace gui
             AGrillStudent = new NSComboBox();
             ACForm = new NSComboBox();
             ACClass = new NSComboBox();
+            AALessClL = new NSComboBox();
+            AALessDay = new NSComboBox();
+            AALessRR = new NSComboBox();
+            AALessUH = new NSComboBox();
+            AALessSub = new NSComboBox();
+            AAClassForm = new NSComboBox();
+            AAClassProfile = new NSComboBox();
+            PLegitimizeName = new NSComboBox();
+            PLegitimizeData = new NSComboBox();
         }
 
         public override void ViewDidLoad()
@@ -30,7 +39,7 @@ namespace gui
             base.ViewDidLoad();
 
             // Do any additional setup after loading the view.
-            var listHours = new List<string>(new string[] { "6", "7", "8", "9", "10","11","12","13","14","15","16" });
+            var listHours = new List<string>(new string[] { "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16" });
             AAUnitH.UsesDataSource = true;
             AAUnitH.DataSource = new MyCombo(listHours);
             AAddStClass.UsesDataSource = true;
@@ -43,6 +52,23 @@ namespace gui
             ACClass.UsesDataSource = true;
             ACForm.DataSource = new MyCombo(back.GetTeachers());
             ACClass.DataSource = new MyCombo(back.GetClasses());
+            AALessSub.UsesDataSource = true;
+            AALessUH.UsesDataSource = true;
+            AALessRR.UsesDataSource = true;
+            AALessDay.UsesDataSource = true;
+            AALessClL.UsesDataSource = true;
+            var listDay = new List<string>(new string[] { "1", "2", "3", "4", "5", "6" });
+            AALessDay.DataSource=new MyCombo(listDay);
+            AALessSub.DataSource = new MyCombo(back.GetSubjects());
+            AALessRR.DataSource = new MyCombo(back.GetRooms());
+            AALessUH.DataSource = new MyCombo(back.GetUnits());
+            AALessClL.DataSource = new MyCombo(back.GetClasses());
+            AAClassProfile.UsesDataSource = true;
+            AAClassProfile.DataSource = new MyCombo(back.GetProfiles());
+            AAClassForm.UsesDataSource = true;
+            AAClassForm.DataSource = new MyCombo(back.GetTeachers());
+            PLegitimizeName.UsesDataSource = true;
+            PLegitimizeData.UsesDataSource = true;
         }
 
 
@@ -83,14 +109,15 @@ namespace gui
 
         partial void LogInAsParent(AppKit.NSButton sender)
         {
-            //if (checker.IsCorrect(PeselInput.StringValue) & back.LogInAsParent(PeselInput.StringValue))
+            if (checker.IsCorrect(PeselInput.StringValue) & back.LogInAsParent(PeselInput.StringValue))
             {
                 var storyboard = NSStoryboard.FromName("Main", null);
                 var controller = storyboard.InstantiateControllerWithIdentifier("5") as NSWindowController;
                 controller.ShowWindow(this);
+               
             }
                 
-            //else
+            else
                 TextOnFirstPage.StringValue = "Błędny pesel";
 
         }
@@ -130,8 +157,9 @@ namespace gui
 
         partial void AAClassApply(Foundation.NSObject sender)
         {
-            if (AAClassLetter.StringValue != "" & checker.IsCorrect(AAClassLetter.StringValue))
-                if (AAClassYear.StringValue != "" & checker.IsCorrect(AAClassYear.StringValue))
+            int t;
+            if (AAClassLetter.StringValue != "" & checker.IsCorrect(AAClassLetter.StringValue) )
+                if (int.TryParse(AAClassYear.StringValue, out t) & t>2000 & t<3000)
                     back.AddClass(AAClassYear.StringValue, AAClassLetter.StringValue, AAClassForm.StringValue, AAClassProfile.StringValue);
         }
 
@@ -139,30 +167,28 @@ namespace gui
 
         partial void AAFOrmApply(Foundation.NSObject sender)
         {
-            string tutor = ACForm[ACForm.SelectedIndex].ToString();
-            string clas= ACClass[ACClass.SelectedIndex].ToString();
-            back.ChangeFormTutor(tutor, clas[0].ToString()+clas[1].ToString()+clas[2].ToString()+clas[3].ToString(), clas[4].ToString());
+
+            var tutor = ACForm.StringValue;
+            var clas = ACClass.StringValue;
+            back.ChangeFormTutor(tutor, clas);
         }
 
         partial void AAGrilApply(Foundation.NSObject sender)
         {
-            string parent = AGrillParent[AGrillParent.SelectedIndex].ToString();
-            string child = AGrillStudent[AGrillStudent.SelectedIndex].ToString();
+            string parent = AGrillParent.StringValue;
+            string child = AGrillStudent.StringValue;
             back.Grill(parent, child);
 
         }
 
         partial void AALessonApply(Foundation.NSObject sender)
         {
-            var year = AALessClY[AALessClY.SelectedIndex].ToString();
-            var let = AALessClL[AALessClL.SelectedIndex].ToString();
-            var floor = AALessRF[AALessRF.SelectedIndex].ToString();
-            var room = AALessRR[AALessRR.SelectedIndex].ToString();
-            var day = AALessDay[AALessDay.SelectedIndex].ToString();
-            var unitHour = AALessUH[AALessUH.SelectedIndex].ToString();
-            var unitMinute = AALessUM[AALessUM.SelectedIndex].ToString();
-            var subject = AALessSub[AALessSub.SelectedIndex].ToString();
-            back.AddLesson(day, unitHour, unitMinute, year, let, floor, room, subject);
+            var clas = AALessClL.StringValue;
+            var room = AALessRR.StringValue;
+            var day = AALessDay.StringValue;
+            var unitHour = AALessUH.StringValue;
+            var subject = AALessSub.StringValue;
+            back.AddLesson(day, unitHour, clas, room, subject);
         }
 
         partial void AARoomAPply(Foundation.NSObject sender)
@@ -184,8 +210,8 @@ namespace gui
                         if (AAddStMail.StringValue == "" | checker.IsCorrect(AAddStMail.StringValue))
                             if (AAddStNum.StringValue == "" | int.TryParse(AAddStNum.StringValue, out t))
                                 if (int.TryParse(AAddStRegNum.StringValue, out t)) {
-                                    var k = AAddStClass[AAddStClass.SelectedIndex].ToString();
-                                    back.AddStudent(AAddStPesel.StringValue, AAddStName.StringValue, AAddStLast.StringValue, AAddStHome.StringValue, AAddStNum.StringValue, AAddStMail.StringValue, k[0].ToString() + k[1].ToString() + k[2].ToString() + k[3].ToString(), AAddStRegNum.StringValue, k[4].ToString());
+                                   
+                                    back.AddStudent(AAddStPesel.StringValue, AAddStName.StringValue, AAddStLast.StringValue, AAddStHome.StringValue, AAddStNum.StringValue, AAddStMail.StringValue, AAddStClass.StringValue, AAddStRegNum.StringValue);
                                     }
         }
 
@@ -208,12 +234,12 @@ namespace gui
         {
             int t;
             if (int.TryParse(AAUnitM.StringValue, out t))
-                back.AddUnit(AAUnitH[AAUnitH.SelectedIndex].ToString(), AAUnitM.StringValue);
+                back.AddUnit(AAUnitH.StringValue, AAUnitM.StringValue);
         }
 
         partial void PLegitimizeApply(Foundation.NSObject sender)
         {
-            back.LegitimizeAbsence(PLegitimizeName[PLegitimizeName.SelectedIndex].ToString(), PLegitimizeData[PLegitimizeData.SelectedIndex].ToString());
+            back.LegitimizeAbsence(PLegitimizeName.StringValue, PLegitimizeData.StringValue);
 
         }
 
@@ -233,9 +259,10 @@ namespace gui
 
         partial void PLegitimizeSearch(Foundation.NSObject sender) {
 
-            var pesel = back.ChildPesel(PLegitimizeName[PLegitimizeName.SelectedIndex].ToString());
-            back.GetAbsence(pesel); 
+            var pesel = back.ChildPesel(PLegitimizeName.StringValue);
+            PLegitimizeData.DataSource = new MyCombo(back.GetAbsence(pesel));
         }
+
         partial void TANoteApply(Foundation.NSObject sender) {
             if (checker.IsCorrect(TAddNoteDesc.ToString()))
             { var pesel = back.GetPeselFromNames(TAddNoteStudent[TAddNoteStudent.SelectedIndex].ToString());

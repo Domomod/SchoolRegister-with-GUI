@@ -2676,34 +2676,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l0a-5h-ys7">
-                                <rect key="frame" x="21" y="253" width="99" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="05H-Lh-rav">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <objectValues>
-                                        <string>Item 1</string>
-                                        <string>Item 2</string>
-                                        <string>Item 3</string>
-                                    </objectValues>
-                                </comboBoxCell>
-                            </comboBox>
-                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jUO-th-LDv">
-                                <rect key="frame" x="19" y="215" width="99" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="eQN-CL-ZbG">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <objectValues>
-                                        <string>Item 1</string>
-                                        <string>Item 2</string>
-                                        <string>Item 3</string>
-                                    </objectValues>
-                                </comboBoxCell>
-                            </comboBox>
                             <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ec8-Ad-xra">
                                 <rect key="frame" x="171" y="253" width="99" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -2722,34 +2694,6 @@
                                 <rect key="frame" x="169" y="212" width="99" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="js5-dq-a5P">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <objectValues>
-                                        <string>Item 1</string>
-                                        <string>Item 2</string>
-                                        <string>Item 3</string>
-                                    </objectValues>
-                                </comboBoxCell>
-                            </comboBox>
-                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xda-u2-R36">
-                                <rect key="frame" x="171" y="176" width="99" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="nZ1-ie-GMe">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <objectValues>
-                                        <string>Item 1</string>
-                                        <string>Item 2</string>
-                                        <string>Item 3</string>
-                                    </objectValues>
-                                </comboBoxCell>
-                            </comboBox>
-                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dIb-Bx-zLe">
-                                <rect key="frame" x="21" y="176" width="99" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="5bL-hK-Iwh">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -2844,28 +2788,36 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dIb-Bx-zLe">
+                                <rect key="frame" x="171" y="176" width="99" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="5bL-hK-Iwh">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <objectValues>
+                                        <string>Item 1</string>
+                                        <string>Item 2</string>
+                                        <string>Item 3</string>
+                                    </objectValues>
+                                </comboBoxCell>
+                            </comboBox>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="AALessApply" destination="tEZ-hj-l3B" id="Fi2-H1-UpP"/>
                         <outlet property="AALessClL" destination="Ec8-Ad-xra" id="CrB-Xl-u2k"/>
-                        <outlet property="AALessClY" destination="l0a-5h-ys7" id="90d-BU-wlJ"/>
                         <outlet property="AALessDay" destination="2vd-wS-x2n" id="gXi-lw-wbW"/>
-                        <outlet property="AALessRF" destination="jUO-th-LDv" id="Sej-8Q-iEB"/>
                         <outlet property="AALessRR" destination="f1Q-1b-TB1" id="Ptb-AE-0Mh"/>
                         <outlet property="AALessSub" destination="ASt-9g-Jbc" id="2G1-ua-MSe"/>
                         <outlet property="AALessUH" destination="dIb-Bx-zLe" id="6Um-da-JjQ"/>
-                        <outlet property="AALessUM" destination="Xda-u2-R36" id="dsK-a6-x57"/>
                         <outlet property="AALessonApply" destination="tEZ-hj-l3B" id="fbw-lM-wld"/>
                         <outlet property="CreateLessonApply" destination="tEZ-hj-l3B" id="PYj-yD-bA7"/>
                         <outlet property="CreateLessonClassLetter" destination="Ec8-Ad-xra" id="icg-bG-Kjb"/>
-                        <outlet property="CreateLessonClassNum" destination="l0a-5h-ys7" id="IvX-xB-sru"/>
                         <outlet property="CreateLessonDay" destination="2vd-wS-x2n" id="QZO-EL-Aem"/>
-                        <outlet property="CreateLessonFloor" destination="jUO-th-LDv" id="08R-US-vlZ"/>
                         <outlet property="CreateLessonRoom" destination="f1Q-1b-TB1" id="O93-fB-dPI"/>
                         <outlet property="CreateLessonSubject" destination="ASt-9g-Jbc" id="Hsb-GO-FnE"/>
                         <outlet property="CreateLessonUnit" destination="dIb-Bx-zLe" id="het-X9-jav"/>
-                        <outlet property="CreateLessonUnitMinute" destination="Xda-u2-R36" id="PeN-9i-M9s"/>
                     </connections>
                 </viewController>
                 <customObject id="PKa-oK-8DS" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

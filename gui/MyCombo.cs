@@ -14,6 +14,10 @@ namespace gui
             this.source = source;
         }
 
+
+
+
+
         public override string CompletedString(NSComboBox comboBox, string uncompletedString)
         {
             return source.Find(n => n.StartsWith(uncompletedString, StringComparison.InvariantCultureIgnoreCase));
@@ -31,7 +35,9 @@ namespace gui
 
         public override NSObject ObjectValueForItem(NSComboBox comboBox, nint index)
         {
-            return NSObject.FromObject(source[(int)index]);
+            return NSString.FromObject(source[(int)index]);
         }
+
+
     }
 }
