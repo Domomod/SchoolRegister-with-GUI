@@ -113,10 +113,16 @@
     <Compile Include="Backendoptions.cs" />
     <Compile Include="SQLChecker.cs" />
     <Compile Include="View.cs" />
+    <Compile Include="en.lproj\TeaacherViewController.cs" />
+    <Compile Include="en.lproj\TeaacherViewController.designer.cs">
+      <DependentUpon>TeaacherViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyCombo.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Main.storyboard" />
     <InterfaceDefinition Include="Resources\Admin.storyboard" />
+    <InterfaceDefinition Include="Resources\en.lproj\Main.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Index\DataStore\v5\records\3K\AXError.h-27CHS5IM2TO3K" />

@@ -95,7 +95,30 @@ namespace gui
                 list.Add((dataReader[0].ToString() , dataReader[1].ToString()));
             dataReader.Close();
             return list;
-        } 
+        }
+
+        public List<string> GetAllStudents()
+        {
+            command.CommandText = "SELECT imie, nazwisko, pesel FROM dane_osobowe JOIN uczen on pesel=dane_osobowe_pesel";
+            List<string> list = new List<string>();
+            dataReader = command.ExecuteReader();
+            while (dataReader.Read())
+                list.Add(dataReader[0].ToString() + " " + dataReader[1].ToString() + "(" + dataReader[2].ToString() + ")");
+            dataReader.Close();
+            return list;
+        }
+
+        public List<string> GetAllParents()
+        {
+            command.CommandText = "SELECT imie, nazwisko, pesel FROM dane_osobowe NATURAL JOIN opiekun";
+            List<string> list = new List<string>();
+            dataReader = command.ExecuteReader();
+            while (dataReader.Read())
+                list.Add(dataReader[0].ToString() + " " + dataReader[1].ToString() + "(" + dataReader[2].ToString() + ")");
+            dataReader.Close();
+            return list;
+        }
+
 
         public List<string> GetCategories()
         {
@@ -118,13 +141,13 @@ namespace gui
             dataReader.Close();
             return list;
         }
-        public List<(string, string)> GetTeachers()
+        public List<string> GetTeachers()
         {
             command.CommandText = $"SELECT imie, nazwisko, pesel FROM dane_osobowe JOIN nauczyciel on pesel=dane_osobowe_pesel ";
             dataReader = command.ExecuteReader();
-            List<(string, string)> list = new List<(string, string)>();
+            List<string> list = new List<string>();
             while (dataReader.Read())
-                list.Add((dataReader[0].ToString()+" "+dataReader[1].ToString(), dataReader[2].ToString()));
+                list.Add(dataReader[0].ToString()+" "+dataReader[1].ToString()+"(" +dataReader[2].ToString()+")");
             dataReader.Close();
             return list;
         }
@@ -210,6 +233,8 @@ namespace gui
                 }
             dataReader.Close();
             command.CommandText = $"INSERT INTO opiekun VALUES ({Money}, {pesel})";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
         }
 
         public void AddUnit(string hour, string minute)

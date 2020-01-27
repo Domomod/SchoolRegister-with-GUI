@@ -46,5 +46,19 @@ namespace gui
             }
             return true;
         }
+
+
+        public bool IsPesel(string text)
+        {
+            if (text.Length != 11)
+                return false;
+            int t;
+            foreach (var num in text)
+            {
+                if (!int.TryParse(num.ToString(), out t))
+                    return false;
+            }
+            return true;
+        }
     }
 }

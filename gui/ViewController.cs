@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Collections.Generic;
 using AppKit;
 using Foundation;
 
@@ -17,6 +17,12 @@ namespace gui
             back.OpenConnection();
             checker = new SQLChecker();
             SetClasses();
+            AAUnitH = new NSComboBox();
+            AAddStClass = new NSComboBox();
+            AGrillParent = new NSComboBox();
+            AGrillStudent = new NSComboBox();
+            ACForm = new NSComboBox();
+            ACClass = new NSComboBox();
         }
 
         public override void ViewDidLoad()
@@ -24,8 +30,19 @@ namespace gui
             base.ViewDidLoad();
 
             // Do any additional setup after loading the view.
-
-
+            var listHours = new List<string>(new string[] { "6", "7", "8", "9", "10","11","12","13","14","15","16" });
+            AAUnitH.UsesDataSource = true;
+            AAUnitH.DataSource = new MyCombo(listHours);
+            AAddStClass.UsesDataSource = true;
+            AAddStClass.DataSource = new MyCombo(back.GetClasses());
+            AGrillParent.UsesDataSource = true;
+            AGrillStudent.UsesDataSource = true;
+            AGrillStudent.DataSource = new MyCombo(back.GetAllStudents());
+            AGrillParent.DataSource = new MyCombo(back.GetAllParents());
+            ACForm.UsesDataSource = true;
+            ACClass.UsesDataSource = true;
+            ACForm.DataSource = new MyCombo(back.GetTeachers());
+            ACClass.DataSource = new MyCombo(back.GetClasses());
         }
 
 
@@ -60,6 +77,8 @@ namespace gui
             }
             else
                 TextOnFirstPage.StringValue = "Illigal valju";
+
+            
         }
 
         partial void LogInAsParent(AppKit.NSButton sender)
@@ -159,7 +178,7 @@ namespace gui
         partial void AAStudentApply(Foundation.NSObject sender)
         {
             int t;
-            if (int.TryParse(AAddStPesel.StringValue, out t))
+            if (checker.IsPesel(AAddStPesel.StringValue))
                 if (checker.IsCorrect(AAddStName.StringValue) & checker.IsCorrect(AAddStLast.StringValue))
                     if (AAddStHome.StringValue == "" | checker.IsCorrect(AAddStHome.StringValue))
                         if (AAddStMail.StringValue == "" | checker.IsCorrect(AAddStMail.StringValue))
@@ -176,7 +195,7 @@ namespace gui
         {
             int t;
             decimal d;
-            if (int.TryParse(AATeaPe.StringValue, out t))
+            if (checker.IsPesel(AATeaPe.StringValue))
                 if (checker.IsCorrect(AATeaName.StringValue) & checker.IsCorrect(AATeaLast.StringValue))
                     if (AATeaHome.StringValue == "" | checker.IsCorrect(AATeaHome.StringValue))
                         if (AATeaMail.StringValue == "" | checker.IsCorrect(AATeaMail.StringValue))
@@ -202,7 +221,7 @@ namespace gui
         {
             int t;
             decimal d;
-            if (int.TryParse(AAParPe.StringValue, out t))
+            if (checker.IsPesel(AAParPe.StringValue))
                 if (checker.IsCorrect(AAParNa.StringValue) & checker.IsCorrect(AAParLast.StringValue))
                     if (AAParHome.StringValue == "" | checker.IsCorrect(AAParHome.StringValue))
                         if (AAParMail.StringValue == "" | checker.IsCorrect(AAParMail.StringValue))
