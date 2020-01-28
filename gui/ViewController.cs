@@ -16,27 +16,36 @@ namespace gui
             if (!Backendoptions.IsOpen())
                 Backendoptions.OpenConnection();
             checker = new SQLChecker();
-            AAUnitH = new NSComboBox();
-            AAddStClass = new NSComboBox();
-            AGrillParent = new NSComboBox();
-            AGrillStudent = new NSComboBox();
-            ACForm = new NSComboBox();
-            ACClass = new NSComboBox();
-            AALessClL = new NSComboBox();
-            AALessDay = new NSComboBox();
-            AALessRR = new NSComboBox();
-            AALessUH = new NSComboBox();
-            AALessSub = new NSComboBox();
-            AAClassForm = new NSComboBox();
-            AAClassProfile = new NSComboBox();
-            PLegitimizeName = new NSComboBox();
-            PLegitimizeData = new NSComboBox();
-            TChePrU = new NSComboBox();
-            TChePrCl = new NSComboBox();
-            TChaPrCL = new NSComboBox();
-            TChaPrSt = new NSComboBox();
-            TChaPrSt = new NSComboBox();
-            TChaPrUn = new NSComboBox();
+            if (Backendoptions.isAdmin())
+            {
+                AAUnitH = new NSComboBox();
+                AAddStClass = new NSComboBox();
+                AGrillParent = new NSComboBox();
+                AGrillStudent = new NSComboBox();
+                ACForm = new NSComboBox();
+                ACClass = new NSComboBox();
+                AALessClL = new NSComboBox();
+                AALessDay = new NSComboBox();
+                AALessRR = new NSComboBox();
+                AALessUH = new NSComboBox();
+                AALessSub = new NSComboBox();
+                AAClassForm = new NSComboBox();
+                AAClassProfile = new NSComboBox();
+            }
+            if (Backendoptions.isParent())
+            {
+                PLegitimizeName = new NSComboBox();
+                PLegitimizeData = new NSComboBox();
+            }
+            if (Backendoptions.isTeacher())
+            {
+                TChePrU = new NSComboBox();
+                TChePrCl = new NSComboBox();
+                TChaPrCL = new NSComboBox();
+                TChaPrSt = new NSComboBox();
+                TChaPrSta = new NSComboBox();
+                TChaPrUn = new NSComboBox();
+            }
         }
 
         public override void ViewDidLoad()
@@ -171,13 +180,13 @@ namespace gui
 
         partial void LogInAsTeacher(AppKit.NSButton sender)
         {
-            //if (Backendoptions.LogInAsTeacher(PeselInput.StringValue))
+            if (checker.IsCorrect(PeselInput.StringValue) & Backendoptions.LogInAsTeacher(PeselInput.StringValue))
             {
                 var storyboard = NSStoryboard.FromName("Main", null);
                 var controller = storyboard.InstantiateControllerWithIdentifier("17") as NSWindowController;
                 controller.ShowWindow(this);
             }
-           // else
+           else
                 TextOnFirstPage.StringValue = "Błędny pesel";
         }
 
