@@ -150,14 +150,59 @@ namespace gui
 		[Outlet]
 		AppKit.NSTextFieldCell PeselInput { get; set; }
 
-		
+		[Outlet]
+		AppKit.NSComboBox TClass { get; set; }
 
-	
+		[Outlet]
+		AppKit.NSComboBox TCNDesc { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox TCNSt { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox TCNVal { get; set; }
+
 		[Outlet]
 		AppKit.NSTextField TextOnFirstPage { get; set; }
 
 		[Outlet]
 		AppKit.NSTextField TMyInfo { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox TNCat { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField TNDesc { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox TNSt { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox TNSub { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox TNVal { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox TPreSt { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox TPreStat { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox TPreUnit { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox TPrUnit { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField TWDesc { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField TWPoints { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox TWSt { get; set; }
 
 		[Action ("AAClassApply:")]
 		partial void AAClassApply (Foundation.NSObject sender);
@@ -224,11 +269,89 @@ namespace gui
 
 		[Action ("TCNApply:")]
 		partial void TCNApply (Foundation.NSObject sender);
-
 		
 		void ReleaseDesignerOutlets ()
 		{
-		
+			if (TWDesc != null) {
+				TWDesc.Dispose ();
+				TWDesc = null;
+			}
+
+			if (TWPoints != null) {
+				TWPoints.Dispose ();
+				TWPoints = null;
+			}
+
+			if (TWSt != null) {
+				TWSt.Dispose ();
+				TWSt = null;
+			}
+
+			if (TCNDesc != null) {
+				TCNDesc.Dispose ();
+				TCNDesc = null;
+			}
+
+			if (TCNVal != null) {
+				TCNVal.Dispose ();
+				TCNVal = null;
+			}
+
+			if (TCNSt != null) {
+				TCNSt.Dispose ();
+				TCNSt = null;
+			}
+
+			if (TNVal != null) {
+				TNVal.Dispose ();
+				TNVal = null;
+			}
+
+			if (TNCat != null) {
+				TNCat.Dispose ();
+				TNCat = null;
+			}
+
+			if (TNSub != null) {
+				TNSub.Dispose ();
+				TNSub = null;
+			}
+
+			if (TNDesc != null) {
+				TNDesc.Dispose ();
+				TNDesc = null;
+			}
+
+			if (TNSt != null) {
+				TNSt.Dispose ();
+				TNSt = null;
+			}
+
+			if (TPreSt != null) {
+				TPreSt.Dispose ();
+				TPreSt = null;
+			}
+
+			if (TClass != null) {
+				TClass.Dispose ();
+				TClass = null;
+			}
+
+			if (TPrUnit != null) {
+				TPrUnit.Dispose ();
+				TPrUnit = null;
+			}
+
+			if (TPreUnit != null) {
+				TPreUnit.Dispose ();
+				TPreUnit = null;
+			}
+
+			if (TPreStat != null) {
+				TPreStat.Dispose ();
+				TPreStat = null;
+			}
+
 			if (AAClassForm != null) {
 				AAClassForm.Dispose ();
 				AAClassForm = null;
@@ -458,10 +581,15 @@ namespace gui
 				PeselInput.Dispose ();
 				PeselInput = null;
 			}
- 
+
 			if (TextOnFirstPage != null) {
 				TextOnFirstPage.Dispose ();
 				TextOnFirstPage = null;
+			}
+
+			if (TMyInfo != null) {
+				TMyInfo.Dispose ();
+				TMyInfo = null;
 			}
 		}
 	}

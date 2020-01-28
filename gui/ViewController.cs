@@ -31,6 +31,7 @@ namespace gui
                 AALessSub = new NSComboBox();
                 AAClassForm = new NSComboBox();
                 AAClassProfile = new NSComboBox();
+                
             }
             if (Backendoptions.isParent())
             {
@@ -38,7 +39,19 @@ namespace gui
             }
             if (Backendoptions.isTeacher())
             {
-               
+                TClass = new NSComboBox();
+                TWSt = new NSComboBox();
+                TCNSt = new NSComboBox();
+                TCNVal = new NSComboBox();
+                TCNDesc = new NSComboBox();
+                TNCat = new NSComboBox();
+                TNSt = new NSComboBox();
+                TNSub = new NSComboBox();
+                TNVal = new NSComboBox();
+                TPreSt = new NSComboBox();
+                TPreStat = new NSComboBox();
+                TPreUnit = new NSComboBox();
+                TPrUnit = new NSComboBox();
             }
         }
 
@@ -61,16 +74,22 @@ namespace gui
             {
                 AAUnitH.UsesDataSource = true;
                 AAUnitH.DataSource = new MyCombo(listHours);
+                AAUnitH.SelectItem(0);
                 AAddStClass.UsesDataSource = true;
                 AAddStClass.DataSource = new MyCombo(classes);
+                AAddStClass.SelectItem(0);
                 AGrillParent.UsesDataSource = true;
                 AGrillStudent.UsesDataSource = true;
                 AGrillStudent.DataSource = new MyCombo(students);
+                AGrillStudent.SelectItem(0);
                 AGrillParent.DataSource = new MyCombo(parents);
+                AGrillParent.SelectItem(0);
                 ACForm.UsesDataSource = true;
                 ACClass.UsesDataSource = true;
                 ACForm.DataSource = new MyCombo(teachers);
+                ACForm.SelectItem(0);
                 ACClass.DataSource = new MyCombo(classes);
+                ACClass.SelectItem(0);
                 AALessSub.UsesDataSource = true;
                 AALessUH.UsesDataSource = true;
                 AALessRR.UsesDataSource = true;
@@ -78,14 +97,21 @@ namespace gui
                 AALessClL.UsesDataSource = true;
                 var listDay = new List<string>(new string[] { "1", "2", "3", "4", "5", "6" });
                 AALessDay.DataSource = new MyCombo(listDay);
+                AALessDay.SelectItem(0);
                 AALessSub.DataSource = new MyCombo(subjects);
+                AALessSub.SelectItem(0);
                 AALessRR.DataSource = new MyCombo(rooms);
+                AALessRR.SelectItem(0);
                 AALessUH.DataSource = new MyCombo(units);
+                AALessUH.SelectItem(0);
                 AALessClL.DataSource = new MyCombo(classes);
+                AALessClL.SelectItem(0);
                 AAClassProfile.UsesDataSource = true;
                 AAClassProfile.DataSource = new MyCombo(profiles);
+                AAClassProfile.SelectItem(0);
                 AAClassForm.UsesDataSource = true;
                 AAClassForm.DataSource = new MyCombo(teachers);
+                AAClassForm.SelectItem(0);
                 
             }
             if (Backendoptions.isParent())
@@ -95,7 +121,40 @@ namespace gui
             }
             if (Backendoptions.isTeacher())
             {
-               
+                TClass.UsesDataSource = true;
+                TClass.DataSource = new MyCombo(classes); 
+                if (Backendoptions.isClassSet())
+                {       TWSt.UsesDataSource = true;
+                        TWSt.DataSource=new MyCombo(Backendoptions.GetStudents());
+                        TNSt.UsesDataSource = true;
+                        TNSt.DataSource= new MyCombo(Backendoptions.GetStudents());
+                    TPreSt.UsesDataSource = true;
+                    TPreSt.DataSource = new MyCombo(Backendoptions.GetStudents());
+                    TWSt.SelectItem(0);
+                    TNSt.SelectItem(0);
+                    TPreSt.SelectItem(0);
+                }
+                TNVal.UsesDataSource = true;
+                TNCat.UsesDataSource = true;
+              
+                TNSub.UsesDataSource = true;
+                var values = new List<string>(new string[] {"1","2","2.5","3","3.5","4","4.5","5","5.5","6" });
+                TNVal.DataSource = new MyCombo(values);
+                TNSub.DataSource = new MyCombo(subjects);               
+                TNCat.DataSource = new MyCombo(Backendoptions.GetCategories());
+                TPreStat.UsesDataSource = true;
+                TPreUnit.UsesDataSource = true;
+                TPrUnit.UsesDataSource = true;
+                TPrUnit.DataSource = new MyCombo(units);
+                TPreUnit.DataSource = new MyCombo(units);
+                TPreStat.DataSource = new MyCombo(status);
+                TClass.SelectItem(0);
+                TNVal.SelectItem(0);
+                TNSub.SelectItem(0);
+                TNCat.SelectItem(0);
+                TPreStat.SelectItem(0);
+                TPreUnit.SelectItem(0);
+                TPrUnit.SelectItem(0);
             }
         }
 

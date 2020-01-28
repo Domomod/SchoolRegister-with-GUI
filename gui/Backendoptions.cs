@@ -14,7 +14,26 @@ namespace gui
         private static bool A = false;
         private static bool T = false;
         private static bool P = false;
+        private static string currentClass="";
+        private static string currentChild="";
+        
 
+        static public bool isChildSet()
+        {
+            return (currentChild != "");
+        }
+        static public bool isClassSet()
+        {
+            return (currentClass != "");
+        }
+        static public void setClass(string clas)
+        {
+            currentClass = clas;
+        }
+        static public void setChild(string child)
+        {
+            currentChild = child;
+        }
         static public bool IsOpen()
         {
             return open;
@@ -348,10 +367,11 @@ namespace gui
             return list;
         }
 
-        static public List<string> GetStudents(string clas)
+        static public List<string> GetStudents()
         {
-            var classyear = clas[0].ToString() + clas[1].ToString() + clas[2].ToString() + clas[3].ToString();
-            command.CommandText = $"SELECT imie, nazwisko FROM dane_osobowe JOIn uczen where pesel=dane_osobowe_penel WHERE klasa_rocznik={classyear} and klasa_literka={clas[4].ToString()}";
+            var letter = currentClass[4].ToString();
+            var classyear = currentClass.Remove(4);
+            command.CommandText = $"SELECT imie, nazwisko FROM dane_osobowe JOIn uczen where pesel=dane_osobowe_penel WHERE klasa_rocznik={classyear} and klasa_literka={letter}";
             dataReader = command.ExecuteReader();
             List<string> list = new List<string>();
             while (dataReader.Read())

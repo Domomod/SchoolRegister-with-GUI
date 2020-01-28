@@ -113,6 +113,7 @@
                         <outlet property="TCheckPrCl" destination="sCm-26-9Rz" id="P1z-VZ-NJa"/>
                         <outlet property="TCheckPrSta" destination="3bX-qA-Xfu" id="BG3-wN-V5G"/>
                         <outlet property="TCheckPrUn" destination="8d9-Ux-oAc" id="kdY-cP-32D"/>
+                        <outlet property="TPrUnit" destination="8d9-Ux-oAc" id="vLD-jB-uka"/>
                     </connections>
                 </viewController>
                 <customObject id="k2q-Kw-GMV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -192,17 +193,6 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1XT-Ut-B57">
-                                <rect key="frame" x="271" y="184" width="146" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Szukaj obecności" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="G64-nX-Y6W">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="TChaPrFindPre:" target="XFu-wj-2oS" id="wiS-TL-BQ3"/>
-                                </connections>
-                            </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fuC-5C-ofc">
                                 <rect key="frame" x="73" y="235" width="43" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -223,11 +213,13 @@
                         <outlet property="TChaPrUn" destination="dJJ-Oh-qsK" id="7oR-N6-dEe"/>
                         <outlet property="TChangePrApply" destination="mrk-ST-agQ" id="qxW-5n-rmO"/>
                         <outlet property="TChangePrDay" destination="dJJ-Oh-qsK" id="EBD-nS-HfN"/>
-                        <outlet property="TChangePrFindLess" destination="1XT-Ut-B57" id="Xnz-mC-CEM"/>
                         <outlet property="TChangePrNewSt" destination="YLp-TF-U0P" id="hnr-9P-Ovq"/>
                         <outlet property="TChangePrSt" destination="kgt-pN-Lc9" id="INL-ri-ofH"/>
                         <outlet property="TEditPresanceApply" destination="mrk-ST-agQ" id="oqf-de-D4h"/>
                         <outlet property="TEditPresanceStudent" destination="kgt-pN-Lc9" id="6Du-jp-Anp"/>
+                        <outlet property="TPreSt" destination="kgt-pN-Lc9" id="S68-fQ-ob1"/>
+                        <outlet property="TPreStat" destination="YLp-TF-U0P" id="j6W-Io-wIi"/>
+                        <outlet property="TPreUnit" destination="dJJ-Oh-qsK" id="sLd-ox-I3W"/>
                     </connections>
                 </viewController>
                 <customObject id="Edg-so-DgV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -346,6 +338,9 @@
                             </textField>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="TClass" destination="sCm-26-9Rz" id="toR-bt-H6A"/>
+                    </connections>
                 </viewController>
                 <customObject id="HtO-3m-wb1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1127,6 +1122,11 @@
                         <outlet property="TAddNoteSubj" destination="uO9-rq-ZIb" id="3ze-Uw-X9p"/>
                         <outlet property="TAddNoteVal" destination="otp-Bc-xET" id="qXQ-Xf-Zb3"/>
                         <outlet property="TAddNotevalue" destination="otp-Bc-xET" id="6Vd-bG-t4X"/>
+                        <outlet property="TNCat" destination="uO9-rq-ZIb" id="lhT-eg-YnG"/>
+                        <outlet property="TNDesc" destination="fp8-5i-ogm" id="ZmV-er-t7B"/>
+                        <outlet property="TNSt" destination="XuK-er-Ot0" id="V5x-oI-i7Z"/>
+                        <outlet property="TNSub" destination="fBT-DP-p7a" id="LXu-LR-dOJ"/>
+                        <outlet property="TNVal" destination="otp-Bc-xET" id="E5c-hc-KHH"/>
                     </connections>
                 </viewController>
                 <customObject id="wQb-VX-yBk" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -1170,15 +1170,6 @@
                                     <action selector="TCNApply:" target="F3p-Xh-fQk" id="CPJ-W4-Vfr"/>
                                 </connections>
                             </button>
-                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZwL-Ej-cxs">
-                                <rect key="frame" x="39" y="100" width="338" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesDataSource="YES" numberOfVisibleItems="5" id="tMA-Ul-o2M">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </comboBoxCell>
-                            </comboBox>
                             <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pJK-ov-ukX">
                                 <rect key="frame" x="38" y="35" width="99" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1197,17 +1188,15 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hMN-tF-XQQ">
-                                <rect key="frame" x="300" y="72" width="80" height="32"/>
+                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZwL-Ej-cxs">
+                                <rect key="frame" x="39" y="100" width="338" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Szukaj" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aDw-LK-Ekd">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesDataSource="YES" numberOfVisibleItems="5" id="tMA-Ul-o2M">
                                     <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="TCNDescFind:" target="F3p-Xh-fQk" id="rZm-1G-Vt0"/>
-                                </connections>
-                            </button>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </comboBoxCell>
+                            </comboBox>
                         </subviews>
                     </view>
                     <connections>
@@ -1215,11 +1204,11 @@
                         <outlet property="ChangeNoteStudent" destination="Vp2-G5-a8k" id="Whl-ZO-eBf"/>
                         <outlet property="ChangeNoteSubject" destination="ZwL-Ej-cxs" id="3pP-jQ-LTV"/>
                         <outlet property="TCNDes" destination="ZwL-Ej-cxs" id="S7E-RF-rxz"/>
+                        <outlet property="TCNDesc" destination="ZwL-Ej-cxs" id="hWb-9P-geL"/>
                         <outlet property="TCNNote" destination="ZwL-Ej-cxs" id="8aR-qn-rc0"/>
-                        <outlet property="TCNSt" destination="Vp2-G5-a8k" id="PYa-xC-bUg"/>
-                        <outlet property="TCNVal" destination="pJK-ov-ukX" id="Pid-dD-Kpd"/>
+                        <outlet property="TCNSt" destination="Vp2-G5-a8k" id="odf-QN-HRr"/>
+                        <outlet property="TCNVal" destination="pJK-ov-ukX" id="mZr-mu-UPo"/>
                         <outlet property="TChNoteApply" destination="d3v-NC-hxe" id="JWp-WZ-7zs"/>
-                        <outlet property="TChNoteFindNote" destination="hMN-tF-XQQ" id="Kta-fQ-kEQ"/>
                         <outlet property="TChNoteNewValue" destination="pJK-ov-ukX" id="wf4-cw-6HS"/>
                         <outlet property="TChNoteNote" destination="ZwL-Ej-cxs" id="eLz-SP-Kpp"/>
                         <outlet property="TChNoteSt" destination="Vp2-G5-a8k" id="OMs-NX-CFL"/>
@@ -1309,6 +1298,9 @@
                         <outlet property="TAddWarningDesc" destination="bwL-Tr-hq2" id="4uo-I5-GeL"/>
                         <outlet property="TAddWarningPoints" destination="Kld-A2-cXv" id="faM-sJ-6gg"/>
                         <outlet property="TAddWarningStudent" destination="WIQ-AH-Xdc" id="cEr-r0-i9x"/>
+                        <outlet property="TWDesc" destination="bwL-Tr-hq2" id="i0g-MS-Mwn"/>
+                        <outlet property="TWPoints" destination="Kld-A2-cXv" id="eKR-YB-ECV"/>
+                        <outlet property="TWSt" destination="WIQ-AH-Xdc" id="8LF-Te-Qsj"/>
                     </connections>
                 </viewController>
                 <customObject id="dse-6I-LK8" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
