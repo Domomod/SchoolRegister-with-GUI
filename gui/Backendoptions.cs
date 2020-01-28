@@ -4,21 +4,22 @@ using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 namespace gui
 {
-    public class Backendoptions
+     public class Backendoptions
     {
-        private string currentPesel;
+        private static string currentPesel;
         private static MySqlConnection sqlConnection;
         private static MySqlDataReader dataReader;
         private static MySqlCommand command;
+        private static bool open=false;
 
-        public Backendoptions()
+        static public bool IsOpen()
         {
+            return open;
         }
 
 
 
-
-        public bool OpenConnection()
+        static public bool OpenConnection()
         {
             try
             {
@@ -27,6 +28,7 @@ namespace gui
                 command = sqlConnection.CreateCommand();
                 command.Connection = sqlConnection;
                 command.CommandText = "SELECT CURRENT_DATE FROM dual";
+                open = true;
                 return true;
             }
             catch (Exception ex) {
@@ -35,21 +37,21 @@ namespace gui
         }
 
 
-        public void AddWarning(string whatDidStudentDo, string points, string pesel)
+        static public void AddWarning(string whatDidStudentDo, string points, string pesel)
         {
             command.CommandText = $"INSERT INTO uwaga VALUES(NEXTVAL(uwagaSeq),'{whatDidStudentDo}', {points}, {currentPesel}, {pesel}, CURRENT_DATE) ";
             dataReader = command.ExecuteReader();
             dataReader.Close();
         }
 
-        public void AddNote(string value, string description,string category, string subject, string pesel)
+        static public void AddNote(string value, string description,string category, string subject, string pesel)
         {
             command.CommandText = $"INSERT INTO ocena VALUES(NEXTVAL(ocenaSeq),{value},CURRENT_DAY,'{description}','{category}','{subject}',{pesel},{currentPesel})";
             dataReader = command.ExecuteReader();
             dataReader.Close();
         }
 
-        public void LegitimizeAbsence(string pesel, string data)
+        static public void LegitimizeAbsence(string pesel, string data)
         {
             var lst = pesel.Split("(");
             lst[1].Remove(lst[1].Length - 1);
@@ -59,7 +61,7 @@ namespace gui
 
         }
 
-        public string ChildPesel(string imie)
+        static public string ChildPesel(string imie)
         {
             command.CommandText = $"SELECT pesel from dane_osobowe join opieka on pesel=uczen_pesel where imie='{imie}' and opiekun_pesel={currentPesel}";
             dataReader = command.ExecuteReader();
@@ -68,7 +70,7 @@ namespace gui
             return pesel;
         }
 
-        public string GetPeselFromNames(string dane)
+        static public string GetPeselFromNames(string dane)
         {
             var lst = dane.Split(" ");
             command.CommandText = $"SELECT pesel FROM dane_osobowe WHERE imie='{lst[0]}' and nazwisko='{lst[1]}'";
@@ -77,7 +79,7 @@ namespace gui
             dataReader.Close();
             return pesel;
         }
-        public List<string> GetUnits()
+        static public List<string> GetUnits()
         {
             command.CommandText = $"SELECT * FROM jednostka";
             dataReader = command.ExecuteReader();
@@ -88,7 +90,7 @@ namespace gui
             return list;
         }
 
-        public List<string> GetRooms()
+       static  public List<string> GetRooms()
         {
             command.CommandText = $"SELECT * FROM sala";
             dataReader = command.ExecuteReader();
@@ -99,7 +101,7 @@ namespace gui
             return list;
         }
 
-        public List<string> GetAllStudents()
+        static public List<string> GetAllStudents()
         {
             command.CommandText = "SELECT imie, nazwisko, pesel FROM dane_osobowe JOIN uczen on pesel=dane_osobowe_pesel";
             List<string> list = new List<string>();
@@ -110,7 +112,7 @@ namespace gui
             return list;
         }
 
-        public List<string> GetAllParents()
+        static public List<string> GetAllParents()
         {
             command.CommandText = "SELECT imie, nazwisko, pesel FROM dane_osobowe NATURAL JOIN opiekun";
             List<string> list = new List<string>();
@@ -122,7 +124,7 @@ namespace gui
         }
 
 
-        public List<string> GetCategories()
+        static public List<string> GetCategories()
         {
             command.CommandText = $"SELECT * from kategoria_oceny";
             dataReader = command.ExecuteReader();
@@ -133,7 +135,7 @@ namespace gui
             return list;
         }
 
-        public List<string> GetSubjects()
+        static public List<string> GetSubjects()
         {
             command.CommandText = $"SELECT * from przedmiot";
             dataReader = command.ExecuteReader();
@@ -143,7 +145,7 @@ namespace gui
             dataReader.Close();
             return list;
         }
-        public List<string> GetTeachers()
+        static public List<string> GetTeachers()
         {
             command.CommandText = $"SELECT imie, nazwisko, pesel FROM dane_osobowe JOIN nauczyciel on pesel=dane_osobowe_pesel ";
             dataReader = command.ExecuteReader();
@@ -154,7 +156,7 @@ namespace gui
             return list;
         }
 
-        public List<string> GetProfiles(){
+        static public List<string> GetProfiles(){
              command.CommandText = $"SELECT * from profil";
             dataReader = command.ExecuteReader();
             List<string> list = new List<string>();
@@ -164,7 +166,7 @@ namespace gui
             return list;
         }
 
-        public List <(string, string)> GetLessonsForClass(string clas)
+        static public List <(string, string)> GetLessonsForClass(string clas)
         {
             var classyear = clas[0].ToString() + clas[1].ToString() + clas[2].ToString() + clas[3].ToString();
             command.CommandText = $"SELECT dzien_tygodnia, lekcja_dzien_tygodnia, lekcja_jednostka_godzina, lekcja_jednostka_minuta FROM lekcja where klasa_rocznik={classyear} and klasa_literka={clas[4].ToString()} ";
@@ -176,7 +178,7 @@ namespace gui
             return list;
         }
 
-        public List<string> GetAbsence(string pesel)
+        static public List<string> GetAbsence(string pesel)
         {
             var lst = pesel.Split("(");
             lst[1].Remove(lst[1].Length - 1);
@@ -189,7 +191,7 @@ namespace gui
             return list;
         }
 
-        public List<string> GetChildren()
+        static public List<string> GetChildren()
         {
             command.CommandText = $"SELECT imie, pesel FROM dane_osobowe JOIN opieka on pesel=uczen_pesel where opiekun_pesel=99999999999";
             dataReader = command.ExecuteReader();
@@ -200,7 +202,7 @@ namespace gui
             return list;
         }
 
-        public List<string> GetStudents(string clas)
+        static public List<string> GetStudents(string clas)
         {
             var classyear = clas[0].ToString() + clas[1].ToString() + clas[2].ToString() + clas[3].ToString();
             command.CommandText = $"SELECT imie, nazwisko FROM dane_osobowe JOIn uczen where pesel=dane_osobowe_penel WHERE klasa_rocznik={classyear} and klasa_literka={clas[4].ToString()}";
@@ -214,7 +216,7 @@ namespace gui
             return list;
         }
 
-        public List<string> GetClasses()
+        static public List<string> GetClasses()
         {
             command.CommandText = "SELECT rocznik, literka FROM klasa";
             dataReader = command.ExecuteReader();
@@ -223,9 +225,9 @@ namespace gui
                 list.Add(dataReader[0].ToString() + dataReader[1].ToString());
             dataReader.Close();
             return list;
-        } 
+        }
 
-        public void AddParent(string pesel, string names, string lastName, string home, string phoneNum, string mail, string Money)
+        static public void AddParent(string pesel, string names, string lastName, string home, string phoneNum, string mail, string Money)
         {
             command.CommandText = $"SELECT * FROM dane_osobowe where pesel={pesel}";
             dataReader = command.ExecuteReader();
@@ -241,14 +243,14 @@ namespace gui
             dataReader.Close();
         }
 
-        public void AddUnit(string hour, string minute)
+        static public void AddUnit(string hour, string minute)
         {
             command.CommandText = $"INSERT INTO jednostka VALUES ({hour},{minute})";
             dataReader = command.ExecuteReader();
             dataReader.Close();
         }
 
-        public void AddTeacher(string pesel, string names, string lastName, string home, string phoneNum, string mail, string etat)
+        static public void AddTeacher(string pesel, string names, string lastName, string home, string phoneNum, string mail, string etat)
         {
             command.CommandText = $"SELECT * FROM dane_osobowe where pesel={pesel}";
             dataReader = command.ExecuteReader();
@@ -263,7 +265,7 @@ namespace gui
             dataReader.Close();
         }
 
-        public void AddStudent(string pesel, string names, string lastName, string home, string phoneNum, string mail, string clas, string numberInRegister )
+        static public void AddStudent(string pesel, string names, string lastName, string home, string phoneNum, string mail, string clas, string numberInRegister )
         {
             command.CommandText = $"INSERT INTO dane_osobowe VALUES('{pesel}','{names}','{lastName}','{home}',{phoneNum},'{mail}')";
             dataReader = command.ExecuteReader();
@@ -275,14 +277,14 @@ namespace gui
             dataReader.Close();
         }
 
-        public void AddRoom( string floor, string number, string chairs)
+        static public void AddRoom( string floor, string number, string chairs)
         {
             command.CommandText = $"INSERT INTO sala VALUES ({floor},{number},{chairs})";
             dataReader = command.ExecuteReader();
             dataReader.Close();
         }
 
-        public void AddLesson(string dayOfUnit, string hourOfUnit, string classLetter, string roomNumber, string subject)
+        static public void AddLesson(string dayOfUnit, string hourOfUnit, string classLetter, string roomNumber, string subject)
         {
             var unit = hourOfUnit.Split(":");
             var clas = classLetter[4].ToString();
@@ -293,7 +295,7 @@ namespace gui
             dataReader.Close();
         }
 
-        public void Grill(string guardian, string child)
+        static public void Grill(string guardian, string child)
         {
             var lst = guardian.Split("(");
             var pesel = lst[1].Remove(lst[1].Length - 1);
@@ -304,7 +306,7 @@ namespace gui
             dataReader.Close();
         }
 
-        public void ChangeFormTutor(string newFormTutor, string clas)
+        static public void ChangeFormTutor(string newFormTutor, string clas)
         {
             var lst = newFormTutor.Split("(");
             var pesel = lst[1].Remove(lst[1].Length - 1);
@@ -315,7 +317,7 @@ namespace gui
             dataReader.Close();
         }
 
-        public void AddClass(string classYear, string classLetter, string formTutorPesel, string profile)
+        static public void AddClass(string classYear, string classLetter, string formTutorPesel, string profile)
         {
             var lst = formTutorPesel.Split("(");
             lst[1].Remove(lst[1].Length - 1);
@@ -324,7 +326,7 @@ namespace gui
             dataReader.Close();
         }
 
-        public void AddSubject(string name)
+        static public void AddSubject(string name)
         {
             command.CommandText = $"SELECT * from przedmiot where nazwa_przedmiotu='{name}'";
             dataReader = command.ExecuteReader();
@@ -339,7 +341,7 @@ namespace gui
             dataReader.Close();
         }
 
-        public bool LogInAsStudent(string pesel)
+        static public bool LogInAsStudent(string pesel)
         {
             try
             {
@@ -364,7 +366,7 @@ namespace gui
 
 
 
-        public bool LogInAsParent(string pesel)
+        static public bool LogInAsParent(string pesel)
         {
             try
             {
@@ -388,7 +390,7 @@ namespace gui
             
         }
 
-        public bool LogInAsTeacher(string pesel)
+        static public bool LogInAsTeacher(string pesel)
         {
             try
             {
@@ -410,7 +412,7 @@ namespace gui
             
         }
 
-        public bool LogInAdminMode(string pesel)
+        static public bool LogInAdminMode(string pesel)
         {
             if (pesel == "666")
                 return true;
@@ -418,14 +420,14 @@ namespace gui
 
         }
 
-        public bool CloseConnection()
+        static public bool CloseConnection()
         {
             sqlConnection.Close();
             return true;
         }
 
 
-        public bool FirstUse()
+        static public bool FirstUse()
         {
             try
             {
@@ -724,13 +726,15 @@ namespace gui
                 dataReader = command.ExecuteReader();
                 dataReader.Close();
 
-                command.CommandText = "INSERT into jednostka VALUES ('nieobecny')";
+                command.CommandText = "INSERT into status VALUES ('nieobecny')";
                 dataReader = command.ExecuteReader();
                 dataReader.Close();
 
-                command.CommandText = "INSERT into jednostka VALUES ('usprawiedliwiony')";
+                command.CommandText = "INSERT into status VALUES ('usprawiedliwiony')";
                 dataReader = command.ExecuteReader();
                 dataReader.Close();
+
+                
 
                 return true;
             }

@@ -166,7 +166,37 @@ namespace gui
 		AppKit.NSScrollView PMyChildrenWarnings { get; set; }
 
 		[Outlet]
-		AppKit.NSTextField PMyInfo { get; set; }
+		AppKit.NSTableColumn PNoteAvg { get; set; }
+
+		[Outlet]
+		AppKit.NSTableColumn PNoteChildrenNames { get; set; }
+
+		[Outlet]
+		AppKit.NSTableColumn PNoteChildrenSubject { get; set; }
+
+		[Outlet]
+		AppKit.NSTableColumn PNoteNotes { get; set; }
+
+		[Outlet]
+		AppKit.NSTableColumn PPreData { get; set; }
+
+		[Outlet]
+		AppKit.NSTableColumn PPreName { get; set; }
+
+		[Outlet]
+		AppKit.NSTableColumn PPreStatus { get; set; }
+
+		[Outlet]
+		AppKit.NSTableColumn PPreUnit { get; set; }
+
+		[Outlet]
+		AppKit.NSTableColumn PWarDesc { get; set; }
+
+		[Outlet]
+		AppKit.NSTableColumn PWarName { get; set; }
+
+		[Outlet]
+		AppKit.NSTableColumn PWarPoints { get; set; }
 
 		[Outlet]
 		AppKit.NSScrollView StudentShowMyNotes { get; set; }
@@ -181,88 +211,16 @@ namespace gui
 		AppKit.NSScrollView StudentShowMyWarningsTab { get; set; }
 
 		[Outlet]
-		AppKit.NSButton TAddNoteApply { get; set; }
+		AppKit.NSComboBox TChePrCl { get; set; }
 
 		[Outlet]
-		AppKit.NSComboBox TAddNoteCat { get; set; }
+		AppKit.NSScrollView TChePrst { get; set; }
 
 		[Outlet]
-		AppKit.NSComboBox TAddNoteClass { get; set; }
+		AppKit.NSScrollView TChePrSt { get; set; }
 
 		[Outlet]
-		AppKit.NSTextField TAddNoteDesc { get; set; }
-
-		[Outlet]
-		AppKit.NSButton TAddNoteSearch { get; set; }
-
-		[Outlet]
-		AppKit.NSComboBox TAddNoteStudent { get; set; }
-
-		[Outlet]
-		AppKit.NSView TAddNoteSub { get; set; }
-
-		[Outlet]
-		AppKit.NSComboBox TAddNoteSubj { get; set; }
-
-		[Outlet]
-		AppKit.NSComboBox TAddNotevalue { get; set; }
-
-		[Outlet]
-		AppKit.NSButton TAddWarningApply { get; set; }
-
-		[Outlet]
-		AppKit.NSComboBox TAddWarningClass { get; set; }
-
-		[Outlet]
-		AppKit.NSTextField TAddWarningDesc { get; set; }
-
-		[Outlet]
-		AppKit.NSButton TAddWarningFindStudent { get; set; }
-
-		[Outlet]
-		AppKit.NSTextField TAddWarningPoints { get; set; }
-
-		[Outlet]
-		AppKit.NSComboBox TAddWarningStudent { get; set; }
-
-		[Outlet]
-		AppKit.NSButton TCheckPresanceApply { get; set; }
-
-		[Outlet]
-		AppKit.NSButton TeacherCheckPresanceClasses { get; set; }
-
-		[Outlet]
-		AppKit.NSComboBox TeacherCheckPresanceClassLetter { get; set; }
-
-		[Outlet]
-		AppKit.NSComboBox TeacherCheckPresanceClassNum { get; set; }
-
-		[Outlet]
-		AppKit.NSComboBox TeacherCheckPresanceLessonDay { get; set; }
-
-		[Outlet]
-		AppKit.NSView TeacherCheckPresanceLessonUnit { get; set; }
-
-		[Outlet]
-		AppKit.NSScrollView TeacherCheckPresanceStudentList { get; set; }
-
-		[Outlet]
-		AppKit.NSSearchField TeacherMyData { get; set; }
-
-		[Outlet]
-		AppKit.NSButton TEditPresanceApply { get; set; }
-
-		[Outlet]
-		AppKit.NSComboBox TEditPresanceClass { get; set; }
-
-		[Outlet]
-		AppKit.NSButton TEditPresanceFindStudent { get; set; }
-
-		[Outlet]
-		AppKit.NSScrollView TEditPresanceList { get; set; }
-
-		[Outlet]
-		AppKit.NSComboBox TEditPresanceStudent { get; set; }
+		AppKit.NSComboBox TChePrU { get; set; }
 
 		[Outlet]
 		AppKit.NSTextField TextOnFirstPage { get; set; }
@@ -321,35 +279,32 @@ namespace gui
 		[Action ("PLegitimizeSearch:")]
 		partial void PLegitimizeSearch (Foundation.NSObject sender);
 
-		[Action ("TANoteApply:")]
-		partial void TANoteApply (Foundation.NSObject sender);
-
-		[Action ("TANoteSearch:")]
-		partial void TANoteSearch (Foundation.NSObject sender);
-
-		[Action ("TAWarningApply:")]
-		partial void TAWarningApply (Foundation.NSObject sender);
-
-		[Action ("TAWarningSearch:")]
-		partial void TAWarningSearch (Foundation.NSObject sender);
-
-		[Action ("TCheckPrApply:")]
-		partial void TCheckPrApply (Foundation.NSObject sender);
-
-		[Action ("TCheckPrSearch:")]
-		partial void TCheckPrSearch (Foundation.NSObject sender);
-
 		[Action ("TChePrApply:")]
 		partial void TChePrApply (Foundation.NSObject sender);
 
-		[Action ("TChePrSearch:")]
-		partial void TChePrSearch (Foundation.NSObject sender);
+		[Action ("TChePrFins:")]
+		partial void TChePrFins (Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (TAddNoteSubj != null) {
-				TAddNoteSubj.Dispose ();
-				TAddNoteSubj = null;
+			if (TChePrCl != null) {
+				TChePrCl.Dispose ();
+				TChePrCl = null;
+			}
+
+			if (TChePrU != null) {
+				TChePrU.Dispose ();
+				TChePrU = null;
+			}
+
+			if (TChePrst != null) {
+				TChePrst.Dispose ();
+				TChePrst = null;
+			}
+
+			if (TChePrSt != null) {
+				TChePrSt.Dispose ();
+				TChePrSt = null;
 			}
 
 			if (AAClassForm != null) {
@@ -607,9 +562,59 @@ namespace gui
 				PMyChildrenWarnings = null;
 			}
 
-			if (PMyInfo != null) {
-				PMyInfo.Dispose ();
-				PMyInfo = null;
+			if (PNoteAvg != null) {
+				PNoteAvg.Dispose ();
+				PNoteAvg = null;
+			}
+
+			if (PNoteChildrenNames != null) {
+				PNoteChildrenNames.Dispose ();
+				PNoteChildrenNames = null;
+			}
+
+			if (PNoteChildrenSubject != null) {
+				PNoteChildrenSubject.Dispose ();
+				PNoteChildrenSubject = null;
+			}
+
+			if (PNoteNotes != null) {
+				PNoteNotes.Dispose ();
+				PNoteNotes = null;
+			}
+
+			if (PPreData != null) {
+				PPreData.Dispose ();
+				PPreData = null;
+			}
+
+			if (PPreName != null) {
+				PPreName.Dispose ();
+				PPreName = null;
+			}
+
+			if (PPreStatus != null) {
+				PPreStatus.Dispose ();
+				PPreStatus = null;
+			}
+
+			if (PPreUnit != null) {
+				PPreUnit.Dispose ();
+				PPreUnit = null;
+			}
+
+			if (PWarDesc != null) {
+				PWarDesc.Dispose ();
+				PWarDesc = null;
+			}
+
+			if (PWarName != null) {
+				PWarName.Dispose ();
+				PWarName = null;
+			}
+
+			if (PWarPoints != null) {
+				PWarPoints.Dispose ();
+				PWarPoints = null;
 			}
 
 			if (StudentShowMyNotes != null) {
@@ -630,141 +635,6 @@ namespace gui
 			if (StudentShowMyWarningsTab != null) {
 				StudentShowMyWarningsTab.Dispose ();
 				StudentShowMyWarningsTab = null;
-			}
-
-			if (TAddNoteApply != null) {
-				TAddNoteApply.Dispose ();
-				TAddNoteApply = null;
-			}
-
-			if (TAddNoteCat != null) {
-				TAddNoteCat.Dispose ();
-				TAddNoteCat = null;
-			}
-
-			if (TAddNoteClass != null) {
-				TAddNoteClass.Dispose ();
-				TAddNoteClass = null;
-			}
-
-			if (TAddNoteDesc != null) {
-				TAddNoteDesc.Dispose ();
-				TAddNoteDesc = null;
-			}
-
-			if (TAddNoteSearch != null) {
-				TAddNoteSearch.Dispose ();
-				TAddNoteSearch = null;
-			}
-
-			if (TAddNoteStudent != null) {
-				TAddNoteStudent.Dispose ();
-				TAddNoteStudent = null;
-			}
-
-			if (TAddNoteSub != null) {
-				TAddNoteSub.Dispose ();
-				TAddNoteSub = null;
-			}
-
-			if (TAddNotevalue != null) {
-				TAddNotevalue.Dispose ();
-				TAddNotevalue = null;
-			}
-
-			if (TAddWarningApply != null) {
-				TAddWarningApply.Dispose ();
-				TAddWarningApply = null;
-			}
-
-			if (TAddWarningClass != null) {
-				TAddWarningClass.Dispose ();
-				TAddWarningClass = null;
-			}
-
-			if (TAddWarningDesc != null) {
-				TAddWarningDesc.Dispose ();
-				TAddWarningDesc = null;
-			}
-
-			if (TAddWarningFindStudent != null) {
-				TAddWarningFindStudent.Dispose ();
-				TAddWarningFindStudent = null;
-			}
-
-			if (TAddWarningPoints != null) {
-				TAddWarningPoints.Dispose ();
-				TAddWarningPoints = null;
-			}
-
-			if (TAddWarningStudent != null) {
-				TAddWarningStudent.Dispose ();
-				TAddWarningStudent = null;
-			}
-
-			if (TCheckPresanceApply != null) {
-				TCheckPresanceApply.Dispose ();
-				TCheckPresanceApply = null;
-			}
-
-			if (TeacherCheckPresanceClasses != null) {
-				TeacherCheckPresanceClasses.Dispose ();
-				TeacherCheckPresanceClasses = null;
-			}
-
-			if (TeacherCheckPresanceClassLetter != null) {
-				TeacherCheckPresanceClassLetter.Dispose ();
-				TeacherCheckPresanceClassLetter = null;
-			}
-
-			if (TeacherCheckPresanceClassNum != null) {
-				TeacherCheckPresanceClassNum.Dispose ();
-				TeacherCheckPresanceClassNum = null;
-			}
-
-			if (TeacherCheckPresanceLessonDay != null) {
-				TeacherCheckPresanceLessonDay.Dispose ();
-				TeacherCheckPresanceLessonDay = null;
-			}
-
-			if (TeacherCheckPresanceLessonUnit != null) {
-				TeacherCheckPresanceLessonUnit.Dispose ();
-				TeacherCheckPresanceLessonUnit = null;
-			}
-
-			if (TeacherCheckPresanceStudentList != null) {
-				TeacherCheckPresanceStudentList.Dispose ();
-				TeacherCheckPresanceStudentList = null;
-			}
-
-			if (TeacherMyData != null) {
-				TeacherMyData.Dispose ();
-				TeacherMyData = null;
-			}
-
-			if (TEditPresanceApply != null) {
-				TEditPresanceApply.Dispose ();
-				TEditPresanceApply = null;
-			}
-
-			if (TEditPresanceClass != null) {
-				TEditPresanceClass.Dispose ();
-				TEditPresanceClass = null;
-			}
-
-			if (TEditPresanceFindStudent != null) {
-				TEditPresanceFindStudent.Dispose ();
-				TEditPresanceFindStudent = null;
-			}
-
-			if (TEditPresanceList != null) {
-				TEditPresanceList.Dispose ();
-				TEditPresanceList = null;
-			}
-
-			if (TEditPresanceStudent != null) {
-				TEditPresanceStudent.Dispose ();
-				TEditPresanceStudent = null;
 			}
 
 			if (TextOnFirstPage != null) {

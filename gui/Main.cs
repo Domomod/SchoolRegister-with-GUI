@@ -8,8 +8,10 @@ namespace gui
         {
             try
             {
+            
             NSApplication.Init();
             NSApplication.Main(args);
+            
             }
             catch(Exception ex)
             {
