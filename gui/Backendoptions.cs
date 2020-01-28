@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 namespace gui
 {
-     public class Backendoptions
+    public class Backendoptions
     {
         private static string currentPesel;
         private static MySqlConnection sqlConnection;
         private static MySqlDataReader dataReader;
         private static MySqlCommand command;
-        private static bool open=false;
+        private static bool open = false;
         private static bool A = false;
         private static bool T = false;
         private static bool P = false;
@@ -19,23 +19,18 @@ namespace gui
         {
             return open;
         }
-
-
         static public bool isAdmin()
         {
             return A;
         }
-
         static public bool isTeacher()
         {
             return T;
         }
-
         static public bool isParent()
         {
             return P;
         }
-
         static public void setAdmin()
         {
             T = P = false;
@@ -59,18 +54,147 @@ namespace gui
         }
 
 
+        static public string ParentInfo()
+        {
+            string data = "Dzieci pod moją opieką:\n";
+            command.CommandText = $"select imie from dane_osobowe join opieka on pesel=uczen_pesel where opiekun_pesel={currentPesel} ";
+            dataReader = command.ExecuteReader();
+            while (dataReader.Read())
+                data = data + dataReader[0].ToString() + ", ";
+            dataReader.Close();
+            data.Remove(data.Length - 1);
+            return data;
+        }
+
+        //TO Do FINISH
+        static public List<List<string>> getMyPresance()
+        {
+
+            List<string> day = new List<string>();
+            List<string> hour = new List<string>();
+            List<string> status = new List<string>();
+
+            List<List<string>> list = new List<List<string>>();
+
+            list.Add(day);
+            list.Add(hour);
+            list.Add(status);
+            return list;
+        }
+        //TO DO FINISH
+        static public List<List<string>> getMydWarnings()
+        {
+
+            List<string> notes = new List<string>();
+            List<string> avg = new List<string>();
+
+            List<List<string>> list = new List<List<string>>();
+
+            list.Add(notes);
+            list.Add(avg);
+            return list;
+        }
+
+        //TO DO FINISH
+        static public List<List<string>> getMyNotes()
+        {
+
+            List<string> subjects = new List<string>();
+            List<string> notes = new List<string>();
+            List<string> avg = new List<string>();
+
+            List<List<string>> list = new List<List<string>>();
+           
+            list.Add(subjects);
+            list.Add(notes);
+            list.Add(avg);
+            return list;
+        }
+
+        //TO DO FINISH
+        static public List<List<string>> getMyChildPresance()
+        {
+            List<string> names = new List<string>();
+            List<string> day = new List<string>();
+            List<string> hour = new List<string>();
+            List<string> status = new List<string>();
+
+            List<List<string>> list = new List<List<string>>();
+            list.Add(names);
+            list.Add(day);
+            list.Add(hour);
+            list.Add(status);
+            return list;
+        }
+
+        //TO DO FINISH
+        static public List<string> getMyChildWarnings()
+        {
+            string names = "";
+            string notes = "";
+            string avg = "";
+            command.CommandText = $"select imie, tresc, puntky_do_zachowania from uwaga join dane_osobowe on uczen_dane_osobowe_pesel=pesel join opieka on uczen_dane_osobowe_pesel=uczen_pesel and opiekun_pesel={currentPesel}";
+            dataReader = command.ExecuteReader();
+            while (dataReader.Read())
+            {
+                names = names + dataReader[0].ToString() + "\n";
+                notes = notes + dataReader[1].ToString() + "\n";
+                avg = avg + dataReader[2].ToString() + "\n";
+            }
+            List<string> list = new List<string>();
+            dataReader.Close();
+            list.Add(names);
+            list.Add(notes);
+            list.Add(avg);
+            return list;
+        }
+
+        //TO DO FINISH
+        static public List<List<string>> getMyChildNotes(){
+            List<string> names= new List<string>();
+            List<string> subjects = new List<string>();
+            List<string> notes = new List<string>();
+            List<string> avg = new List<string>();
+
+            List<List<string>> list = new List<List<string>>();
+            list.Add(names);
+            list.Add(subjects);
+            list.Add(notes);
+            list.Add(avg);
+            return list;
+                }
+
+
         static public void AddWarning(string whatDidStudentDo, string points, string pesel)
         {
-            command.CommandText = $"INSERT INTO uwaga VALUES(NEXTVAL(uwagaSeq),'{whatDidStudentDo}', {points}, {currentPesel}, {pesel}, CURRENT_DATE) ";
+            var lst = pesel.Split("(");
+            lst[1].Remove(lst[1].Length - 1);
+            command.CommandText = $"INSERT INTO uwaga VALUES(NEXTVAL(uwagaSeq),'{whatDidStudentDo}', {points}, {currentPesel}, {lst[1]}, CURRENT_DATE) ";
             dataReader = command.ExecuteReader();
             dataReader.Close();
         }
 
         static public void AddNote(string value, string description,string category, string subject, string pesel)
         {
-            command.CommandText = $"INSERT INTO ocena VALUES(NEXTVAL(ocenaSeq),{value},CURRENT_DAY,'{description}','{category}','{subject}',{pesel},{currentPesel})";
+            var lst = pesel.Split("(");
+            lst[1].Remove(lst[1].Length - 1);
+            command.CommandText = $"INSERT INTO ocena VALUES(NEXTVAL(ocenaSeq),{value},CURRENT_DAY,'{description}','{category}','{subject}',{lst[1]},{currentPesel})";
             dataReader = command.ExecuteReader();
             dataReader.Close();
+        }
+
+        //TO DO FINISH
+        static public void ChangeNote(string newValue, string desc, string student)
+        {
+            var lst = student.Split("(");
+            var pesel=lst[1].Remove(lst[1].Length - 1);
+        }
+
+        //TO DO FINISH
+        static public void ChangeStatus(string newValue, string date, string student)
+        {
+            var lst = student.Split("(");
+            var pesel = lst[1].Remove(lst[1].Length - 1);
         }
 
         static public void LegitimizeAbsence(string pesel, string data)
@@ -317,6 +441,8 @@ namespace gui
             dataReader.Close();
         }
 
+
+        //TO DO: CHANGE SQL (SYNTAX ERROR)
         static public void AddLesson(string dayOfUnit, string hourOfUnit, string classLetter, string roomNumber, string subject)
         {
             var unit = hourOfUnit.Split(":");
@@ -763,7 +889,9 @@ namespace gui
                 dataReader = command.ExecuteReader();
                 dataReader.Close();
 
-                
+                command.CommandText = "INSERT into status VALUES('inny')";
+                dataReader = command.ExecuteReader();
+                dataReader.Close();
 
                 return true;
             }

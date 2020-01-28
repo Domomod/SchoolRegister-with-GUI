@@ -34,17 +34,11 @@ namespace gui
             }
             if (Backendoptions.isParent())
             {
-                PLegitimizeName = new NSComboBox();
-                PLegitimizeData = new NSComboBox();
+                
             }
             if (Backendoptions.isTeacher())
             {
-                TChePrU = new NSComboBox();
-                TChePrCl = new NSComboBox();
-                TChaPrCL = new NSComboBox();
-                TChaPrSt = new NSComboBox();
-                TChaPrSta = new NSComboBox();
-                TChaPrUn = new NSComboBox();
+               
             }
         }
 
@@ -64,51 +58,44 @@ namespace gui
             var profiles = Backendoptions.GetProfiles();
             var status = Backendoptions.GetStatuses();
             if (Backendoptions.isAdmin())
-            { 
-            AAUnitH.UsesDataSource = true;
-            AAUnitH.DataSource = new MyCombo(listHours);
-            AAddStClass.UsesDataSource = true;
-            AAddStClass.DataSource = new MyCombo(classes);
-            AGrillParent.UsesDataSource = true;
-            AGrillStudent.UsesDataSource = true;
-            AGrillStudent.DataSource = new MyCombo(students);
-            AGrillParent.DataSource = new MyCombo(parents);
-            ACForm.UsesDataSource = true;
-            ACClass.UsesDataSource = true;
-            ACForm.DataSource = new MyCombo(teachers);
-            ACClass.DataSource = new MyCombo(classes);
-            AALessSub.UsesDataSource = true;
-            AALessUH.UsesDataSource = true;
-            AALessRR.UsesDataSource = true;
-            AALessDay.UsesDataSource = true;
-            AALessClL.UsesDataSource = true;
-            var listDay = new List<string>(new string[] { "1", "2", "3", "4", "5", "6" });
-            AALessDay.DataSource = new MyCombo(listDay);
-            AALessSub.DataSource = new MyCombo(subjects);
-            AALessRR.DataSource = new MyCombo(rooms);
-            AALessUH.DataSource = new MyCombo(units);
-            AALessClL.DataSource = new MyCombo(classes);
-            AAClassProfile.UsesDataSource = true;
-            AAClassProfile.DataSource = new MyCombo(profiles);
-            AAClassForm.UsesDataSource = true;
-            AAClassForm.DataSource = new MyCombo(teachers); }
+            {
+                AAUnitH.UsesDataSource = true;
+                AAUnitH.DataSource = new MyCombo(listHours);
+                AAddStClass.UsesDataSource = true;
+                AAddStClass.DataSource = new MyCombo(classes);
+                AGrillParent.UsesDataSource = true;
+                AGrillStudent.UsesDataSource = true;
+                AGrillStudent.DataSource = new MyCombo(students);
+                AGrillParent.DataSource = new MyCombo(parents);
+                ACForm.UsesDataSource = true;
+                ACClass.UsesDataSource = true;
+                ACForm.DataSource = new MyCombo(teachers);
+                ACClass.DataSource = new MyCombo(classes);
+                AALessSub.UsesDataSource = true;
+                AALessUH.UsesDataSource = true;
+                AALessRR.UsesDataSource = true;
+                AALessDay.UsesDataSource = true;
+                AALessClL.UsesDataSource = true;
+                var listDay = new List<string>(new string[] { "1", "2", "3", "4", "5", "6" });
+                AALessDay.DataSource = new MyCombo(listDay);
+                AALessSub.DataSource = new MyCombo(subjects);
+                AALessRR.DataSource = new MyCombo(rooms);
+                AALessUH.DataSource = new MyCombo(units);
+                AALessClL.DataSource = new MyCombo(classes);
+                AAClassProfile.UsesDataSource = true;
+                AAClassProfile.DataSource = new MyCombo(profiles);
+                AAClassForm.UsesDataSource = true;
+                AAClassForm.DataSource = new MyCombo(teachers);
+                
+            }
             if (Backendoptions.isParent())
             {
-                PLegitimizeName.UsesDataSource = true;
-                PLegitimizeData.UsesDataSource = true;
+                
+              
             }
             if (Backendoptions.isTeacher())
             {
-                TChePrCl.UsesDataSource = true;
-                TChePrCl.DataSource = new MyCombo(classes);
-                TChePrU.UsesDataSource = true;
-                TChePrU.DataSource = new MyCombo(units);
-                TChaPrCL.UsesDataSource = true;
-                TChaPrSta.UsesDataSource = true;
-                TChaPrUn.UsesDataSource = true;
-                TChaPrSt.UsesDataSource = true;
-                TChaPrCL.DataSource = new MyCombo(classes);
-                TChaPrSta.DataSource = new MyCombo(status);
+               
             }
         }
 
@@ -129,7 +116,7 @@ namespace gui
 
         partial void FirstUseButton(AppKit.NSButton sender)
         {
-      
+
             Backendoptions.FirstUse();
         }
 
@@ -146,7 +133,7 @@ namespace gui
             else
                 TextOnFirstPage.StringValue = "Illigal valju";
 
-            
+
         }
 
         partial void LogInAsParent(AppKit.NSButton sender)
@@ -156,9 +143,9 @@ namespace gui
                 var storyboard = NSStoryboard.FromName("Main", null);
                 var controller = storyboard.InstantiateControllerWithIdentifier("5") as NSWindowController;
                 controller.ShowWindow(this);
-                
+
             }
-                
+
             else
                 TextOnFirstPage.StringValue = "Błędny pesel";
 
@@ -172,7 +159,7 @@ namespace gui
                 var controller = storyboard.InstantiateControllerWithIdentifier("3") as NSWindowController;
                 controller.ShowWindow(this);
             }
-                
+
             else
                 TextOnFirstPage.StringValue = "Błędny pesel";
         }
@@ -186,7 +173,7 @@ namespace gui
                 var controller = storyboard.InstantiateControllerWithIdentifier("17") as NSWindowController;
                 controller.ShowWindow(this);
             }
-           else
+            else
                 TextOnFirstPage.StringValue = "Błędny pesel";
         }
 
@@ -200,8 +187,8 @@ namespace gui
         partial void AAClassApply(Foundation.NSObject sender)
         {
             int t;
-            if (AAClassLetter.StringValue != "" & checker.IsCorrect(AAClassLetter.StringValue) )
-                if (int.TryParse(AAClassYear.StringValue, out t) & t>2000 & t<3000)
+            if (AAClassLetter.StringValue != "" & checker.IsCorrect(AAClassLetter.StringValue))
+                if (int.TryParse(AAClassYear.StringValue, out t) & t > 2000 & t < 3000)
                     Backendoptions.AddClass(AAClassYear.StringValue, AAClassLetter.StringValue, AAClassForm.StringValue, AAClassProfile.StringValue);
         }
 
@@ -250,10 +237,11 @@ namespace gui
                     if (AAddStHome.StringValue == "" | checker.IsCorrect(AAddStHome.StringValue))
                         if (AAddStMail.StringValue == "" | checker.IsCorrect(AAddStMail.StringValue))
                             if (AAddStNum.StringValue == "" | int.TryParse(AAddStNum.StringValue, out t))
-                                if (int.TryParse(AAddStRegNum.StringValue, out t)) {
-                                   
+                                if (int.TryParse(AAddStRegNum.StringValue, out t))
+                                {
+
                                     Backendoptions.AddStudent(AAddStPesel.StringValue, AAddStName.StringValue, AAddStLast.StringValue, AAddStHome.StringValue, AAddStNum.StringValue, AAddStMail.StringValue, AAddStClass.StringValue, AAddStRegNum.StringValue);
-                                    }
+                                }
         }
 
 
@@ -277,11 +265,6 @@ namespace gui
                 Backendoptions.AddUnit(AAUnitH.StringValue, AAUnitM.StringValue);
         }
 
-        partial void PLegitimizeApply(Foundation.NSObject sender)
-        {
-            Backendoptions.LegitimizeAbsence(PLegitimizeName.StringValue, PLegitimizeData.StringValue);
-
-        }
 
         partial void AAddParApply(Foundation.NSObject sender)
         {
@@ -297,21 +280,47 @@ namespace gui
         }
 
 
-        partial void PLegitimizeSearch(Foundation.NSObject sender) {
+        
 
-            var pesel = Backendoptions.ChildPesel(PLegitimizeName.StringValue);
-            PLegitimizeData.DataSource = new MyCombo(Backendoptions.GetAbsence(pesel));
+
+
+        partial void TANApply(Foundation.NSObject sender)
+        {
+             }
+
+
+       
+
+
+        partial void TAWApply(Foundation.NSObject sender)
+        {
+           
         }
 
-        partial void TChePrApply(Foundation.NSObject sender)
+
+        partial void TChaPrApply(Foundation.NSObject sender)
         {
         }
 
-        partial void TChePrFins(Foundation.NSObject sender) { }
+
+     
+
+
+        partial void TChePrApply(Foundation.NSObject sender)
+        {
+
+        }
+
+
+
+        
+        partial void TCNApply(Foundation.NSObject sender)
+        {
+             }
+
+        
+
 
 
     }
-
-
-    
 }

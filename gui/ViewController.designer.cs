@@ -150,135 +150,9 @@ namespace gui
 		[Outlet]
 		AppKit.NSTextFieldCell PeselInput { get; set; }
 
-		[Outlet]
-		AppKit.NSComboBox PLegitimizeData { get; set; }
+		
 
-		[Outlet]
-		AppKit.NSComboBox PLegitimizeName { get; set; }
-
-		[Outlet]
-		AppKit.NSScrollView PMyChildrenNotes { get; set; }
-
-		[Outlet]
-		AppKit.NSScrollView PMyChildrenPresance { get; set; }
-
-		[Outlet]
-		AppKit.NSScrollView PMyChildrenWarnings { get; set; }
-
-		[Outlet]
-		AppKit.NSTextField PMyInfo { get; set; }
-
-		[Outlet]
-		AppKit.NSTableColumn PNoteAvg { get; set; }
-
-		[Outlet]
-		AppKit.NSTableColumn PNoteChildrenNames { get; set; }
-
-		[Outlet]
-		AppKit.NSTableColumn PNoteChildrenSubject { get; set; }
-
-		[Outlet]
-		AppKit.NSTableColumn PNoteNotes { get; set; }
-
-		[Outlet]
-		AppKit.NSTableColumn PPreData { get; set; }
-
-		[Outlet]
-		AppKit.NSTableColumn PPreName { get; set; }
-
-		[Outlet]
-		AppKit.NSTableColumn PPreStatus { get; set; }
-
-		[Outlet]
-		AppKit.NSTableColumn PPreUnit { get; set; }
-
-		[Outlet]
-		AppKit.NSTableColumn PWarDesc { get; set; }
-
-		[Outlet]
-		AppKit.NSTableColumn PWarName { get; set; }
-
-		[Outlet]
-		AppKit.NSTableColumn PWarPoints { get; set; }
-
-		[Outlet]
-		AppKit.NSScrollView StudentShowMyNotes { get; set; }
-
-		[Outlet]
-		AppKit.NSScrollView StudentShowMyPresance { get; set; }
-
-		[Outlet]
-		AppKit.NSTextField StudentShowMyWarningsPoints { get; set; }
-
-		[Outlet]
-		AppKit.NSScrollView StudentShowMyWarningsTab { get; set; }
-
-		[Outlet]
-		AppKit.NSComboBox TANCat { get; set; }
-
-		[Outlet]
-		AppKit.NSComboBox TANCl { get; set; }
-
-		[Outlet]
-		AppKit.NSTextField TANDesc { get; set; }
-
-		[Outlet]
-		AppKit.NSComboBox TANSt { get; set; }
-
-		[Outlet]
-		AppKit.NSComboBox TANSub { get; set; }
-
-		[Outlet]
-		AppKit.NSComboBox TANVal { get; set; }
-
-		[Outlet]
-		AppKit.NSComboBox TAWCl { get; set; }
-
-		[Outlet]
-		AppKit.NSTextField TAWDesc { get; set; }
-
-		[Outlet]
-		AppKit.NSTextField TAWPoints { get; set; }
-
-		[Outlet]
-		AppKit.NSComboBox TAWSt { get; set; }
-
-		[Outlet]
-		AppKit.NSComboBox TChaPrCL { get; set; }
-
-		[Outlet]
-		AppKit.NSComboBox TChaPrSt { get; set; }
-
-		[Outlet]
-		AppKit.NSComboBox TChaPrSta { get; set; }
-
-		[Outlet]
-		AppKit.NSComboBox TChaPrUn { get; set; }
-
-		[Outlet]
-		AppKit.NSComboBox TChePrCl { get; set; }
-
-		[Outlet]
-		AppKit.NSScrollView TChePrst { get; set; }
-
-		[Outlet]
-		AppKit.NSScrollView TChePrSt { get; set; }
-
-		[Outlet]
-		AppKit.NSComboBox TChePrU { get; set; }
-
-		[Outlet]
-		AppKit.NSComboBox TCNCl { get; set; }
-
-		[Outlet]
-		AppKit.NSComboBox TCNNote { get; set; }
-
-		[Outlet]
-		AppKit.NSComboBox TCNSt { get; set; }
-
-		[Outlet]
-		AppKit.NSComboBox TCNVal { get; set; }
-
+	
 		[Outlet]
 		AppKit.NSTextField TextOnFirstPage { get; set; }
 
@@ -336,144 +210,25 @@ namespace gui
 		[Action ("PLegitimizeApply:")]
 		partial void PLegitimizeApply (Foundation.NSObject sender);
 
-		[Action ("PLegitimizeSearch:")]
-		partial void PLegitimizeSearch (Foundation.NSObject sender);
-
 		[Action ("TANApply:")]
 		partial void TANApply (Foundation.NSObject sender);
-
-		[Action ("TANFind:")]
-		partial void TANFind (Foundation.NSObject sender);
 
 		[Action ("TAWApply:")]
 		partial void TAWApply (Foundation.NSObject sender);
 
-		[Action ("TAWFind:")]
-		partial void TAWFind (Foundation.NSObject sender);
-
 		[Action ("TChaPrApply:")]
 		partial void TChaPrApply (Foundation.NSObject sender);
-
-		[Action ("TChaPrFindPre:")]
-		partial void TChaPrFindPre (Foundation.NSObject sender);
-
-		[Action ("TChaPrFindSt:")]
-		partial void TChaPrFindSt (Foundation.NSObject sender);
 
 		[Action ("TChePrApply:")]
 		partial void TChePrApply (Foundation.NSObject sender);
 
-		[Action ("TChePrFins:")]
-		partial void TChePrFins (Foundation.NSObject sender);
-
 		[Action ("TCNApply:")]
 		partial void TCNApply (Foundation.NSObject sender);
 
-		[Action ("TCNFind:")]
-		partial void TCNFind (Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (PMyInfo != null) {
-				PMyInfo.Dispose ();
-				PMyInfo = null;
-			}
-
-			if (TChaPrSt != null) {
-				TChaPrSt.Dispose ();
-				TChaPrSt = null;
-			}
-
-			if (TChaPrCL != null) {
-				TChaPrCL.Dispose ();
-				TChaPrCL = null;
-			}
-
-			if (TMyInfo != null) {
-				TMyInfo.Dispose ();
-				TMyInfo = null;
-			}
-
-			if (TChaPrUn != null) {
-				TChaPrUn.Dispose ();
-				TChaPrUn = null;
-			}
-
-			if (TChaPrSta != null) {
-				TChaPrSta.Dispose ();
-				TChaPrSta = null;
-			}
-
-			if (TANCl != null) {
-				TANCl.Dispose ();
-				TANCl = null;
-			}
-
-			if (TANSt != null) {
-				TANSt.Dispose ();
-				TANSt = null;
-			}
-
-			if (TANDesc != null) {
-				TANDesc.Dispose ();
-				TANDesc = null;
-			}
-
-			if (TANSub != null) {
-				TANSub.Dispose ();
-				TANSub = null;
-			}
-
-			if (TANCat != null) {
-				TANCat.Dispose ();
-				TANCat = null;
-			}
-
-			if (TANVal != null) {
-				TANVal.Dispose ();
-				TANVal = null;
-			}
-
-			if (TCNCl != null) {
-				TCNCl.Dispose ();
-				TCNCl = null;
-			}
-
-			if (TCNSt != null) {
-				TCNSt.Dispose ();
-				TCNSt = null;
-			}
-
-			if (TCNNote != null) {
-				TCNNote.Dispose ();
-				TCNNote = null;
-			}
-
-			if (TCNVal != null) {
-				TCNVal.Dispose ();
-				TCNVal = null;
-			}
-
-			if (TAWCl != null) {
-				TAWCl.Dispose ();
-				TAWCl = null;
-			}
-
-			if (TAWSt != null) {
-				TAWSt.Dispose ();
-				TAWSt = null;
-			}
-
-			if (TAWPoints != null) {
-				TAWPoints.Dispose ();
-				TAWPoints = null;
-			}
-
-			if (TAWDesc != null) {
-				TAWDesc.Dispose ();
-				TAWDesc = null;
-			}
-
+		
 			if (AAClassForm != null) {
 				AAClassForm.Dispose ();
 				AAClassForm = null;
@@ -703,127 +458,7 @@ namespace gui
 				PeselInput.Dispose ();
 				PeselInput = null;
 			}
-
-			if (PLegitimizeData != null) {
-				PLegitimizeData.Dispose ();
-				PLegitimizeData = null;
-			}
-
-			if (PLegitimizeName != null) {
-				PLegitimizeName.Dispose ();
-				PLegitimizeName = null;
-			}
-
-			if (PMyChildrenNotes != null) {
-				PMyChildrenNotes.Dispose ();
-				PMyChildrenNotes = null;
-			}
-
-			if (PMyChildrenPresance != null) {
-				PMyChildrenPresance.Dispose ();
-				PMyChildrenPresance = null;
-			}
-
-			if (PMyChildrenWarnings != null) {
-				PMyChildrenWarnings.Dispose ();
-				PMyChildrenWarnings = null;
-			}
-
-			if (PNoteAvg != null) {
-				PNoteAvg.Dispose ();
-				PNoteAvg = null;
-			}
-
-			if (PNoteChildrenNames != null) {
-				PNoteChildrenNames.Dispose ();
-				PNoteChildrenNames = null;
-			}
-
-			if (PNoteChildrenSubject != null) {
-				PNoteChildrenSubject.Dispose ();
-				PNoteChildrenSubject = null;
-			}
-
-			if (PNoteNotes != null) {
-				PNoteNotes.Dispose ();
-				PNoteNotes = null;
-			}
-
-			if (PPreData != null) {
-				PPreData.Dispose ();
-				PPreData = null;
-			}
-
-			if (PPreName != null) {
-				PPreName.Dispose ();
-				PPreName = null;
-			}
-
-			if (PPreStatus != null) {
-				PPreStatus.Dispose ();
-				PPreStatus = null;
-			}
-
-			if (PPreUnit != null) {
-				PPreUnit.Dispose ();
-				PPreUnit = null;
-			}
-
-			if (PWarDesc != null) {
-				PWarDesc.Dispose ();
-				PWarDesc = null;
-			}
-
-			if (PWarName != null) {
-				PWarName.Dispose ();
-				PWarName = null;
-			}
-
-			if (PWarPoints != null) {
-				PWarPoints.Dispose ();
-				PWarPoints = null;
-			}
-
-			if (StudentShowMyNotes != null) {
-				StudentShowMyNotes.Dispose ();
-				StudentShowMyNotes = null;
-			}
-
-			if (StudentShowMyPresance != null) {
-				StudentShowMyPresance.Dispose ();
-				StudentShowMyPresance = null;
-			}
-
-			if (StudentShowMyWarningsPoints != null) {
-				StudentShowMyWarningsPoints.Dispose ();
-				StudentShowMyWarningsPoints = null;
-			}
-
-			if (StudentShowMyWarningsTab != null) {
-				StudentShowMyWarningsTab.Dispose ();
-				StudentShowMyWarningsTab = null;
-			}
-
-			if (TChePrCl != null) {
-				TChePrCl.Dispose ();
-				TChePrCl = null;
-			}
-
-			if (TChePrst != null) {
-				TChePrst.Dispose ();
-				TChePrst = null;
-			}
-
-			if (TChePrSt != null) {
-				TChePrSt.Dispose ();
-				TChePrSt = null;
-			}
-
-			if (TChePrU != null) {
-				TChePrU.Dispose ();
-				TChePrU = null;
-			}
-
+ 
 			if (TextOnFirstPage != null) {
 				TextOnFirstPage.Dispose ();
 				TextOnFirstPage = null;
