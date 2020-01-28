@@ -198,7 +198,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="TChaPrApply:" target="XFu-wj-2oS" id="TXJ-8P-iuY"/>
+                                    <action selector="TChaPrApply:" target="XFu-wj-2oS" id="kpe-0f-lUW"/>
                                 </connections>
                             </button>
                             <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kgt-pN-Lc9">
@@ -241,7 +241,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="TChaPrFind:" target="XFu-wj-2oS" id="W6n-21-e1Q"/>
+                                    <action selector="TChaPrFindSt:" target="XFu-wj-2oS" id="RnW-BP-Cfn"/>
                                 </connections>
                             </button>
                             <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dJJ-Oh-qsK">
@@ -298,7 +298,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="TChaPrUFind:" target="XFu-wj-2oS" id="jM5-4r-Oq1"/>
+                                    <action selector="TChaPrFindPre:" target="XFu-wj-2oS" id="wiS-TL-BQ3"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -308,10 +308,13 @@
                         <outlet property="ChangePresanceClass" destination="PKr-q0-Zf1" id="AdE-41-75t"/>
                         <outlet property="ChangePresanceFindStudent" destination="rDA-pD-qpz" id="ywb-nl-uAf"/>
                         <outlet property="ChangePresanceStudent" destination="kgt-pN-Lc9" id="ohS-9F-Ql7"/>
+                        <outlet property="TChaPrCL" destination="PKr-q0-Zf1" id="fF3-j2-6ls"/>
                         <outlet property="TChaPrCl" destination="PKr-q0-Zf1" id="D9w-dU-MZ3"/>
-                        <outlet property="TChaPrSt" destination="kgt-pN-Lc9" id="gxS-bB-c8g"/>
-                        <outlet property="TChaPrSta" destination="YLp-TF-U0P" id="POA-a4-s94"/>
+                        <outlet property="TChaPrFindSt" destination="rDA-pD-qpz" id="P0h-1m-mMQ"/>
+                        <outlet property="TChaPrSt" destination="kgt-pN-Lc9" id="0Pu-kT-L0l"/>
+                        <outlet property="TChaPrSta" destination="YLp-TF-U0P" id="CjV-Nc-CW3"/>
                         <outlet property="TChaPrU" destination="dJJ-Oh-qsK" id="8Nr-3E-UCU"/>
+                        <outlet property="TChaPrUn" destination="dJJ-Oh-qsK" id="7oR-N6-dEe"/>
                         <outlet property="TChangePrApply" destination="mrk-ST-agQ" id="qxW-5n-rmO"/>
                         <outlet property="TChangePrCl" destination="PKr-q0-Zf1" id="N5H-au-esd"/>
                         <outlet property="TChangePrDay" destination="dJJ-Oh-qsK" id="EBD-nS-HfN"/>
@@ -376,7 +379,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <segue destination="90b-dD-dHe" kind="popover" popoverAnchorView="6uH-mI-RZB" popoverBehavior="t" preferredEdge="maxY" id="Lxd-43-q8J"/>
+                                    <segue destination="90b-dD-dHe" kind="popover" popoverAnchorView="6uH-mI-RZB" popoverBehavior="t" preferredEdge="maxY" id="ncH-68-Kb9"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VkD-DM-K3j">
@@ -434,7 +437,7 @@
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="TMyInfo" destination="iOd-Fe-5ck" id="wlG-FF-kZX"/>
+                        <outlet property="TMyInfo" destination="iOd-Fe-5ck" id="7U6-Nr-8pD"/>
                     </connections>
                 </viewController>
                 <customObject id="HtO-3m-wb1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -1559,7 +1562,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="TANApply:" target="I3K-wh-f5s" id="6ZE-hD-IXn"/>
+                                    <action selector="TANApply:" target="I3K-wh-f5s" id="nHN-4X-Viy"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aew-r4-ago">
@@ -1570,7 +1573,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="TANFind:" target="I3K-wh-f5s" id="NzF-Ka-3iH"/>
+                                    <action selector="TANFind:" target="I3K-wh-f5s" id="i6U-5B-hJV"/>
                                 </connections>
                             </button>
                             <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fBT-DP-p7a">
@@ -1621,12 +1624,12 @@
                         <outlet property="AddNoteValue" destination="otp-Bc-xET" id="i8j-Es-h7T"/>
                         <outlet property="AddWarningApply" destination="UDg-k0-35X" id="oEr-Vb-5dq"/>
                         <outlet property="TANApply" destination="UDg-k0-35X" id="6Wa-E4-4zK"/>
-                        <outlet property="TANCat" destination="uO9-rq-ZIb" id="Ge9-Ac-ttm"/>
-                        <outlet property="TANCl" destination="0gl-mK-wtP" id="fKe-DJ-7L0"/>
-                        <outlet property="TANDesc" destination="fp8-5i-ogm" id="tcj-cS-8cG"/>
-                        <outlet property="TANSt" destination="XuK-er-Ot0" id="chr-fd-Ihj"/>
-                        <outlet property="TANSub" destination="fBT-DP-p7a" id="t8R-bd-res"/>
-                        <outlet property="TANVal" destination="otp-Bc-xET" id="M2N-Ie-C2Q"/>
+                        <outlet property="TANCat" destination="uO9-rq-ZIb" id="nvM-h0-lhc"/>
+                        <outlet property="TANCl" destination="0gl-mK-wtP" id="FJE-qF-NYa"/>
+                        <outlet property="TANDesc" destination="fp8-5i-ogm" id="3g0-xG-5zG"/>
+                        <outlet property="TANSt" destination="XuK-er-Ot0" id="Ww4-hF-4Ow"/>
+                        <outlet property="TANSub" destination="fBT-DP-p7a" id="08p-e4-7No"/>
+                        <outlet property="TANVal" destination="otp-Bc-xET" id="Nyp-Md-SCT"/>
                         <outlet property="TAddNoteApply" destination="UDg-k0-35X" id="Hft-hC-e7t"/>
                         <outlet property="TAddNoteCat" destination="uO9-rq-ZIb" id="zeS-MI-6Qe"/>
                         <outlet property="TAddNoteCl" destination="0gl-mK-wtP" id="XMk-gv-qPd"/>
@@ -1708,7 +1711,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="TCNApply:" target="F3p-Xh-fQk" id="a6w-Rp-3bS"/>
+                                    <action selector="TCNApply:" target="F3p-Xh-fQk" id="CPJ-W4-Vfr"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xus-3v-kVE">
@@ -1719,7 +1722,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="TCNFindSt:" target="F3p-Xh-fQk" id="vsi-TI-4xE"/>
+                                    <action selector="TCNFind:" target="F3p-Xh-fQk" id="AOB-10-Eat"/>
                                 </connections>
                             </button>
                             <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZwL-Ej-cxs">
@@ -1779,11 +1782,12 @@
                         <outlet property="ChangeNoteStudent" destination="Vp2-G5-a8k" id="Whl-ZO-eBf"/>
                         <outlet property="ChangeNoteSubject" destination="ZwL-Ej-cxs" id="3pP-jQ-LTV"/>
                         <outlet property="TAddNoteSub" destination="Bqu-S6-6mA" id="BtA-V4-aVr"/>
-                        <outlet property="TCNCl" destination="Bqu-S6-6mA" id="JLi-HZ-Iqv"/>
+                        <outlet property="TCNCl" destination="Bqu-S6-6mA" id="wR5-nc-GbK"/>
                         <outlet property="TCNDes" destination="ZwL-Ej-cxs" id="S7E-RF-rxz"/>
                         <outlet property="TCNFindSt" destination="Xus-3v-kVE" id="23x-hp-Lfj"/>
-                        <outlet property="TCNSt" destination="Vp2-G5-a8k" id="eS1-St-YMo"/>
-                        <outlet property="TCNVal" destination="pJK-ov-ukX" id="SJN-Cf-we1"/>
+                        <outlet property="TCNNote" destination="ZwL-Ej-cxs" id="8aR-qn-rc0"/>
+                        <outlet property="TCNSt" destination="Vp2-G5-a8k" id="PYa-xC-bUg"/>
+                        <outlet property="TCNVal" destination="pJK-ov-ukX" id="Pid-dD-Kpd"/>
                         <outlet property="TChNoteApply" destination="d3v-NC-hxe" id="JWp-WZ-7zs"/>
                         <outlet property="TChNoteCl" destination="Bqu-S6-6mA" id="zb6-eK-Bmh"/>
                         <outlet property="TChNoteFindNote" destination="hMN-tF-XQQ" id="Kta-fQ-kEQ"/>
@@ -1841,7 +1845,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="TAWApply:" target="lPG-Cu-X5p" id="pXc-Fn-rua"/>
+                                    <action selector="TAWApply:" target="lPG-Cu-X5p" id="1Ns-0T-iwq"/>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3vN-Hh-oG0">
@@ -1879,7 +1883,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="TAWFind:" target="lPG-Cu-X5p" id="cJ8-rS-wkp"/>
+                                    <action selector="TAWFind:" target="lPG-Cu-X5p" id="2ke-yg-zP7"/>
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kld-A2-cXv">
@@ -1911,11 +1915,11 @@
                         <outlet property="AddWarningStudent" destination="WIQ-AH-Xdc" id="SOT-lj-Hyq"/>
                         <outlet property="RAWAPply" destination="9jc-kp-eHO" id="3Mx-eT-xam"/>
                         <outlet property="RAWPoints" destination="Kld-A2-cXv" id="npz-V0-yq3"/>
-                        <outlet property="TAWCl" destination="tep-C2-UMf" id="3cl-Vd-1NH"/>
-                        <outlet property="TAWDesc" destination="bwL-Tr-hq2" id="Pbu-nK-Hmk"/>
+                        <outlet property="TAWCl" destination="tep-C2-UMf" id="z12-9e-bfr"/>
+                        <outlet property="TAWDesc" destination="bwL-Tr-hq2" id="xFB-mP-5Bv"/>
                         <outlet property="TAWFind" destination="hDT-35-iQQ" id="SAy-id-fGs"/>
-                        <outlet property="TAWPoints" destination="Kld-A2-cXv" id="OzF-wk-290"/>
-                        <outlet property="TAWSt" destination="WIQ-AH-Xdc" id="Lg9-60-ls1"/>
+                        <outlet property="TAWPoints" destination="Kld-A2-cXv" id="m21-Eh-M7R"/>
+                        <outlet property="TAWSt" destination="WIQ-AH-Xdc" id="tGQ-dR-P59"/>
                         <outlet property="TAWarningSearch" destination="hDT-35-iQQ" id="0TA-db-gdM"/>
                         <outlet property="TAddWarningApply" destination="9jc-kp-eHO" id="hxY-Oc-Dcj"/>
                         <outlet property="TAddWarningClass" destination="tep-C2-UMf" id="KPD-Gh-xzR"/>
@@ -3469,7 +3473,7 @@
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="PMyInfo" destination="Pog-fh-m6a" id="iwv-ip-pKH"/>
+                        <outlet property="PMyInfo" destination="Pog-fh-m6a" id="NhK-cx-FfX"/>
                     </connections>
                 </viewController>
                 <customObject id="1Xu-hZ-JSJ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

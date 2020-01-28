@@ -166,6 +166,9 @@ namespace gui
 		AppKit.NSScrollView PMyChildrenWarnings { get; set; }
 
 		[Outlet]
+		AppKit.NSTextField PMyInfo { get; set; }
+
+		[Outlet]
 		AppKit.NSTableColumn PNoteAvg { get; set; }
 
 		[Outlet]
@@ -211,6 +214,48 @@ namespace gui
 		AppKit.NSScrollView StudentShowMyWarningsTab { get; set; }
 
 		[Outlet]
+		AppKit.NSComboBox TANCat { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox TANCl { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField TANDesc { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox TANSt { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox TANSub { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox TANVal { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox TAWCl { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField TAWDesc { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField TAWPoints { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox TAWSt { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox TChaPrCL { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox TChaPrSt { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox TChaPrSta { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox TChaPrUn { get; set; }
+
+		[Outlet]
 		AppKit.NSComboBox TChePrCl { get; set; }
 
 		[Outlet]
@@ -223,7 +268,22 @@ namespace gui
 		AppKit.NSComboBox TChePrU { get; set; }
 
 		[Outlet]
+		AppKit.NSComboBox TCNCl { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox TCNNote { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox TCNSt { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox TCNVal { get; set; }
+
+		[Outlet]
 		AppKit.NSTextField TextOnFirstPage { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField TMyInfo { get; set; }
 
 		[Action ("AAClassApply:")]
 		partial void AAClassApply (Foundation.NSObject sender);
@@ -279,32 +339,139 @@ namespace gui
 		[Action ("PLegitimizeSearch:")]
 		partial void PLegitimizeSearch (Foundation.NSObject sender);
 
+		[Action ("TANApply:")]
+		partial void TANApply (Foundation.NSObject sender);
+
+		[Action ("TANFind:")]
+		partial void TANFind (Foundation.NSObject sender);
+
+		[Action ("TAWApply:")]
+		partial void TAWApply (Foundation.NSObject sender);
+
+		[Action ("TAWFind:")]
+		partial void TAWFind (Foundation.NSObject sender);
+
+		[Action ("TChaPrApply:")]
+		partial void TChaPrApply (Foundation.NSObject sender);
+
+		[Action ("TChaPrFindPre:")]
+		partial void TChaPrFindPre (Foundation.NSObject sender);
+
+		[Action ("TChaPrFindSt:")]
+		partial void TChaPrFindSt (Foundation.NSObject sender);
+
 		[Action ("TChePrApply:")]
 		partial void TChePrApply (Foundation.NSObject sender);
 
 		[Action ("TChePrFins:")]
 		partial void TChePrFins (Foundation.NSObject sender);
+
+		[Action ("TCNApply:")]
+		partial void TCNApply (Foundation.NSObject sender);
+
+		[Action ("TCNFind:")]
+		partial void TCNFind (Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (TChePrCl != null) {
-				TChePrCl.Dispose ();
-				TChePrCl = null;
+			if (PMyInfo != null) {
+				PMyInfo.Dispose ();
+				PMyInfo = null;
 			}
 
-			if (TChePrU != null) {
-				TChePrU.Dispose ();
-				TChePrU = null;
+			if (TChaPrSt != null) {
+				TChaPrSt.Dispose ();
+				TChaPrSt = null;
 			}
 
-			if (TChePrst != null) {
-				TChePrst.Dispose ();
-				TChePrst = null;
+			if (TChaPrCL != null) {
+				TChaPrCL.Dispose ();
+				TChaPrCL = null;
 			}
 
-			if (TChePrSt != null) {
-				TChePrSt.Dispose ();
-				TChePrSt = null;
+			if (TMyInfo != null) {
+				TMyInfo.Dispose ();
+				TMyInfo = null;
+			}
+
+			if (TChaPrUn != null) {
+				TChaPrUn.Dispose ();
+				TChaPrUn = null;
+			}
+
+			if (TChaPrSta != null) {
+				TChaPrSta.Dispose ();
+				TChaPrSta = null;
+			}
+
+			if (TANCl != null) {
+				TANCl.Dispose ();
+				TANCl = null;
+			}
+
+			if (TANSt != null) {
+				TANSt.Dispose ();
+				TANSt = null;
+			}
+
+			if (TANDesc != null) {
+				TANDesc.Dispose ();
+				TANDesc = null;
+			}
+
+			if (TANSub != null) {
+				TANSub.Dispose ();
+				TANSub = null;
+			}
+
+			if (TANCat != null) {
+				TANCat.Dispose ();
+				TANCat = null;
+			}
+
+			if (TANVal != null) {
+				TANVal.Dispose ();
+				TANVal = null;
+			}
+
+			if (TCNCl != null) {
+				TCNCl.Dispose ();
+				TCNCl = null;
+			}
+
+			if (TCNSt != null) {
+				TCNSt.Dispose ();
+				TCNSt = null;
+			}
+
+			if (TCNNote != null) {
+				TCNNote.Dispose ();
+				TCNNote = null;
+			}
+
+			if (TCNVal != null) {
+				TCNVal.Dispose ();
+				TCNVal = null;
+			}
+
+			if (TAWCl != null) {
+				TAWCl.Dispose ();
+				TAWCl = null;
+			}
+
+			if (TAWSt != null) {
+				TAWSt.Dispose ();
+				TAWSt = null;
+			}
+
+			if (TAWPoints != null) {
+				TAWPoints.Dispose ();
+				TAWPoints = null;
+			}
+
+			if (TAWDesc != null) {
+				TAWDesc.Dispose ();
+				TAWDesc = null;
 			}
 
 			if (AAClassForm != null) {
@@ -635,6 +802,26 @@ namespace gui
 			if (StudentShowMyWarningsTab != null) {
 				StudentShowMyWarningsTab.Dispose ();
 				StudentShowMyWarningsTab = null;
+			}
+
+			if (TChePrCl != null) {
+				TChePrCl.Dispose ();
+				TChePrCl = null;
+			}
+
+			if (TChePrst != null) {
+				TChePrst.Dispose ();
+				TChePrst = null;
+			}
+
+			if (TChePrSt != null) {
+				TChePrSt.Dispose ();
+				TChePrSt = null;
+			}
+
+			if (TChePrU != null) {
+				TChePrU.Dispose ();
+				TChePrU = null;
 			}
 
 			if (TextOnFirstPage != null) {

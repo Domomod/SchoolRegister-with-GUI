@@ -33,6 +33,10 @@ namespace gui
             PLegitimizeData = new NSComboBox();
             TChePrU = new NSComboBox();
             TChePrCl = new NSComboBox();
+            TChaPrCL = new NSComboBox();
+            TChaPrSt = new NSComboBox();
+            TChaPrSt = new NSComboBox();
+            TChaPrUn = new NSComboBox();
         }
 
         public override void ViewDidLoad()
@@ -41,40 +45,62 @@ namespace gui
 
             // Do any additional setup after loading the view.
             var listHours = new List<string>(new string[] { "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16" });
+            var students = Backendoptions.GetAllStudents();
+            var subjects = Backendoptions.GetSubjects();
+            var classes = Backendoptions.GetClasses();
+            var parents = Backendoptions.GetAllParents();
+            var teachers = Backendoptions.GetTeachers();
+            var rooms = Backendoptions.GetRooms();
+            var units = Backendoptions.GetUnits();
+            var profiles = Backendoptions.GetProfiles();
+            var status = Backendoptions.GetStatuses();
+            if (Backendoptions.isAdmin())
+            { 
             AAUnitH.UsesDataSource = true;
             AAUnitH.DataSource = new MyCombo(listHours);
             AAddStClass.UsesDataSource = true;
-            AAddStClass.DataSource = new MyCombo(Backendoptions.GetClasses());
+            AAddStClass.DataSource = new MyCombo(classes);
             AGrillParent.UsesDataSource = true;
             AGrillStudent.UsesDataSource = true;
-            AGrillStudent.DataSource = new MyCombo(Backendoptions.GetAllStudents());
-            AGrillParent.DataSource = new MyCombo(Backendoptions.GetAllParents());
+            AGrillStudent.DataSource = new MyCombo(students);
+            AGrillParent.DataSource = new MyCombo(parents);
             ACForm.UsesDataSource = true;
             ACClass.UsesDataSource = true;
-            ACForm.DataSource = new MyCombo(Backendoptions.GetTeachers());
-            ACClass.DataSource = new MyCombo(Backendoptions.GetClasses());
+            ACForm.DataSource = new MyCombo(teachers);
+            ACClass.DataSource = new MyCombo(classes);
             AALessSub.UsesDataSource = true;
             AALessUH.UsesDataSource = true;
             AALessRR.UsesDataSource = true;
             AALessDay.UsesDataSource = true;
             AALessClL.UsesDataSource = true;
             var listDay = new List<string>(new string[] { "1", "2", "3", "4", "5", "6" });
-            AALessDay.DataSource=new MyCombo(listDay);
-            AALessSub.DataSource = new MyCombo(Backendoptions.GetSubjects());
-            AALessRR.DataSource = new MyCombo(Backendoptions.GetRooms());
-            AALessUH.DataSource = new MyCombo(Backendoptions.GetUnits());
-            AALessClL.DataSource = new MyCombo(Backendoptions.GetClasses());
+            AALessDay.DataSource = new MyCombo(listDay);
+            AALessSub.DataSource = new MyCombo(subjects);
+            AALessRR.DataSource = new MyCombo(rooms);
+            AALessUH.DataSource = new MyCombo(units);
+            AALessClL.DataSource = new MyCombo(classes);
             AAClassProfile.UsesDataSource = true;
-            AAClassProfile.DataSource = new MyCombo(Backendoptions.GetProfiles());
+            AAClassProfile.DataSource = new MyCombo(profiles);
             AAClassForm.UsesDataSource = true;
-            AAClassForm.DataSource = new MyCombo(Backendoptions.GetTeachers());
-            PLegitimizeName.UsesDataSource = true;
-            PLegitimizeData.UsesDataSource = true;
-            TChePrCl.UsesDataSource = true;
-            TChePrCl.DataSource = new MyCombo(Backendoptions.GetClasses());
-            TChePrU.UsesDataSource = true;
-            TChePrU.DataSource = new MyCombo(Backendoptions.GetUnits());
-
+            AAClassForm.DataSource = new MyCombo(teachers); }
+            if (Backendoptions.isParent())
+            {
+                PLegitimizeName.UsesDataSource = true;
+                PLegitimizeData.UsesDataSource = true;
+            }
+            if (Backendoptions.isTeacher())
+            {
+                TChePrCl.UsesDataSource = true;
+                TChePrCl.DataSource = new MyCombo(classes);
+                TChePrU.UsesDataSource = true;
+                TChePrU.DataSource = new MyCombo(units);
+                TChaPrCL.UsesDataSource = true;
+                TChaPrSta.UsesDataSource = true;
+                TChaPrUn.UsesDataSource = true;
+                TChaPrSt.UsesDataSource = true;
+                TChaPrCL.DataSource = new MyCombo(classes);
+                TChaPrSta.DataSource = new MyCombo(status);
+            }
         }
 
 
@@ -103,6 +129,7 @@ namespace gui
         {
             if (PeselInput.StringValue == "666")
             {
+                Backendoptions.setAdmin();
                 var storyboard = NSStoryboard.FromName("Main", null);
                 var controller = storyboard.InstantiateControllerWithIdentifier("2") as NSWindowController;
                 controller.ShowWindow(this);

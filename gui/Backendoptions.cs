@@ -11,6 +11,9 @@ namespace gui
         private static MySqlDataReader dataReader;
         private static MySqlCommand command;
         private static bool open=false;
+        private static bool A = false;
+        private static bool T = false;
+        private static bool P = false;
 
         static public bool IsOpen()
         {
@@ -18,7 +21,26 @@ namespace gui
         }
 
 
+        static public bool isAdmin()
+        {
+            return A;
+        }
 
+        static public bool isTeacher()
+        {
+            return T;
+        }
+
+        static public bool isParent()
+        {
+            return P;
+        }
+
+        static public void setAdmin()
+        {
+            T = P = false;
+            A = true;
+        }
         static public bool OpenConnection()
         {
             try
@@ -216,6 +238,17 @@ namespace gui
             return list;
         }
 
+        static public List<string> GetStatuses()
+        {
+            command.CommandText = "SELECT * FROM status";
+            dataReader = command.ExecuteReader();
+            List<string> list = new List<string>();
+            while (dataReader.Read())
+                list.Add(dataReader[0].ToString());
+            dataReader.Close();
+            return list;
+        }
+
         static public List<string> GetClasses()
         {
             command.CommandText = "SELECT rocznik, literka FROM klasa";
@@ -350,6 +383,7 @@ namespace gui
                         dataReader = command.ExecuteReader();
                         if (dataReader.Read())
                         {
+                            A = T = P = false;
                             dataReader.Close();
                             currentPesel = pesel;
                             return true;
@@ -364,8 +398,6 @@ namespace gui
             
         }
 
-
-
         static public bool LogInAsParent(string pesel)
         {
             try
@@ -376,6 +408,8 @@ namespace gui
                 {
                     dataReader.Close();
                     currentPesel = pesel;
+                    P = true;
+                    A = T = false;
                     return true;
                 }
 
@@ -400,6 +434,8 @@ namespace gui
                         {
                             dataReader.Close();
                     currentPesel = pesel;
+                    T = true;
+                    A = P = false;
                     return true;
                         }
                         dataReader.Close();
@@ -412,13 +448,6 @@ namespace gui
             
         }
 
-        static public bool LogInAdminMode(string pesel)
-        {
-            if (pesel == "666")
-                return true;
-            return false;
-
-        }
 
         static public bool CloseConnection()
         {
