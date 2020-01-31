@@ -35,6 +35,9 @@ namespace gui
             }
             if (Backendoptions.isParent())
             {
+                PChildList = new NSComboBox();
+                PMyInfo = new NSTextField();
+                PLegitimize = new NSComboBox();
                 
             }
             if (Backendoptions.isTeacher())
@@ -116,8 +119,16 @@ namespace gui
             }
             if (Backendoptions.isParent())
             {
-                
-              
+                string stringinfo = "dzieci pod moją opieką:\n";
+                var child = Backendoptions.GetChildren();
+                foreach (var ch in child)
+                {
+                    stringinfo = stringinfo +" "+ ch + ",";
+                }
+                PMyInfo.StringValue = stringinfo.Remove(stringinfo.Length - 1);
+                PChildList.UsesDataSource = true;
+                PChildList.DataSource = new MyCombo(child);
+                PChildList.SelectItem(0);
             }
             if (Backendoptions.isTeacher())
             {
@@ -136,7 +147,6 @@ namespace gui
                 }
                 TNVal.UsesDataSource = true;
                 TNCat.UsesDataSource = true;
-              
                 TNSub.UsesDataSource = true;
                 var values = new List<string>(new string[] {"1","2","2.5","3","3.5","4","4.5","5","5.5","6" });
                 TNVal.DataSource = new MyCombo(values);
@@ -342,7 +352,6 @@ namespace gui
         
 
 
-
         partial void TANApply(Foundation.NSObject sender)
         {
              }
@@ -377,8 +386,12 @@ namespace gui
         {
              }
 
-        
 
+        partial void TCatApply(Foundation.NSObject sender)
+        {
+            if (checker.IsCorrect(TCatNam.StringValue))
+                Backendoptions.AddCategory(TCatNam.StringValue, TCatWeight.StringValue);
+        }
 
 
     }

@@ -2626,6 +2626,19 @@
     <BundleResource Include="Resources\Index\DataStore\v5\units\Dispatch-2M9AOUJY3TW9V.pcm-1RSBCN4JG378R" />
     <BundleResource Include="Resources\Index\DataStore\v5\units\ImageIO-SV8UEN8TMBAR.pcm-3MKBZ9PONASH0" />
     <BundleResource Include="Resources\Index\DataStore\v5\units\CoreServices-2SRTBNLRER772.pcm-3MR074URMJFU1" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\TCheckPrSt.o-NTGTFI4LKHJP" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\UB\ViewController.m-2N1QTF3E5DCUB" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\OT\ViewController.h-2NKLI0U26H6OT" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\TCheckPrSt.o-2G3JUVD8VL6A4" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\NK\ViewController.h-1TMJWJSGLRINK" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\JW\ViewController.m-22FTXKTC2JHJW" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\TCheckPrSt.o-3905TYPUQDLIZ" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\LE\ViewController.m-1EIZG6CLY03LE" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\DB\ViewController.h-6LYC8MZGFDB" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\FN\ViewController.h-1DLHJN5AWWDFN" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\I2\ViewController.h-1C4BKT8KCY0I2" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\48\ViewController.m-31TBP95LSR48" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\TCheckPrSt.o-3B8BTNXOSO76V" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
 </Project>

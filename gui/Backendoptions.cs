@@ -461,6 +461,10 @@ namespace gui
             dataReader.Close();
         }
 
+        static public void AddCategory (string name, string value)
+        {
+
+        }
 
         //TO DO: CHANGE SQL (SYNTAX ERROR)
         static public void AddLesson(string dayOfUnit, string hourOfUnit, string classLetter, string roomNumber, string subject)

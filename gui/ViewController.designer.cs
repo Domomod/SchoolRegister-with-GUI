@@ -148,7 +148,31 @@ namespace gui
 		AppKit.NSComboBox AGrillStudent { get; set; }
 
 		[Outlet]
+		AppKit.NSComboBox PChildList { get; set; }
+
+		[Outlet]
 		AppKit.NSTextFieldCell PeselInput { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox PLegitimize { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField PMyInfo { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField TBest1 { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField TBest2 { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField TBest3 { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField TCatNam { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox TCatWeight { get; set; }
 
 		[Outlet]
 		AppKit.NSComboBox TClass { get; set; }
@@ -261,6 +285,9 @@ namespace gui
 		[Action ("TAWApply:")]
 		partial void TAWApply (Foundation.NSObject sender);
 
+		[Action ("TCatApply:")]
+		partial void TCatApply (Foundation.NSObject sender);
+
 		[Action ("TChaPrApply:")]
 		partial void TChaPrApply (Foundation.NSObject sender);
 
@@ -272,84 +299,24 @@ namespace gui
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (TWDesc != null) {
-				TWDesc.Dispose ();
-				TWDesc = null;
+			if (PChildList != null) {
+				PChildList.Dispose ();
+				PChildList = null;
 			}
 
-			if (TWPoints != null) {
-				TWPoints.Dispose ();
-				TWPoints = null;
+			if (TBest1 != null) {
+				TBest1.Dispose ();
+				TBest1 = null;
 			}
 
-			if (TWSt != null) {
-				TWSt.Dispose ();
-				TWSt = null;
+			if (TBest2 != null) {
+				TBest2.Dispose ();
+				TBest2 = null;
 			}
 
-			if (TCNDesc != null) {
-				TCNDesc.Dispose ();
-				TCNDesc = null;
-			}
-
-			if (TCNVal != null) {
-				TCNVal.Dispose ();
-				TCNVal = null;
-			}
-
-			if (TCNSt != null) {
-				TCNSt.Dispose ();
-				TCNSt = null;
-			}
-
-			if (TNVal != null) {
-				TNVal.Dispose ();
-				TNVal = null;
-			}
-
-			if (TNCat != null) {
-				TNCat.Dispose ();
-				TNCat = null;
-			}
-
-			if (TNSub != null) {
-				TNSub.Dispose ();
-				TNSub = null;
-			}
-
-			if (TNDesc != null) {
-				TNDesc.Dispose ();
-				TNDesc = null;
-			}
-
-			if (TNSt != null) {
-				TNSt.Dispose ();
-				TNSt = null;
-			}
-
-			if (TPreSt != null) {
-				TPreSt.Dispose ();
-				TPreSt = null;
-			}
-
-			if (TClass != null) {
-				TClass.Dispose ();
-				TClass = null;
-			}
-
-			if (TPrUnit != null) {
-				TPrUnit.Dispose ();
-				TPrUnit = null;
-			}
-
-			if (TPreUnit != null) {
-				TPreUnit.Dispose ();
-				TPreUnit = null;
-			}
-
-			if (TPreStat != null) {
-				TPreStat.Dispose ();
-				TPreStat = null;
+			if (TBest3 != null) {
+				TBest3.Dispose ();
+				TBest3 = null;
 			}
 
 			if (AAClassForm != null) {
@@ -582,6 +549,46 @@ namespace gui
 				PeselInput = null;
 			}
 
+			if (PLegitimize != null) {
+				PLegitimize.Dispose ();
+				PLegitimize = null;
+			}
+
+			if (PMyInfo != null) {
+				PMyInfo.Dispose ();
+				PMyInfo = null;
+			}
+
+			if (TCatNam != null) {
+				TCatNam.Dispose ();
+				TCatNam = null;
+			}
+
+			if (TCatWeight != null) {
+				TCatWeight.Dispose ();
+				TCatWeight = null;
+			}
+
+			if (TClass != null) {
+				TClass.Dispose ();
+				TClass = null;
+			}
+
+			if (TCNDesc != null) {
+				TCNDesc.Dispose ();
+				TCNDesc = null;
+			}
+
+			if (TCNSt != null) {
+				TCNSt.Dispose ();
+				TCNSt = null;
+			}
+
+			if (TCNVal != null) {
+				TCNVal.Dispose ();
+				TCNVal = null;
+			}
+
 			if (TextOnFirstPage != null) {
 				TextOnFirstPage.Dispose ();
 				TextOnFirstPage = null;
@@ -590,6 +597,66 @@ namespace gui
 			if (TMyInfo != null) {
 				TMyInfo.Dispose ();
 				TMyInfo = null;
+			}
+
+			if (TNCat != null) {
+				TNCat.Dispose ();
+				TNCat = null;
+			}
+
+			if (TNDesc != null) {
+				TNDesc.Dispose ();
+				TNDesc = null;
+			}
+
+			if (TNSt != null) {
+				TNSt.Dispose ();
+				TNSt = null;
+			}
+
+			if (TNSub != null) {
+				TNSub.Dispose ();
+				TNSub = null;
+			}
+
+			if (TNVal != null) {
+				TNVal.Dispose ();
+				TNVal = null;
+			}
+
+			if (TPreSt != null) {
+				TPreSt.Dispose ();
+				TPreSt = null;
+			}
+
+			if (TPreStat != null) {
+				TPreStat.Dispose ();
+				TPreStat = null;
+			}
+
+			if (TPreUnit != null) {
+				TPreUnit.Dispose ();
+				TPreUnit = null;
+			}
+
+			if (TPrUnit != null) {
+				TPrUnit.Dispose ();
+				TPrUnit = null;
+			}
+
+			if (TWDesc != null) {
+				TWDesc.Dispose ();
+				TWDesc = null;
+			}
+
+			if (TWPoints != null) {
+				TWPoints.Dispose ();
+				TWPoints = null;
+			}
+
+			if (TWSt != null) {
+				TWSt.Dispose ();
+				TWSt = null;
 			}
 		}
 	}
