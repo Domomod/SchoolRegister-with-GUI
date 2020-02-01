@@ -10,6 +10,8 @@ namespace gui
         public static Backendoptions back = new Backendoptions();
         SQLChecker checker;
 
+
+
         public ViewController(IntPtr handle) : base(handle)
         {
 
@@ -31,31 +33,50 @@ namespace gui
                 AALessSub = new NSComboBox();
                 AAClassForm = new NSComboBox();
                 AAClassProfile = new NSComboBox();
-                
+
             }
-            if (Backendoptions.isParent())
+            else
             {
-                PChildList = new NSComboBox();
-                PMyInfo = new NSTextField();
-                PLegitimize = new NSComboBox();
-                
+                if (Backendoptions.isParent())
+                {
+                    PChildList = new NSComboBox();
+                    PMyInfo = new NSTextField();
+                    PLegitimize = new NSComboBox();
+                    PNotes = new NSTextField();
+                    PWarnings = new NSTextField();
+                    PPresance = new NSTextField();
+                }
+                else
+                {
+                    if (Backendoptions.isTeacher())
+                        {
+                            TClass = new NSComboBox();
+                            TWSt = new NSComboBox();
+                            TCNSt = new NSComboBox();
+                            TCNVal = new NSComboBox();
+                            TCNDesc = new NSComboBox();
+                            TNCat = new NSComboBox();
+                            TNSt = new NSComboBox();
+                            TNSub = new NSComboBox();
+                            TNVal = new NSComboBox();
+                            TPreSt = new NSComboBox();
+                            TPreStat = new NSComboBox();
+                            TPreUnit = new NSComboBox();
+                            TPrUnit = new NSComboBox();
+
+                    }
+                    else if (Backendoptions.isStudent())
+                    { 
+                        SWarnings = new NSTextField();
+                        SPresance = new NSTextField();
+                        SPoints = new NSTextField();
+                        SNotes = new NSTextField();
+                        
+                    }
+                }
             }
-            if (Backendoptions.isTeacher())
-            {
-                TClass = new NSComboBox();
-                TWSt = new NSComboBox();
-                TCNSt = new NSComboBox();
-                TCNVal = new NSComboBox();
-                TCNDesc = new NSComboBox();
-                TNCat = new NSComboBox();
-                TNSt = new NSComboBox();
-                TNSub = new NSComboBox();
-                TNVal = new NSComboBox();
-                TPreSt = new NSComboBox();
-                TPreStat = new NSComboBox();
-                TPreUnit = new NSComboBox();
-                TPrUnit = new NSComboBox();
-            }
+            
+            
         }
 
         public override void ViewDidLoad()
@@ -73,115 +94,131 @@ namespace gui
             var units = Backendoptions.GetUnits();
             var profiles = Backendoptions.GetProfiles();
             var status = Backendoptions.GetStatuses();
-            if (Backendoptions.isAdmin())
-            {
-                AAUnitH.UsesDataSource = true;
-                AAUnitH.DataSource = new MyCombo(listHours);
-                AAUnitH.SelectItem(0);
-                AAddStClass.UsesDataSource = true;
-                AAddStClass.DataSource = new MyCombo(classes);
-                AAddStClass.SelectItem(0);
-                AGrillParent.UsesDataSource = true;
-                AGrillStudent.UsesDataSource = true;
-                AGrillStudent.DataSource = new MyCombo(students);
-                AGrillStudent.SelectItem(0);
-                AGrillParent.DataSource = new MyCombo(parents);
-                AGrillParent.SelectItem(0);
-                ACForm.UsesDataSource = true;
-                ACClass.UsesDataSource = true;
-                ACForm.DataSource = new MyCombo(teachers);
-                ACForm.SelectItem(0);
-                ACClass.DataSource = new MyCombo(classes);
-                ACClass.SelectItem(0);
-                AALessSub.UsesDataSource = true;
-                AALessUH.UsesDataSource = true;
-                AALessRR.UsesDataSource = true;
-                AALessDay.UsesDataSource = true;
-                AALessClL.UsesDataSource = true;
-                var listDay = new List<string>(new string[] { "1", "2", "3", "4", "5", "6" });
-                AALessDay.DataSource = new MyCombo(listDay);
-                AALessDay.SelectItem(0);
-                AALessSub.DataSource = new MyCombo(subjects);
-                AALessSub.SelectItem(0);
-                AALessRR.DataSource = new MyCombo(rooms);
-                AALessRR.SelectItem(0);
-                AALessUH.DataSource = new MyCombo(units);
-                AALessUH.SelectItem(0);
-                AALessClL.DataSource = new MyCombo(classes);
-                AALessClL.SelectItem(0);
-                AAClassProfile.UsesDataSource = true;
-                AAClassProfile.DataSource = new MyCombo(profiles);
-                AAClassProfile.SelectItem(0);
-                AAClassForm.UsesDataSource = true;
-                AAClassForm.DataSource = new MyCombo(teachers);
-                AAClassForm.SelectItem(0);
-                
-            }
             if (Backendoptions.isParent())
             {
                 string stringinfo = "dzieci pod moją opieką:\n";
                 var child = Backendoptions.GetChildren();
                 foreach (var ch in child)
                 {
-                    stringinfo = stringinfo +" "+ ch + ",";
+                    stringinfo = stringinfo + " " + ch + ",";
                 }
                 PMyInfo.StringValue = stringinfo.Remove(stringinfo.Length - 1);
                 PChildList.UsesDataSource = true;
                 PChildList.DataSource = new MyCombo(child);
                 PChildList.SelectItem(0);
-            }
-            if (Backendoptions.isTeacher())
-            {
-                TClass.UsesDataSource = true;
-                TClass.DataSource = new MyCombo(classes); 
-                if (Backendoptions.isClassSet())
-                {       TWSt.UsesDataSource = true;
-                        TWSt.DataSource=new MyCombo(Backendoptions.GetStudents());
-                        TNSt.UsesDataSource = true;
-                        TNSt.DataSource= new MyCombo(Backendoptions.GetStudents());
-                    TPreSt.UsesDataSource = true;
-                    TPreSt.DataSource = new MyCombo(Backendoptions.GetStudents());
-                    TWSt.SelectItem(0);
-                    TNSt.SelectItem(0);
-                    TPreSt.SelectItem(0);
+                if (Backendoptions.isChildSet())
+                {
+                    PNotes.StringValue = Backendoptions.getMyChildPresance();//Yes, presance - i've done a mistake while creating names in a builder
+                    PPresance.StringValue = Backendoptions.getMyChildNotes();  //so here are notes
+                    PWarnings.StringValue = Backendoptions.getMyChildWarnings();
+                    PLegitimize.UsesDataSource = true;
+                    PLegitimize.DataSource = new MyCombo(Backendoptions.GetAbsence());
                 }
-                TNVal.UsesDataSource = true;
-                TNCat.UsesDataSource = true;
-                TNSub.UsesDataSource = true;
-                var values = new List<string>(new string[] {"1","2","2.5","3","3.5","4","4.5","5","5.5","6" });
-                TNVal.DataSource = new MyCombo(values);
-                TNSub.DataSource = new MyCombo(subjects);               
-                TNCat.DataSource = new MyCombo(Backendoptions.GetCategories());
-                TPreStat.UsesDataSource = true;
-                TPreUnit.UsesDataSource = true;
-                TPrUnit.UsesDataSource = true;
-                TPrUnit.DataSource = new MyCombo(units);
-                TPreUnit.DataSource = new MyCombo(units);
-                TPreStat.DataSource = new MyCombo(status);
-                TClass.SelectItem(0);
-                TNVal.SelectItem(0);
-                TNSub.SelectItem(0);
-                TNCat.SelectItem(0);
-                TPreStat.SelectItem(0);
-                TPreUnit.SelectItem(0);
-                TPrUnit.SelectItem(0);
+            }
+            else
+            {
+                if (Backendoptions.isAdmin())
+                {
+                    AAUnitH.UsesDataSource = true;
+                    AAUnitH.DataSource = new MyCombo(listHours);
+                    AAUnitH.SelectItem(0);
+                    AAddStClass.UsesDataSource = true;
+                    AAddStClass.DataSource = new MyCombo(classes);
+                    AAddStClass.SelectItem(0);
+                    AGrillParent.UsesDataSource = true;
+                    AGrillStudent.UsesDataSource = true;
+                    AGrillStudent.DataSource = new MyCombo(students);
+                    AGrillStudent.SelectItem(0);
+                    AGrillParent.DataSource = new MyCombo(parents);
+                    AGrillParent.SelectItem(0);
+                    ACForm.UsesDataSource = true;
+                    ACClass.UsesDataSource = true;
+                    ACForm.DataSource = new MyCombo(teachers);
+                    ACForm.SelectItem(0);
+                    ACClass.DataSource = new MyCombo(classes);
+                    ACClass.SelectItem(0);
+                    AALessSub.UsesDataSource = true;
+                    AALessUH.UsesDataSource = true;
+                    AALessRR.UsesDataSource = true;
+                    AALessDay.UsesDataSource = true;
+                    AALessClL.UsesDataSource = true;
+                    var listDay = new List<string>(new string[] { "1", "2", "3", "4", "5", "6" });
+                    AALessDay.DataSource = new MyCombo(listDay);
+                    AALessDay.SelectItem(0);
+                    AALessSub.DataSource = new MyCombo(subjects);
+                    AALessSub.SelectItem(0);
+                    AALessRR.DataSource = new MyCombo(rooms);
+                    AALessRR.SelectItem(0);
+                    AALessUH.DataSource = new MyCombo(units);
+                    AALessUH.SelectItem(0);
+                    AALessClL.DataSource = new MyCombo(classes);
+                    AALessClL.SelectItem(0);
+                    AAClassProfile.UsesDataSource = true;
+                    AAClassProfile.DataSource = new MyCombo(profiles);
+                    AAClassProfile.SelectItem(0);
+                    AAClassForm.UsesDataSource = true;
+                    AAClassForm.DataSource = new MyCombo(teachers);
+                    AAClassForm.SelectItem(0);
+
+                }
+                else
+                {
+                    if (Backendoptions.isTeacher())
+                    {
+                        TClass.UsesDataSource = true;
+                        TClass.DataSource = new MyCombo(classes);
+                        if (Backendoptions.isClassSet())
+                        {
+                            var classstudents = Backendoptions.GetStudents();
+                            TWSt.UsesDataSource = true;
+                            TWSt.DataSource = new MyCombo(classstudents);
+                            TNSt.UsesDataSource = true;
+                            TNSt.DataSource = new MyCombo(classstudents);
+                            TPreSt.UsesDataSource = true;
+                            TPreSt.DataSource = new MyCombo(classstudents);
+                            TWSt.SelectItem(0);
+                            TNSt.SelectItem(0);
+                            TPreSt.SelectItem(0);
+
+                        }
+                        TNVal.UsesDataSource = true;
+                        TNCat.UsesDataSource = true;
+                        TNSub.UsesDataSource = true;
+                        var values = new List<string>(new string[] { "1", "2", "2.5", "3", "3.5", "4", "4.5", "5", "5.5", "6" });
+                        TNVal.DataSource = new MyCombo(values);
+                        TNSub.DataSource = new MyCombo(subjects);
+                        TNCat.DataSource = new MyCombo(Backendoptions.GetCategories());
+                        TPreStat.UsesDataSource = true;
+                        TPreUnit.UsesDataSource = true;
+                        TPrUnit.UsesDataSource = true;
+                        TPrUnit.DataSource = new MyCombo(units);
+                        TPreUnit.DataSource = new MyCombo(units);
+                        TPreStat.DataSource = new MyCombo(status);
+                        TClass.SelectItem(0);
+                        TNVal.SelectItem(0);
+                        TNSub.SelectItem(0);
+                        TNCat.SelectItem(0);
+                        TPreStat.SelectItem(0);
+                        TPreUnit.SelectItem(0);
+                        TPrUnit.SelectItem(0);
+                    }
+                    else
+                    {if (Backendoptions.isStudent())
+                        {
+                        var warning = Backendoptions.getMydWarnings();
+                        SWarnings.StringValue = warning.Item1;
+                            SPoints.StringValue = warning.Item2.ToString();
+                        SNotes.StringValue = Backendoptions.getMyNotes();
+                        SPresance.StringValue = Backendoptions.getMyPresance();
+                        }
+                        
+                    }
+                }
             }
         }
 
 
 
-        public override NSObject RepresentedObject
-        {
-            get
-            {
-                return base.RepresentedObject;
-            }
-            set
-            {
-                base.RepresentedObject = value;
-                // Update the view, if already loaded.
-            }
-        }
 
         partial void FirstUseButton(AppKit.NSButton sender)
         {
@@ -212,7 +249,7 @@ namespace gui
                 var storyboard = NSStoryboard.FromName("Main", null);
                 var controller = storyboard.InstantiateControllerWithIdentifier("5") as NSWindowController;
                 controller.ShowWindow(this);
-
+                TextOnFirstPage.StringValue = "Zalogowano";
             }
 
             else
@@ -227,6 +264,7 @@ namespace gui
                 var storyboard = NSStoryboard.FromName("Main", null);
                 var controller = storyboard.InstantiateControllerWithIdentifier("3") as NSWindowController;
                 controller.ShowWindow(this);
+                TextOnFirstPage.StringValue = "Zalogowano";
             }
 
             else
@@ -241,6 +279,7 @@ namespace gui
                 var storyboard = NSStoryboard.FromName("Main", null);
                 var controller = storyboard.InstantiateControllerWithIdentifier("17") as NSWindowController;
                 controller.ShowWindow(this);
+                TextOnFirstPage.StringValue = "Zalogowano";
             }
             else
                 TextOnFirstPage.StringValue = "Błędny pesel";
@@ -354,7 +393,10 @@ namespace gui
 
         partial void TANApply(Foundation.NSObject sender)
         {
-             }
+            if (checker.IsCorrect(TNDesc.StringValue))
+                Backendoptions.AddNote(TNVal.StringValue, TNDesc.StringValue, TNCat.StringValue, TNSub.StringValue, TNSt.StringValue);
+
+         }
 
 
        
@@ -362,7 +404,9 @@ namespace gui
 
         partial void TAWApply(Foundation.NSObject sender)
         {
-           
+            int t;
+            if (checker.IsCorrect(TWDesc.StringValue) & int.TryParse(TWPoints.StringValue, out t))
+                Backendoptions.AddWarning(TWDesc.StringValue, TWPoints.StringValue, TWSt.StringValue);
         }
 
 
@@ -391,6 +435,17 @@ namespace gui
         {
             if (checker.IsCorrect(TCatNam.StringValue))
                 Backendoptions.AddCategory(TCatNam.StringValue, TCatWeight.StringValue);
+        }
+
+
+        partial void PChildApply(Foundation.NSObject sender)
+        {
+            Backendoptions.setChild(PChildList.StringValue);
+        }
+
+        partial void TClassApply(Foundation.NSObject sender)
+        {
+            Backendoptions.setClass(TClass.StringValue);
         }
 
 

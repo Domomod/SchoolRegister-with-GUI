@@ -160,6 +160,27 @@ namespace gui
 		AppKit.NSTextField PMyInfo { get; set; }
 
 		[Outlet]
+		AppKit.NSTextField PNotes { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField PPresance { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField PWarnings { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField SNotes { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField SPoints { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField SPresance { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField SWarnings { get; set; }
+
+		[Outlet]
 		AppKit.NSTextField TBest1 { get; set; }
 
 		[Outlet]
@@ -176,6 +197,7 @@ namespace gui
 
 		[Outlet]
 		AppKit.NSComboBox TClass { get; set; }
+
 
 		[Outlet]
 		AppKit.NSComboBox TCNDesc { get; set; }
@@ -276,6 +298,9 @@ namespace gui
 		[Action ("LogInAsTeacher:")]
 		partial void LogInAsTeacher (AppKit.NSButton sender);
 
+		[Action ("PChildApply:")]
+		partial void PChildApply (Foundation.NSObject sender);
+
 		[Action ("PLegitimizeApply:")]
 		partial void PLegitimizeApply (Foundation.NSObject sender);
 
@@ -294,31 +319,14 @@ namespace gui
 		[Action ("TChePrApply:")]
 		partial void TChePrApply (Foundation.NSObject sender);
 
+		[Action ("TClassApply:")]
+		partial void TClassApply (Foundation.NSObject sender);
+
 		[Action ("TCNApply:")]
 		partial void TCNApply (Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (PChildList != null) {
-				PChildList.Dispose ();
-				PChildList = null;
-			}
-
-			if (TBest1 != null) {
-				TBest1.Dispose ();
-				TBest1 = null;
-			}
-
-			if (TBest2 != null) {
-				TBest2.Dispose ();
-				TBest2 = null;
-			}
-
-			if (TBest3 != null) {
-				TBest3.Dispose ();
-				TBest3 = null;
-			}
-
 			if (AAClassForm != null) {
 				AAClassForm.Dispose ();
 				AAClassForm = null;
@@ -544,6 +552,11 @@ namespace gui
 				AGrillStudent = null;
 			}
 
+			if (PChildList != null) {
+				PChildList.Dispose ();
+				PChildList = null;
+			}
+
 			if (PeselInput != null) {
 				PeselInput.Dispose ();
 				PeselInput = null;
@@ -557,6 +570,56 @@ namespace gui
 			if (PMyInfo != null) {
 				PMyInfo.Dispose ();
 				PMyInfo = null;
+			}
+
+			if (PNotes != null) {
+				PNotes.Dispose ();
+				PNotes = null;
+			}
+
+			if (PPresance != null) {
+				PPresance.Dispose ();
+				PPresance = null;
+			}
+
+			if (PWarnings != null) {
+				PWarnings.Dispose ();
+				PWarnings = null;
+			}
+
+			if (SNotes != null) {
+				SNotes.Dispose ();
+				SNotes = null;
+			}
+
+			if (SPoints != null) {
+				SPoints.Dispose ();
+				SPoints = null;
+			}
+
+			if (SPresance != null) {
+				SPresance.Dispose ();
+				SPresance = null;
+			}
+
+			if (SWarnings != null) {
+				SWarnings.Dispose ();
+				SWarnings = null;
+			}
+
+			if (TBest1 != null) {
+				TBest1.Dispose ();
+				TBest1 = null;
+			}
+
+			if (TBest2 != null) {
+				TBest2.Dispose ();
+				TBest2 = null;
+			}
+
+			if (TBest3 != null) {
+				TBest3.Dispose ();
+				TBest3 = null;
 			}
 
 			if (TCatNam != null) {
@@ -573,6 +636,7 @@ namespace gui
 				TClass.Dispose ();
 				TClass = null;
 			}
+
 
 			if (TCNDesc != null) {
 				TCNDesc.Dispose ();

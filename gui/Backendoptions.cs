@@ -14,6 +14,7 @@ namespace gui
         private static bool A = false;
         private static bool T = false;
         private static bool P = false;
+        private static bool S = false;
         private static string currentClass="";
         private static string currentChild="";
         
@@ -32,7 +33,9 @@ namespace gui
         }
         static public void setChild(string child)
         {
-            currentChild = child;
+            var childdata = child.Split("(");
+            currentChild=childdata[1].Remove(childdata[1].Length - 1);
+            
         }
         static public bool IsOpen()
         {
@@ -49,6 +52,10 @@ namespace gui
         static public bool isParent()
         {
             return P;
+        }
+        static public bool isStudent()
+        {
+            return S;
         }
         static public void setAdmin()
         {
@@ -85,103 +92,121 @@ namespace gui
             return data;
         }
 
-        //TO Do FINISH
-        static public List<List<string>> getMyPresance()
+
+        static public string getMyPresance()
         {
-
-            List<string> day = new List<string>();
-            List<string> hour = new List<string>();
-            List<string> status = new List<string>();
-
-            List<List<string>> list = new List<List<string>>();
-
-            list.Add(day);
-            list.Add(hour);
-            list.Add(status);
-            return list;
-        }
-        //TO DO FINISH
-        static public List<List<string>> getMydWarnings()
-        {
-
-            List<string> notes = new List<string>();
-            List<string> avg = new List<string>();
-
-            List<List<string>> list = new List<List<string>>();
-
-            list.Add(notes);
-            list.Add(avg);
-            return list;
-        }
-
-        //TO DO FINISH
-        static public List<List<string>> getMyNotes()
-        {
-
-            List<string> subjects = new List<string>();
-            List<string> notes = new List<string>();
-            List<string> avg = new List<string>();
-
-            List<List<string>> list = new List<List<string>>();
-           
-            list.Add(subjects);
-            list.Add(notes);
-            list.Add(avg);
-            return list;
-        }
-
-        //TO DO FINISH
-        static public List<List<string>> getMyChildPresance()
-        {
-            List<string> names = new List<string>();
-            List<string> day = new List<string>();
-            List<string> hour = new List<string>();
-            List<string> status = new List<string>();
-
-            List<List<string>> list = new List<List<string>>();
-            list.Add(names);
-            list.Add(day);
-            list.Add(hour);
-            list.Add(status);
-            return list;
-        }
-
-        //TO DO FINISH
-        static public List<string> getMyChildWarnings()
-        {
-            string names = "";
-            string notes = "";
-            string avg = "";
-            command.CommandText = $"select imie, tresc, puntky_do_zachowania from uwaga join dane_osobowe on uczen_dane_osobowe_pesel=pesel join opieka on uczen_dane_osobowe_pesel=uczen_pesel and opiekun_pesel={currentPesel}";
+            var presance = "data\t\t\t godzina\t\t status\n";
+            command.CommandText = $"SELECT data, lekcja_jednostka_godzina, lekcja_jednostka_minuta, status_nazwa FROM obecnosc where uczen_pesel={currentPesel} and CURRENT_DATE - data <14 ORDER BY data DESC";
             dataReader = command.ExecuteReader();
             while (dataReader.Read())
             {
-                names = names + dataReader[0].ToString() + "\n";
-                notes = notes + dataReader[1].ToString() + "\n";
-                avg = avg + dataReader[2].ToString() + "\n";
+                var record = dataReader[0].ToString() + "\t" + dataReader[1].ToString() + ":" + dataReader[2].ToString() + "\t" + dataReader[3].ToString() + "\n";
+                presance += record;
             }
-            List<string> list = new List<string>();
             dataReader.Close();
-            list.Add(names);
-            list.Add(notes);
-            list.Add(avg);
-            return list;
+            return presance;
         }
 
-        //TO DO FINISH
-        static public List<List<string>> getMyChildNotes(){
-            List<string> names= new List<string>();
-            List<string> subjects = new List<string>();
-            List<string> notes = new List<string>();
-            List<string> avg = new List<string>();
+        static public Tuple<string, int> getMydWarnings()
+        {
 
-            List<List<string>> list = new List<List<string>>();
-            list.Add(names);
-            list.Add(subjects);
-            list.Add(notes);
-            list.Add(avg);
-            return list;
+            string notes= "";
+            int sum = 0;
+            command.CommandText = $"select data, tresc, puntky_do_zachowania from uwaga where uczen_dane_osobowe_pesel={currentPesel}";
+            dataReader = command.ExecuteReader();
+            while (dataReader.Read())
+            {
+                var record = dataReader[0].ToString() + "\t" + dataReader[1].ToString() + "\n";
+                notes += record;
+                sum += int.Parse(dataReader[2].ToString());
+            }
+            dataReader.Close();
+
+            var tup = Tuple.Create<string, int>(notes, sum);
+            return tup;
+        }
+
+ 
+        static public string getMyNotes()
+        {
+            var notes = "";
+            var subject = "";
+            var record = "";
+            command.CommandText = $"select przedmiot_nazwa_przedmiotu, ocena from ocena where uczen_dane_osobowe_pesel={currentPesel} order by przedmiot_nazwa_przedmiotu desc";
+            dataReader = command.ExecuteReader();
+            while(dataReader.Read())
+            {
+             if (dataReader[0].ToString() != subject)
+                {
+                    record += "\n";
+                    notes += record;
+                    subject = dataReader[0].ToString();
+                    record = dataReader[0].ToString() + "\t" + dataReader[1].ToString();
                 }
+                else
+                {
+                    record = record + ", " + dataReader[1].ToString();
+                }
+            }
+            notes += record;
+            dataReader.Close();
+            return notes;
+        }
+
+
+        static public string getMyChildPresance()
+        {
+            var presance = "data\t\t\t godzina\t\t status\n";
+            command.CommandText = $"SELECT data, lekcja_jednostka_godzina, lekcja_jednostka_minuta, status_nazwa FROM obecnosc where uczen_pesel={currentChild} and CURRENT_DATE - data <14 ORDER BY data DESC";
+            dataReader = command.ExecuteReader();
+            while (dataReader.Read())
+            {
+                var record = dataReader[0].ToString() + "\t" + dataReader[1].ToString() + ":" + dataReader[2].ToString() + "\t" + dataReader[3].ToString() + "\n";
+                presance += record;
+            }
+            dataReader.Close();
+            return presance;
+        }
+
+    
+        static public string getMyChildWarnings()
+        {
+            string notes = "";
+            command.CommandText = $"select data, tresc, puntky_do_zachowania from uwaga where uczen_dane_osobowe_pesel={currentChild}";
+            dataReader = command.ExecuteReader();
+            while (dataReader.Read())
+            {
+                var record = dataReader[0].ToString() + "\t"+dataReader[2].ToString()+":" + dataReader[1].ToString() + "\n";
+            }
+            dataReader.Close();
+            return notes;
+        }
+
+
+        static public string getMyChildNotes(){
+            var notes = "";
+            var subject = "";
+            var record = "";
+            command.CommandText = $"select przedmiot_nazwa_przedmiotu, ocena from ocena where uczen_dane_osobowe_pesel={currentChild} order by przedmiot_nazwa_przedmiotu desc";
+            dataReader = command.ExecuteReader();
+            while (dataReader.Read())
+            {
+                if (dataReader[0].ToString() != subject)
+                {
+                    record += "\n";
+                    notes += record;
+                    subject = dataReader[0].ToString();
+                    record = dataReader[0].ToString() + "\t" + dataReader[1].ToString();
+                }
+                else
+                {
+                    record = record + ", " + dataReader[1].ToString();
+                }
+            }
+            notes += record;
+            dataReader.Close();
+            return notes;
+        }
 
 
         static public void AddWarning(string whatDidStudentDo, string points, string pesel)
@@ -196,8 +221,8 @@ namespace gui
         static public void AddNote(string value, string description,string category, string subject, string pesel)
         {
             var lst = pesel.Split("(");
-            lst[1].Remove(lst[1].Length - 1);
-            command.CommandText = $"INSERT INTO ocena VALUES(NEXTVAL(ocenaSeq),{value},CURRENT_DAY,'{description}','{category}','{subject}',{lst[1]},{currentPesel})";
+            var childpesel=lst[1].Remove(lst[1].Length - 1);
+            command.CommandText = $"INSERT INTO ocena VALUES(NEXTVAL(ocenaSeq),{value},CURRENT_DATE,'{description}','{category}','{subject}',{childpesel},{currentPesel})";
             dataReader = command.ExecuteReader();
             dataReader.Close();
         }
@@ -216,11 +241,10 @@ namespace gui
             var pesel = lst[1].Remove(lst[1].Length - 1);
         }
 
-        static public void LegitimizeAbsence(string pesel, string data)
+        static public void LegitimizeAbsence(string data)
         {
-            var lst = pesel.Split("(");
-            lst[1].Remove(lst[1].Length - 1);
-            command.CommandText = $"UPDATE obecnosc SET status = 'usprawiedliwiony' WHERE  status='nieobecny' and data={data} and uczen_pesel={pesel}";
+         
+            command.CommandText = $"UPDATE obecnosc SET status = 'usprawiedliwiony' WHERE  status='nieobecny' and data={data} and uczen_pesel={currentChild}";
             dataReader = command.ExecuteReader();
             dataReader.Close();
 
@@ -343,11 +367,9 @@ namespace gui
             return list;
         }
 
-        static public List<string> GetAbsence(string pesel)
+        static public List<string> GetAbsence()
         {
-            var lst = pesel.Split("(");
-            lst[1].Remove(lst[1].Length - 1);
-            command.CommandText = $"SELECT data, lekcja_dzien_tygodnia, lekcja_jednostka_godzina, lekcja_jednostka_minuta FROM obecnosc where uczen_pesel={lst[1]} and status='nieobecny' and CURRENT_DATE-data <14";
+            command.CommandText = $"SELECT data, lekcja_dzien_tygodnia, lekcja_jednostka_godzina, lekcja_jednostka_minuta FROM obecnosc where uczen_pesel={currentChild} and status_nazwa='nieobecny' and CURRENT_DATE-data <14";
             dataReader = command.ExecuteReader();
             List<string> list = new List<string>();
             while (dataReader.Read())
@@ -358,7 +380,7 @@ namespace gui
 
         static public List<string> GetChildren()
         {
-            command.CommandText = $"SELECT imie, pesel FROM dane_osobowe JOIN opieka on pesel=uczen_pesel where opiekun_pesel=99999999999";
+            command.CommandText = $"SELECT imie, pesel FROM dane_osobowe JOIN opieka on pesel=uczen_pesel where opiekun_pesel={currentPesel}";
             dataReader = command.ExecuteReader();
             List<string> list = new List<string>();
             while (dataReader.Read())
@@ -371,12 +393,12 @@ namespace gui
         {
             var letter = currentClass[4].ToString();
             var classyear = currentClass.Remove(4);
-            command.CommandText = $"SELECT imie, nazwisko FROM dane_osobowe JOIn uczen where pesel=dane_osobowe_penel WHERE klasa_rocznik={classyear} and klasa_literka={letter}";
+            command.CommandText = $"SELECT imie, nazwisko, pesel FROM dane_osobowe JOIn uczen on pesel=dane_osobowe_pesel WHERE klasa_rocznik={classyear} and klasa_literka='{letter}'";
             dataReader = command.ExecuteReader();
             List<string> list = new List<string>();
             while (dataReader.Read())
             {
-                list.Add(dataReader[0].ToString() + " " + dataReader[1].ToString());
+                list.Add(dataReader[0].ToString() + " " + dataReader[1].ToString()+"("+dataReader[2].ToString()+")");
             }
             dataReader.Close();
             return list;
@@ -463,7 +485,7 @@ namespace gui
 
         static public void AddCategory (string name, string value)
         {
-
+            command.CommandText = $"INSERT into kategoria VALUES ('{name}',{value})";
         }
 
         //TO DO: CHANGE SQL (SYNTAX ERROR)
@@ -534,6 +556,7 @@ namespace gui
                         if (dataReader.Read())
                         {
                             A = T = P = false;
+                    S = true;
                             dataReader.Close();
                             currentPesel = pesel;
                             return true;
@@ -559,7 +582,7 @@ namespace gui
                     dataReader.Close();
                     currentPesel = pesel;
                     P = true;
-                    A = T = false;
+                    A = T =S= false;
                     return true;
                 }
 
@@ -585,7 +608,7 @@ namespace gui
                             dataReader.Close();
                     currentPesel = pesel;
                     T = true;
-                    A = P = false;
+                    A = P =S= false;
                     return true;
                         }
                         dataReader.Close();
