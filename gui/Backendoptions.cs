@@ -448,6 +448,11 @@ namespace gui
             dataReader = command.ExecuteReader();
             dataReader.Close();
         }
+        //TO DO FINISH
+        static public void AddPresance(string hour, string pesel, string status)
+        {
+
+        }
 
         static public void AddTeacher(string pesel, string names, string lastName, string home, string phoneNum, string mail, string etat)
         {

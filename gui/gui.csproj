@@ -2670,6 +2670,15 @@
     <BundleResource Include="Resources\Index\DataStore\v5\records\N4\ViewController.m-E7NAWH8A6XN4" />
     <BundleResource Include="Resources\Index\DataStore\v5\records\GJ\ViewController.h-1DW0SJXRQ3DGJ" />
     <BundleResource Include="Resources\Index\DataStore\v5\units\TCheckPrSt.o-1200E5RTTYH1R" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\L4\ViewController.m-BAHRHM0KALL4" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\KS\ViewController.h-171NGCV3XC5KS" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\XP\ViewController.h-3MQIPREP66FXP" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\TCheckPrSt.o-U7U8ZZCURUBG" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\KL\ViewController.h-2WBG4WA47J3KL" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\NQ\ViewController.h-Y3BYTRM1X2NQ" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\DY\ViewController.m-1B39SQ2SZOHDY" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\7A\ViewController.m-274SJ4MIBTI7A" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\TCheckPrSt.o-W6FDBK453A1O" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
 </Project>

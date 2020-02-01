@@ -196,8 +196,13 @@ namespace gui
 		AppKit.NSComboBox TCatWeight { get; set; }
 
 		[Outlet]
-		AppKit.NSComboBox TClass { get; set; }
+		AppKit.NSTextField TCheckPresance { get; set; }
 
+		[Outlet]
+		AppKit.NSTextField TCheckStudent { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox TClass { get; set; }
 
 		[Outlet]
 		AppKit.NSComboBox TCNDesc { get; set; }
@@ -327,6 +332,16 @@ namespace gui
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (TCheckStudent != null) {
+				TCheckStudent.Dispose ();
+				TCheckStudent = null;
+			}
+
+			if (TCheckPresance != null) {
+				TCheckPresance.Dispose ();
+				TCheckPresance = null;
+			}
+
 			if (AAClassForm != null) {
 				AAClassForm.Dispose ();
 				AAClassForm = null;
@@ -636,7 +651,6 @@ namespace gui
 				TClass.Dispose ();
 				TClass = null;
 			}
-
 
 			if (TCNDesc != null) {
 				TCNDesc.Dispose ();

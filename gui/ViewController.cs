@@ -63,7 +63,9 @@ namespace gui
                             TPreStat = new NSComboBox();
                             TPreUnit = new NSComboBox();
                             TPrUnit = new NSComboBox();
-
+                        TCheckPresance = new NSTextField();
+                        TCheckStudent = new NSTextField();
+                        
                     }
                     else if (Backendoptions.isStudent())
                     { 
@@ -179,7 +181,15 @@ namespace gui
                             TWSt.SelectItem(0);
                             TNSt.SelectItem(0);
                             TPreSt.SelectItem(0);
-
+                            string studentsstring = "", presance = "";
+                            foreach(var st in classstudents)
+                            {
+                                studentsstring = studentsstring + st + "\n";
+                                presance += "obecny\n";
+                            }
+                            TCheckStudent.StringValue = studentsstring;
+                            TCheckPresance.StringValue = presance;
+                            
                         }
                         TNVal.UsesDataSource = true;
                         TNCat.UsesDataSource = true;
@@ -316,7 +326,7 @@ namespace gui
             Backendoptions.Grill(parent, child);
 
         }
-        //SQL error :(
+
         partial void AALessonApply(Foundation.NSObject sender)
         {
             var clas = AALessClL.StringValue;
@@ -420,7 +430,15 @@ namespace gui
 
         partial void TChePrApply(Foundation.NSObject sender)
         {
-
+            var studentlist = TCheckStudent.StringValue.Split("\n");
+            var presancelist = TCheckPresance.StringValue.Split("\n");
+            for (int i=0; i< studentlist.Length; i++)
+            {
+                if (checker.IsStatus(presancelist[i]))
+                    Backendoptions.AddPresance(TPrUnit.StringValue, studentlist[i], presancelist[i]);
+                else
+                    Backendoptions.AddPresance(TPrUnit.StringValue, studentlist[i], "inny");
+            }
         }
 
 

@@ -60,5 +60,22 @@ namespace gui
             }
             return true;
         }
+
+        public bool IsStatus(string text)
+        {
+            switch (text)
+            {
+               case "nieobecny":
+            return true;
+                case "obecny":
+                    return true;
+                case "usprawiedliwiony":
+                    return true;
+                case "inny":
+                    return true;
+                default:
+                    return false;
+            }
+        }
     }
 }
