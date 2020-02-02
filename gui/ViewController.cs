@@ -276,8 +276,15 @@ namespace gui
 
         partial void FirstUseButton(AppKit.NSButton sender)
         {
-
-            Backendoptions.FirstUse();
+            try
+            {
+                Backendoptions.FirstUse();
+            }
+            catch (Exception ex)
+            {
+                ;
+            }
+            
         }
 
 
@@ -341,9 +348,16 @@ namespace gui
 
         partial void AASubApply(Foundation.NSObject sender)
         {
-            if (AASub.StringValue != "" & checker.IsCorrect(AASub.StringValue))
+            try
+            {
+if (AASub.StringValue != "" & checker.IsCorrect(AASub.StringValue))
                 Backendoptions.AddSubject(AASub.StringValue);
-
+            }
+            
+            catch( Exception ex)
+            {
+                ;
+            }
         }
 
         partial void AAClassApply(Foundation.NSObject sender)
@@ -370,28 +384,41 @@ namespace gui
 
         partial void AAFOrmApply(Foundation.NSObject sender)
         {
-
-            var tutor = ACForm.StringValue;
-            var clas = ACClass.StringValue;
-            Backendoptions.ChangeFormTutor(tutor, clas);
+            try
+            {
+            Backendoptions.ChangeFormTutor(ACForm.StringValue, ACClass.StringValue);
+            }
+            catch(Exception ex)
+            {
+                ;
+            }
+            
         }
 
         partial void AAGrilApply(Foundation.NSObject sender)
         {
-            string parent = AGrillParent.StringValue;
-            string child = AGrillStudent.StringValue;
-            Backendoptions.Grill(parent, child);
+            try
+            {
+Backendoptions.Grill(AGrillParent.StringValue, AGrillStudent.StringValue);
+            }
+            catch (Exception ex)
+            {
+                ;
+            }
 
         }
 
         partial void AALessonApply(Foundation.NSObject sender)
         {
-            var clas = AALessClL.StringValue;
-            var room = AALessRR.StringValue;
-            var day = AALessDay.StringValue;
-            var unitHour = AALessUH.StringValue;
-            var subject = AALessSub.StringValue;
-            Backendoptions.AddLesson(day, unitHour, clas, room, subject);
+            try
+            {
+ Backendoptions.AddLesson(AALessDay.StringValue, AALessUH.StringValue, AALessClL.StringValue, AALessRR.StringValue, AALessSub.StringValue);
+            }
+            catch (Exception ex)
+            {
+                ;
+            }
+           
         }
 
         partial void AARoomAPply(Foundation.NSObject sender)
@@ -593,6 +620,15 @@ namespace gui
 
         partial void TChaPrApply(Foundation.NSObject sender)
         {
+            try
+            {
+                Backendoptions.ChangeStatus(TPreStat.StringValue, TPreUnit.StringValue, TPreSt.StringValue);
+            }
+
+            catch (Exception ex)
+            {
+                ;
+            }
         }
 
 
@@ -600,15 +636,21 @@ namespace gui
 
 
         partial void TChePrApply(Foundation.NSObject sender)
-        {
-            var studentlist = TCheckStudent.StringValue.Split("\n");
-            var presancelist = TCheckPresance.StringValue.Split("\n");
-            for (int i=0; i< studentlist.Length; i++)
+        {try
             {
-                if (checker.IsStatus(presancelist[i]))
-                    Backendoptions.AddPresance(TPrUnit.StringValue, studentlist[i], presancelist[i]);
-                else
-                    Backendoptions.AddPresance(TPrUnit.StringValue, studentlist[i], "inny");
+                var studentlist = TCheckStudent.StringValue.Split("\n");
+                var presancelist = TCheckPresance.StringValue.Split("\n");
+                for (int i = 0; i < studentlist.Length; i++)
+                {
+                    if (checker.IsStatus(presancelist[i]))
+                        Backendoptions.AddPresance(TPrUnit.StringValue, studentlist[i], presancelist[i]);
+                    else
+                        Backendoptions.AddPresance(TPrUnit.StringValue, studentlist[i], "inny");
+                }
+            }
+            catch(Exception ex)
+            {
+                ;
             }
         }
 
@@ -617,30 +659,66 @@ namespace gui
         
         partial void TCNApply(Foundation.NSObject sender)
         {
+            try
+            {
+                Backendoptions.ChangeNote(TCNVal.StringValue, TCNDesc.StringValue, TCNSt.StringValue);
+            }
+            catch (Exception ex)
+            {
+                ;
+            }
              }
 
 
         partial void TCatApply(Foundation.NSObject sender)
         {
-            if (checker.IsCorrect(TCatNam.StringValue))
-                Backendoptions.AddCategory(TCatNam.StringValue, TCatWeight.StringValue);
+            try
+            {
+                if (checker.IsCorrect(TCatNam.StringValue))
+                    Backendoptions.AddCategory(TCatNam.StringValue, TCatWeight.StringValue);
+            }
+            catch (Exception ex)
+            {
+                ;
+            }
         }
 
 
         partial void PChildApply(Foundation.NSObject sender)
         {
-            Backendoptions.setChild(PChildList.StringValue);
+            try
+            {
+                Backendoptions.setChild(PChildList.StringValue);
+            }
+            catch (Exception ex)
+            {
+                ;
+            }
         }
 
         partial void TClassApply(Foundation.NSObject sender)
         {
-            Backendoptions.setClass(TClass.StringValue);
+            try
+            {
+                Backendoptions.setClass(TClass.StringValue);
+            }
+            catch (Exception ex)
+            {
+                ;
+            }
         }
 
 
         partial void ADelApply(Foundation.NSObject sender)
         {
-
+            try
+            {
+                Backendoptions.DeleteParent(ADelPar.StringValue);
+            }
+            catch (Exception ex)
+            {
+                ;
+            }
         }
 
         
@@ -648,7 +726,7 @@ namespace gui
         {
             try
             {
-
+                Backendoptions.DeleteGrill(ADelGrillPar.StringValue, ADelGrillSt.StringValue);
             }
             catch (Exception ex)
             {
@@ -659,13 +737,28 @@ namespace gui
 
         partial void ADelStApply(Foundation.NSObject sender)
         {
+            try
+            {
+                Backendoptions.DeleteStudent(ADelSt.StringValue);
+            }
+            catch (Exception ex)
+            {
+                ;
+            }
 
         }
 
      
         partial void ADelTeaApply(Foundation.NSObject sender)
         {
-
+            try
+            {
+                Backendoptions.DeleteTeacher(ADelTea.StringValue);
+            }
+            catch (Exception ex)
+            {
+                ;
+            }
         }
     }
 }

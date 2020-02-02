@@ -187,6 +187,7 @@ namespace gui
             while (dataReader.Read())
             {
                 var record = dataReader[0].ToString() + "\t"+dataReader[2].ToString()+":" + dataReader[1].ToString() + "\n";
+                notes += record;
             }
             dataReader.Close();
             return notes;
