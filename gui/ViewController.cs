@@ -33,6 +33,13 @@ namespace gui
                 AALessSub = new NSComboBox();
                 AAClassForm = new NSComboBox();
                 AAClassProfile = new NSComboBox();
+                ADelGrillSt = new NSComboBox();
+                ADelGrillPar = new NSComboBox();
+                ADelSt = new NSComboBox();
+                ADelTea = new NSComboBox();
+                ADelPar = new NSComboBox();
+                AchCl = new NSComboBox();
+                AChSt = new NSComboBox();
 
             }
             else
@@ -65,6 +72,9 @@ namespace gui
                             TPrUnit = new NSComboBox();
                         TCheckPresance = new NSTextField();
                         TCheckStudent = new NSTextField();
+                        TBest1 = new NSTextField();
+                        TBest2 = new NSTextField();
+                        TBest3 = new NSTextField();
                         
                     }
                     else if (Backendoptions.isStudent())
@@ -161,7 +171,27 @@ namespace gui
                     AAClassForm.UsesDataSource = true;
                     AAClassForm.DataSource = new MyCombo(teachers);
                     AAClassForm.SelectItem(0);
-
+                    ADelPar.UsesDataSource = true;
+                    ADelPar.DataSource = new MyCombo(parents);
+                    ADelPar.SelectItem(0);
+                    ADelSt.UsesDataSource = true;
+                    ADelSt.DataSource = new MyCombo(students);
+                    ADelSt.SelectItem(0);
+                    ADelTea.UsesDataSource = true;
+                    ADelTea.DataSource = new MyCombo(teachers);
+                    ADelTea.SelectItem(0);
+                    AChSt.UsesDataSource = true;
+                    AChSt.DataSource = new MyCombo(students);
+                    AChSt.SelectItem(0);
+                    AchCl.UsesDataSource = true;
+                    AchCl.DataSource = new MyCombo(classes);
+                    AchCl.SelectItem(0);
+                    ADelGrillPar.UsesDataSource = true;
+                    ADelGrillPar.DataSource = new MyCombo(parents);
+                    ADelGrillPar.SelectItem(0);
+                    ADelGrillSt.UsesDataSource = true;
+                    ADelGrillSt.DataSource = new MyCombo(students);
+                    ADelGrillSt.SelectItem(0);
                 }
                 else
                 {
@@ -169,40 +199,53 @@ namespace gui
                     {
                         TClass.UsesDataSource = true;
                         TClass.DataSource = new MyCombo(classes);
-                        if (Backendoptions.isClassSet())
-                        {
-                            var classstudents = Backendoptions.GetStudents();
-                            TWSt.UsesDataSource = true;
-                            TWSt.DataSource = new MyCombo(classstudents);
-                            TNSt.UsesDataSource = true;
-                            TNSt.DataSource = new MyCombo(classstudents);
-                            TPreSt.UsesDataSource = true;
-                            TPreSt.DataSource = new MyCombo(classstudents);
-                            TWSt.SelectItem(0);
-                            TNSt.SelectItem(0);
-                            TPreSt.SelectItem(0);
-                            string studentsstring = "", presance = "";
-                            foreach(var st in classstudents)
+                        if (Backendoptions.isClassSet()) 
+                        { if (Backendoptions.GetStudents().Count != 0)
                             {
-                                studentsstring = studentsstring + st + "\n";
-                                presance += "obecny\n";
+                                var classstudents = Backendoptions.GetStudents();
+                                TWSt.UsesDataSource = true;
+                                TWSt.DataSource = new MyCombo(classstudents);
+                                TNSt.UsesDataSource = true;
+                                TNSt.DataSource = new MyCombo(classstudents);
+                                TPreSt.UsesDataSource = true;
+                                TPreSt.DataSource = new MyCombo(classstudents);
+                                TWSt.SelectItem(0);
+                                TNSt.SelectItem(0);
+                                TPreSt.SelectItem(0);
+                                TCNSt.UsesDataSource = true;
+                                TCNSt.DataSource = new MyCombo(classstudents);
+                                TCNSt.SelectItem(0);
+                                string studentsstring = "", presance = "";
+                                foreach (var st in classstudents)
+                                {
+                                    studentsstring = studentsstring + st + "\n";
+                                    presance += "obecny\n";
+                                }
+                                TCheckStudent.StringValue = studentsstring;
+                                TCheckStudent.Editable = false;
+                                TCheckPresance.StringValue = presance;
+                                TCNDesc.UsesDataSource = true;
+                                TCNDesc.DataSource = new MyCombo(Backendoptions.getLastNotes());
+                                var best = Backendoptions.GetTopThree();
+                                TBest1.StringValue = best[0];
+                                TBest2.StringValue = best[1];
+                                TBest3.StringValue = best[2];
                             }
-                            TCheckStudent.StringValue = studentsstring;
-                            TCheckPresance.StringValue = presance;
-                            
                         }
                         TNVal.UsesDataSource = true;
                         TNCat.UsesDataSource = true;
                         TNSub.UsesDataSource = true;
                         var values = new List<string>(new string[] { "1", "2", "2.5", "3", "3.5", "4", "4.5", "5", "5.5", "6" });
                         TNVal.DataSource = new MyCombo(values);
+                        TCNVal.UsesDataSource = true;
+                        TCNVal.DataSource = new MyCombo(values);
                         TNSub.DataSource = new MyCombo(subjects);
                         TNCat.DataSource = new MyCombo(Backendoptions.GetCategories());
                         TPreStat.UsesDataSource = true;
                         TPreUnit.UsesDataSource = true;
                         TPrUnit.UsesDataSource = true;
                         TPrUnit.DataSource = new MyCombo(units);
-                        TPreUnit.DataSource = new MyCombo(units);
+                        TPreUnit.DataSource = new MyCombo(Backendoptions.LastLessonsForClass());
                         TPreStat.DataSource = new MyCombo(status);
                         TClass.SelectItem(0);
                         TNVal.SelectItem(0);
@@ -211,6 +254,7 @@ namespace gui
                         TPreStat.SelectItem(0);
                         TPreUnit.SelectItem(0);
                         TPrUnit.SelectItem(0);
+                        TCNVal.SelectItem(0);
                     }
                     else
                     {if (Backendoptions.isStudent())
@@ -304,10 +348,23 @@ namespace gui
 
         partial void AAClassApply(Foundation.NSObject sender)
         {
-            int t;
-            if (AAClassLetter.StringValue != "" & checker.IsCorrect(AAClassLetter.StringValue))
-                if (int.TryParse(AAClassYear.StringValue, out t) & t > 2000 & t < 3000)
-                    Backendoptions.AddClass(AAClassYear.StringValue, AAClassLetter.StringValue, AAClassForm.StringValue, AAClassProfile.StringValue);
+            try
+            {
+                int t;
+                if (AAClassLetter.StringValue != "" & checker.IsCorrect(AAClassLetter.StringValue))
+                    if (int.TryParse(AAClassYear.StringValue, out t) & t > 2000 & t < 3000)
+                    {
+                        Backendoptions.AddClass(AAClassYear.StringValue, AAClassLetter.StringValue, AAClassForm.StringValue, AAClassProfile.StringValue);
+                        AAddClErr.StringValue = "Dodano klasę";
+                    }
+                else
+                        AAddClErr.StringValue = "Nie utworzono klasy";
+
+            }
+            catch (Exception ex)
+            {
+                AAddClErr.StringValue = "Nie utworzono klasy";
+            }
         }
 
 
@@ -339,63 +396,154 @@ namespace gui
 
         partial void AARoomAPply(Foundation.NSObject sender)
         {
-            int t;
-            if (int.TryParse(AARoomFloor.ToString(), out t))
-                if (int.TryParse(AARoomRoom.ToString(), out t))
-                    if (int.TryParse(AARoomChairs.ToString(), out t))
-                        Backendoptions.AddRoom(AARoomFloor.ToString(), AARoomRoom.ToString(), AARoomChairs.ToString());
+            try
+            {
+                int t;
+                if (int.TryParse(AARoomFloor.ToString(), out t))
+                    if (int.TryParse(AARoomRoom.ToString(), out t))
+                        if (int.TryParse(AARoomChairs.ToString(), out t))
+                        {
+                            Backendoptions.AddRoom(AARoomFloor.ToString(), AARoomRoom.ToString(), AARoomChairs.ToString());
+                            AAddRoomErr.StringValue = "Utworzono salę";
+                        }
+                    else
+                            AAddRoomErr.StringValue = "Nie udało się dodać pokoju";
+                else
+                        AAddRoomErr.StringValue= "Nie udało się dodać pokoju";
+                else
+                    AAddRoomErr.StringValue= "Nie udało się dodać pokoju";
+            }
+            catch(Exception ex)
+            {
+                AAddRoomErr.StringValue= "Nie udało się dodać pokoju";
+            }
         }
 
 
         partial void AAStudentApply(Foundation.NSObject sender)
         {
-            int t;
-            if (checker.IsPesel(AAddStPesel.StringValue))
-                if (checker.IsCorrect(AAddStName.StringValue) & checker.IsCorrect(AAddStLast.StringValue))
-                    if (AAddStHome.StringValue == "" | checker.IsCorrect(AAddStHome.StringValue))
-                        if (AAddStMail.StringValue == "" | checker.IsCorrect(AAddStMail.StringValue))
-                            if (AAddStNum.StringValue == "" | int.TryParse(AAddStNum.StringValue, out t))
-                                if (int.TryParse(AAddStRegNum.StringValue, out t))
-                                {
-
-                                    Backendoptions.AddStudent(AAddStPesel.StringValue, AAddStName.StringValue, AAddStLast.StringValue, AAddStHome.StringValue, AAddStNum.StringValue, AAddStMail.StringValue, AAddStClass.StringValue, AAddStRegNum.StringValue);
-                                }
+            try
+            {
+                int t;
+                if (checker.IsPesel(AAddStPesel.StringValue))
+                    if (checker.IsCorrect(AAddStName.StringValue) & checker.IsCorrect(AAddStLast.StringValue))
+                        if (AAddStHome.StringValue == "" | checker.IsCorrect(AAddStHome.StringValue))
+                            if (AAddStMail.StringValue == "" | checker.IsCorrect(AAddStMail.StringValue))
+                                if (AAddStNum.StringValue == "" | int.TryParse(AAddStNum.StringValue, out t))
+                                    if (int.TryParse(AAddStRegNum.StringValue, out t))
+                                    {
+                                        Backendoptions.AddStudent(AAddStPesel.StringValue, AAddStName.StringValue, AAddStLast.StringValue, AAddStHome.StringValue, AAddStNum.StringValue, AAddStMail.StringValue, AAddStClass.StringValue, AAddStRegNum.StringValue);
+                                        AAddStErr.StringValue = "Dodano ucznia";
+                                    }
+                                    else
+                                        AAddStErr.StringValue = "Nie powiosło się dodawanie ucznia";
+                                else
+                                    AAddStErr.StringValue = "Nie powiosło się dodawanie ucznia";
+                            else
+                                AAddStErr.StringValue = "Nie powiosło się dodawanie ucznia";
+                        else
+                            AAddStErr.StringValue = "Nie powiosło się dodawanie ucznia";
+                    else
+                        AAddStErr.StringValue = "Nie powiosło się dodawanie ucznia";
+                else
+                    AAddStErr.StringValue = "Nie powiosło się dodawanie ucznia";
+            }
+            catch (Exception ex)
+            {
+                    AAddStErr.StringValue = "Nie powiosło się dodawanie ucznia";
+            }
         }
-
 
         partial void AATeacher(Foundation.NSObject sender)
         {
-            int t;
-            decimal d;
-            if (checker.IsPesel(AATeaPe.StringValue))
-                if (checker.IsCorrect(AATeaName.StringValue) & checker.IsCorrect(AATeaLast.StringValue))
-                    if (AATeaHome.StringValue == "" | checker.IsCorrect(AATeaHome.StringValue))
-                        if (AATeaMail.StringValue == "" | checker.IsCorrect(AATeaMail.StringValue))
-                            if (AATeaPhone.StringValue == "" | int.TryParse(AATeaPhone.StringValue, out t))
-                                if (AATeaWork.StringValue == "" | decimal.TryParse(AATeaWork.StringValue, out d))
-                                    Backendoptions.AddTeacher(AATeaPe.StringValue, AATeaName.StringValue, AATeaLast.StringValue, AATeaHome.StringValue, AATeaPhone.StringValue, AATeaMail.StringValue, AATeaWork.StringValue);
-        }
+            try
+            {
+                int t;
+                decimal d;
+                if (checker.IsPesel(AATeaPe.StringValue))
+                    if (checker.IsCorrect(AATeaName.StringValue) & checker.IsCorrect(AATeaLast.StringValue))
+                        if (AATeaHome.StringValue == "" | checker.IsCorrect(AATeaHome.StringValue))
+                            if (AATeaMail.StringValue == "" | checker.IsCorrect(AATeaMail.StringValue))
+                                if (AATeaPhone.StringValue == "" | int.TryParse(AATeaPhone.StringValue, out t))
+                                    if (AATeaWork.StringValue == "" | decimal.TryParse(AATeaWork.StringValue, out d))
+                                    {
+                                        Backendoptions.AddTeacher(AATeaPe.StringValue, AATeaName.StringValue, AATeaLast.StringValue, AATeaHome.StringValue, AATeaPhone.StringValue, AATeaMail.StringValue, AATeaWork.StringValue);
+                                        AAddTeaErr.StringValue = "Dodano nauczyciela";
+                                    }
+                                    else
+                                        AAddTeaErr.StringValue = "Nie dodano nauczyciela";
+                                else
+                                    AAddTeaErr.StringValue = "Nie dodano nauczyciela";
+                            else
+                                AAddTeaErr.StringValue = "Nie dodano nauczyciela";
+                        else
+                            AAddTeaErr.StringValue = "Nie dodano nauczyciela";
+                    else
+                        AAddTeaErr.StringValue = "Nie dodano nauczyciela";
+                else
+                    AAddTeaErr.StringValue = "Nie dodano nauczyciela";
+            }
+            catch (Exception ex)
+            {
+                
+                    AAddTeaErr.StringValue = "Nie dodano nauczyciela";
+            }
+            }
 
         partial void AAUnitApply(Foundation.NSObject sender)
         {
-            int t;
-            if (int.TryParse(AAUnitM.StringValue, out t))
-                Backendoptions.AddUnit(AAUnitH.StringValue, AAUnitM.StringValue);
+            try
+            {
+                int t;
+                if (int.TryParse(AAUnitM.StringValue, out t))
+                {
+                    Backendoptions.AddUnit(AAUnitH.StringValue, AAUnitM.StringValue);
+                    AAddUnitErr.StringValue = "Utworzono jednostkę";
+                }
+                else
+                    AAddUnitErr.StringValue = "Nie utworzono jednostki";
+            }
+            catch (Exception ex)
+            {
+                AAddUnitErr.StringValue = "Nie utworzono jednostki";
+            }
         }
 
 
         partial void AAddParApply(Foundation.NSObject sender)
         {
-            int t;
-            decimal d;
-            if (checker.IsPesel(AAParPe.StringValue))
-                if (checker.IsCorrect(AAParNa.StringValue) & checker.IsCorrect(AAParLast.StringValue))
-                    if (AAParHome.StringValue == "" | checker.IsCorrect(AAParHome.StringValue))
-                        if (AAParMail.StringValue == "" | checker.IsCorrect(AAParMail.StringValue))
-                            if (AAParNum.StringValue == "" | int.TryParse(AAParNum.StringValue, out t))
-                                if (AAParMoney.StringValue == "" | decimal.TryParse(AAParMoney.StringValue, out d))
-                                    Backendoptions.AddParent(AAParPe.StringValue, AAParNa.StringValue, AAParLast.StringValue, AAParHome.StringValue, AAParNum.StringValue, AAParMail.StringValue, AAParMoney.StringValue);
-        }
+            try
+            {
+                int t;
+                decimal d;
+                if (checker.IsPesel(AAParPe.StringValue))
+                    if (checker.IsCorrect(AAParNa.StringValue) & checker.IsCorrect(AAParLast.StringValue))
+                        if (AAParHome.StringValue == "" | checker.IsCorrect(AAParHome.StringValue))
+                            if (AAParMail.StringValue == "" | checker.IsCorrect(AAParMail.StringValue))
+                                if (AAParNum.StringValue == "" | int.TryParse(AAParNum.StringValue, out t))
+                                    if (AAParMoney.StringValue == "" | decimal.TryParse(AAParMoney.StringValue, out d))
+                                    {
+                                        Backendoptions.AddParent(AAParPe.StringValue, AAParNa.StringValue, AAParLast.StringValue, AAParHome.StringValue, AAParNum.StringValue, AAParMail.StringValue, AAParMoney.StringValue);
+                                        AAddParErr.StringValue = "Dodano rodzica";
+                                    }
+                                    else
+                                        AAddParErr.StringValue = "Nie udało się dodać rodzica";
+                                else
+                                    AAddParErr.StringValue = "Nie udało się dodać rodzica";
+                            else
+                                AAddParErr.StringValue = "Nie udało się dodać rodzica";
+                        else
+                            AAddParErr.StringValue = "Nie udało się dodać rodzica";
+                    else
+                        AAddParErr.StringValue = "Nie udało się dodać rodzica";
+                else
+                    AAddParErr.StringValue = "Nie udało się dodać rodzica";
+            }
+            catch (Exception ex)
+            {
+                AAddParErr.StringValue = "Nie udało się dodać rodzica";
+            }
+         }
 
 
         
@@ -403,9 +551,20 @@ namespace gui
 
         partial void TANApply(Foundation.NSObject sender)
         {
-            if (checker.IsCorrect(TNDesc.StringValue))
-                Backendoptions.AddNote(TNVal.StringValue, TNDesc.StringValue, TNCat.StringValue, TNSub.StringValue, TNSt.StringValue);
-
+            try
+            {
+                if (checker.IsCorrect(TNDesc.StringValue))
+                {
+                    Backendoptions.AddNote(TNVal.StringValue, TNDesc.StringValue, TNCat.StringValue, TNSub.StringValue, TNSt.StringValue);
+                    TErrNote.StringValue = "Dodano ocenę";
+                }
+                else
+                    TErrNote.StringValue = "Nie dodano oceny";
+            }
+            catch(Exception ex)
+            {
+                TErrNote.StringValue = "Nie dodano oceny";
+            }
          }
 
 
@@ -414,9 +573,21 @@ namespace gui
 
         partial void TAWApply(Foundation.NSObject sender)
         {
-            int t;
-            if (checker.IsCorrect(TWDesc.StringValue) & int.TryParse(TWPoints.StringValue, out t))
-                Backendoptions.AddWarning(TWDesc.StringValue, TWPoints.StringValue, TWSt.StringValue);
+            try
+            {
+                int t;
+                if (checker.IsCorrect(TWDesc.StringValue) & int.TryParse(TWPoints.StringValue, out t))
+                {
+                    Backendoptions.AddWarning(TWDesc.StringValue, TWPoints.StringValue, TWSt.StringValue);
+                    TErrWar.StringValue = "Dodano uwagę";
+                }
+                else
+                    TErrWar.StringValue = "Nie powiodło się dodawanie uwagi";
+            }
+            catch (Exception ex)
+            {
+                TErrWar.StringValue = "Nie powiodło się dodawanie uwagi";
+            }
         }
 
 
@@ -467,5 +638,34 @@ namespace gui
         }
 
 
+        partial void ADelApply(Foundation.NSObject sender)
+        {
+
+        }
+
+        
+        partial void ADelGrillApply(Foundation.NSObject sender)
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                ADelgrillErr.StringValue = "Nie usunięto opieki (upewnij się, że istniała)";
+            }
+        }
+
+
+        partial void ADelStApply(Foundation.NSObject sender)
+        {
+
+        }
+
+     
+        partial void ADelTeaApply(Foundation.NSObject sender)
+        {
+
+        }
     }
 }

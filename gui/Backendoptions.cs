@@ -62,6 +62,7 @@ namespace gui
             T = P = false;
             A = true;
         }
+
         static public bool OpenConnection()
         {
             try
@@ -105,6 +106,15 @@ namespace gui
             }
             dataReader.Close();
             return presance;
+        }
+
+        static public List<string> GetTopThree()
+        {
+            List<string> list = new List<string>();
+            list.Add("1: it will");
+            list.Add("2: be implemented");
+            list.Add("3: later");
+            return list;
         }
 
         static public Tuple<string, int> getMydWarnings()
@@ -355,17 +365,6 @@ namespace gui
             return list;
         }
 
-        static public List <(string, string)> GetLessonsForClass(string clas)
-        {
-            var classyear = clas[0].ToString() + clas[1].ToString() + clas[2].ToString() + clas[3].ToString();
-            command.CommandText = $"SELECT dzien_tygodnia, lekcja_dzien_tygodnia, lekcja_jednostka_godzina, lekcja_jednostka_minuta FROM lekcja where klasa_rocznik={classyear} and klasa_literka={clas[4].ToString()} ";
-            dataReader = command.ExecuteReader();
-            List<(string,string)> list = new List<(string,string)>();
-            while (dataReader.Read())
-                list.Add((dataReader[0].ToString(), dataReader[1].ToString()+dataReader[2].ToString()));
-            dataReader.Close();
-            return list;
-        }
 
         static public List<string> GetAbsence()
         {
@@ -389,6 +388,13 @@ namespace gui
             return list;
         }
 
+        static public List<string> getLastNotes()
+        {
+            List<string> lis = new List<string>();
+            lis.Add("It will be implemented later");
+            return lis;
+        }
+
         static public List<string> GetStudents()
         {
             var letter = currentClass[4].ToString();
@@ -403,7 +409,37 @@ namespace gui
             dataReader.Close();
             return list;
         }
+        //TO DO FINISh
+        static public List<string> LastLessonsForClass()
+        {
+            List<string> list = new List<string>();
+            list.Add("It will be implemented later");
+            return list;
+        }
 
+        //TO DO FINISH
+        static public void ChangeClass(string student, string clas){
+        }
+        //TO DO FINISH
+        static public void DeleteTeacher(string teacher)
+        {
+
+        }
+        //TO DO FINISH
+        static public void DeleteGrill(string parent, string child)
+        {
+
+        }
+        //TO DO FINISH
+        static public void DeleteStudent(string student)
+        {
+
+        }
+        //TO DO FINISH
+        static public void DeleteParent(string parent)
+        {
+
+        }
         static public List<string> GetStatuses()
         {
             command.CommandText = "SELECT * FROM status";
@@ -451,7 +487,13 @@ namespace gui
         //TO DO FINISH
         static public void AddPresance(string hour, string pesel, string status)
         {
-
+            var student = pesel.Split("(");
+            student[1] = student[1].Remove(student[1].Length - 1);
+            var unit = hour.Split(":");
+            var classYear = currentClass.Remove(4);
+            command.CommandText = $"INSERT INTO obecnosc VALUES (CURRENT_DATE, {student[1]},WEEKDAY(CURRENT_DATE)+1,{unit[0]}, {unit[1]},{classYear}, '{currentClass[4].ToString()}', '{status}')";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
         }
 
         static public void AddTeacher(string pesel, string names, string lastName, string home, string phoneNum, string mail, string etat)

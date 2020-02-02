@@ -25,7 +25,19 @@ namespace gui
 		AppKit.NSTextField AAClassYear { get; set; }
 
 		[Outlet]
+		AppKit.NSTextField AAddClErr { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField AAddParErr { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField AAddRoomErr { get; set; }
+
+		[Outlet]
 		AppKit.NSComboBox AAddStClass { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField AAddStErr { get; set; }
 
 		[Outlet]
 		AppKit.NSTextField AAddStHome { get; set; }
@@ -47,6 +59,12 @@ namespace gui
 
 		[Outlet]
 		AppKit.NSTextField AAddStRegNum { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField AAddTeaErr { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField AAddUnitErr { get; set; }
 
 		[Outlet]
 		AppKit.NSComboBox AALessClL { get; set; }
@@ -142,6 +160,30 @@ namespace gui
 		AppKit.NSComboBox ACForm { get; set; }
 
 		[Outlet]
+		AppKit.NSComboBox AchCl { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox AChSt { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField ADelgrillErr { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox ADelGrillPar { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox ADelGrillSt { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox ADelPar { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox ADelSt { get; set; }
+
+		[Outlet]
+		AppKit.NSComboBox ADelTea { get; set; }
+
+		[Outlet]
 		AppKit.NSComboBox AGrillParent { get; set; }
 
 		[Outlet]
@@ -212,6 +254,15 @@ namespace gui
 
 		[Outlet]
 		AppKit.NSComboBox TCNVal { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField TErrNote { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField TErrNoteChange { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField TErrWar { get; set; }
 
 		[Outlet]
 		AppKit.NSTextField TextOnFirstPage { get; set; }
@@ -288,6 +339,21 @@ namespace gui
 		[Action ("AAUnitApply:")]
 		partial void AAUnitApply (Foundation.NSObject sender);
 
+		[Action ("AChClassApply:")]
+		partial void AChClassApply (Foundation.NSObject sender);
+
+		[Action ("ADelApply:")]
+		partial void ADelApply (Foundation.NSObject sender);
+
+		[Action ("ADelGrillApply:")]
+		partial void ADelGrillApply (Foundation.NSObject sender);
+
+		[Action ("ADelStApply:")]
+		partial void ADelStApply (Foundation.NSObject sender);
+
+		[Action ("ADelTeaApply:")]
+		partial void ADelTeaApply (Foundation.NSObject sender);
+
 		[Action ("FirstUseButton:")]
 		partial void FirstUseButton (AppKit.NSButton sender);
 
@@ -332,14 +398,54 @@ namespace gui
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (TCheckStudent != null) {
-				TCheckStudent.Dispose ();
-				TCheckStudent = null;
+			if (TErrNote != null) {
+				TErrNote.Dispose ();
+				TErrNote = null;
 			}
 
-			if (TCheckPresance != null) {
-				TCheckPresance.Dispose ();
-				TCheckPresance = null;
+			if (TErrNoteChange != null) {
+				TErrNoteChange.Dispose ();
+				TErrNoteChange = null;
+			}
+
+			if (AAddTeaErr != null) {
+				AAddTeaErr.Dispose ();
+				AAddTeaErr = null;
+			}
+
+			if (AAddRoomErr != null) {
+				AAddRoomErr.Dispose ();
+				AAddRoomErr = null;
+			}
+
+			if (ADelgrillErr != null) {
+				ADelgrillErr.Dispose ();
+				ADelgrillErr = null;
+			}
+
+			if (AAddStErr != null) {
+				AAddStErr.Dispose ();
+				AAddStErr = null;
+			}
+
+			if (AAddUnitErr != null) {
+				AAddUnitErr.Dispose ();
+				AAddUnitErr = null;
+			}
+
+			if (AAddParErr != null) {
+				AAddParErr.Dispose ();
+				AAddParErr = null;
+			}
+
+			if (AAddClErr != null) {
+				AAddClErr.Dispose ();
+				AAddClErr = null;
+			}
+
+			if (TErrWar != null) {
+				TErrWar.Dispose ();
+				TErrWar = null;
 			}
 
 			if (AAClassForm != null) {
@@ -557,6 +663,41 @@ namespace gui
 				ACForm = null;
 			}
 
+			if (AchCl != null) {
+				AchCl.Dispose ();
+				AchCl = null;
+			}
+
+			if (AChSt != null) {
+				AChSt.Dispose ();
+				AChSt = null;
+			}
+
+			if (ADelGrillPar != null) {
+				ADelGrillPar.Dispose ();
+				ADelGrillPar = null;
+			}
+
+			if (ADelGrillSt != null) {
+				ADelGrillSt.Dispose ();
+				ADelGrillSt = null;
+			}
+
+			if (ADelPar != null) {
+				ADelPar.Dispose ();
+				ADelPar = null;
+			}
+
+			if (ADelSt != null) {
+				ADelSt.Dispose ();
+				ADelSt = null;
+			}
+
+			if (ADelTea != null) {
+				ADelTea.Dispose ();
+				ADelTea = null;
+			}
+
 			if (AGrillParent != null) {
 				AGrillParent.Dispose ();
 				AGrillParent = null;
@@ -645,6 +786,16 @@ namespace gui
 			if (TCatWeight != null) {
 				TCatWeight.Dispose ();
 				TCatWeight = null;
+			}
+
+			if (TCheckPresance != null) {
+				TCheckPresance.Dispose ();
+				TCheckPresance = null;
+			}
+
+			if (TCheckStudent != null) {
+				TCheckStudent.Dispose ();
+				TCheckStudent = null;
 			}
 
 			if (TClass != null) {
