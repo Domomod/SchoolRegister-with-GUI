@@ -107,7 +107,7 @@ namespace gui
             dataReader.Close();
             return presance;
         }
-
+        //TO DO: Wybiera 3 najlepszych z danej klasy - procedura/funkcja
         static public List<string> GetTopThree()
         {
             List<string> list = new List<string>();
@@ -143,7 +143,7 @@ namespace gui
             return tup;
         }
 
-        //TO DO: where data >= last 1 september
+
         static public string getMyNotes()
         {
             var notes = "";
@@ -200,7 +200,6 @@ namespace gui
             return notes;
         }
 
-        //TO DO: where data >= last 1 september
         static public string getMyChildNotes(){
             var notes = "";
             var subject = "";
@@ -251,27 +250,29 @@ namespace gui
             var lst = student.Split("(");
             var pesel=lst[1].Remove(lst[1].Length - 1);
             var unpackeddata = desc.Split(","); //date, category, subject
-            command.CommandText = $"";
+            command.CommandText = $"UPDATE ocena SET ocena={newValue} where data={unpackeddata[0]} and uczen_dane_osobowe_peel={pesel} and nauczyciel_dane_osobowe_pesel={currentPesel} and kategoria_oceny_nazwa={unpackeddata[1]}, przedmiot_nazwa_przedmiotu={unpackeddata[2]}";
             dataReader = command.ExecuteReader();
             dataReader.Close();
         }
 
-        //TO DO FINISH
+        //DATA!!!
         static public void ChangeStatus(string newValue, string date, string student)
         {
             var lst = student.Split("(");
             var pesel = lst[1].Remove(lst[1].Length - 1);
             var dayandunit = date.Split(",");
             var unit = dayandunit[1].Split(":");
-            command.CommandText = $"";
+            command.CommandText = $"UPDATE obecnosc SET status_nazwa='{newValue}' WHERE uczen_pesel={pesel} and data={dayandunit[0]} and lekcja_jednostka_godzina={unit[0]} and lekcja_jednostka_minuta={unit[1]} ";
             dataReader = command.ExecuteReader();
             dataReader.Close();
         }
 
+        //DATA!!!!
         static public void LegitimizeAbsence(string data)
         {
-         
-            command.CommandText = $"UPDATE obecnosc SET status = 'usprawiedliwiony' WHERE  status='nieobecny' and data={data} and uczen_pesel={currentChild}";
+            var day = data.Split(" ");
+            var cutDay = day[0].Split("/");
+            command.CommandText = $"UPDATE obecnosc SET status_nazwa = 'usprawiedliwiony' WHERE  status_nazwa='nieobecny' and data=STR_TO_DATE('{cutDay}','%d/%m/%Y') and uczen_pesel={currentChild}";
             dataReader = command.ExecuteReader();
             dataReader.Close();
 
@@ -448,7 +449,7 @@ namespace gui
             pesel = pesel.Remove(pesel.Length - 1);
             var classletter = clas[4].ToString();
             var classyear = currentClass.Remove(4);
-            command.CommandText = $"";
+            command.CommandText = $"UPDATE uczen SET klasa_rocznik={classyear}, klasa_literka='{classletter}' WHERE dane_osobowe_pesel={pesel}";
             dataReader = command.ExecuteReader();
             dataReader.Close();
 
@@ -458,18 +459,18 @@ namespace gui
         {
             var pesel = teacher.Split("(")[1];
             pesel = pesel.Remove(pesel.Length - 1);
-            command.CommandText = $"";
+            command.CommandText = $"DELETE from nauczyciel where dane_osobowe_pesel={teacher}";
             dataReader = command.ExecuteReader();
             dataReader.Close();
         }
-        //TO DO FINISH
+        //SQL ERROR
         static public void DeleteGrill(string parent, string child)
         {
             var parentpesel = parent.Split("(")[1];
             parentpesel = parentpesel.Remove(parentpesel.Length - 1);
             var childpesel = child.Split("(")[1];
             childpesel = childpesel.Remove(childpesel.Length - 1);
-            command.CommandText = $"";
+            command.CommandText = $"DELETE from opieka WHERE uczen_pesel={childpesel} and opiekun_pesel={parentpesel}";
             dataReader = command.ExecuteReader();
             dataReader.Close();
         }
@@ -478,16 +479,19 @@ namespace gui
         {
             var pesel = student.Split("(")[1];
             pesel = pesel.Remove(pesel.Length - 1);
-            command.CommandText = $"";
+            command.CommandText = $"DELETE FROM ocena WHERE uczen_dane_osobowe_pesel={pesel}";
             dataReader = command.ExecuteReader();
             dataReader.Close();
-            command.CommandText = $"";
+            command.CommandText = $"DELETE FROM obecnosc WHERE uczen_pesel={pesel}";
             dataReader = command.ExecuteReader();
             dataReader.Close();
-            command.CommandText = $"";
+            command.CommandText = $"DELETE FROM uwaga where uczen_dane_osobowe_pesel={pesel}";
             dataReader = command.ExecuteReader();
             dataReader.Close();
-            command.CommandText = $"";
+            command.CommandText = $"DELETE FROM opieka WHERE uczen_pesel={pesel}";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
+            command.CommandText = $"DELETE FROM uczen WHERE dane_osobowe_pesel={pesel}";
             dataReader = command.ExecuteReader();
             dataReader.Close();
         }
@@ -496,10 +500,10 @@ namespace gui
         {
             var pesel = parent.Split("(")[1];
             pesel = pesel.Remove(pesel.Length - 1);
-            command.CommandText = $"";
+            command.CommandText = $"DELETE FROM opieka WHERE opiekun_pesel={pesel}";
             dataReader = command.ExecuteReader();
             dataReader.Close();
-            command.CommandText = $"";
+            command.CommandText = $"DELETE FROM opiekun where pesel={pesel}";
             dataReader = command.ExecuteReader();
             dataReader.Close();
         }
@@ -574,6 +578,8 @@ namespace gui
             dataReader.Close();
         }
 
+
+        //Dodać procedurę
         static public void AddStudent(string pesel, string names, string lastName, string home, string phoneNum, string mail, string clas, string numberInRegister )
         {
             command.CommandText = $"INSERT INTO dane_osobowe VALUES('{pesel}','{names}','{lastName}','{home}',{phoneNum},'{mail}')";
@@ -635,7 +641,7 @@ namespace gui
         static public void AddClass(string classYear, string classLetter, string formTutorPesel, string profile)
         {
             var lst = formTutorPesel.Split("(");
-            lst[1].Remove(lst[1].Length - 1);
+            lst[1]=lst[1].Remove(lst[1].Length - 1);
             command.CommandText = $"INSERT INTO klasa VALUES ({classYear},'{classLetter}', {lst[1]}, '{profile}')";
             dataReader = command.ExecuteReader();
             dataReader.Close();

@@ -48,6 +48,17 @@ namespace gui
         }
 
 
+        public bool IsMail(string text)
+        {
+            var first = text.Split("@");  //something @ somethingB
+            if (first.Length != 2)
+                return false;
+            var second = first[1].Split("."); //[some.]+thing
+            if (second.Length < 2)
+                return false;
+            return true; 
+        }
+
         public bool IsPesel(string text)
         {
             if (text.Length != 11)

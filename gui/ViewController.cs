@@ -426,19 +426,18 @@ Backendoptions.Grill(AGrillParent.StringValue, AGrillStudent.StringValue);
             try
             {
                 int t;
-                if (int.TryParse(AARoomFloor.ToString(), out t))
-                    if (int.TryParse(AARoomRoom.ToString(), out t))
-                        if (int.TryParse(AARoomChairs.ToString(), out t))
+                if (int.TryParse(AARoomFloor.StringValue, out t))
+                    if (int.TryParse(AARoomRoom.StringValue, out t))
+                        if (int.TryParse(AARoomChairs.StringValue, out t))
                         {
-                            Backendoptions.AddRoom(AARoomFloor.ToString(), AARoomRoom.ToString(), AARoomChairs.ToString());
+                            Backendoptions.AddRoom(AARoomFloor.StringValue, AARoomRoom.StringValue, AARoomChairs.StringValue);
                             AAddRoomErr.StringValue = "Utworzono salę";
                         }
                     else
                             AAddRoomErr.StringValue = "Nie udało się dodać pokoju";
                 else
                         AAddRoomErr.StringValue= "Nie udało się dodać pokoju";
-                else
-                    AAddRoomErr.StringValue= "Nie udało się dodać pokoju";
+
             }
             catch(Exception ex)
             {
@@ -536,6 +535,17 @@ Backendoptions.Grill(AGrillParent.StringValue, AGrillStudent.StringValue);
             }
         }
 
+        partial void PLegitimizeApply(Foundation.NSObject sender)
+        {
+            try
+            {
+                Backendoptions.LegitimizeAbsence(PLegitimize.StringValue);
+            }
+            catch( Exception ex)
+            {
+                ;
+            }
+        }
 
         partial void AAddParApply(Foundation.NSObject sender)
         {

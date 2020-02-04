@@ -28,6 +28,12 @@ namespace gui
 		AppKit.NSTextField AAddClErr { get; set; }
 
 		[Outlet]
+		AppKit.NSTextField AAddGrillErr { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField AAddLessErr { get; set; }
+
+		[Outlet]
 		AppKit.NSTextField AAddParErr { get; set; }
 
 		[Outlet]
@@ -59,6 +65,9 @@ namespace gui
 
 		[Outlet]
 		AppKit.NSTextField AAddStRegNum { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField AAddSubErr { get; set; }
 
 		[Outlet]
 		AppKit.NSTextField AAddTeaErr { get; set; }
@@ -163,6 +172,12 @@ namespace gui
 		AppKit.NSComboBox AchCl { get; set; }
 
 		[Outlet]
+		AppKit.NSView AChClass { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField AChFormErr { get; set; }
+
+		[Outlet]
 		AppKit.NSComboBox AChSt { get; set; }
 
 		[Outlet]
@@ -178,10 +193,19 @@ namespace gui
 		AppKit.NSComboBox ADelPar { get; set; }
 
 		[Outlet]
+		AppKit.NSTextField ADelParErr { get; set; }
+
+		[Outlet]
 		AppKit.NSComboBox ADelSt { get; set; }
 
 		[Outlet]
+		AppKit.NSTextField ADelStErr { get; set; }
+
+		[Outlet]
 		AppKit.NSComboBox ADelTea { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField ADelteaErr { get; set; }
 
 		[Outlet]
 		AppKit.NSComboBox AGrillParent { get; set; }
@@ -197,6 +221,9 @@ namespace gui
 
 		[Outlet]
 		AppKit.NSComboBox PLegitimize { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField PLegitimizeErr { get; set; }
 
 		[Outlet]
 		AppKit.NSTextField PMyInfo { get; set; }
@@ -238,10 +265,16 @@ namespace gui
 		AppKit.NSComboBox TCatWeight { get; set; }
 
 		[Outlet]
+		AppKit.NSTextField TChaPrErr { get; set; }
+
+		[Outlet]
 		AppKit.NSTextField TCheckPresance { get; set; }
 
 		[Outlet]
 		AppKit.NSTextField TCheckStudent { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField TChePrErr { get; set; }
 
 		[Outlet]
 		AppKit.NSComboBox TClass { get; set; }
@@ -398,54 +431,59 @@ namespace gui
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (TErrNote != null) {
-				TErrNote.Dispose ();
-				TErrNote = null;
+			if (TChePrErr != null) {
+				TChePrErr.Dispose ();
+				TChePrErr = null;
 			}
 
-			if (TErrNoteChange != null) {
-				TErrNoteChange.Dispose ();
-				TErrNoteChange = null;
+			if (TChaPrErr != null) {
+				TChaPrErr.Dispose ();
+				TChaPrErr = null;
 			}
 
-			if (AAddTeaErr != null) {
-				AAddTeaErr.Dispose ();
-				AAddTeaErr = null;
+			if (PLegitimizeErr != null) {
+				PLegitimizeErr.Dispose ();
+				PLegitimizeErr = null;
 			}
 
-			if (AAddRoomErr != null) {
-				AAddRoomErr.Dispose ();
-				AAddRoomErr = null;
+			if (ADelteaErr != null) {
+				ADelteaErr.Dispose ();
+				ADelteaErr = null;
 			}
 
-			if (ADelgrillErr != null) {
-				ADelgrillErr.Dispose ();
-				ADelgrillErr = null;
+			if (AAddLessErr != null) {
+				AAddLessErr.Dispose ();
+				AAddLessErr = null;
 			}
 
-			if (AAddStErr != null) {
-				AAddStErr.Dispose ();
-				AAddStErr = null;
+			if (AAddSubErr != null) {
+				AAddSubErr.Dispose ();
+				AAddSubErr = null;
 			}
 
-			if (AAddUnitErr != null) {
-				AAddUnitErr.Dispose ();
-				AAddUnitErr = null;
+			if (AChFormErr != null) {
+				AChFormErr.Dispose ();
+				AChFormErr = null;
 			}
 
-			if (AAddParErr != null) {
-				AAddParErr.Dispose ();
-				AAddParErr = null;
+			if (ADelParErr != null) {
+				ADelParErr.Dispose ();
+				ADelParErr = null;
 			}
 
-			if (AAddClErr != null) {
-				AAddClErr.Dispose ();
-				AAddClErr = null;
+			if (AChClass != null) {
+				AChClass.Dispose ();
+				AChClass = null;
 			}
 
-			if (TErrWar != null) {
-				TErrWar.Dispose ();
-				TErrWar = null;
+			if (AAddGrillErr != null) {
+				AAddGrillErr.Dispose ();
+				AAddGrillErr = null;
+			}
+
+			if (ADelStErr != null) {
+				ADelStErr.Dispose ();
+				ADelStErr = null;
 			}
 
 			if (AAClassForm != null) {
@@ -468,9 +506,29 @@ namespace gui
 				AAClassYear = null;
 			}
 
+			if (AAddClErr != null) {
+				AAddClErr.Dispose ();
+				AAddClErr = null;
+			}
+
+			if (AAddParErr != null) {
+				AAddParErr.Dispose ();
+				AAddParErr = null;
+			}
+
+			if (AAddRoomErr != null) {
+				AAddRoomErr.Dispose ();
+				AAddRoomErr = null;
+			}
+
 			if (AAddStClass != null) {
 				AAddStClass.Dispose ();
 				AAddStClass = null;
+			}
+
+			if (AAddStErr != null) {
+				AAddStErr.Dispose ();
+				AAddStErr = null;
 			}
 
 			if (AAddStHome != null) {
@@ -506,6 +564,16 @@ namespace gui
 			if (AAddStRegNum != null) {
 				AAddStRegNum.Dispose ();
 				AAddStRegNum = null;
+			}
+
+			if (AAddTeaErr != null) {
+				AAddTeaErr.Dispose ();
+				AAddTeaErr = null;
+			}
+
+			if (AAddUnitErr != null) {
+				AAddUnitErr.Dispose ();
+				AAddUnitErr = null;
 			}
 
 			if (AALessClL != null) {
@@ -673,6 +741,11 @@ namespace gui
 				AChSt = null;
 			}
 
+			if (ADelgrillErr != null) {
+				ADelgrillErr.Dispose ();
+				ADelgrillErr = null;
+			}
+
 			if (ADelGrillPar != null) {
 				ADelGrillPar.Dispose ();
 				ADelGrillPar = null;
@@ -816,6 +889,21 @@ namespace gui
 			if (TCNVal != null) {
 				TCNVal.Dispose ();
 				TCNVal = null;
+			}
+
+			if (TErrNote != null) {
+				TErrNote.Dispose ();
+				TErrNote = null;
+			}
+
+			if (TErrNoteChange != null) {
+				TErrNoteChange.Dispose ();
+				TErrNoteChange = null;
+			}
+
+			if (TErrWar != null) {
+				TErrWar.Dispose ();
+				TErrWar = null;
 			}
 
 			if (TextOnFirstPage != null) {
