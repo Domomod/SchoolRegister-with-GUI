@@ -15,9 +15,9 @@ namespace gui
         private static bool T = false;
         private static bool P = false;
         private static bool S = false;
-        private static string currentClass="";
-        private static string currentChild="";
-        
+        private static string currentClass = "";
+        private static string currentChild = "";
+
 
         static public bool isChildSet()
         {
@@ -34,8 +34,8 @@ namespace gui
         static public void setChild(string child)
         {
             var childdata = child.Split("(");
-            currentChild=childdata[1].Remove(childdata[1].Length - 1);
-            
+            currentChild = childdata[1].Remove(childdata[1].Length - 1);
+
         }
         static public bool IsOpen()
         {
@@ -75,7 +75,8 @@ namespace gui
                 open = true;
                 return true;
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 return false;
             }
         }
@@ -127,7 +128,7 @@ namespace gui
         static public Tuple<string, int> getMydWarnings()
         {
 
-            string notes= "";
+            string notes = "";
             int sum = 0;
             command.CommandText = $"select data, tresc, puntky_do_zachowania from uwaga where uczen_dane_osobowe_pesel={currentPesel}";
             dataReader = command.ExecuteReader();
@@ -151,9 +152,9 @@ namespace gui
             var record = "";
             command.CommandText = $"select przedmiot_nazwa_przedmiotu, ocena from ocena where uczen_dane_osobowe_pesel={currentPesel} order by przedmiot_nazwa_przedmiotu desc";
             dataReader = command.ExecuteReader();
-            while(dataReader.Read())
+            while (dataReader.Read())
             {
-             if (dataReader[0].ToString() != subject)
+                if (dataReader[0].ToString() != subject)
                 {
                     record += "\n";
                     notes += record;
@@ -185,7 +186,7 @@ namespace gui
             return presance;
         }
 
-    
+
         static public string getMyChildWarnings()
         {
             string notes = "";
@@ -193,14 +194,15 @@ namespace gui
             dataReader = command.ExecuteReader();
             while (dataReader.Read())
             {
-                var record = dataReader[0].ToString() + "\t"+dataReader[2].ToString()+":" + dataReader[1].ToString() + "\n";
+                var record = dataReader[0].ToString() + "\t" + dataReader[2].ToString() + ":" + dataReader[1].ToString() + "\n";
                 notes += record;
             }
             dataReader.Close();
             return notes;
         }
 
-        static public string getMyChildNotes(){
+        static public string getMyChildNotes()
+        {
             var notes = "";
             var subject = "";
             var record = "";
@@ -235,10 +237,10 @@ namespace gui
             dataReader.Close();
         }
 
-        static public void AddNote(string value, string description,string category, string subject, string pesel)
+        static public void AddNote(string value, string description, string category, string subject, string pesel)
         {
             var lst = pesel.Split("(");
-            var childpesel=lst[1].Remove(lst[1].Length - 1);
+            var childpesel = lst[1].Remove(lst[1].Length - 1);
             command.CommandText = $"INSERT INTO ocena VALUES(NEXTVAL(ocenaSeq),{value},CURRENT_DATE,'{description}','{category}','{subject}',{childpesel},{currentPesel})";
             dataReader = command.ExecuteReader();
             dataReader.Close();
@@ -248,7 +250,7 @@ namespace gui
         static public void ChangeNote(string newValue, string desc, string student)
         {
             var lst = student.Split("(");
-            var pesel=lst[1].Remove(lst[1].Length - 1);
+            var pesel = lst[1].Remove(lst[1].Length - 1);
             var unpackeddata = desc.Split(","); //date, category, subject
             command.CommandText = $"UPDATE ocena SET ocena={newValue} where data={unpackeddata[0]} and uczen_dane_osobowe_peel={pesel} and nauczyciel_dane_osobowe_pesel={currentPesel} and kategoria_oceny_nazwa={unpackeddata[1]}, przedmiot_nazwa_przedmiotu={unpackeddata[2]}";
             dataReader = command.ExecuteReader();
@@ -293,18 +295,18 @@ namespace gui
             dataReader = command.ExecuteReader();
             List<string> list = new List<string>();
             while (dataReader.Read())
-                list.Add(dataReader[0].ToString()+":" +dataReader[1].ToString());
+                list.Add(dataReader[0].ToString() + ":" + dataReader[1].ToString());
             dataReader.Close();
             return list;
         }
 
-       static  public List<string> GetRooms()
+        static public List<string> GetRooms()
         {
             command.CommandText = $"SELECT * FROM sala";
             dataReader = command.ExecuteReader();
             List<string> list = new List<string>();
             while (dataReader.Read())
-                list.Add(dataReader[0].ToString() +"." +dataReader[1].ToString());
+                list.Add(dataReader[0].ToString() + "." + dataReader[1].ToString());
             dataReader.Close();
             return list;
         }
@@ -360,13 +362,14 @@ namespace gui
             dataReader = command.ExecuteReader();
             List<string> list = new List<string>();
             while (dataReader.Read())
-                list.Add(dataReader[0].ToString()+" "+dataReader[1].ToString()+"(" +dataReader[2].ToString()+")");
+                list.Add(dataReader[0].ToString() + " " + dataReader[1].ToString() + "(" + dataReader[2].ToString() + ")");
             dataReader.Close();
             return list;
         }
 
-        static public List<string> GetProfiles(){
-             command.CommandText = $"SELECT * from profil";
+        static public List<string> GetProfiles()
+        {
+            command.CommandText = $"SELECT * from profil";
             dataReader = command.ExecuteReader();
             List<string> list = new List<string>();
             while (dataReader.Read())
@@ -393,12 +396,12 @@ namespace gui
             dataReader = command.ExecuteReader();
             List<string> list = new List<string>();
             while (dataReader.Read())
-                list.Add(dataReader[0].ToString()+"("+dataReader[1].ToString()+")");
+                list.Add(dataReader[0].ToString() + "(" + dataReader[1].ToString() + ")");
             dataReader.Close();
             return list;
         }
 
-        //TO DO: unique date, category, subject where class=current abd current_day-date<14
+        //TO DO:  date, category, subject where class=current abd current_day-date<14
         static public List<string> getLastNotes()
         {
             List<string> lis = new List<string>();
@@ -422,7 +425,7 @@ namespace gui
             List<string> list = new List<string>();
             while (dataReader.Read())
             {
-                list.Add(dataReader[0].ToString() + " " + dataReader[1].ToString()+"("+dataReader[2].ToString()+")");
+                list.Add(dataReader[0].ToString() + " " + dataReader[1].ToString() + "(" + dataReader[2].ToString() + ")");
             }
             dataReader.Close();
             return list;
@@ -444,7 +447,8 @@ namespace gui
         }
 
         //TO DO FINISH
-        static public void ChangeClass(string student, string clas){
+        static public void ChangeClass(string student, string clas)
+        {
             var pesel = student.Split("(")[1];
             pesel = pesel.Remove(pesel.Length - 1);
             var classletter = clas[4].ToString();
@@ -454,16 +458,14 @@ namespace gui
             dataReader.Close();
 
         }
-        //TO DO FINISH: delete only from nauczyciel
         static public void DeleteTeacher(string teacher)
         {
             var pesel = teacher.Split("(")[1];
             pesel = pesel.Remove(pesel.Length - 1);
-            command.CommandText = $"DELETE from nauczyciel where dane_osobowe_pesel={teacher}";
+            command.CommandText = $"DELETE from nauczyciel where dane_osobowe_pesel={pesel}";
             dataReader = command.ExecuteReader();
             dataReader.Close();
         }
-        //SQL ERROR
         static public void DeleteGrill(string parent, string child)
         {
             var parentpesel = parent.Split("(")[1];
@@ -538,7 +540,7 @@ namespace gui
                 dataReader.Close();
                 command.CommandText = $"INSERT INTO dane_osobowe VALUES({pesel},'{names}','{lastName}','{home}',{phoneNum},'{mail}')";
                 dataReader = command.ExecuteReader();
-                }
+            }
             dataReader.Close();
             command.CommandText = $"INSERT INTO opiekun VALUES ({Money}, {pesel})";
             dataReader = command.ExecuteReader();
@@ -567,11 +569,12 @@ namespace gui
         {
             command.CommandText = $"SELECT * FROM dane_osobowe where pesel={pesel}";
             dataReader = command.ExecuteReader();
-                if (!dataReader.Read()) {
+            if (!dataReader.Read())
+            {
                 dataReader.Close();
                 command.CommandText = $"INSERT INTO dane_osobowe VALUES({pesel},'{names}','{lastName}','{home}',{phoneNum},'{mail}')";
                 dataReader = command.ExecuteReader();
-                 }
+            }
             dataReader.Close();
             command.CommandText = $"INSERT INTO nauczyciel VALUES ({etat},{pesel})";
             dataReader = command.ExecuteReader();
@@ -580,7 +583,7 @@ namespace gui
 
 
         //Dodać procedurę
-        static public void AddStudent(string pesel, string names, string lastName, string home, string phoneNum, string mail, string clas, string numberInRegister )
+        static public void AddStudent(string pesel, string names, string lastName, string home, string phoneNum, string mail, string clas, string numberInRegister)
         {
             command.CommandText = $"INSERT INTO dane_osobowe VALUES('{pesel}','{names}','{lastName}','{home}',{phoneNum},'{mail}')";
             dataReader = command.ExecuteReader();
@@ -592,14 +595,14 @@ namespace gui
             dataReader.Close();
         }
 
-        static public void AddRoom( string floor, string number, string chairs)
+        static public void AddRoom(string floor, string number, string chairs)
         {
             command.CommandText = $"INSERT INTO sala VALUES ({floor},{number},{chairs})";
             dataReader = command.ExecuteReader();
             dataReader.Close();
         }
 
-        static public void AddCategory (string name, string value)
+        static public void AddCategory(string name, string value)
         {
             command.CommandText = $"INSERT into kategoria VALUES ('{name}',{value})";
         }
@@ -621,7 +624,7 @@ namespace gui
             var lst = guardian.Split("(");
             var pesel = lst[1].Remove(lst[1].Length - 1);
             lst = child.Split("(");
-            var chpesel= lst[1].Remove(lst[1].Length - 1);
+            var chpesel = lst[1].Remove(lst[1].Length - 1);
             command.CommandText = $"INSERT INTO opieka VALUES ({chpesel},{pesel})";
             dataReader = command.ExecuteReader();
             dataReader.Close();
@@ -641,7 +644,7 @@ namespace gui
         static public void AddClass(string classYear, string classLetter, string formTutorPesel, string profile)
         {
             var lst = formTutorPesel.Split("(");
-            lst[1]=lst[1].Remove(lst[1].Length - 1);
+            lst[1] = lst[1].Remove(lst[1].Length - 1);
             command.CommandText = $"INSERT INTO klasa VALUES ({classYear},'{classLetter}', {lst[1]}, '{profile}')";
             dataReader = command.ExecuteReader();
             dataReader.Close();
@@ -667,24 +670,24 @@ namespace gui
             try
             {
 
-            command.CommandText = $"select * from uczen where dane_osobowe_pesel={pesel}";
-                        dataReader = command.ExecuteReader();
-                        if (dataReader.Read())
-                        {
-                            A = T = P = false;
+                command.CommandText = $"select * from uczen where dane_osobowe_pesel={pesel}";
+                dataReader = command.ExecuteReader();
+                if (dataReader.Read())
+                {
+                    A = T = P = false;
                     S = true;
-                            dataReader.Close();
-                            currentPesel = pesel;
-                            return true;
-                        }
-                        dataReader.Close();
-                        return false;
+                    dataReader.Close();
+                    currentPesel = pesel;
+                    return true;
+                }
+                dataReader.Close();
+                return false;
             }
             catch (Exception ex)
             {
                 return false;
             }
-            
+
         }
 
         static public bool LogInAsParent(string pesel)
@@ -698,7 +701,7 @@ namespace gui
                     dataReader.Close();
                     currentPesel = pesel;
                     P = true;
-                    A = T =S= false;
+                    A = T = S = false;
                     return true;
                 }
 
@@ -710,31 +713,31 @@ namespace gui
                 Console.WriteLine(ex.Message);
                 return false;
             }
-            
+
         }
 
         static public bool LogInAsTeacher(string pesel)
         {
             try
             {
-            command.CommandText = $"select * from nauczyciel where dane_osobowe_pesel={pesel}";
-             dataReader = command.ExecuteReader();
-                        if (dataReader.Read())
-                        {
-                            dataReader.Close();
+                command.CommandText = $"select * from nauczyciel where dane_osobowe_pesel={pesel}";
+                dataReader = command.ExecuteReader();
+                if (dataReader.Read())
+                {
+                    dataReader.Close();
                     currentPesel = pesel;
                     T = true;
-                    A = P =S= false;
+                    A = P = S = false;
                     return true;
-                        }
-                        dataReader.Close();
-                        return false;
+                }
+                dataReader.Close();
+                return false;
             }
             catch (Exception ex)
             {
                 return false;
             }
-            
+
         }
 
 
@@ -1059,7 +1062,7 @@ namespace gui
                 return true;
             }
 
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return false;
             }

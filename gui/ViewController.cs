@@ -56,39 +56,39 @@ namespace gui
                 else
                 {
                     if (Backendoptions.isTeacher())
-                        {
-                            TClass = new NSComboBox();
-                            TWSt = new NSComboBox();
-                            TCNSt = new NSComboBox();
-                            TCNVal = new NSComboBox();
-                            TCNDesc = new NSComboBox();
-                            TNCat = new NSComboBox();
-                            TNSt = new NSComboBox();
-                            TNSub = new NSComboBox();
-                            TNVal = new NSComboBox();
-                            TPreSt = new NSComboBox();
-                            TPreStat = new NSComboBox();
-                            TPreUnit = new NSComboBox();
-                            TPrUnit = new NSComboBox();
+                    {
+                        TClass = new NSComboBox();
+                        TWSt = new NSComboBox();
+                        TCNSt = new NSComboBox();
+                        TCNVal = new NSComboBox();
+                        TCNDesc = new NSComboBox();
+                        TNCat = new NSComboBox();
+                        TNSt = new NSComboBox();
+                        TNSub = new NSComboBox();
+                        TNVal = new NSComboBox();
+                        TPreSt = new NSComboBox();
+                        TPreStat = new NSComboBox();
+                        TPreUnit = new NSComboBox();
+                        TPrUnit = new NSComboBox();
                         TCheckPresance = new NSTextField();
                         TCheckStudent = new NSTextField();
                         TBest1 = new NSTextField();
                         TBest2 = new NSTextField();
                         TBest3 = new NSTextField();
-                        
+
                     }
                     else if (Backendoptions.isStudent())
-                    { 
+                    {
                         SWarnings = new NSTextField();
                         SPresance = new NSTextField();
                         SPoints = new NSTextField();
                         SNotes = new NSTextField();
-                        
+
                     }
                 }
             }
-            
-            
+
+
         }
 
         public override void ViewDidLoad()
@@ -199,8 +199,9 @@ namespace gui
                     {
                         TClass.UsesDataSource = true;
                         TClass.DataSource = new MyCombo(classes);
-                        if (Backendoptions.isClassSet()) 
-                        { if (Backendoptions.GetStudents().Count != 0)
+                        if (Backendoptions.isClassSet())
+                        {
+                            if (Backendoptions.GetStudents().Count != 0)
                             {
                                 var classstudents = Backendoptions.GetStudents();
                                 TWSt.UsesDataSource = true;
@@ -244,9 +245,9 @@ namespace gui
                         TCNVal.DataSource = new MyCombo(values);
                         TNSub.DataSource = new MyCombo(subjects);
                         TNCat.DataSource = new MyCombo(Backendoptions.GetCategories());
-                        TPreStat.UsesDataSource = true;                      
+                        TPreStat.UsesDataSource = true;
                         TPrUnit.UsesDataSource = true;
-                        TPrUnit.DataSource = new MyCombo(units);                      
+                        TPrUnit.DataSource = new MyCombo(units);
                         TPreStat.DataSource = new MyCombo(status);
                         TClass.SelectItem(0);
                         TNVal.SelectItem(0);
@@ -257,15 +258,16 @@ namespace gui
                         TCNVal.SelectItem(0);
                     }
                     else
-                    {if (Backendoptions.isStudent())
+                    {
+                        if (Backendoptions.isStudent())
                         {
-                        var warning = Backendoptions.getMydWarnings();
-                        SWarnings.StringValue = warning.Item1;
+                            var warning = Backendoptions.getMydWarnings();
+                            SWarnings.StringValue = warning.Item1;
                             SPoints.StringValue = warning.Item2.ToString();
-                        SNotes.StringValue = Backendoptions.getMyNotes();
-                        SPresance.StringValue = Backendoptions.getMyPresance();
+                            SNotes.StringValue = Backendoptions.getMyNotes();
+                            SPresance.StringValue = Backendoptions.getMyPresance();
                         }
-                        
+
                     }
                 }
             }
@@ -284,7 +286,7 @@ namespace gui
             {
                 ;
             }
-            
+
         }
 
 
@@ -296,6 +298,7 @@ namespace gui
                 var storyboard = NSStoryboard.FromName("Main", null);
                 var controller = storyboard.InstantiateControllerWithIdentifier("2") as NSWindowController;
                 controller.ShowWindow(this);
+                TextOnFirstPage.StringValue = "Zalogowano";
             }
             else
                 TextOnFirstPage.StringValue = "Illigal valju";
@@ -350,13 +353,19 @@ namespace gui
         {
             try
             {
-if (AASub.StringValue != "" & checker.IsCorrect(AASub.StringValue))
-                Backendoptions.AddSubject(AASub.StringValue);
+
+                if (AASub.StringValue != "" & checker.IsCorrect(AASub.StringValue))
+                {
+                    Backendoptions.AddSubject(AASub.StringValue);
+                    AAddSubErr.StringValue = "Utworzono przedmiot";
+                }
+                else
+                    AAddSubErr.StringValue = "Podano nieprawidłową nazwę";
             }
-            
-            catch( Exception ex)
+
+            catch (Exception ex)
             {
-                ;
+                AAddSubErr.StringValue = "Wystąpił błąd";
             }
         }
 
@@ -371,13 +380,13 @@ if (AASub.StringValue != "" & checker.IsCorrect(AASub.StringValue))
                         Backendoptions.AddClass(AAClassYear.StringValue, AAClassLetter.StringValue, AAClassForm.StringValue, AAClassProfile.StringValue);
                         AAddClErr.StringValue = "Dodano klasę";
                     }
-                else
-                        AAddClErr.StringValue = "Nie utworzono klasy";
+                    else
+                        AAddClErr.StringValue = "Nie prawidłowy rocznik lub literka";
 
             }
             catch (Exception ex)
             {
-                AAddClErr.StringValue = "Nie utworzono klasy";
+                AAddClErr.StringValue = "Wystąpił błąd";
             }
         }
 
@@ -386,24 +395,26 @@ if (AASub.StringValue != "" & checker.IsCorrect(AASub.StringValue))
         {
             try
             {
-            Backendoptions.ChangeFormTutor(ACForm.StringValue, ACClass.StringValue);
+                Backendoptions.ChangeFormTutor(ACForm.StringValue, ACClass.StringValue);
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ;
             }
-            
+
         }
 
         partial void AAGrilApply(Foundation.NSObject sender)
         {
             try
             {
-Backendoptions.Grill(AGrillParent.StringValue, AGrillStudent.StringValue);
+                Backendoptions.Grill(AGrillParent.StringValue, AGrillStudent.StringValue);
+                AAddGrillErr.StringValue = "Utworzono relację opieki";
             }
             catch (Exception ex)
             {
-                ;
+                AAddGrillErr.StringValue = "Wystąpił błąd";
             }
 
         }
@@ -412,13 +423,14 @@ Backendoptions.Grill(AGrillParent.StringValue, AGrillStudent.StringValue);
         {
             try
             {
- Backendoptions.AddLesson(AALessDay.StringValue, AALessUH.StringValue, AALessClL.StringValue, AALessRR.StringValue, AALessSub.StringValue);
+                Backendoptions.AddLesson(AALessDay.StringValue, AALessUH.StringValue, AALessClL.StringValue, AALessRR.StringValue, AALessSub.StringValue);
+                AAddLessErr.StringValue = "Utworzono klasę";
             }
             catch (Exception ex)
             {
-                ;
+                AAddLessErr.StringValue = "Wystąpił błąd";
             }
-           
+
         }
 
         partial void AARoomAPply(Foundation.NSObject sender)
@@ -427,21 +439,22 @@ Backendoptions.Grill(AGrillParent.StringValue, AGrillStudent.StringValue);
             {
                 int t;
                 if (int.TryParse(AARoomFloor.StringValue, out t))
-                    if (int.TryParse(AARoomRoom.StringValue, out t))
-                        if (int.TryParse(AARoomChairs.StringValue, out t))
+                    if (int.TryParse(AARoomRoom.StringValue, out t) & t > 0)
+                        if (int.TryParse(AARoomChairs.StringValue, out t) & t > 0)
                         {
                             Backendoptions.AddRoom(AARoomFloor.StringValue, AARoomRoom.StringValue, AARoomChairs.StringValue);
                             AAddRoomErr.StringValue = "Utworzono salę";
                         }
+                        else
+                            AAddRoomErr.StringValue = "Zła ILOŚĆ krzeseł";
                     else
-                            AAddRoomErr.StringValue = "Nie udało się dodać pokoju";
+                        AAddRoomErr.StringValue = "Zły NUMER pokoju";
                 else
-                        AAddRoomErr.StringValue= "Nie udało się dodać pokoju";
-
+                    AAddRoomErr.StringValue = "Zły NUMER piętra";
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                AAddRoomErr.StringValue= "Nie udało się dodać pokoju";
+                AAddRoomErr.StringValue = "Wystąpił błąd";
             }
         }
 
@@ -454,29 +467,29 @@ Backendoptions.Grill(AGrillParent.StringValue, AGrillStudent.StringValue);
                 if (checker.IsPesel(AAddStPesel.StringValue))
                     if (checker.IsCorrect(AAddStName.StringValue) & checker.IsCorrect(AAddStLast.StringValue))
                         if (AAddStHome.StringValue == "" | checker.IsCorrect(AAddStHome.StringValue))
-                            if (AAddStMail.StringValue == "" | checker.IsCorrect(AAddStMail.StringValue))
+                            if (AAddStMail.StringValue == "" | (checker.IsCorrect(AAddStMail.StringValue) & checker.IsMail(AAddStMail.StringValue)))
                                 if (AAddStNum.StringValue == "" | int.TryParse(AAddStNum.StringValue, out t))
-                                    if (int.TryParse(AAddStRegNum.StringValue, out t))
+                                    if (int.TryParse(AAddStRegNum.StringValue, out t) & t > 0)
                                     {
                                         Backendoptions.AddStudent(AAddStPesel.StringValue, AAddStName.StringValue, AAddStLast.StringValue, AAddStHome.StringValue, AAddStNum.StringValue, AAddStMail.StringValue, AAddStClass.StringValue, AAddStRegNum.StringValue);
                                         AAddStErr.StringValue = "Dodano ucznia";
                                     }
                                     else
-                                        AAddStErr.StringValue = "Nie powiosło się dodawanie ucznia";
+                                        AAddStErr.StringValue = "Zły numer w dzienniku";
                                 else
-                                    AAddStErr.StringValue = "Nie powiosło się dodawanie ucznia";
+                                    AAddStErr.StringValue = "Zły numer telefonu";
                             else
-                                AAddStErr.StringValue = "Nie powiosło się dodawanie ucznia";
+                                AAddStErr.StringValue = "Zły email";
                         else
-                            AAddStErr.StringValue = "Nie powiosło się dodawanie ucznia";
+                            AAddStErr.StringValue = "Zły dom";
                     else
-                        AAddStErr.StringValue = "Nie powiosło się dodawanie ucznia";
+                        AAddStErr.StringValue = "Złe dane osobowe";
                 else
-                    AAddStErr.StringValue = "Nie powiosło się dodawanie ucznia";
+                    AAddStErr.StringValue = "Zły pesel";
             }
             catch (Exception ex)
             {
-                    AAddStErr.StringValue = "Nie powiosło się dodawanie ucznia";
+                AAddStErr.StringValue = "Wystąpił błąd";
             }
         }
 
@@ -489,7 +502,7 @@ Backendoptions.Grill(AGrillParent.StringValue, AGrillStudent.StringValue);
                 if (checker.IsPesel(AATeaPe.StringValue))
                     if (checker.IsCorrect(AATeaName.StringValue) & checker.IsCorrect(AATeaLast.StringValue))
                         if (AATeaHome.StringValue == "" | checker.IsCorrect(AATeaHome.StringValue))
-                            if (AATeaMail.StringValue == "" | checker.IsCorrect(AATeaMail.StringValue))
+                            if (AATeaMail.StringValue == "" | (checker.IsCorrect(AATeaMail.StringValue) & checker.IsMail(AATeaMail.StringValue)))
                                 if (AATeaPhone.StringValue == "" | int.TryParse(AATeaPhone.StringValue, out t))
                                     if (AATeaWork.StringValue == "" | decimal.TryParse(AATeaWork.StringValue, out d))
                                     {
@@ -497,41 +510,41 @@ Backendoptions.Grill(AGrillParent.StringValue, AGrillStudent.StringValue);
                                         AAddTeaErr.StringValue = "Dodano nauczyciela";
                                     }
                                     else
-                                        AAddTeaErr.StringValue = "Nie dodano nauczyciela";
+                                        AAddTeaErr.StringValue = "Nieprawidłowy wymiar etatu";
                                 else
-                                    AAddTeaErr.StringValue = "Nie dodano nauczyciela";
+                                    AAddTeaErr.StringValue = "Zły numer";
                             else
-                                AAddTeaErr.StringValue = "Nie dodano nauczyciela";
+                                AAddTeaErr.StringValue = "Zły email";
                         else
-                            AAddTeaErr.StringValue = "Nie dodano nauczyciela";
+                            AAddTeaErr.StringValue = "Zły dom";
                     else
-                        AAddTeaErr.StringValue = "Nie dodano nauczyciela";
+                        AAddTeaErr.StringValue = "Złe dane osobowe";
                 else
-                    AAddTeaErr.StringValue = "Nie dodano nauczyciela";
+                    AAddTeaErr.StringValue = "Zły pesel";
             }
             catch (Exception ex)
             {
-                
-                    AAddTeaErr.StringValue = "Nie dodano nauczyciela";
+
+                AAddTeaErr.StringValue = "Wystąpił błąd";
             }
-            }
+        }
 
         partial void AAUnitApply(Foundation.NSObject sender)
         {
             try
             {
                 int t;
-                if (int.TryParse(AAUnitM.StringValue, out t))
+                if (int.TryParse(AAUnitM.StringValue, out t) & t >= 0 & t <= 60)
                 {
                     Backendoptions.AddUnit(AAUnitH.StringValue, AAUnitM.StringValue);
                     AAddUnitErr.StringValue = "Utworzono jednostkę";
                 }
                 else
-                    AAddUnitErr.StringValue = "Nie utworzono jednostki";
+                    AAddUnitErr.StringValue = "Nie istnieje taka minuta";
             }
             catch (Exception ex)
             {
-                AAddUnitErr.StringValue = "Nie utworzono jednostki";
+                AAddUnitErr.StringValue = "Wystąpił błąd";
             }
         }
 
@@ -540,10 +553,11 @@ Backendoptions.Grill(AGrillParent.StringValue, AGrillStudent.StringValue);
             try
             {
                 Backendoptions.LegitimizeAbsence(PLegitimize.StringValue);
+                PLegitimizeErr.StringValue = "Usprawiedliwiono";
             }
-            catch( Exception ex)
+            catch (Exception ex)
             {
-                ;
+                PLegitimizeErr.StringValue = "Wystąpił błąd";
             }
         }
 
@@ -556,34 +570,34 @@ Backendoptions.Grill(AGrillParent.StringValue, AGrillStudent.StringValue);
                 if (checker.IsPesel(AAParPe.StringValue))
                     if (checker.IsCorrect(AAParNa.StringValue) & checker.IsCorrect(AAParLast.StringValue))
                         if (AAParHome.StringValue == "" | checker.IsCorrect(AAParHome.StringValue))
-                            if (AAParMail.StringValue == "" | checker.IsCorrect(AAParMail.StringValue))
-                                if (AAParNum.StringValue == "" | int.TryParse(AAParNum.StringValue, out t))
-                                    if (AAParMoney.StringValue == "" | decimal.TryParse(AAParMoney.StringValue, out d))
+                            if (AAParMail.StringValue == "" | (checker.IsCorrect(AAParMail.StringValue) & checker.IsMail(AAParMail.StringValue)))
+                                if (AAParNum.StringValue == "" | (int.TryParse(AAParNum.StringValue, out t)) & t > 0)
+                                    if (AAParMoney.StringValue == "" | (decimal.TryParse(AAParMoney.StringValue, out d) & d >= 0))
                                     {
                                         Backendoptions.AddParent(AAParPe.StringValue, AAParNa.StringValue, AAParLast.StringValue, AAParHome.StringValue, AAParNum.StringValue, AAParMail.StringValue, AAParMoney.StringValue);
                                         AAddParErr.StringValue = "Dodano rodzica";
                                     }
                                     else
-                                        AAddParErr.StringValue = "Nie udało się dodać rodzica";
+                                        AAddParErr.StringValue = "Zły dochów";
                                 else
-                                    AAddParErr.StringValue = "Nie udało się dodać rodzica";
+                                    AAddParErr.StringValue = "Zły numer telefonu";
                             else
-                                AAddParErr.StringValue = "Nie udało się dodać rodzica";
+                                AAddParErr.StringValue = "Zły email";
                         else
-                            AAddParErr.StringValue = "Nie udało się dodać rodzica";
+                            AAddParErr.StringValue = "Zły dom";
                     else
-                        AAddParErr.StringValue = "Nie udało się dodać rodzica";
+                        AAddParErr.StringValue = "Złe dane osobowe";
                 else
-                    AAddParErr.StringValue = "Nie udało się dodać rodzica";
+                    AAddParErr.StringValue = "Zły pesel";
             }
             catch (Exception ex)
             {
-                AAddParErr.StringValue = "Nie udało się dodać rodzica";
+                AAddParErr.StringValue = "Wystąpił błąd";
             }
-         }
+        }
 
 
-        
+
 
 
         partial void TANApply(Foundation.NSObject sender)
@@ -598,14 +612,14 @@ Backendoptions.Grill(AGrillParent.StringValue, AGrillStudent.StringValue);
                 else
                     TErrNote.StringValue = "Nie dodano oceny";
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 TErrNote.StringValue = "Nie dodano oceny";
             }
-         }
+        }
 
 
-       
+
 
 
         partial void TAWApply(Foundation.NSObject sender)
@@ -642,11 +656,12 @@ Backendoptions.Grill(AGrillParent.StringValue, AGrillStudent.StringValue);
         }
 
 
-     
+
 
 
         partial void TChePrApply(Foundation.NSObject sender)
-        {try
+        {
+            try
             {
                 var studentlist = TCheckStudent.StringValue.Split("\n");
                 var presancelist = TCheckPresance.StringValue.Split("\n");
@@ -658,7 +673,7 @@ Backendoptions.Grill(AGrillParent.StringValue, AGrillStudent.StringValue);
                         Backendoptions.AddPresance(TPrUnit.StringValue, studentlist[i], "inny");
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ;
             }
@@ -666,7 +681,7 @@ Backendoptions.Grill(AGrillParent.StringValue, AGrillStudent.StringValue);
 
 
 
-        
+
         partial void TCNApply(Foundation.NSObject sender)
         {
             try
@@ -677,7 +692,7 @@ Backendoptions.Grill(AGrillParent.StringValue, AGrillStudent.StringValue);
             {
                 ;
             }
-             }
+        }
 
 
         partial void TCatApply(Foundation.NSObject sender)
@@ -731,7 +746,7 @@ Backendoptions.Grill(AGrillParent.StringValue, AGrillStudent.StringValue);
             }
         }
 
-        
+
         partial void ADelGrillApply(Foundation.NSObject sender)
         {
             try
@@ -758,7 +773,7 @@ Backendoptions.Grill(AGrillParent.StringValue, AGrillStudent.StringValue);
 
         }
 
-     
+
         partial void ADelTeaApply(Foundation.NSObject sender)
         {
             try
