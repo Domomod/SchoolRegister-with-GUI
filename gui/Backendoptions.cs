@@ -114,6 +114,13 @@ namespace gui
             list.Add("1: it will");
             list.Add("2: be implemented");
             list.Add("3: later");
+            command.CommandText = $"select imie, nazwisko, srednia from srednie_uczniow";
+            dataReader = command.ExecuteReader();
+            while (dataReader.Read())
+            {
+                ;
+            }
+            dataReader.Close();
             return list;
         }
 
@@ -136,7 +143,7 @@ namespace gui
             return tup;
         }
 
- 
+        //TO DO: where data >= last 1 september
         static public string getMyNotes()
         {
             var notes = "";
@@ -193,7 +200,7 @@ namespace gui
             return notes;
         }
 
-
+        //TO DO: where data >= last 1 september
         static public string getMyChildNotes(){
             var notes = "";
             var subject = "";
@@ -243,6 +250,10 @@ namespace gui
         {
             var lst = student.Split("(");
             var pesel=lst[1].Remove(lst[1].Length - 1);
+            var unpackeddata = desc.Split(","); //date, category, subject
+            command.CommandText = $"";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
         }
 
         //TO DO FINISH
@@ -250,6 +261,11 @@ namespace gui
         {
             var lst = student.Split("(");
             var pesel = lst[1].Remove(lst[1].Length - 1);
+            var dayandunit = date.Split(",");
+            var unit = dayandunit[1].Split(":");
+            command.CommandText = $"";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
         }
 
         static public void LegitimizeAbsence(string data)
@@ -270,15 +286,6 @@ namespace gui
             return pesel;
         }
 
-        static public string GetPeselFromNames(string dane)
-        {
-            var lst = dane.Split(" ");
-            command.CommandText = $"SELECT pesel FROM dane_osobowe WHERE imie='{lst[0]}' and nazwisko='{lst[1]}'";
-            dataReader = command.ExecuteReader();
-            var pesel = dataReader[0].ToString();
-            dataReader.Close();
-            return pesel;
-        }
         static public List<string> GetUnits()
         {
             command.CommandText = $"SELECT * FROM jednostka";
@@ -345,6 +352,7 @@ namespace gui
             dataReader.Close();
             return list;
         }
+
         static public List<string> GetTeachers()
         {
             command.CommandText = $"SELECT imie, nazwisko, pesel FROM dane_osobowe JOIN nauczyciel on pesel=dane_osobowe_pesel ";
@@ -389,10 +397,18 @@ namespace gui
             return list;
         }
 
+        //TO DO: unique date, category, subject where class=current abd current_day-date<14
         static public List<string> getLastNotes()
         {
             List<string> lis = new List<string>();
             lis.Add("It will be implemented later");
+            command.CommandText = $"SELECT data, kategoria_oceny_nazwa, przedmiot_nazwa_przedmiotu from ocena";
+            dataReader = command.ExecuteReader();
+            while (dataReader.Read())
+            {
+                lis.Add(dataReader[0].ToString() + "," + dataReader[1].ToString() + "," + dataReader[2].ToString());
+            }
+            dataReader.Close();
             return lis;
         }
 
@@ -410,36 +426,82 @@ namespace gui
             dataReader.Close();
             return list;
         }
-        //TO DO FINISh
+        //TO DO FINISH: date, unit hour, unit minute where class=current and current_day-date <14
         static public List<string> LastLessonsForClass()
         {
             List<string> list = new List<string>();
+            var classyear = currentClass.Remove(4);
             list.Add("It will be implemented later");
+            command.CommandText = $"SELECT data, lekcja_jednostka_godzina, lekcja_jednostka_minuta from obecnosc where lekcja_klasa_rocznik={classyear} and lekcja_klasa_literka='{currentClass[4].ToString()}'";
+            dataReader = command.ExecuteReader();
+            while (dataReader.Read())
+            {
+                list.Add(dataReader[0].ToString() + ", " + dataReader[1].ToString() + ":" + dataReader[2].ToString());
+            }
+            dataReader.Close();
             return list;
         }
 
         //TO DO FINISH
         static public void ChangeClass(string student, string clas){
+            var pesel = student.Split("(")[1];
+            pesel = pesel.Remove(pesel.Length - 1);
+            var classletter = clas[4].ToString();
+            var classyear = currentClass.Remove(4);
+            command.CommandText = $"";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
+
         }
-        //TO DO FINISH
+        //TO DO FINISH: delete only from nauczyciel
         static public void DeleteTeacher(string teacher)
         {
-
+            var pesel = teacher.Split("(")[1];
+            pesel = pesel.Remove(pesel.Length - 1);
+            command.CommandText = $"";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
         }
         //TO DO FINISH
         static public void DeleteGrill(string parent, string child)
         {
-
+            var parentpesel = parent.Split("(")[1];
+            parentpesel = parentpesel.Remove(parentpesel.Length - 1);
+            var childpesel = child.Split("(")[1];
+            childpesel = childpesel.Remove(childpesel.Length - 1);
+            command.CommandText = $"";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
         }
-        //TO DO FINISH
+        //TO DO FINISH: delete student, his notes, presance and warnings
         static public void DeleteStudent(string student)
         {
-
+            var pesel = student.Split("(")[1];
+            pesel = pesel.Remove(pesel.Length - 1);
+            command.CommandText = $"";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
+            command.CommandText = $"";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
+            command.CommandText = $"";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
+            command.CommandText = $"";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
         }
-        //TO DO FINISH
+        //TO DO FINISH: delete from opiekun, opieka (nor dane_osobowe)
         static public void DeleteParent(string parent)
         {
-
+            var pesel = parent.Split("(")[1];
+            pesel = pesel.Remove(pesel.Length - 1);
+            command.CommandText = $"";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
+            command.CommandText = $"";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
         }
         static public List<string> GetStatuses()
         {

@@ -230,6 +230,9 @@ namespace gui
                                 TBest1.StringValue = best[0];
                                 TBest2.StringValue = best[1];
                                 TBest3.StringValue = best[2];
+                                TPreUnit.UsesDataSource = true;
+                                TPreUnit.DataSource = new MyCombo(Backendoptions.LastLessonsForClass());
+                                TPreUnit.SelectItem(0);
                             }
                         }
                         TNVal.UsesDataSource = true;
@@ -241,18 +244,15 @@ namespace gui
                         TCNVal.DataSource = new MyCombo(values);
                         TNSub.DataSource = new MyCombo(subjects);
                         TNCat.DataSource = new MyCombo(Backendoptions.GetCategories());
-                        TPreStat.UsesDataSource = true;
-                        TPreUnit.UsesDataSource = true;
+                        TPreStat.UsesDataSource = true;                      
                         TPrUnit.UsesDataSource = true;
-                        TPrUnit.DataSource = new MyCombo(units);
-                        TPreUnit.DataSource = new MyCombo(Backendoptions.LastLessonsForClass());
+                        TPrUnit.DataSource = new MyCombo(units);                      
                         TPreStat.DataSource = new MyCombo(status);
                         TClass.SelectItem(0);
                         TNVal.SelectItem(0);
                         TNSub.SelectItem(0);
                         TNCat.SelectItem(0);
                         TPreStat.SelectItem(0);
-                        TPreUnit.SelectItem(0);
                         TPrUnit.SelectItem(0);
                         TCNVal.SelectItem(0);
                     }
