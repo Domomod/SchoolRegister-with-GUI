@@ -423,6 +423,9 @@ namespace gui
 		[Action ("TChePrApply:")]
 		partial void TChePrApply (Foundation.NSObject sender);
 
+		[Action ("TChePrFind:")]
+		partial void TChePrFind (Foundation.NSObject sender);
+
 		[Action ("TClassApply:")]
 		partial void TClassApply (Foundation.NSObject sender);
 
@@ -431,61 +434,6 @@ namespace gui
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (TChePrErr != null) {
-				TChePrErr.Dispose ();
-				TChePrErr = null;
-			}
-
-			if (TChaPrErr != null) {
-				TChaPrErr.Dispose ();
-				TChaPrErr = null;
-			}
-
-			if (PLegitimizeErr != null) {
-				PLegitimizeErr.Dispose ();
-				PLegitimizeErr = null;
-			}
-
-			if (ADelteaErr != null) {
-				ADelteaErr.Dispose ();
-				ADelteaErr = null;
-			}
-
-			if (AAddLessErr != null) {
-				AAddLessErr.Dispose ();
-				AAddLessErr = null;
-			}
-
-			if (AAddSubErr != null) {
-				AAddSubErr.Dispose ();
-				AAddSubErr = null;
-			}
-
-			if (AChFormErr != null) {
-				AChFormErr.Dispose ();
-				AChFormErr = null;
-			}
-
-			if (ADelParErr != null) {
-				ADelParErr.Dispose ();
-				ADelParErr = null;
-			}
-
-			if (AChClass != null) {
-				AChClass.Dispose ();
-				AChClass = null;
-			}
-
-			if (AAddGrillErr != null) {
-				AAddGrillErr.Dispose ();
-				AAddGrillErr = null;
-			}
-
-			if (ADelStErr != null) {
-				ADelStErr.Dispose ();
-				ADelStErr = null;
-			}
-
 			if (AAClassForm != null) {
 				AAClassForm.Dispose ();
 				AAClassForm = null;
@@ -509,6 +457,16 @@ namespace gui
 			if (AAddClErr != null) {
 				AAddClErr.Dispose ();
 				AAddClErr = null;
+			}
+
+			if (AAddGrillErr != null) {
+				AAddGrillErr.Dispose ();
+				AAddGrillErr = null;
+			}
+
+			if (AAddLessErr != null) {
+				AAddLessErr.Dispose ();
+				AAddLessErr = null;
 			}
 
 			if (AAddParErr != null) {
@@ -564,6 +522,11 @@ namespace gui
 			if (AAddStRegNum != null) {
 				AAddStRegNum.Dispose ();
 				AAddStRegNum = null;
+			}
+
+			if (AAddSubErr != null) {
+				AAddSubErr.Dispose ();
+				AAddSubErr = null;
 			}
 
 			if (AAddTeaErr != null) {
@@ -736,6 +699,16 @@ namespace gui
 				AchCl = null;
 			}
 
+			if (AChClass != null) {
+				AChClass.Dispose ();
+				AChClass = null;
+			}
+
+			if (AChFormErr != null) {
+				AChFormErr.Dispose ();
+				AChFormErr = null;
+			}
+
 			if (AChSt != null) {
 				AChSt.Dispose ();
 				AChSt = null;
@@ -761,14 +734,29 @@ namespace gui
 				ADelPar = null;
 			}
 
+			if (ADelParErr != null) {
+				ADelParErr.Dispose ();
+				ADelParErr = null;
+			}
+
 			if (ADelSt != null) {
 				ADelSt.Dispose ();
 				ADelSt = null;
 			}
 
+			if (ADelStErr != null) {
+				ADelStErr.Dispose ();
+				ADelStErr = null;
+			}
+
 			if (ADelTea != null) {
 				ADelTea.Dispose ();
 				ADelTea = null;
+			}
+
+			if (ADelteaErr != null) {
+				ADelteaErr.Dispose ();
+				ADelteaErr = null;
 			}
 
 			if (AGrillParent != null) {
@@ -794,6 +782,11 @@ namespace gui
 			if (PLegitimize != null) {
 				PLegitimize.Dispose ();
 				PLegitimize = null;
+			}
+
+			if (PLegitimizeErr != null) {
+				PLegitimizeErr.Dispose ();
+				PLegitimizeErr = null;
 			}
 
 			if (PMyInfo != null) {
@@ -861,6 +854,11 @@ namespace gui
 				TCatWeight = null;
 			}
 
+			if (TChaPrErr != null) {
+				TChaPrErr.Dispose ();
+				TChaPrErr = null;
+			}
+
 			if (TCheckPresance != null) {
 				TCheckPresance.Dispose ();
 				TCheckPresance = null;
@@ -869,6 +867,11 @@ namespace gui
 			if (TCheckStudent != null) {
 				TCheckStudent.Dispose ();
 				TCheckStudent = null;
+			}
+
+			if (TChePrErr != null) {
+				TChePrErr.Dispose ();
+				TChePrErr = null;
 			}
 
 			if (TClass != null) {

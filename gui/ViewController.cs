@@ -18,7 +18,7 @@ namespace gui
             if (!Backendoptions.IsOpen())
                 Backendoptions.OpenConnection();
             checker = new SQLChecker();
-            if (Backendoptions.isAdmin())
+            if (Backendoptions.IsAdmin())
             {
                 AAUnitH = new NSComboBox();
                 AAddStClass = new NSComboBox();
@@ -44,7 +44,7 @@ namespace gui
             }
             else
             {
-                if (Backendoptions.isParent())
+                if (Backendoptions.IsParent())
                 {
                     PChildList = new NSComboBox();
                     PMyInfo = new NSTextField();
@@ -55,7 +55,7 @@ namespace gui
                 }
                 else
                 {
-                    if (Backendoptions.isTeacher())
+                    if (Backendoptions.IsTeacher())
                     {
                         TClass = new NSComboBox();
                         TWSt = new NSComboBox();
@@ -77,7 +77,7 @@ namespace gui
                         TBest3 = new NSTextField();
 
                     }
-                    else if (Backendoptions.isStudent())
+                    else if (Backendoptions.IsStudent())
                     {
                         SWarnings = new NSTextField();
                         SPresance = new NSTextField();
@@ -106,7 +106,7 @@ namespace gui
             var units = Backendoptions.GetUnits();
             var profiles = Backendoptions.GetProfiles();
             var status = Backendoptions.GetStatuses();
-            if (Backendoptions.isParent())
+            if (Backendoptions.IsParent())
             {
                 string stringinfo = "dzieci pod moją opieką:\n";
                 var child = Backendoptions.GetChildren();
@@ -118,18 +118,18 @@ namespace gui
                 PChildList.UsesDataSource = true;
                 PChildList.DataSource = new MyCombo(child);
                 PChildList.SelectItem(0);
-                if (Backendoptions.isChildSet())
+                if (Backendoptions.IsChildSet())
                 {
-                    PNotes.StringValue = Backendoptions.getMyChildPresance();//Yes, presance - i've done a mistake while creating names in a builder
-                    PPresance.StringValue = Backendoptions.getMyChildNotes();  //so here are notes
-                    PWarnings.StringValue = Backendoptions.getMyChildWarnings();
+                    PNotes.StringValue = Backendoptions.GetMyChildPresance();//Yes, presance - i've done a mistake while creating names in a builder
+                    PPresance.StringValue = Backendoptions.GetMyChildNotes();  //so here are notes
+                    PWarnings.StringValue = Backendoptions.GetMyChildWarnings();
                     PLegitimize.UsesDataSource = true;
                     PLegitimize.DataSource = new MyCombo(Backendoptions.GetAbsence());
                 }
             }
             else
             {
-                if (Backendoptions.isAdmin())
+                if (Backendoptions.IsAdmin())
                 {
                     AAUnitH.UsesDataSource = true;
                     AAUnitH.DataSource = new MyCombo(listHours);
@@ -195,11 +195,11 @@ namespace gui
                 }
                 else
                 {
-                    if (Backendoptions.isTeacher())
+                    if (Backendoptions.IsTeacher())
                     {
                         TClass.UsesDataSource = true;
                         TClass.DataSource = new MyCombo(classes);
-                        if (Backendoptions.isClassSet())
+                        if (Backendoptions.IsClassSet())
                         {
                             if (Backendoptions.GetStudents().Count != 0)
                             {
@@ -226,7 +226,7 @@ namespace gui
                                 TCheckStudent.Editable = false;
                                 TCheckPresance.StringValue = presance;
                                 TCNDesc.UsesDataSource = true;
-                                TCNDesc.DataSource = new MyCombo(Backendoptions.getLastNotes());
+                                TCNDesc.DataSource = new MyCombo(Backendoptions.GetLastNotes());
                                 var best = Backendoptions.GetTopThree();
                                 TBest1.StringValue = best[0];
                                 TBest2.StringValue = best[1];
@@ -259,13 +259,13 @@ namespace gui
                     }
                     else
                     {
-                        if (Backendoptions.isStudent())
+                        if (Backendoptions.IsStudent())
                         {
-                            var warning = Backendoptions.getMydWarnings();
+                            var warning = Backendoptions.GetMydWarnings();
                             SWarnings.StringValue = warning.Item1;
                             SPoints.StringValue = warning.Item2.ToString();
-                            SNotes.StringValue = Backendoptions.getMyNotes();
-                            SPresance.StringValue = Backendoptions.getMyPresance();
+                            SNotes.StringValue = Backendoptions.GetMyNotes();
+                            SPresance.StringValue = Backendoptions.GetMyPresance();
                         }
 
                     }
@@ -282,7 +282,7 @@ namespace gui
             {
                 Backendoptions.FirstUse();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 ;
             }
@@ -294,7 +294,7 @@ namespace gui
         {
             if (PeselInput.StringValue == "666")
             {
-                Backendoptions.setAdmin();
+                Backendoptions.SetAdmin();
                 var storyboard = NSStoryboard.FromName("Main", null);
                 var controller = storyboard.InstantiateControllerWithIdentifier("2") as NSWindowController;
                 controller.ShowWindow(this);
@@ -338,7 +338,7 @@ namespace gui
 
         partial void LogInAsTeacher(AppKit.NSButton sender)
         {
-            if (checker.IsCorrect(PeselInput.StringValue) & Backendoptions.LogInAsTeacher(PeselInput.StringValue))
+            if (PeselInput.StringValue!="666"&checker.IsCorrect(PeselInput.StringValue) & Backendoptions.LogInAsTeacher(PeselInput.StringValue))
             {
                 var storyboard = NSStoryboard.FromName("Main", null);
                 var controller = storyboard.InstantiateControllerWithIdentifier("17") as NSWindowController;
@@ -363,7 +363,7 @@ namespace gui
                     AAddSubErr.StringValue = "Podano nieprawidłową nazwę";
             }
 
-            catch (Exception ex)
+            catch (Exception)
             {
                 AAddSubErr.StringValue = "Wystąpił błąd";
             }
@@ -384,7 +384,7 @@ namespace gui
                         AAddClErr.StringValue = "Nie prawidłowy rocznik lub literka";
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 AAddClErr.StringValue = "Wystąpił błąd";
             }
@@ -398,7 +398,7 @@ namespace gui
                 Backendoptions.ChangeFormTutor(ACForm.StringValue, ACClass.StringValue);
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 ;
             }
@@ -412,7 +412,7 @@ namespace gui
                 Backendoptions.Grill(AGrillParent.StringValue, AGrillStudent.StringValue);
                 AAddGrillErr.StringValue = "Utworzono relację opieki";
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 AAddGrillErr.StringValue = "Wystąpił błąd";
             }
@@ -426,7 +426,7 @@ namespace gui
                 Backendoptions.AddLesson(AALessDay.StringValue, AALessUH.StringValue, AALessClL.StringValue, AALessRR.StringValue, AALessSub.StringValue);
                 AAddLessErr.StringValue = "Utworzono klasę";
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 AAddLessErr.StringValue = "Wystąpił błąd";
             }
@@ -452,7 +452,7 @@ namespace gui
                 else
                     AAddRoomErr.StringValue = "Zły NUMER piętra";
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 AAddRoomErr.StringValue = "Wystąpił błąd";
             }
@@ -487,7 +487,7 @@ namespace gui
                 else
                     AAddStErr.StringValue = "Zły pesel";
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 AAddStErr.StringValue = "Wystąpił błąd";
             }
@@ -522,7 +522,7 @@ namespace gui
                 else
                     AAddTeaErr.StringValue = "Zły pesel";
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
                 AAddTeaErr.StringValue = "Wystąpił błąd";
@@ -542,7 +542,7 @@ namespace gui
                 else
                     AAddUnitErr.StringValue = "Nie istnieje taka minuta";
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 AAddUnitErr.StringValue = "Wystąpił błąd";
             }
@@ -555,7 +555,7 @@ namespace gui
                 Backendoptions.LegitimizeAbsence(PLegitimize.StringValue);
                 PLegitimizeErr.StringValue = "Usprawiedliwiono";
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 PLegitimizeErr.StringValue = "Wystąpił błąd";
             }
@@ -590,7 +590,7 @@ namespace gui
                 else
                     AAddParErr.StringValue = "Zły pesel";
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 AAddParErr.StringValue = "Wystąpił błąd";
             }
@@ -612,7 +612,7 @@ namespace gui
                 else
                     TErrNote.StringValue = "Nie dodano oceny";
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 TErrNote.StringValue = "Nie dodano oceny";
             }
@@ -635,7 +635,7 @@ namespace gui
                 else
                     TErrWar.StringValue = "Nie powiodło się dodawanie uwagi";
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 TErrWar.StringValue = "Nie powiodło się dodawanie uwagi";
             }
@@ -649,12 +649,23 @@ namespace gui
                 Backendoptions.ChangeStatus(TPreStat.StringValue, TPreUnit.StringValue, TPreSt.StringValue);
             }
 
-            catch (Exception ex)
+            catch (Exception)
             {
                 ;
             }
         }
 
+        partial void AChClassApply(Foundation.NSObject sender)
+        {
+            try
+            {
+Backendoptions.ChangeClass(AChSt.StringValue, AchCl.StringValue);
+            }
+            catch (Exception)
+            {
+                ;
+            }
+        }
 
 
 
@@ -673,7 +684,7 @@ namespace gui
                         Backendoptions.AddPresance(TPrUnit.StringValue, studentlist[i], "inny");
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 ;
             }
@@ -688,7 +699,7 @@ namespace gui
             {
                 Backendoptions.ChangeNote(TCNVal.StringValue, TCNDesc.StringValue, TCNSt.StringValue);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 ;
             }
@@ -702,7 +713,7 @@ namespace gui
                 if (checker.IsCorrect(TCatNam.StringValue))
                     Backendoptions.AddCategory(TCatNam.StringValue, TCatWeight.StringValue);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 ;
             }
@@ -713,9 +724,9 @@ namespace gui
         {
             try
             {
-                Backendoptions.setChild(PChildList.StringValue);
+                Backendoptions.SetChild(PChildList.StringValue);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 ;
             }
@@ -725,9 +736,9 @@ namespace gui
         {
             try
             {
-                Backendoptions.setClass(TClass.StringValue);
+                Backendoptions.SetClass(TClass.StringValue);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 ;
             }
@@ -740,7 +751,7 @@ namespace gui
             {
                 Backendoptions.DeleteParent(ADelPar.StringValue);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 ;
             }
@@ -753,7 +764,7 @@ namespace gui
             {
                 Backendoptions.DeleteGrill(ADelGrillPar.StringValue, ADelGrillSt.StringValue);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 ADelgrillErr.StringValue = "Nie usunięto opieki (upewnij się, że istniała)";
             }
@@ -766,7 +777,7 @@ namespace gui
             {
                 Backendoptions.DeleteStudent(ADelSt.StringValue);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 ;
             }
@@ -780,7 +791,7 @@ namespace gui
             {
                 Backendoptions.DeleteTeacher(ADelTea.StringValue);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 ;
             }

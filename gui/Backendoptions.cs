@@ -19,19 +19,19 @@ namespace gui
         private static string currentChild = "";
 
 
-        static public bool isChildSet()
+        static public bool IsChildSet()
         {
             return (currentChild != "");
         }
-        static public bool isClassSet()
+        static public bool IsClassSet()
         {
             return (currentClass != "");
         }
-        static public void setClass(string clas)
+        static public void SetClass(string clas)
         {
             currentClass = clas;
         }
-        static public void setChild(string child)
+        static public void SetChild(string child)
         {
             var childdata = child.Split("(");
             currentChild = childdata[1].Remove(childdata[1].Length - 1);
@@ -41,23 +41,23 @@ namespace gui
         {
             return open;
         }
-        static public bool isAdmin()
+        static public bool IsAdmin()
         {
             return A;
         }
-        static public bool isTeacher()
+        static public bool IsTeacher()
         {
             return T;
         }
-        static public bool isParent()
+        static public bool IsParent()
         {
             return P;
         }
-        static public bool isStudent()
+        static public bool IsStudent()
         {
             return S;
         }
-        static public void setAdmin()
+        static public void SetAdmin()
         {
             T = P = false;
             A = true;
@@ -75,7 +75,7 @@ namespace gui
                 open = true;
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -95,7 +95,7 @@ namespace gui
         }
 
 
-        static public string getMyPresance()
+        static public string GetMyPresance()
         {
             var presance = "data\t\t\t godzina\t\t status\n";
             command.CommandText = $"SELECT data, lekcja_jednostka_godzina, lekcja_jednostka_minuta, status_nazwa FROM obecnosc where uczen_pesel={currentPesel} and CURRENT_DATE - data <14 ORDER BY data DESC";
@@ -119,13 +119,12 @@ namespace gui
             dataReader = command.ExecuteReader();
             while (dataReader.Read())
             {
-                ;
             }
             dataReader.Close();
             return list;
         }
 
-        static public Tuple<string, int> getMydWarnings()
+        static public Tuple<string, int> GetMydWarnings()
         {
 
             string notes = "";
@@ -145,7 +144,7 @@ namespace gui
         }
 
 
-        static public string getMyNotes()
+        static public string GetMyNotes()
         {
             var notes = "";
             var subject = "";
@@ -172,7 +171,7 @@ namespace gui
         }
 
 
-        static public string getMyChildPresance()
+        static public string GetMyChildPresance()
         {
             var presance = "data\t\t\t godzina\t\t status\n";
             command.CommandText = $"SELECT data, lekcja_jednostka_godzina, lekcja_jednostka_minuta, status_nazwa FROM obecnosc where uczen_pesel={currentChild} and CURRENT_DATE - data <14 ORDER BY data DESC";
@@ -187,7 +186,7 @@ namespace gui
         }
 
 
-        static public string getMyChildWarnings()
+        static public string GetMyChildWarnings()
         {
             string notes = "";
             command.CommandText = $"select data, tresc, puntky_do_zachowania from uwaga where uczen_dane_osobowe_pesel={currentChild}";
@@ -201,7 +200,7 @@ namespace gui
             return notes;
         }
 
-        static public string getMyChildNotes()
+        static public string GetMyChildNotes()
         {
             var notes = "";
             var subject = "";
@@ -246,13 +245,13 @@ namespace gui
             dataReader.Close();
         }
 
-        //TO DO FINISH
+        //DATA!!!
         static public void ChangeNote(string newValue, string desc, string student)
         {
             var lst = student.Split("(");
             var pesel = lst[1].Remove(lst[1].Length - 1);
             var unpackeddata = desc.Split(","); //date, category, subject
-            command.CommandText = $"UPDATE ocena SET ocena={newValue} where data={unpackeddata[0]} and uczen_dane_osobowe_peel={pesel} and nauczyciel_dane_osobowe_pesel={currentPesel} and kategoria_oceny_nazwa={unpackeddata[1]}, przedmiot_nazwa_przedmiotu={unpackeddata[2]}";
+            command.CommandText = $"UPDATE ocena SET ocena=STR_TO_DATE{newValue} where data=STR_TO_DATE('{unpackeddata[0]}', '%d/%m/%y %h%i') and uczen_dane_osobowe_peel={pesel} and nauczyciel_dane_osobowe_pesel={currentPesel} and kategoria_oceny_nazwa='{unpackeddata[1]}', przedmiot_nazwa_przedmiotu='{unpackeddata[2]}' and opis='{unpackeddata[3]}'";
             dataReader = command.ExecuteReader();
             dataReader.Close();
         }
@@ -358,7 +357,7 @@ namespace gui
 
         static public List<string> GetTeachers()
         {
-            command.CommandText = $"SELECT imie, nazwisko, pesel FROM dane_osobowe JOIN nauczyciel on pesel=dane_osobowe_pesel ";
+            command.CommandText = $"SELECT imie, nazwisko, pesel FROM dane_osobowe JOIN nauczyciel on pesel=dane_osobowe_pesel where pesel!=666 ";
             dataReader = command.ExecuteReader();
             List<string> list = new List<string>();
             while (dataReader.Read())
@@ -401,21 +400,20 @@ namespace gui
             return list;
         }
 
-        //TO DO:  date, category, subject where class=current abd current_day-date<14
-        static public List<string> getLastNotes()
+        static public List<string> GetLastNotes()
         {
             List<string> lis = new List<string>();
             lis.Add("It will be implemented later");
-            command.CommandText = $"SELECT data, kategoria_oceny_nazwa, przedmiot_nazwa_przedmiotu from ocena";
+            command.CommandText = $"SELECT DISTINCT data, kategoria_oceny_nazwa, przedmiot_nazwa_przedmiotu, opis from ocena where current_date-data<14";
             dataReader = command.ExecuteReader();
             while (dataReader.Read())
             {
-                lis.Add(dataReader[0].ToString() + "," + dataReader[1].ToString() + "," + dataReader[2].ToString());
+                lis.Add(dataReader[0].ToString() + "," + dataReader[1].ToString() + "," + dataReader[2].ToString() + "," + dataReader[3].ToString());
             }
             dataReader.Close();
             return lis;
         }
-
+        
         static public List<string> GetStudents()
         {
             var letter = currentClass[4].ToString();
@@ -430,13 +428,13 @@ namespace gui
             dataReader.Close();
             return list;
         }
-        //TO DO FINISH: date, unit hour, unit minute where class=current and current_day-date <14
+        
         static public List<string> LastLessonsForClass()
         {
             List<string> list = new List<string>();
             var classyear = currentClass.Remove(4);
             list.Add("It will be implemented later");
-            command.CommandText = $"SELECT data, lekcja_jednostka_godzina, lekcja_jednostka_minuta from obecnosc where lekcja_klasa_rocznik={classyear} and lekcja_klasa_literka='{currentClass[4].ToString()}'";
+            command.CommandText = $"SELECT data, lekcja_jednostka_godzina, lekcja_jednostka_minuta from obecnosc where lekcja_klasa_rocznik={classyear} and lekcja_klasa_literka='{currentClass[4].ToString()}' and CURRENT_DATE-data<14";
             dataReader = command.ExecuteReader();
             while (dataReader.Read())
             {
@@ -462,6 +460,15 @@ namespace gui
         {
             var pesel = teacher.Split("(")[1];
             pesel = pesel.Remove(pesel.Length - 1);
+            command.CommandText = $"UPDATE ocena SET nauczyciel_dane_osobowe_pesel=666 WHERE nauczyciel_dane_osobowe_pesel={pesel}";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
+            command.CommandText = $"UPDATE uwaga SET nauczyciel_dane_osobowe_pesel=666 WHERE nauczyciel_dane_osobowe_pesel={pesel}";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
+            command.CommandText = $"UPDATE klasa SET nauczyciel_dane_osobowe_pesel=666 WHERE nauczyciel_dane_osobowe_pesel={pesel}";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
             command.CommandText = $"DELETE from nauczyciel where dane_osobowe_pesel={pesel}";
             dataReader = command.ExecuteReader();
             dataReader.Close();
@@ -683,7 +690,7 @@ namespace gui
                 dataReader.Close();
                 return false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -708,9 +715,9 @@ namespace gui
                 dataReader.Close();
                 return false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
+             
                 return false;
             }
 
@@ -733,7 +740,7 @@ namespace gui
                 dataReader.Close();
                 return false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -1059,13 +1066,22 @@ namespace gui
                 dataReader = command.ExecuteReader();
                 dataReader.Close();
 
+                command.CommandText = "INSERT INTO `dane_osobowe` (`pesel`, `imie`, `nazwisko`, `adres_zamieszkania`, `numer_telefonu`, `email`) VALUES ('666', 'Zwolniony', 'Pozorny', NULL, NULL, NULL); ";
+                dataReader = command.ExecuteReader();
+                dataReader.Close();
+
+                command.CommandText = "INSERT INTO `nauczyciel` (`etat`, `dane_osobowe_pesel`) VALUES ('0', '666'); ";
+                dataReader = command.ExecuteReader();
+                dataReader.Close();
                 return true;
             }
 
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
+
+
         }
 
     }
