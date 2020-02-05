@@ -35,7 +35,6 @@ namespace gui
         {
             var childdata = child.Split("(");
             currentChild = childdata[1].Remove(childdata[1].Length - 1);
-
         }
         static public bool IsOpen()
         {
@@ -158,7 +157,6 @@ namespace gui
 
         static public Tuple<string, int> GetMydWarnings()
         {
-
             string notes = "";
             int sum = 0;
             command.CommandText = $"select data, tresc, puntky_do_zachowania from uwaga where uczen_dane_osobowe_pesel={currentPesel}";
@@ -170,7 +168,6 @@ namespace gui
                 sum += int.Parse(dataReader[2].ToString());
             }
             dataReader.Close();
-
             var tup = Tuple.Create<string, int>(notes, sum);
             return tup;
         }
@@ -475,7 +472,6 @@ namespace gui
             return list;
         }
 
-        //TO DO FINISH
         static public void ChangeClass(string student, string clas)
         {
             var pesel = student.Split("(")[1];
@@ -546,6 +542,7 @@ namespace gui
             dataReader = command.ExecuteReader();
             dataReader.Close();
         }
+
         static public List<string> GetStatuses()
         {
             command.CommandText = "SELECT * FROM status";
@@ -575,7 +572,7 @@ namespace gui
             if (!dataReader.Read())
             {
                 dataReader.Close();
-                command.CommandText = $"INSERT INTO dane_osobowe VALUES({pesel},'{names}','{lastName}','{home}',{phoneNum},'{mail}')";
+                command.CommandText = $"INSERT INTO dane_osobowe(pesel, imie, nazwisko {(home.Length!=0 ? ", adres_zamieszkania" : "")} {(phoneNum.Length!=0? ", numer_telefonu":"")}{(mail.Length!=0?", email":"")} ) VALUES({pesel},'{names}','{lastName}' {(home.Length!=0? ", '"+home+"'": "")} {(phoneNum.Length!=0? ", '"+phoneNum+"'":"")}{(mail.Length!=0? ",'"+mail+"'":"")})";
                 dataReader = command.ExecuteReader();
             }
             dataReader.Close();
@@ -590,17 +587,17 @@ namespace gui
             dataReader = command.ExecuteReader();
             dataReader.Close();
         }
-        //TO DO FINISH
+
         static public void AddPresance(string hour, string pesel, string status)
         {
             var student = pesel.Split("(");
             student[1] = student[1].Remove(student[1].Length - 1);
             var unit = hour.Split(":");
             var classYear = currentClass.Remove(4);
-
-                command.CommandText = $"INSERT INTO obecnosc VALUES (CURRENT_DATE, {student[1]},WEEKDAY(CURRENT_DATE)+1,{unit[0]}, {unit[1]},{classYear}, '{currentClass[4].ToString()}', '{status}')";
-                dataReader = command.ExecuteReader();
-                dataReader.Close(); }
+            command.CommandText = $"INSERT INTO obecnosc VALUES (CURRENT_DATE, {student[1]},WEEKDAY(CURRENT_DATE)+1,{unit[0]}, {unit[1]},{classYear}, '{currentClass[4].ToString()}', '{status}')";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
+        }
 
         
 
@@ -611,7 +608,7 @@ namespace gui
             if (!dataReader.Read())
             {
                 dataReader.Close();
-                command.CommandText = $"INSERT INTO dane_osobowe VALUES({pesel},'{names}','{lastName}','{home}',{phoneNum},'{mail}')";
+                command.CommandText = $"INSERT INTO dane_osobowe(pesel, imie, nazwisko {(home.Length != 0 ? ", adres_zamieszkania" : "")} {(phoneNum.Length != 0 ? ", numer_telefonu" : "")}{(mail.Length != 0 ? ", email" : "")} ) VALUES({pesel},'{names}','{lastName}' {(home.Length != 0 ? ", '" + home + "'" : "")} {(phoneNum.Length != 0 ? ", '" + phoneNum + "'" : "")}{(mail.Length != 0 ? ",'" + mail + "'" : "")})";
                 dataReader = command.ExecuteReader();
             }
             dataReader.Close();
@@ -629,7 +626,7 @@ namespace gui
             dataReader.Close();
             var classLetter = clas[4].ToString();
             var classYear = clas.Remove(4);
-            command.CommandText = $"INSERT INTO uczen VALUES ({pesel},{classYear},{numberInRegister},'{classLetter}')";
+            command.CommandText = $"INSERT INTO dane_osobowe(pesel, imie, nazwisko {(home.Length != 0 ? ", adres_zamieszkania" : "")} {(phoneNum.Length != 0 ? ", numer_telefonu" : "")}{(mail.Length != 0 ? ", email" : "")} ) VALUES({pesel},'{names}','{lastName}' {(home.Length != 0 ? ", '" + home + "'" : "")} {(phoneNum.Length != 0 ? ", '" + phoneNum + "'" : "")}{(mail.Length != 0 ? ",'" + mail + "'" : "")})";
             dataReader = command.ExecuteReader();
             dataReader.Close();
         }
@@ -646,7 +643,6 @@ namespace gui
             command.CommandText = $"INSERT into kategoria VALUES ('{name}',{value})";
         }
 
-        //TO DO: CHANGE SQL (SYNTAX ERROR)
         static public void AddLesson(string dayOfUnit, string hourOfUnit, string classLetter, string roomNumber, string subject)
         {
             var unit = hourOfUnit.Split(":");
@@ -708,7 +704,6 @@ namespace gui
         {
             try
             {
-
                 command.CommandText = $"select * from uczen where dane_osobowe_pesel={pesel}";
                 dataReader = command.ExecuteReader();
                 if (dataReader.Read())
@@ -743,13 +738,11 @@ namespace gui
                     A = T = S = false;
                     return true;
                 }
-
                 dataReader.Close();
                 return false;
             }
             catch (Exception)
             {
-             
                 return false;
             }
 
@@ -776,7 +769,6 @@ namespace gui
             {
                 return false;
             }
-
         }
 
 
