@@ -257,9 +257,9 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VkD-DM-K3j">
-                                <rect key="frame" x="31" y="84" width="141" height="32"/>
+                                <rect key="frame" x="35" y="84" width="134" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Edytuj obcnośće" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uze-qT-iTA">
+                                <buttonCell key="cell" type="push" title="Edytuj obcność" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uze-qT-iTA">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -290,9 +290,9 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vaE-3x-HGo">
-                                <rect key="frame" x="313" y="84" width="114" height="32"/>
+                                <rect key="frame" x="311" y="84" width="119" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Edyuj ocenę" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="GCB-0q-A3J">
+                                <buttonCell key="cell" type="push" title="Edytuj ocenę" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="GCB-0q-A3J">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -440,6 +440,7 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="TAddCatErr" destination="c1t-bt-gTc" id="0yR-gk-tG1"/>
                         <outlet property="TCatNam" destination="Xb9-SO-HMm" id="8FT-dj-lvL"/>
                         <outlet property="TCatWeight" destination="fWK-O9-4Xj" id="UhO-rJ-DQN"/>
                     </connections>
@@ -2483,6 +2484,7 @@
                     <connections>
                         <outlet property="ACClass" destination="qPx-YW-m7u" id="F9f-zJ-k7A"/>
                         <outlet property="ACForm" destination="AyT-eW-LEp" id="Lg1-My-xmx"/>
+                        <outlet property="AChFormEr" destination="VC8-DV-byB" id="qXf-U0-Q3i"/>
                         <outlet property="AChFormErr" destination="VC8-DV-byB" id="XYl-np-G68"/>
                         <outlet property="ChangeFormTutorApply" destination="woF-Jx-eKy" id="UQ2-a6-sFq"/>
                         <outlet property="ChangeFormTutorClass" destination="qPx-YW-m7u" id="CHk-pt-79G"/>
@@ -2651,6 +2653,7 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="AChClErr" destination="sje-Ko-CWb" id="mjE-bk-IBE"/>
                         <outlet property="AChClass" destination="pY1-8J-7BP" id="XdB-Dy-aWj"/>
                         <outlet property="AChSt" destination="3bH-OE-UTJ" id="Isr-gP-owm"/>
                         <outlet property="AchCl" destination="SrN-SO-PgG" id="vxa-ah-9ZM"/>

@@ -175,6 +175,12 @@ namespace gui
 		AppKit.NSView AChClass { get; set; }
 
 		[Outlet]
+		AppKit.NSTextFieldCell AChClErr { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField AChFormEr { get; set; }
+
+		[Outlet]
 		AppKit.NSTextField AChFormErr { get; set; }
 
 		[Outlet]
@@ -248,6 +254,9 @@ namespace gui
 
 		[Outlet]
 		AppKit.NSTextField SWarnings { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField TAddCatErr { get; set; }
 
 		[Outlet]
 		AppKit.NSTextField TBest1 { get; set; }
@@ -434,6 +443,11 @@ namespace gui
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (AChFormEr != null) {
+				AChFormEr.Dispose ();
+				AChFormEr = null;
+			}
+
 			if (AAClassForm != null) {
 				AAClassForm.Dispose ();
 				AAClassForm = null;
@@ -704,6 +718,11 @@ namespace gui
 				AChClass = null;
 			}
 
+			if (AChClErr != null) {
+				AChClErr.Dispose ();
+				AChClErr = null;
+			}
+
 			if (AChFormErr != null) {
 				AChFormErr.Dispose ();
 				AChFormErr = null;
@@ -827,6 +846,11 @@ namespace gui
 			if (SWarnings != null) {
 				SWarnings.Dispose ();
 				SWarnings = null;
+			}
+
+			if (TAddCatErr != null) {
+				TAddCatErr.Dispose ();
+				TAddCatErr = null;
 			}
 
 			if (TBest1 != null) {

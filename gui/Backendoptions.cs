@@ -82,6 +82,24 @@ namespace gui
         }
 
 
+        static public Tuple<string, string> GetPresanceThiSUnit(string unit)
+        {
+            string students = "";
+            string presances = "";
+            var unitparted = unit.Split(":");
+            var classyear = currentClass.Remove(4);
+            command.CommandText = $"select imie, nazwisko, pesel, status_nazwa from obecnosc join dane_osobowe on uczen_pesel=pesel WHERE data=CURRENT_DATE and lekcja_klasa_rocznik={classyear} and lekcja_klasa_literka='{currentClass[4].ToString()}' and lekcja_jednostka_godzina={unitparted[0]} and lekcja_jednostka_minuta={unitparted[1]}";
+            dataReader = command.ExecuteReader();
+            while (dataReader.Read())
+            {
+                students = students + dataReader[0].ToString() + " " + dataReader[1].ToString() + "(" + dataReader[2].ToString() + ")\n";
+                presances = presances + dataReader[3].ToString() + "\n";
+            }
+            dataReader.Close();
+            Tuple<string, string> tuple = new Tuple<string, string>(students, presances);
+            return tuple;
+        }
+
         static public string ParentInfo()
         {
             string data = "Dzieci pod moją opieką:\n";
@@ -94,6 +112,20 @@ namespace gui
             return data;
         }
 
+        static public bool WasPresanceChecked(string unit)
+        {
+            var unitParts = unit.Split(":");
+            var clasyear = currentClass.Remove(4);
+            command.CommandText=$"SELECT * from obecnosc where data=CURRENT_DATE and lekcja_klasa_rocznik={clasyear} and lekcja_klasa_literka='{currentClass[4].ToString()}' and lekcja_jednostka_godzina={unitParts[0]} and lekcja_jednostka_minuta={unitParts[1]}";
+            dataReader = command.ExecuteReader();
+            if (dataReader.Read())
+            {
+                dataReader.Close();
+                return true;
+            }
+            dataReader.Close();
+            return false;
+        }
 
         static public string GetMyPresance()
         {
@@ -433,8 +465,7 @@ namespace gui
         {
             List<string> list = new List<string>();
             var classyear = currentClass.Remove(4);
-            list.Add("It will be implemented later");
-            command.CommandText = $"SELECT data, lekcja_jednostka_godzina, lekcja_jednostka_minuta from obecnosc where lekcja_klasa_rocznik={classyear} and lekcja_klasa_literka='{currentClass[4].ToString()}' and CURRENT_DATE-data<14";
+            command.CommandText = $"SELECT DISTINCT data, lekcja_jednostka_godzina, lekcja_jednostka_minuta from obecnosc where lekcja_klasa_rocznik={classyear} and lekcja_klasa_literka='{currentClass[4].ToString()}' and CURRENT_DATE-data<14";
             dataReader = command.ExecuteReader();
             while (dataReader.Read())
             {
@@ -483,7 +514,6 @@ namespace gui
             dataReader = command.ExecuteReader();
             dataReader.Close();
         }
-        //TO DO FINISH: delete student, his notes, presance and warnings
         static public void DeleteStudent(string student)
         {
             var pesel = student.Split("(")[1];
@@ -504,7 +534,7 @@ namespace gui
             dataReader = command.ExecuteReader();
             dataReader.Close();
         }
-        //TO DO FINISH: delete from opiekun, opieka (nor dane_osobowe)
+
         static public void DeleteParent(string parent)
         {
             var pesel = parent.Split("(")[1];
@@ -567,10 +597,12 @@ namespace gui
             student[1] = student[1].Remove(student[1].Length - 1);
             var unit = hour.Split(":");
             var classYear = currentClass.Remove(4);
-            command.CommandText = $"INSERT INTO obecnosc VALUES (CURRENT_DATE, {student[1]},WEEKDAY(CURRENT_DATE)+1,{unit[0]}, {unit[1]},{classYear}, '{currentClass[4].ToString()}', '{status}')";
-            dataReader = command.ExecuteReader();
-            dataReader.Close();
-        }
+
+                command.CommandText = $"INSERT INTO obecnosc VALUES (CURRENT_DATE, {student[1]},WEEKDAY(CURRENT_DATE)+1,{unit[0]}, {unit[1]},{classYear}, '{currentClass[4].ToString()}', '{status}')";
+                dataReader = command.ExecuteReader();
+                dataReader.Close(); }
+
+        
 
         static public void AddTeacher(string pesel, string names, string lastName, string home, string phoneNum, string mail, string etat)
         {
