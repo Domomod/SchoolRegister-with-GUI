@@ -253,7 +253,6 @@ namespace gui
                                 TPreUnit.UsesDataSource = true;
                                 TPreUnit.DataSource = new MyCombo(Backendoptions.LastLessonsForClass());
                                 TPreUnit.Editable = false;
-                                TPreUnit.SelectItem(0);
                             }
                         }
                         TNVal.UsesDataSource = true;

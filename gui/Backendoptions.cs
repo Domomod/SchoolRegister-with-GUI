@@ -621,12 +621,12 @@ namespace gui
         //Dodać procedurę
         static public void AddStudent(string pesel, string names, string lastName, string home, string phoneNum, string mail, string clas, string numberInRegister)
         {
-            command.CommandText = $"INSERT INTO dane_osobowe VALUES('{pesel}','{names}','{lastName}','{home}',{phoneNum},'{mail}')";
+            command.CommandText = $"INSERT INTO dane_osobowe(pesel, imie, nazwisko {(home.Length != 0 ? ", adres_zamieszkania" : "")} {(phoneNum.Length != 0 ? ", numer_telefonu" : "")}{(mail.Length != 0 ? ", email" : "")} ) VALUES({pesel},'{names}','{lastName}' {(home.Length != 0 ? ", '" + home + "'" : "")} {(phoneNum.Length != 0 ? ", '" + phoneNum + "'" : "")}{(mail.Length != 0 ? ",'" + mail + "'" : "")})";
             dataReader = command.ExecuteReader();
             dataReader.Close();
             var classLetter = clas[4].ToString();
             var classYear = clas.Remove(4);
-            command.CommandText = $"INSERT INTO dane_osobowe(pesel, imie, nazwisko {(home.Length != 0 ? ", adres_zamieszkania" : "")} {(phoneNum.Length != 0 ? ", numer_telefonu" : "")}{(mail.Length != 0 ? ", email" : "")} ) VALUES({pesel},'{names}','{lastName}' {(home.Length != 0 ? ", '" + home + "'" : "")} {(phoneNum.Length != 0 ? ", '" + phoneNum + "'" : "")}{(mail.Length != 0 ? ",'" + mail + "'" : "")})";
+            command.CommandText = $"INSERT INTO uczen VALUES({pesel},{classYear},{numberInRegister},'{classLetter}')";
             dataReader = command.ExecuteReader();
             dataReader.Close();
         }
