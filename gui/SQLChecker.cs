@@ -36,6 +36,20 @@ namespace gui
             forbidden.Add("VIEW");
         }
 
+        public string ReformatDate(string oldFormat)
+        {
+            var onlyDate = oldFormat.Split(" ")[0];
+            var cutIntoThree = onlyDate.Split("/");
+            string newFormat= cutIntoThree[2] + "-";
+            if (cutIntoThree[0].Length == 1)
+                newFormat += "0";
+            newFormat = newFormat + cutIntoThree[0] + "-";
+            if (cutIntoThree[1].Length == 1)
+                newFormat += "0";
+            newFormat+= cutIntoThree[1];
+            return newFormat;
+        }
+
         public bool IsCorrect(string text)
         {
             text = text.ToUpper();

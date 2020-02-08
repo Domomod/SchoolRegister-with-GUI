@@ -11,11 +11,12 @@ namespace gui
             
             NSApplication.Init();
             NSApplication.Main(args);
-            
+                Backendoptions.CloseConnection();
             }
             catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Backendoptions.CloseConnection();
             }
         }
     }

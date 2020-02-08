@@ -17,6 +17,7 @@ namespace gui
         private static bool S = false;
         private static string currentClass = "";
         private static string currentChild = "";
+        private static SQLChecker checker;
 
 
         static public bool IsChildSet()
@@ -66,6 +67,7 @@ namespace gui
         {
             try
             {
+                checker = new SQLChecker();
                 sqlConnection = new MySqlConnection("Server=192.168.64.2;  database=Dziennik; Uid=Julka ; pwd=Abby");
                 sqlConnection.Open();
                 command = sqlConnection.CreateCommand();
@@ -280,7 +282,8 @@ namespace gui
             var lst = student.Split("(");
             var pesel = lst[1].Remove(lst[1].Length - 1);
             var unpackeddata = desc.Split(","); //date, category, subject
-            command.CommandText = $"UPDATE ocena SET ocena=STR_TO_DATE{newValue} where data=STR_TO_DATE('{unpackeddata[0]}', '%d/%m/%y %h%i') and uczen_dane_osobowe_peel={pesel} and nauczyciel_dane_osobowe_pesel={currentPesel} and kategoria_oceny_nazwa='{unpackeddata[1]}', przedmiot_nazwa_przedmiotu='{unpackeddata[2]}' and opis='{unpackeddata[3]}'";
+            var date = checker.ReformatDate(unpackeddata[0]);
+            command.CommandText = $"UPDATE ocena SET ocena={newValue} where data='{date}' and uczen_dane_osobowe_pesel={pesel} and nauczyciel_dane_osobowe_pesel={currentPesel} and kategoria_oceny_nazwa='{unpackeddata[1]}' and przedmiot_nazwa_przedmiotu='{unpackeddata[2]}' and opis='{unpackeddata[3]}'";
             dataReader = command.ExecuteReader();
             dataReader.Close();
         }
@@ -292,20 +295,19 @@ namespace gui
             var pesel = lst[1].Remove(lst[1].Length - 1);
             var dayandunit = date.Split(",");
             var unit = dayandunit[1].Split(":");
-            command.CommandText = $"UPDATE obecnosc SET status_nazwa='{newValue}' WHERE uczen_pesel={pesel} and data={dayandunit[0]} and lekcja_jednostka_godzina={unit[0]} and lekcja_jednostka_minuta={unit[1]} ";
+            var day = checker.ReformatDate(dayandunit[0]);
+            command.CommandText = $"UPDATE obecnosc SET status_nazwa='{newValue}' WHERE uczen_pesel={pesel} and data='{day}' and lekcja_jednostka_godzina={unit[0]} and lekcja_jednostka_minuta={unit[1]} ";
             dataReader = command.ExecuteReader();
             dataReader.Close();
         }
 
-        //DATA!!!!
         static public void LegitimizeAbsence(string data)
         {
             var day = data.Split(" ");
-            var cutDay = day[0].Split("/");
-            command.CommandText = $"UPDATE obecnosc SET status_nazwa = 'usprawiedliwiony' WHERE  status_nazwa='nieobecny' and data=STR_TO_DATE('{cutDay}','%d/%m/%Y') and uczen_pesel={currentChild}";
+            var normalDay = checker.ReformatDate(day[0]);
+            command.CommandText = $"UPDATE obecnosc SET status_nazwa = 'usprawiedliwiony' WHERE  status_nazwa='nieobecny' and data='{normalDay}' and uczen_pesel={currentChild}";
             dataReader = command.ExecuteReader();
             dataReader.Close();
-
         }
 
         static public string ChildPesel(string imie)
@@ -481,8 +483,8 @@ namespace gui
             command.CommandText = $"UPDATE uczen SET klasa_rocznik={classyear}, klasa_literka='{classletter}' WHERE dane_osobowe_pesel={pesel}";
             dataReader = command.ExecuteReader();
             dataReader.Close();
-
         }
+
         static public void DeleteTeacher(string teacher)
         {
             var pesel = teacher.Split("(")[1];
@@ -500,6 +502,7 @@ namespace gui
             dataReader = command.ExecuteReader();
             dataReader.Close();
         }
+
         static public void DeleteGrill(string parent, string child)
         {
             var parentpesel = parent.Split("(")[1];
@@ -510,6 +513,7 @@ namespace gui
             dataReader = command.ExecuteReader();
             dataReader.Close();
         }
+
         static public void DeleteStudent(string student)
         {
             var pesel = student.Split("(")[1];
