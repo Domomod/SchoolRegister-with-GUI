@@ -68,7 +68,7 @@ namespace gui
             try
             {
                 checker = new SQLChecker();
-                sqlConnection = new MySqlConnection("Server=192.168.64.2;  database=Dziennik; Uid=Julka ; pwd=Abby");
+                sqlConnection = new MySqlConnection("Server=51.38.134.103; database=Dziennik; ");
                 sqlConnection.Open();
                 command = sqlConnection.CreateCommand();
                 command.Connection = sqlConnection;
@@ -76,12 +76,12 @@ namespace gui
                 open = true;
                 return true;
             }
-            catch (Exception)
+          catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return false;
             }
         }
-
 
         static public Tuple<string, string> GetPresanceThiSUnit(string unit)
         {
@@ -141,20 +141,30 @@ namespace gui
             dataReader.Close();
             return presance;
         }
-        //TO DO: Wybiera 3 najlepszych z danej klasy - procedura/funkcja
-        static public List<string> GetTopThree()
+
+        static public string GetMyStudentInfo()
         {
-            List<string> list = new List<string>();
-            list.Add("1: it will");
-            list.Add("2: be implemented");
-            list.Add("3: later");
-            command.CommandText = $"select imie, nazwisko, srednia from srednie_uczniow";
+            command.CommandText = $"select klasa_rocznik, klasa_literka, nr_w_dzienniku from uczen where dane_osobowe_pesel={currentPesel}";
             dataReader = command.ExecuteReader();
-            while (dataReader.Read())
-            {
-            }
+            dataReader.Read();
+            var info = dataReader[0].ToString() + dataReader[1].ToString() + ", " + dataReader[2].ToString();
             dataReader.Close();
-            return list;
+            return info;
+        }
+
+        static public string GetTopThree()
+        {
+            var classyear = currentClass.Remove(4);
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "znajdz_najlepszych";
+            command.Parameters.AddWithValue("@arg_rocznik", classyear);
+            command.Parameters.AddWithValue("@arg_literka", currentClass[4].ToString());
+            command.Parameters.Add("@ireturnvalue",MySqlDbType.Text);
+            command.Parameters["@ireturnvalue"].Direction = ParameterDirection.ReturnValue;
+            command.ExecuteScalar();
+            string val = (command.Parameters["@ireturnvalue"].Value.ToString());
+            command.CommandType = CommandType.Text;
+            return val;
         }
 
         static public Tuple<string, int> GetMydWarnings()
@@ -173,7 +183,6 @@ namespace gui
             var tup = Tuple.Create<string, int>(notes, sum);
             return tup;
         }
-
 
         static public string GetMyNotes()
         {
@@ -201,7 +210,6 @@ namespace gui
             return notes;
         }
 
-
         static public string GetMyChildPresance()
         {
             var presance = "data\t\t\t godzina\t\t status\n";
@@ -215,7 +223,6 @@ namespace gui
             dataReader.Close();
             return presance;
         }
-
 
         static public string GetMyChildWarnings()
         {
@@ -257,12 +264,18 @@ namespace gui
             return notes;
         }
 
+        static public void AddProfile(string profilname)
+        {
+            command.CommandText = $"INSERT INTO profil VALUES('{profilname}') ";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
+        }
 
         static public void AddWarning(string whatDidStudentDo, string points, string pesel)
         {
             var lst = pesel.Split("(");
             lst[1].Remove(lst[1].Length - 1);
-            command.CommandText = $"INSERT INTO uwaga VALUES(NEXTVAL(uwagaSeq),'{whatDidStudentDo}', {points}, {currentPesel}, {lst[1]}, CURRENT_DATE) ";
+            command.CommandText = $"INSERT INTO uwaga VALUES(NULL,'{whatDidStudentDo}', {points}, {currentPesel}, {lst[1]}, CURRENT_DATE) ";
             dataReader = command.ExecuteReader();
             dataReader.Close();
         }
@@ -271,12 +284,11 @@ namespace gui
         {
             var lst = pesel.Split("(");
             var childpesel = lst[1].Remove(lst[1].Length - 1);
-            command.CommandText = $"INSERT INTO ocena VALUES(NEXTVAL(ocenaSeq),{value},CURRENT_DATE,'{description}','{category}','{subject}',{childpesel},{currentPesel})";
+            command.CommandText = $"INSERT INTO ocena VALUES(NULL, {value},CURRENT_DATE,'{description}','{category}','{subject}',{childpesel},{currentPesel})";
             dataReader = command.ExecuteReader();
             dataReader.Close();
         }
 
-        //DATA!!!
         static public void ChangeNote(string newValue, string desc, string student)
         {
             var lst = student.Split("(");
@@ -288,7 +300,6 @@ namespace gui
             dataReader.Close();
         }
 
-        //DATA!!!
         static public void ChangeStatus(string newValue, string date, string student)
         {
             var lst = student.Split("(");
@@ -308,15 +319,6 @@ namespace gui
             command.CommandText = $"UPDATE obecnosc SET status_nazwa = 'usprawiedliwiony' WHERE  status_nazwa='nieobecny' and data='{normalDay}' and uczen_pesel={currentChild}";
             dataReader = command.ExecuteReader();
             dataReader.Close();
-        }
-
-        static public string ChildPesel(string imie)
-        {
-            command.CommandText = $"SELECT pesel from dane_osobowe join opieka on pesel=uczen_pesel where imie='{imie}' and opiekun_pesel={currentPesel}";
-            dataReader = command.ExecuteReader();
-            var pesel = dataReader[0].ToString();
-            dataReader.Close();
-            return pesel;
         }
 
         static public List<string> GetUnits()
@@ -362,7 +364,6 @@ namespace gui
             dataReader.Close();
             return list;
         }
-
 
         static public List<string> GetCategories()
         {
@@ -434,7 +435,6 @@ namespace gui
         static public List<string> GetLastNotes()
         {
             List<string> lis = new List<string>();
-            lis.Add("It will be implemented later");
             command.CommandText = $"SELECT DISTINCT data, kategoria_oceny_nazwa, przedmiot_nazwa_przedmiotu, opis from ocena where current_date-data<14";
             dataReader = command.ExecuteReader();
             while (dataReader.Read())
@@ -571,18 +571,33 @@ namespace gui
 
         static public void AddParent(string pesel, string names, string lastName, string home, string phoneNum, string mail, string Money)
         {
-            command.CommandText = $"SELECT * FROM dane_osobowe where pesel={pesel}";
-            dataReader = command.ExecuteReader();
-            if (!dataReader.Read())
-            {
-                dataReader.Close();
-                command.CommandText = $"INSERT INTO dane_osobowe(pesel, imie, nazwisko {(home.Length!=0 ? ", adres_zamieszkania" : "")} {(phoneNum.Length!=0? ", numer_telefonu":"")}{(mail.Length!=0?", email":"")} ) VALUES({pesel},'{names}','{lastName}' {(home.Length!=0? ", '"+home+"'": "")} {(phoneNum.Length!=0? ", '"+phoneNum+"'":"")}{(mail.Length!=0? ",'"+mail+"'":"")})";
-                dataReader = command.ExecuteReader();
-            }
-            dataReader.Close();
-            command.CommandText = $"INSERT INTO opiekun VALUES ({Money}, {pesel})";
-            dataReader = command.ExecuteReader();
-            dataReader.Close();
+            try
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "dodaj_opiekuna";
+                    command.Parameters.AddWithValue("@pesel", pesel);
+                    command.Parameters.AddWithValue("@imie", names);
+                    command.Parameters.AddWithValue("@nazwisko", lastName);
+                    command.Parameters.AddWithValue("@telefon", phoneNum);
+                    command.Parameters.AddWithValue("adres", home);
+                    command.Parameters.AddWithValue("@email", mail);
+                    command.Parameters.AddWithValue("@dochod", Money);
+                    dataReader = command.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                        if (dataReader[0].ToString() != "ok")
+                            throw new Exception();
+                    }
+                    dataReader.Close();
+                    command.CommandType = CommandType.Text;
+                }
+                catch (Exception)
+                {
+                    dataReader.Close();
+                    command.CommandType = CommandType.Text;
+                    throw new Exception();
+                }
+
         }
 
         static public void AddUnit(string hour, string minute)
@@ -603,36 +618,64 @@ namespace gui
             dataReader.Close();
         }
 
-        
-
         static public void AddTeacher(string pesel, string names, string lastName, string home, string phoneNum, string mail, string etat)
         {
-            command.CommandText = $"SELECT * FROM dane_osobowe where pesel={pesel}";
-            dataReader = command.ExecuteReader();
-            if (!dataReader.Read())
+            try
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "dodaj_nauczyciela";
+                command.Parameters.AddWithValue("@pesel",pesel);
+                command.Parameters.AddWithValue("@imie", names);
+                command.Parameters.AddWithValue("@nazwisko", lastName);
+                command.Parameters.AddWithValue("@telefon", phoneNum);
+                command.Parameters.AddWithValue("adres", home);
+                command.Parameters.AddWithValue("@email",mail);
+                command.Parameters.AddWithValue("@etat",etat);
+                dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    if (dataReader[0].ToString() != "ok")
+                        throw new Exception();
+                }
+                dataReader.Close();
+                command.CommandType = CommandType.Text;
+            }
+                catch (Exception)
             {
                 dataReader.Close();
-                command.CommandText = $"INSERT INTO dane_osobowe(pesel, imie, nazwisko {(home.Length != 0 ? ", adres_zamieszkania" : "")} {(phoneNum.Length != 0 ? ", numer_telefonu" : "")}{(mail.Length != 0 ? ", email" : "")} ) VALUES({pesel},'{names}','{lastName}' {(home.Length != 0 ? ", '" + home + "'" : "")} {(phoneNum.Length != 0 ? ", '" + phoneNum + "'" : "")}{(mail.Length != 0 ? ",'" + mail + "'" : "")})";
-                dataReader = command.ExecuteReader();
+                command.CommandType = CommandType.Text;
+                throw new Exception();
             }
-            dataReader.Close();
-            command.CommandText = $"INSERT INTO nauczyciel VALUES ({etat},{pesel})";
-            dataReader = command.ExecuteReader();
-            dataReader.Close();
         }
 
-
-        //Dodać procedurę
-        static public void AddStudent(string pesel, string names, string lastName, string home, string phoneNum, string mail, string clas, string numberInRegister)
+        static public void AddStudent(string pesel, string names, string lastName, string home, string phoneNum, string mail, string clas)
         {
-            command.CommandText = $"INSERT INTO dane_osobowe(pesel, imie, nazwisko {(home.Length != 0 ? ", adres_zamieszkania" : "")} {(phoneNum.Length != 0 ? ", numer_telefonu" : "")}{(mail.Length != 0 ? ", email" : "")} ) VALUES({pesel},'{names}','{lastName}' {(home.Length != 0 ? ", '" + home + "'" : "")} {(phoneNum.Length != 0 ? ", '" + phoneNum + "'" : "")}{(mail.Length != 0 ? ",'" + mail + "'" : "")})";
-            dataReader = command.ExecuteReader();
-            dataReader.Close();
-            var classLetter = clas[4].ToString();
-            var classYear = clas.Remove(4);
-            command.CommandText = $"INSERT INTO uczen VALUES({pesel},{classYear},{numberInRegister},'{classLetter}')";
-            dataReader = command.ExecuteReader();
-            dataReader.Close();
+            try { 
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "dodaj_ucznia";
+                command.Parameters.AddWithValue("@pesel", pesel);
+                command.Parameters.AddWithValue("@imie", names);
+                command.Parameters.AddWithValue("@nazwisko", lastName);
+                command.Parameters.AddWithValue("@telefon", phoneNum);
+                command.Parameters.AddWithValue("adres", home);
+                command.Parameters.AddWithValue("@email", mail);
+                command.Parameters.AddWithValue("@rocznik", clas.Remove(4));
+                command.Parameters.AddWithValue("@literka", clas[4].ToString());
+                dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    if (dataReader[0].ToString() != "ok")
+                        throw new Exception();
+                }
+                dataReader.Close();
+                command.CommandType = CommandType.Text;
+            }
+                catch (Exception)
+            {
+                dataReader.Close();
+                command.CommandType = CommandType.Text;
+                throw new Exception();
+            }       
         }
 
         static public void AddRoom(string floor, string number, string chairs)
@@ -644,7 +687,9 @@ namespace gui
 
         static public void AddCategory(string name, string value)
         {
-            command.CommandText = $"INSERT into kategoria VALUES ('{name}',{value})";
+            command.CommandText = $"INSERT into kategoria_oceny VALUES ('{name}',{value})";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
         }
 
         static public void AddLesson(string dayOfUnit, string hourOfUnit, string classLetter, string roomNumber, string subject)
@@ -749,7 +794,6 @@ namespace gui
             {
                 return false;
             }
-
         }
 
         static public bool LogInAsTeacher(string pesel)
@@ -787,241 +831,6 @@ namespace gui
         {
             try
             {
-                command.CommandText = "CREATE TABLE dane_osobowe(  pesel NUMERIC(11) NOT NULL,  imie  CHAR(20) NOT NULL,  nazwisko  CHAR(50) NOT NULL,  adres_zamieszkania  CHAR(100),  numer_telefonu NUMERIC(9),  email   CHAR(50))";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE dane_osobowe ADD CONSTRAINT dane_osobowe_pk PRIMARY KEY ( pesel )";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "CREATE TABLE jednostka (godzina NUMERIC(2) NOT NULL,  minuta  NUMERIC(2) NOT NULL)";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE jednostka ADD CONSTRAINT jednostka_pk PRIMARY KEY ( godzina,minuta ) ";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "CREATE TABLE kategoria_oceny(  nazwa  CHAR(20) NOT NULL,  waga  NUMERIC(1) NOT NULL) ";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE kategoria_oceny ADD CONSTRAINT kategoria_oceny_pk PRIMARY KEY ( nazwa )";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "CREATE TABLE klasa (rocznik NUMERIC(4) NOT NULL,literka  CHAR(1) NOT NULL, nauczyciel_dane_osobowe_pesel NUMERIC(11),  profil_nazwa  CHAR(50) NOT NULL) ";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE klasa ADD CONSTRAINT klasa_pk PRIMARY KEY ( rocznik, literka ) ";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "CREATE TABLE lekcja (  dzien_tygodnia NUMERIC(1) NOT NULL,jednostka_godzina  NUMERIC(2) NOT NULL,jednostka_minuta NUMERIC(2) NOT NULL,klasa_rocznik  NUMERIC(4) NOT NULL,klasa_literka   CHAR(1) NOT NULL,sala_pietro  NUMERIC(1) NOT NULL,sala_numer NUMERIC(2) NOT NULL,przedmiot_nazwa_przedmiotu  CHAR(20) NOT NULL) ";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE lekcja  ADD CONSTRAINT lekcja_pk PRIMARY KEY(klasa_rocznik, jednostka_godzina, jednostka_minuta, dzien_tygodnia, klasa_literka)";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "CREATE TABLE nauczyciel (  etat NUMERIC(3, 2) NOT NULL,dane_osobowe_pesel NUMERIC(11) NOT NULL)";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE nauczyciel ADD CONSTRAINT nauczyciel_pk PRIMARY KEY ( dane_osobowe_pesel )";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "CREATE TABLE obecnosc (  data DATE NOT NULL,uczen_pesel  NUMERIC(11) NOT NULL, lekcja_dzien_tygodnia  NUMERIC(1) NOT NULL,lekcja_jednostka_godzina NUMERIC(2) NOT NULL,lekcja_jednostka_minuta  NUMERIC(2) NOT NULL,lekcja_klasa_rocznik NUMERIC(4) NOT NULL,lekcja_klasa_literka  CHAR(1) NOT NULL,status_nazwa  CHAR(20) NOT NULL)";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE obecnosc  ADD CONSTRAINT obecnosc_pk PRIMARY KEY(data,uczen_pesel,lekcja_jednostka_godzina,lekcja_jednostka_minuta,lekcja_dzien_tygodnia) ";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "CREATE TABLE ocena (  id INTEGER NOT NULL,ocena NUMERIC(1) NOT NULL,data  DATE NOT NULL,  opis  CHAR(255) NOT NULL,kategoria_oceny_nazwa  CHAR(20) NOT NULL,przedmiot_nazwa_przedmiotu   CHAR(20) NOT NULL,uczen_dane_osobowe_pesel  NUMERIC(11) NOT NULL,nauczyciel_dane_osobowe_pesel NUMERIC(11) NOT NULL); ";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE ocena ADD CONSTRAINT ocena_pk PRIMARY KEY ( id )";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "CREATE TABLE opieka (  uczen_pesel NUMERIC(11) NOT NULL,opiekun_pesel NUMERIC(11) NOT NULL)";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE opieka ADD CONSTRAINT relation_35_pk PRIMARY KEY ( uczen_pesel, opiekun_pesel )";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "CREATE TABLE opiekun (  dochod NUMERIC(10, 2) NOT NULL,  pesel  NUMERIC(11) NOT NULL)";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE opiekun ADD CONSTRAINT opiekun_pk PRIMARY KEY ( pesel )";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "CREATE TABLE profil (  nazwa CHAR(50) NOT NULL); ";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE profil ADD CONSTRAINT profil_pk PRIMARY KEY ( nazwa )";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "CREATE TABLE przedmiot (  nazwa_przedmiotu  CHAR(20) NOT NULL)";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE przedmiot ADD CONSTRAINT przedmiot_pk PRIMARY KEY ( nazwa_przedmiotu )";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "CREATE TABLE sala (  pietro NUMERIC(1) NOT NULL,numer NUMERIC(2) NOT NULL,liczba_miejsc NUMERIC(2) NOT NULL)";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE sala ADD CONSTRAINT sala_pk PRIMARY KEY ( numer,  pietro )";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "CREATE TABLE status (  nazwa  CHAR(20) NOT NULL)";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE status ADD CONSTRAINT status_pk PRIMARY KEY ( nazwa )";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "CREATE TABLE uczen (  dane_osobowe_pesel NUMERIC(11) NOT NULL,  klasa_rocznik  NUMERIC(4) NOT NULL,  nr_w_dzienniku NUMERIC(2) NOT NULL,  klasa_literka   CHAR(1) NOT NULL)";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE uczen ADD CONSTRAINT uczen_pk PRIMARY KEY(dane_osobowe_pesel )";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "CREATE TABLE uwaga (  id INTEGER NOT NULL,tresc  CHAR(300) NOT NULL,puntky_do_zachowania  NUMERIC(2),  uczen_dane_osobowe_pesel NUMERIC(11) NOT NULL,nauczyciel_dane_osobowe_pesel NUMERIC(11) NOT NULL,data  DATE)";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE uwaga ADD CONSTRAINT uwaga_pk PRIMARY KEY ( id )";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-                command.CommandText = "CREATE TABLE klasa (  rocznik NUMERIC(4) NOT NULL,  literka CHAR(1) NOT NULL,  nauczyciel_dane_osobowe_pesel NUMERIC(11),  profil_nazwa CHAR(50) NOT NULL); ";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE klasa  ADD CONSTRAINT klasa_nauczyciel_fk FOREIGN KEY(nauczyciel_dane_osobowe_pesel)  REFERENCES nauczyciel(dane_osobowe_pesel )";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE klasa  ADD CONSTRAINT klasa_profil_fk FOREIGN KEY(profil_nazwa)  REFERENCES profil(nazwa )";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE lekcja  ADD CONSTRAINT lekcja_jednostka_fk FOREIGN KEY(jednostka_godzina,   jednostka_minuta)  REFERENCES jednostka(godzina,  minuta )";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE lekcja  ADD CONSTRAINT lekcja_klasa_fk FOREIGN KEY(klasa_rocznik,   klasa_literka)  REFERENCES klasa(rocznik, literka )";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE lekcja  ADD CONSTRAINT lekcja_przedmiot_fk FOREIGN KEY(przedmiot_nazwa_przedmiotu)  REFERENCES przedmiot(nazwa_przedmiotu )";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE lekcja  ADD CONSTRAINT lekcja_sala_fk FOREIGN KEY(sala_numer,  sala_pietro)  REFERENCES sala(numer,  pietro )";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE nauczyciel  ADD CONSTRAINT nauczyciel_dane_osobowe_fk FOREIGN KEY(dane_osobowe_pesel)  REFERENCES dane_osobowe(pesel )";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE obecnosc  ADD CONSTRAINT obecnosc_lekcja_fk FOREIGN KEY(lekcja_klasa_rocznik,  lekcja_jednostka_godzina,  lekcja_jednostka_minuta,  lekcja_dzien_tygodnia,  lekcja_klasa_literka)  REFERENCES lekcja(klasa_rocznik,  jednostka_godzina,  jednostka_minuta,  dzien_tygodnia,  klasa_literka )";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE obecnosc  ADD CONSTRAINT obecnosc_status_fk FOREIGN KEY(status_nazwa)  REFERENCES status(nazwa )";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE obecnosc  ADD CONSTRAINT obecnosc_uczen_fk FOREIGN KEY(uczen_pesel)  REFERENCES uczen(dane_osobowe_pesel )";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE ocena  ADD CONSTRAINT ocena_kategoria_oceny_fk FOREIGN KEY(kategoria_oceny_nazwa)  REFERENCES kategoria_oceny(nazwa )";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE ocena  ADD CONSTRAINT ocena_nauczyciel_fk FOREIGN KEY(nauczyciel_dane_osobowe_pesel)  REFERENCES nauczyciel(dane_osobowe_pesel )";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE ocena  ADD CONSTRAINT ocena_przedmiot_fk FOREIGN KEY(przedmiot_nazwa_przedmiotu)  REFERENCES przedmiot(nazwa_przedmiotu )";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE ocena  ADD CONSTRAINT ocena_uczen_fk FOREIGN KEY(uczen_dane_osobowe_pesel)  REFERENCES uczen(dane_osobowe_pesel )";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE opiekun  ADD CONSTRAINT opiekun_dane_osobowe_fk FOREIGN KEY(pesel)  REFERENCES dane_osobowe(pesel )";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE opieka  ADD CONSTRAINT relation_35_opiekun_fk FOREIGN KEY(opiekun_pesel)  REFERENCES opiekun(pesel )";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE opieka  ADD CONSTRAINT relation_35_uczen_fk FOREIGN KEY(uczen_pesel)  REFERENCES uczen(dane_osobowe_pesel )";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE opieka  ADD CONSTRAINT relation_35_uczen_fk FOREIGN KEY(uczen_pesel)  REFERENCES uczen(dane_osobowe_pesel )";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE uczen  ADD CONSTRAINT uczen_dane_osobowe_fk FOREIGN KEY(dane_osobowe_pesel)  REFERENCES dane_osobowe(pesel )";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE uczen  ADD CONSTRAINT uczen_klasa_fk FOREIGN KEY(klasa_rocznik,  klasa_literka)  REFERENCES klasa(rocznik, literka )";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE uwaga  ADD CONSTRAINT uwaga_nauczyciel_fk FOREIGN KEY(nauczyciel_dane_osobowe_pesel)  REFERENCES nauczyciel(dane_osobowe_pesel )";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "ALTER TABLE uwaga  ADD CONSTRAINT uwaga_uczen_fk FOREIGN KEY(uczen_dane_osobowe_pesel)  REFERENCES uczen(dane_osobowe_pesel )";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "CREATE OR REPLACE SEQUENCE ocenaSeq INCREMENT By 1 ";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "CREATE OR REPLACE SEQUENCE uwagaSeq INCREMENT By 1 ";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "CREATE VIEW średnie_z_przedmiotow AS SELECT sum(ocena*waga)/sum(waga) AS srednia, uczen_dane_osobowe_pesel, przedmiot_nazwa_przedmiotu FROM ocena join uczen on uczen_dane_osobowe_pesel=dane_osobowe_pesel join kategoria_oceny on kategoria_oceny_nazwa=nazwa GROUP by uczen_dane_osobowe_pesel, przedmiot_nazwa_przedmiotu ";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
-                command.CommandText = "CREATE VIEW srednie_uczniow AS SELECT avg(srednia), imie, nazwisko, rocznik, literka FROM `średnie_z_przedmiotow` join dane_osobowe on uczen_dane_osobowe_pesel=pesel join uczen on uczen_dane_osobowe_pesel=pesel JOIN klasa on klasa_rocznik=rocznik and klasa_literka=literka GROUP By uczen_dane_osobowe_pesel";
-                dataReader = command.ExecuteReader();
-                dataReader.Close();
-
                 command.CommandText = "INSERT into przedmiot VALUES ('Matematyka')";
                 dataReader = command.ExecuteReader();
                 dataReader.Close();
@@ -1103,13 +912,10 @@ namespace gui
                 dataReader.Close();
                 return true;
             }
-
             catch (Exception)
             {
                 return false;
             }
-
-
         }
 
     }

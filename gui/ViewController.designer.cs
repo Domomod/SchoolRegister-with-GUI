@@ -37,6 +37,12 @@ namespace gui
 		AppKit.NSTextField AAddParErr { get; set; }
 
 		[Outlet]
+		AppKit.NSTextField AAddProfile { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField AAddProfileErr { get; set; }
+
+		[Outlet]
 		AppKit.NSTextField AAddRoomErr { get; set; }
 
 		[Outlet]
@@ -256,16 +262,13 @@ namespace gui
 		AppKit.NSTextField SWarnings { get; set; }
 
 		[Outlet]
+		AppKit.NSTextField SyInfo { get; set; }
+
+		[Outlet]
 		AppKit.NSTextField TAddCatErr { get; set; }
 
 		[Outlet]
 		AppKit.NSTextField TBest1 { get; set; }
-
-		[Outlet]
-		AppKit.NSTextField TBest2 { get; set; }
-
-		[Outlet]
-		AppKit.NSTextField TBest3 { get; set; }
 
 		[Outlet]
 		AppKit.NSTextField TCatNam { get; set; }
@@ -354,6 +357,9 @@ namespace gui
 		[Action ("AAddParApply:")]
 		partial void AAddParApply (Foundation.NSObject sender);
 
+		[Action ("AAddProfileApply:")]
+		partial void AAddProfileApply (Foundation.NSObject sender);
+
 		[Action ("AAFOrmApply:")]
 		partial void AAFOrmApply (Foundation.NSObject sender);
 
@@ -395,6 +401,9 @@ namespace gui
 
 		[Action ("ADelTeaApply:")]
 		partial void ADelTeaApply (Foundation.NSObject sender);
+
+		[Action ("CloseApp:")]
+		partial void CloseApp (Foundation.NSObject sender);
 
 		[Action ("FirstUseButton:")]
 		partial void FirstUseButton (AppKit.NSButton sender);
@@ -443,11 +452,6 @@ namespace gui
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (AChFormEr != null) {
-				AChFormEr.Dispose ();
-				AChFormEr = null;
-			}
-
 			if (AAClassForm != null) {
 				AAClassForm.Dispose ();
 				AAClassForm = null;
@@ -486,6 +490,16 @@ namespace gui
 			if (AAddParErr != null) {
 				AAddParErr.Dispose ();
 				AAddParErr = null;
+			}
+
+			if (AAddProfile != null) {
+				AAddProfile.Dispose ();
+				AAddProfile = null;
+			}
+
+			if (AAddProfileErr != null) {
+				AAddProfileErr.Dispose ();
+				AAddProfileErr = null;
 			}
 
 			if (AAddRoomErr != null) {
@@ -723,6 +737,11 @@ namespace gui
 				AChClErr = null;
 			}
 
+			if (AChFormEr != null) {
+				AChFormEr.Dispose ();
+				AChFormEr = null;
+			}
+
 			if (AChFormErr != null) {
 				AChFormErr.Dispose ();
 				AChFormErr = null;
@@ -848,6 +867,11 @@ namespace gui
 				SWarnings = null;
 			}
 
+			if (SyInfo != null) {
+				SyInfo.Dispose ();
+				SyInfo = null;
+			}
+
 			if (TAddCatErr != null) {
 				TAddCatErr.Dispose ();
 				TAddCatErr = null;
@@ -858,15 +882,6 @@ namespace gui
 				TBest1 = null;
 			}
 
-			if (TBest2 != null) {
-				TBest2.Dispose ();
-				TBest2 = null;
-			}
-
-			if (TBest3 != null) {
-				TBest3.Dispose ();
-				TBest3 = null;
-			}
 
 			if (TCatNam != null) {
 				TCatNam.Dispose ();
