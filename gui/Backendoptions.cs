@@ -68,7 +68,7 @@ namespace gui
             try
             {
                 checker = new SQLChecker();
-                sqlConnection = new MySqlConnection("Server=51.38.134.103; database=Dziennik; ");
+                sqlConnection = new MySqlConnection("");
                 sqlConnection.Open();
                 command = sqlConnection.CreateCommand();
                 command.Connection = sqlConnection;
@@ -126,6 +126,48 @@ namespace gui
             }
             dataReader.Close();
             return false;
+        }
+
+        static public string GetAllParentsData()
+        {
+            var list = "Imię\t\t\tNazwisko\t\tPesel\t\tadres\t\t\ttelefon\tmejl\t\tdochod\n";
+            command.CommandText = "SELECT imie, nazwisko, pesel, adres_zamieszkania, numer_telefonu, email, dochod from dane_osobowe natural join opiekun";
+            dataReader = command.ExecuteReader();
+            while (dataReader.Read())
+            {
+                var record = string.Format("{0,15} {1,15}\t{2,11} {3,20} {4,12} {5,10} {6,10}\n", dataReader[0].ToString(), dataReader[1].ToString(), dataReader[2].ToString(), dataReader[3].ToString(), dataReader[4].ToString(), dataReader[5].ToString(), dataReader[6].ToString());
+                list += record;
+                    }
+            dataReader.Close();
+            return list;
+        }
+
+        static public string GetAllStudentsData()
+        {
+            var list = "Imię\t\tNazwisko\tPesel\t\tadres\t\ttelefon\tmejl\tklasa\tdziennik\n";
+            command.CommandText = "SELECT imie, nazwisko, pesel, adres_zamieszkania, numer_telefonu, email, klasa_rocznik, klasa_literka, nr_w_dzienniku from dane_osobowe join uczen on pesel=dane_osobowe_pesel";
+            dataReader = command.ExecuteReader();
+            while (dataReader.Read())
+            {
+                var record = string.Format("{0,15} {1,15}\t{2,11} {3,20} {4,12} {5,10} {6,4}{7,1} {8,2}\n", dataReader[0].ToString(), dataReader[1].ToString(), dataReader[2].ToString(), dataReader[3].ToString(), dataReader[4].ToString(), dataReader[5].ToString(), dataReader[6].ToString(), dataReader[7].ToString(), dataReader[8].ToString());
+                list += record;
+            }
+            dataReader.Close();
+            return list;
+        }
+
+        static public string GetAllTeachersData()
+        {
+            var list = "Imię\t\tNazwisko\tPesel\t\tadres\t\ttelefon\tmejl\tetat\n";
+            command.CommandText = "SELECT imie, nazwisko, pesel, adres_zamieszkania, numer_telefonu, email, etat from dane_osobowe join nauczyciel on pesel=dane_osobowe_pesel where pesel!=666";
+            dataReader = command.ExecuteReader();
+            while (dataReader.Read())
+            {
+                var record = string.Format("{0,15} {1,15}\t{2,11} {3,20} {4,12} {5,10} {6,4}\n", dataReader[0].ToString(), dataReader[1].ToString(), dataReader[2].ToString(), dataReader[3].ToString(), dataReader[4].ToString(), dataReader[5].ToString(), dataReader[6].ToString());
+                list += record;
+            }
+            dataReader.Close();
+            return list;
         }
 
         static public string GetMyPresance()
@@ -487,20 +529,28 @@ namespace gui
 
         static public void DeleteTeacher(string teacher)
         {
+            try { 
             var pesel = teacher.Split("(")[1];
             pesel = pesel.Remove(pesel.Length - 1);
-            command.CommandText = $"UPDATE ocena SET nauczyciel_dane_osobowe_pesel=666 WHERE nauczyciel_dane_osobowe_pesel={pesel}";
-            dataReader = command.ExecuteReader();
-            dataReader.Close();
-            command.CommandText = $"UPDATE uwaga SET nauczyciel_dane_osobowe_pesel=666 WHERE nauczyciel_dane_osobowe_pesel={pesel}";
-            dataReader = command.ExecuteReader();
-            dataReader.Close();
-            command.CommandText = $"UPDATE klasa SET nauczyciel_dane_osobowe_pesel=666 WHERE nauczyciel_dane_osobowe_pesel={pesel}";
-            dataReader = command.ExecuteReader();
-            dataReader.Close();
-            command.CommandText = $"DELETE from nauczyciel where dane_osobowe_pesel={pesel}";
-            dataReader = command.ExecuteReader();
-            dataReader.Close();
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "usun_nauczyciela";
+            command.Parameters.AddWithValue("@arg_pesel", pesel);
+                dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    if (dataReader[0].ToString() != "ok")
+                        throw new Exception();
+                }
+                dataReader.Close();
+                command.CommandType = CommandType.Text;
+            }
+            catch (Exception)
+            {
+                dataReader.Close();
+                command.CommandType = CommandType.Text;
+                throw new Exception();
+            }
+
         }
 
         static public void DeleteGrill(string parent, string child)
@@ -518,33 +568,52 @@ namespace gui
         {
             var pesel = student.Split("(")[1];
             pesel = pesel.Remove(pesel.Length - 1);
-            command.CommandText = $"DELETE FROM ocena WHERE uczen_dane_osobowe_pesel={pesel}";
-            dataReader = command.ExecuteReader();
-            dataReader.Close();
-            command.CommandText = $"DELETE FROM obecnosc WHERE uczen_pesel={pesel}";
-            dataReader = command.ExecuteReader();
-            dataReader.Close();
-            command.CommandText = $"DELETE FROM uwaga where uczen_dane_osobowe_pesel={pesel}";
-            dataReader = command.ExecuteReader();
-            dataReader.Close();
-            command.CommandText = $"DELETE FROM opieka WHERE uczen_pesel={pesel}";
-            dataReader = command.ExecuteReader();
-            dataReader.Close();
-            command.CommandText = $"DELETE FROM uczen WHERE dane_osobowe_pesel={pesel}";
-            dataReader = command.ExecuteReader();
-            dataReader.Close();
-        }
+            try
+            {
+                    command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "usun_ucznia";
+                    command.Parameters.AddWithValue("@arg_pesel", pesel);
+                    dataReader = command.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                        if (dataReader[0].ToString() != "ok")
+                            throw new Exception();
+                    }
+                    dataReader.Close();
+                    command.CommandType = CommandType.Text;
+                }
+                catch (Exception)
+                {
+                    dataReader.Close();
+                    command.CommandType = CommandType.Text;
+                    throw new Exception();
+                }
+            }
 
         static public void DeleteParent(string parent)
         {
             var pesel = parent.Split("(")[1];
             pesel = pesel.Remove(pesel.Length - 1);
-            command.CommandText = $"DELETE FROM opieka WHERE opiekun_pesel={pesel}";
-            dataReader = command.ExecuteReader();
-            dataReader.Close();
-            command.CommandText = $"DELETE FROM opiekun where pesel={pesel}";
-            dataReader = command.ExecuteReader();
-            dataReader.Close();
+            try
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "usun_opiekuna";
+                command.Parameters.AddWithValue("@arg_pesel", pesel);
+                dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    if (dataReader[0].ToString() != "ok")
+                        throw new Exception();
+                }
+                dataReader.Close();
+                command.CommandType = CommandType.Text;
+            }
+            catch (Exception)
+            {
+                dataReader.Close();
+                command.CommandType = CommandType.Text;
+                throw new Exception();
+            }
         }
 
         static public List<string> GetStatuses()

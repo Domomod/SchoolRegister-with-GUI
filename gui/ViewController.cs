@@ -41,6 +41,9 @@ namespace gui
                 ADelPar = new NSComboBox();
                 AchCl = new NSComboBox();
                 AChSt = new NSComboBox();
+                ATeaList = new NSTextField();
+                AParList= new NSTextField();
+                AStList = new NSTextField();
             }
             else
             {
@@ -126,7 +129,11 @@ namespace gui
             else
             {
                 if (Backendoptions.IsAdmin())
-                { 
+                {
+                    AStList.StringValue = Backendoptions.GetAllStudentsData();
+                    AParList.StringValue = Backendoptions.GetAllParentsData();
+
+                    ATeaList.StringValue = Backendoptions.GetAllTeachersData();
                     AAUnitH.UsesDataSource = true;
                     AAUnitH.DataSource = new MyCombo(listHours);
                     AAUnitH.Editable = false;
@@ -500,16 +507,13 @@ namespace gui
                         if (AAddStHome.StringValue == "" | checker.IsCorrect(AAddStHome.StringValue))
                             if (AAddStMail.StringValue == "" | (checker.IsCorrect(AAddStMail.StringValue) & checker.IsMail(AAddStMail.StringValue)))
                                 if (AAddStNum.StringValue == "" | int.TryParse(AAddStNum.StringValue, out t))
-                                    if (int.TryParse(AAddStRegNum.StringValue, out t) & t > 0)
                                     {
                                         var home = AAddStHome.StringValue == "" ? "NULL" : AAddStHome.StringValue;
-                                        var phone = AAParNum.StringValue == "" ? "NULL" : AAParNum.StringValue;
-                                        var mail = AAParMail.StringValue == "" ? "NULL" : AAParMail.StringValue;
-                                        Backendoptions.AddStudent(AAddStPesel.StringValue, AAddStName.StringValue, AAddStLast.StringValue, home, AAddStNum.StringValue, AAddStMail.StringValue, AAddStClass.StringValue);
+                                        var phone = AAddStNum.StringValue == "" ? "NULL" : AAddStNum.StringValue;
+                                        var mail = AAddStMail.StringValue == "" ? "NULL" : AAddStMail.StringValue;
+                                        Backendoptions.AddStudent(AAddStPesel.StringValue, AAddStName.StringValue, AAddStLast.StringValue, home, phone, mail, AAddStClass.StringValue);
                                         AAddStErr.StringValue = "Dodano ucznia";
                                     }
-                                    else
-                                        AAddStErr.StringValue = "Zły numer w dzienniku";
                                 else
                                     AAddStErr.StringValue = "Zły numer telefonu";
                             else
@@ -623,7 +627,6 @@ namespace gui
             {
                 int t;
                 decimal d;
-
                 if (checker.IsPesel(AAParPe.StringValue))
                     if (checker.IsCorrect(AAParNa.StringValue) & checker.IsCorrect(AAParLast.StringValue))
                         if (AAParHome.StringValue == "" | checker.IsCorrect(AAParHome.StringValue))

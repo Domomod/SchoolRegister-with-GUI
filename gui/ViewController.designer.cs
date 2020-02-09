@@ -226,6 +226,15 @@ namespace gui
 		AppKit.NSComboBox AGrillStudent { get; set; }
 
 		[Outlet]
+		AppKit.NSTextField AParList { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField AStList { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField ATeaList { get; set; }
+
+		[Outlet]
 		AppKit.NSComboBox PChildList { get; set; }
 
 		[Outlet]
@@ -452,6 +461,21 @@ namespace gui
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (AStList != null) {
+				AStList.Dispose ();
+				AStList = null;
+			}
+
+			if (AParList != null) {
+				AParList.Dispose ();
+				AParList = null;
+			}
+
+			if (ATeaList != null) {
+				ATeaList.Dispose ();
+				ATeaList = null;
+			}
+
 			if (AAClassForm != null) {
 				AAClassForm.Dispose ();
 				AAClassForm = null;
@@ -881,7 +905,6 @@ namespace gui
 				TBest1.Dispose ();
 				TBest1 = null;
 			}
-
 
 			if (TCatNam != null) {
 				TCatNam.Dispose ();

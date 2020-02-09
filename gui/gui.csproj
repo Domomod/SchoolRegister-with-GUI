@@ -2719,6 +2719,10 @@
     <BundleResource Include="Resources\Index\DataStore\v5\records\8X\ViewController.m-25HOPGQKGYC8X" />
     <BundleResource Include="Resources\Index\DataStore\v5\records\U1\ViewController.h-37D31791NYVU1" />
     <BundleResource Include="Resources\Index\DataStore\v5\records\ZY\ViewController.m-3RB4DELB629ZY" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\M4\ViewController.m-2WXRZHZL18FM4" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\WZ\ViewController.h-1WTYM3Y47PWZ" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\GU\ViewController.m-1I6Y17GRROEGU" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\7S\ViewController.h-W7B86YATYU7S" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
 </Project>

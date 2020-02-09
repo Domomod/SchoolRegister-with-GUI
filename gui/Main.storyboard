@@ -6,101 +6,6 @@
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="8Y2-Io-m7A">
-            <objects>
-                <viewController id="90b-dD-dHe" customClass="ViewController" sceneMemberID="viewController">
-                    <view key="view" id="p44-Py-gRh">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tkh-Jy-Kg7">
-                                <rect key="frame" x="345" y="34" width="101" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Zatwierdź" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XIp-Ni-RnC">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="TChePrApply:" target="90b-dD-dHe" id="W4K-0u-bJr"/>
-                                </connections>
-                            </button>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MM2-nB-0lJ">
-                                <rect key="frame" x="20" y="20" width="154" height="222"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="0Zl-o9-WO9">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PqT-RQ-BxL">
-                                <rect key="frame" x="182" y="20" width="161" height="222"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="I8E-Jj-TWm">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oZe-jk-lH6">
-                                <rect key="frame" x="20" y="0.0" width="325" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Status" id="XPd-Ky-dds">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Cg-Gw-hmm">
-                                <rect key="frame" x="116" y="258" width="85" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Załaduj" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XoR-lT-ye6">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="TChePrFind:" target="90b-dD-dHe" id="kRz-E3-VLU"/>
-                                </connections>
-                            </button>
-                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8d9-Ux-oAc">
-                                <rect key="frame" x="20" y="262" width="99" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesDataSource="YES" numberOfVisibleItems="5" id="D00-1H-VJx">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </comboBoxCell>
-                            </comboBox>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QhK-jy-gU8">
-                                <rect key="frame" x="33" y="250" width="67" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Jednostka" id="Stq-gf-c6I">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                        </subviews>
-                    </view>
-                    <connections>
-                        <outlet property="TChPrU" destination="8d9-Ux-oAc" id="Nv5-Qm-zgc"/>
-                        <outlet property="TChePrApply" destination="Tkh-Jy-Kg7" id="EC3-LF-QWq"/>
-                        <outlet property="TChePrCl" destination="sCm-26-9Rz" id="FIe-4h-e3Z"/>
-                        <outlet property="TChePrErr" destination="oZe-jk-lH6" id="Wlf-4i-yoC"/>
-                        <outlet property="TChePrU" destination="8d9-Ux-oAc" id="KLu-rO-iis"/>
-                        <outlet property="TCheckPrApply" destination="Tkh-Jy-Kg7" id="bAZ-OB-vRt"/>
-                        <outlet property="TCheckPrCl" destination="sCm-26-9Rz" id="P1z-VZ-NJa"/>
-                        <outlet property="TCheckPrUn" destination="8d9-Ux-oAc" id="kdY-cP-32D"/>
-                        <outlet property="TCheckPresance" destination="PqT-RQ-BxL" id="7Sb-oT-RwJ"/>
-                        <outlet property="TCheckStudent" destination="MM2-nB-0lJ" id="zTh-oh-EL1"/>
-                        <outlet property="TPrUnit" destination="8d9-Ux-oAc" id="vLD-jB-uka"/>
-                    </connections>
-                </viewController>
-                <customObject id="k2q-Kw-GMV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-355" y="-583"/>
-        </scene>
-        <!--View Controller-->
         <scene sceneID="JUb-0D-jWZ">
             <objects>
                 <viewController id="XFu-wj-2oS" customClass="ViewController" sceneMemberID="viewController">
@@ -252,9 +157,6 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
-                                <connections>
-                                    <segue destination="90b-dD-dHe" kind="popover" popoverAnchorView="6uH-mI-RZB" popoverBehavior="t" preferredEdge="maxY" id="ncH-68-Kb9"/>
-                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VkD-DM-K3j">
                                 <rect key="frame" x="35" y="84" width="134" height="32"/>
@@ -2341,24 +2243,6 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uDU-m5-fRg">
-                                <rect key="frame" x="326" y="160" width="96" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="GCC-8y-ZEx">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vdt-ic-rev">
-                                <rect key="frame" x="317" y="135" width="115" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="NumerWdzienniku" id="GTp-JH-3Jm">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lzu-3E-3Tx">
                                 <rect key="frame" x="326" y="186" width="99" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -2401,13 +2285,11 @@
                         <outlet property="AAddStName" destination="aLr-U5-jCq" id="qjy-lT-ysU"/>
                         <outlet property="AAddStNum" destination="F85-rB-kGR" id="UQ7-mq-Nh5"/>
                         <outlet property="AAddStPesel" destination="vAX-m2-Je9" id="g0W-Zy-chf"/>
-                        <outlet property="AAddStRegNum" destination="uDU-m5-fRg" id="6We-9N-jgx"/>
                         <outlet property="AddStudentApply" destination="iRR-GV-66X" id="AYa-mA-gBJ"/>
                         <outlet property="AddStudentEMail" destination="CqJ-EX-EMJ" id="W2z-tV-73u"/>
                         <outlet property="AddStudentHome" destination="EqH-QY-9hU" id="H3K-N6-Kz6"/>
                         <outlet property="AddStudentLastName" destination="LI9-q2-SoH" id="YNF-PT-1op"/>
                         <outlet property="AddStudentName" destination="aLr-U5-jCq" id="ZP4-OF-rAm"/>
-                        <outlet property="AddStudentNum" destination="uDU-m5-fRg" id="mKG-Fh-ynJ"/>
                         <outlet property="AddStudentPesel" destination="vAX-m2-Je9" id="rHQ-sn-Dgj"/>
                         <outlet property="AddStudentPhone" destination="F85-rB-kGR" id="lk2-gy-Dus"/>
                         <outlet property="TAddStErr" destination="erP-Mk-pWD" id="Ouq-0p-Ned"/>
@@ -3126,6 +3008,39 @@
                                     <segue destination="DSH-zy-FzR" kind="popover" popoverAnchorView="bob-rB-BCb" popoverBehavior="t" preferredEdge="maxY" id="NOY-63-16L"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f43-u0-XLP">
+                                <rect key="frame" x="2" y="13" width="198" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Wyświetl nauczycieli" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="f5A-bP-pv9">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <segue destination="KEG-a6-nbx" kind="popover" popoverAnchorView="f43-u0-XLP" popoverBehavior="t" preferredEdge="maxY" id="V1A-p4-2rI"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EFo-JJ-2hJ">
+                                <rect key="frame" x="210" y="13" width="191" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Wyświetl opiekunów" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RnK-yn-Vy6">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <segue destination="VXG-nn-9IM" kind="popover" popoverAnchorView="EFo-JJ-2hJ" popoverBehavior="t" preferredEdge="maxY" id="FUq-Kq-dKZ"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ogR-wk-2y4">
+                                <rect key="frame" x="420" y="13" width="177" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Wyświetl uczniów" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aPE-uj-WMI">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <segue destination="R6y-A1-1eN" kind="popover" popoverAnchorView="ogR-wk-2y4" popoverBehavior="t" preferredEdge="maxY" id="iQH-bZ-gF5"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                 </viewController>
@@ -3152,7 +3067,7 @@
                 </windowController>
                 <customObject id="ghN-Lg-P51" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="625" y="981"/>
+            <point key="canvasLocation" x="428" y="678"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="qeU-ly-l7I">
@@ -3214,7 +3129,88 @@
                 </viewController>
                 <customObject id="6PG-Lu-a1K" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="671" y="1216"/>
+            <point key="canvasLocation" x="675" y="924"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="3Cs-eQ-H5t">
+            <objects>
+                <viewController id="R6y-A1-1eN" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" id="edh-I6-YjV">
+                        <rect key="frame" x="0.0" y="0.0" width="564" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hih-e3-BEU">
+                                <rect key="frame" x="4" y="15" width="556" height="278"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Dzieci" id="zTY-hK-ukP">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="AStList" destination="Hih-e3-BEU" id="oAT-ZG-GZl"/>
+                    </connections>
+                </viewController>
+                <customObject id="m7J-bY-AoJ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="634" y="1902"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ieb-HH-kUP">
+            <objects>
+                <viewController id="VXG-nn-9IM" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" id="skL-Fj-dfX">
+                        <rect key="frame" x="0.0" y="0.0" width="564" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PnM-4W-zm3">
+                                <rect key="frame" x="5" y="7" width="553" height="287"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Rodzice" id="Ru4-OJ-Ig3">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="AParList" destination="PnM-4W-zm3" id="k67-wN-EQY"/>
+                    </connections>
+                </viewController>
+                <customObject id="QOO-og-w9A" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="634" y="1177"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="OyP-XX-Zkc">
+            <objects>
+                <viewController id="KEG-a6-nbx" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" id="1sN-0l-btE">
+                        <rect key="frame" x="0.0" y="0.0" width="564" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yos-lx-Bw0">
+                                <rect key="frame" x="4" y="6" width="556" height="288"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Nauczyciele" id="YBk-AM-VWC">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="ATeaList" destination="yos-lx-Bw0" id="An3-yG-Vhi"/>
+                    </connections>
+                </viewController>
+                <customObject id="czD-6E-V4z" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="634" y="1538"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="FUt-ad-QD4">
