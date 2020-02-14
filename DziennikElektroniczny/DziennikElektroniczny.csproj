@@ -70,9 +70,15 @@
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="BusinessDataTypes\" />
-    <Folder Include="AdminTeacherView\" />
-    <Folder Include="AdminOpiekunView\" />
-    <Folder Include="AdminUczenView\" />
+    <Folder Include="PanelAdmina\" />
+    <Folder Include="PanelAdmina\AdminJednostki\" />
+    <Folder Include="PanelAdmina\AdminKlasyProfile\" />
+    <Folder Include="PanelAdmina\AdminLekcje\" />
+    <Folder Include="PanelAdmina\AdminOpiekunView\" />
+    <Folder Include="PanelAdmina\AdminPrzedmioty\" />
+    <Folder Include="PanelAdmina\AdminSale\" />
+    <Folder Include="PanelAdmina\AdminTeacherView\" />
+    <Folder Include="PanelAdmina\AdminUczenView\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -94,39 +100,84 @@
       <DependentUpon>AdminViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="BusinessDataTypes\Nauczyciel.cs" />
-    <Compile Include="AdminTeacherView\AdminNauczycieleView.cs" />
-    <Compile Include="AdminTeacherView\AdminNauczycieleView.designer.cs">
-      <DependentUpon>AdminNauczycieleView.cs</DependentUpon>
+    <Compile Include="PanelAdmina\AdminJednostki\AdminJednostkiView.cs" />
+    <Compile Include="PanelAdmina\AdminJednostki\AdminJednostkiView.designer.cs">
+      <DependentUpon>AdminJednostkiView.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminTeacherView\AdminNauczycieleViewController.cs" />
-    <Compile Include="AdminTeacherView\AdminNauczycieleViewController.designer.cs">
-      <DependentUpon>AdminNauczycieleViewController.cs</DependentUpon>
+    <Compile Include="PanelAdmina\AdminJednostki\AdminJednostkiViewController.cs" />
+    <Compile Include="PanelAdmina\AdminJednostki\AdminJednostkiViewController.designer.cs">
+      <DependentUpon>AdminJednostkiViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminTeacherView\NauczycielTableDataSource.cs" />
-    <Compile Include="AdminTeacherView\NauczycielTableDelegate.cs" />
-    <Compile Include="AdminOpiekunView\AdminOpiekunView.cs" />
-    <Compile Include="AdminOpiekunView\AdminOpiekunViewController.cs" />
-    <Compile Include="AdminOpiekunView\AdminOpiekunView.designer.cs">
-      <DependentUpon>AdminOpiekunView.cs</DependentUpon>
+    <Compile Include="PanelAdmina\AdminKlasyProfile\AdminKlasyProfileView.cs" />
+    <Compile Include="PanelAdmina\AdminKlasyProfile\AdminKlasyProfileView.designer.cs">
+      <DependentUpon>AdminKlasyProfileView.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminOpiekunView\AdminOpiekunViewController.designer.cs">
-      <DependentUpon>AdminOpiekunViewController.cs</DependentUpon>
+    <Compile Include="PanelAdmina\AdminKlasyProfile\AdminKlasyProfileViewController.cs" />
+    <Compile Include="PanelAdmina\AdminKlasyProfile\AdminKlasyProfileViewController.designer.cs">
+      <DependentUpon>AdminKlasyProfileViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminUczenView\AdminUczenView.cs" />
-    <Compile Include="AdminUczenView\AdminUczenViewController.cs" />
-    <Compile Include="AdminUczenView\AdminUczenView.designer.cs">
-      <DependentUpon>AdminUczenView.cs</DependentUpon>
+    <Compile Include="PanelAdmina\AdminLekcje\AdminLekcjeView.cs" />
+    <Compile Include="PanelAdmina\AdminLekcje\AdminLekcjeView.designer.cs">
+      <DependentUpon>AdminLekcjeView.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminUczenView\AdminUczenViewController.designer.cs">
-      <DependentUpon>AdminUczenViewController.cs</DependentUpon>
+    <Compile Include="PanelAdmina\AdminLekcje\AdminLekcjeViewController.cs" />
+    <Compile Include="PanelAdmina\AdminLekcje\AdminLekcjeViewController.designer.cs">
+      <DependentUpon>AdminLekcjeViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanelAdmina\AdminOpiekunView\AdminOpiekunView.cs" />
+    <Compile Include="PanelAdmina\AdminOpiekunView\AdminOpiekunView.designer.cs">
+      <DependentUpon>..\..\AdminOpiekunView\AdminOpiekunView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanelAdmina\AdminOpiekunView\AdminOpiekunViewController.cs" />
+    <Compile Include="PanelAdmina\AdminOpiekunView\AdminOpiekunViewController.designer.cs">
+      <DependentUpon>..\..\AdminOpiekunView\AdminOpiekunViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanelAdmina\AdminPrzedmioty\AdminPrzedmiotyView.cs" />
+    <Compile Include="PanelAdmina\AdminPrzedmioty\AdminPrzedmiotyView.designer.cs">
+      <DependentUpon>AdminPrzedmiotyView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanelAdmina\AdminPrzedmioty\AdminPrzedmiotyViewController.cs" />
+    <Compile Include="PanelAdmina\AdminPrzedmioty\AdminPrzedmiotyViewController.designer.cs">
+      <DependentUpon>AdminPrzedmiotyViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanelAdmina\AdminSale\AdminSaleView.cs" />
+    <Compile Include="PanelAdmina\AdminSale\AdminSaleView.designer.cs">
+      <DependentUpon>AdminSaleView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanelAdmina\AdminSale\AdminSaleViewController.cs" />
+    <Compile Include="PanelAdmina\AdminSale\AdminSaleViewController.designer.cs">
+      <DependentUpon>AdminSaleViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanelAdmina\AdminTeacherView\AdminNauczycieleView.cs" />
+    <Compile Include="PanelAdmina\AdminTeacherView\AdminNauczycieleView.designer.cs">
+      <DependentUpon>..\..\AdminTeacherView\AdminNauczycieleView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanelAdmina\AdminTeacherView\AdminNauczycieleViewController.cs" />
+    <Compile Include="PanelAdmina\AdminTeacherView\AdminNauczycieleViewController.designer.cs">
+      <DependentUpon>..\..\AdminTeacherView\AdminNauczycieleViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanelAdmina\AdminTeacherView\NauczycielTableDataSource.cs" />
+    <Compile Include="PanelAdmina\AdminTeacherView\NauczycielTableDelegate.cs" />
+    <Compile Include="PanelAdmina\AdminUczenView\AdminUczenView.cs" />
+    <Compile Include="PanelAdmina\AdminUczenView\AdminUczenView.designer.cs">
+      <DependentUpon>..\..\AdminUczenView\AdminUczenView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanelAdmina\AdminUczenView\AdminUczenViewController.cs" />
+    <Compile Include="PanelAdmina\AdminUczenView\AdminUczenViewController.designer.cs">
+      <DependentUpon>..\..\AdminUczenView\AdminUczenViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Main.storyboard" />
     <InterfaceDefinition Include="AdminView.xib" />
-    <InterfaceDefinition Include="AdminTeacherView\AdminNauczycieleView.xib" />
-    <InterfaceDefinition Include="AdminOpiekunView\AdminOpiekunView.xib" />
-    <InterfaceDefinition Include="AdminUczenView\AdminUczenView.xib" />
+    <InterfaceDefinition Include="PanelAdmina\AdminJednostki\AdminJednostkiView.xib" />
+    <InterfaceDefinition Include="PanelAdmina\AdminKlasyProfile\AdminKlasyProfileView.xib" />
+    <InterfaceDefinition Include="PanelAdmina\AdminLekcje\AdminLekcjeView.xib" />
+    <InterfaceDefinition Include="PanelAdmina\AdminOpiekunView\AdminOpiekunView.xib" />
+    <InterfaceDefinition Include="PanelAdmina\AdminPrzedmioty\AdminPrzedmiotyView.xib" />
+    <InterfaceDefinition Include="PanelAdmina\AdminSale\AdminSaleView.xib" />
+    <InterfaceDefinition Include="PanelAdmina\AdminTeacherView\AdminNauczycieleView.xib" />
+    <InterfaceDefinition Include="PanelAdmina\AdminUczenView\AdminUczenView.xib" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Index\DataStore\v5\records\3K\AXError.h-27CHS5IM2TO3K" />
@@ -2082,6 +2133,201 @@
     <BundleResource Include="Resources\Index\DataStore\v5\units\OpenGL-2SRSU83KOCQ0D.pcm-2YRIQTTS122A1" />
     <BundleResource Include="Resources\Index\DataStore\v5\units\CoreText-4BX5WGXMXE7W.pcm-2SAY5U931T6M4" />
     <BundleResource Include="Resources\Index\DataStore\v5\units\ColorSync-SV8UEN8TMBAR.pcm-28WCO39NYIB2I" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\D2\AdminOpiekunViewController.m-1IIWWGCTJHFD2" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\8J\AdminOpiekunViewController.h-2VZBUANZQKM8J" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\Metal-LZGKTAAK5A7P.pcm-2UUXXOI9P8OJV" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreVideo-J9HZM7HTOIXH.pcm-1MOBFPY56322O" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreGraphics-MC4FPA2MN9QR.pcm-27GYJNGFOQPS7" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AdminOpiekunViewController.o-2NAD4IER2F10M" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\Darwin-1IVCWVLR6MT9T.pcm-BRQTWR8HYOGN" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AdminUczenView.o-3CPRUQVHEJS2H" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\IOKit-2OU2NY71U259J.pcm-2EQ71DIGOIZO2" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreServices-2SRTBNLRER772.pcm-1OEGC3F9DV9GA" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AdminView.o-3O13UJSNWUMDY" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\XPC-3LIAJY90PG03M.pcm-3O7Q7H6FCP0B8" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AdminOpiekunView.o-2K9B950QSTKOJ" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\ViewController.o-LFQ238SQSSJE" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\Security-2RB2R7QDU33DQ.pcm-2BBRM62ZXPXF1" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CFNetwork-WOPYBVYTVV3P.pcm-2QNYMGHB60DYF" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreData-1DHIL9VVBSYDQ.pcm-7B7NHWZ5147P" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\Dispatch-2M9AOUJY3TW9V.pcm-11BIROLW8NBRF" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AdminUczenViewController.o-IDDQVZ4469AP" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\_Builtin_stddef_max_align_t-3FD15YQY6KNNR.pcm-19JF4LA75S2GA" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\MachO-2UHIFKDZCI0YX.pcm-2AY1RAT55WOP5" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreFoundation-RZX25862PY17.pcm-5Y4R7SELKIZQ" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AdminNauczycieleView.o-V65SXU0MIUON" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreImage-2H41H5QLPV8GG.pcm-BX7AG2VEDXDE" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\_Builtin_intrinsics-3FD15YQY6KNNR.pcm-1O0BXPHH8XQA0" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\launch-1IVCWVLR6MT9T.pcm-2X2EQJ435S2DG" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\DiskArbitration-1YS8ZT252YZXQ.pcm-1ISVKQCVZW3QL" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AppKit-1LWHB1MWS5AWP.pcm-3TBQAJHND7J4X" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\ImageIO-SV8UEN8TMBAR.pcm-3O6KE0465IOJH" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\OpenGL-2SRSU83KOCQ0D.pcm-P2NMOQ6G086Q" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\IOSurface-GCVS5NOA7EOF.pcm-1YKBKJTR5MMHX" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\QuartzCore-1LT8XAPDT2LBF.pcm-1KD9S19EPIE03" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\libkern-1IVCWVLR6MT9T.pcm-2091VRRP4H1XN" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\ObjectiveC-1A3ZNHZR9RRLF.pcm-32XD8U0JLU5N3" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AppDelegate.o-8BAUSIMOET6N" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\os_object-1IVCWVLR6MT9T.pcm-2A7HB0YL2CFKD" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\ApplicationServices-SV8UEN8TMBAR.pcm-14KXJD4F3VLX0" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\Foundation-2FJBXN8U6QRTS.pcm-28C74PEBXKVIT" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AdminNauczycieleViewController.o-2O1KK4J25BWM7" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreText-4BX5WGXMXE7W.pcm-14B30SJGMPQCB" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AdminViewController.o-38PC5IZP6XZ2I" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\ColorSync-SV8UEN8TMBAR.pcm-NXGGYU7GIKL6" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\MachO-2UHIFKDZCI0YX.pcm-F2F4P2X1LD1N" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\libkern-1IVCWVLR6MT9T.pcm-1IWEBHKYUOL84" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreData-1DHIL9VVBSYDQ.pcm-2XJZ6GNFWW0VG" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\IOKit-2OU2NY71U259J.pcm-WPV64KVOSPN1" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CFNetwork-WOPYBVYTVV3P.pcm-8J2HFX0QQX3V" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\Darwin-1IVCWVLR6MT9T.pcm-23KL5C0FP2L0Y" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\ColorSync-SV8UEN8TMBAR.pcm-1G5DB77SX1YI5" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreImage-2H41H5QLPV8GG.pcm-2WDU86LJIFQT1" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\Dispatch-2M9AOUJY3TW9V.pcm-1W3ZOCZA17YV7" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\XPC-3LIAJY90PG03M.pcm-2T6JYYAWVA7AA" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\_Builtin_stddef_max_align_t-3FD15YQY6KNNR.pcm-261AP4JQOH0QJ" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\_Builtin_intrinsics-3FD15YQY6KNNR.pcm-1W5RT5BINQLH1" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\ObjectiveC-1A3ZNHZR9RRLF.pcm-17QLJ8YLEY6SS" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreText-4BX5WGXMXE7W.pcm-2K1U8E9XIPKJA" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreFoundation-RZX25862PY17.pcm-3HS5514YK4F5B" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\ApplicationServices-SV8UEN8TMBAR.pcm-3UR48W82O9SU2" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AppKit-1LWHB1MWS5AWP.pcm-10BDVIDI3JENA" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreVideo-J9HZM7HTOIXH.pcm-22JU8FH1KMB66" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\QuartzCore-1LT8XAPDT2LBF.pcm-S4SBXO4BP27U" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\Metal-LZGKTAAK5A7P.pcm-20UHHGDVQ0DGI" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\Security-2RB2R7QDU33DQ.pcm-3AFHH47KP7GZH" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\OpenGL-2SRSU83KOCQ0D.pcm-CJG0U7EY481X" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\ImageIO-SV8UEN8TMBAR.pcm-742XAYWKVYRG" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\launch-1IVCWVLR6MT9T.pcm-3FB43IEZ6FK3R" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\IOSurface-GCVS5NOA7EOF.pcm-3M82ANKYGAXLW" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\DiskArbitration-1YS8ZT252YZXQ.pcm-OOQLA1BOL06H" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreGraphics-MC4FPA2MN9QR.pcm-2H2DUXC6VSWQQ" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreServices-2SRTBNLRER772.pcm-20P8Y84WOLRZT" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\Foundation-2FJBXN8U6QRTS.pcm-35CG689E9KP7A" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\os_object-1IVCWVLR6MT9T.pcm-1NZE1PHSQ2ZSF" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\SL\AdminOpiekunViewController.m-6HTQ2MM70KSL" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\U9\AdminLekcjeViewController.m-27V87LJVUX9U9" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\92\AdminKlasyProfileViewController.m-34BN8OUOGZK92" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\YP\AdminJednostkiViewController.m-3HX8Z1BOVIMYP" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\VA\AdminUczenViewController.h-3MD86B0DZ1QVA" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\VA\AdminUczenViewController.h-O5NE7S0H55VA" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\UI\AdminJednostkiView.h-2BW7ZZHUV2UUI" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\UZ\AdminUczenViewController.h-1QRWI047C3PUZ" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\51\AdminSaleViewController.m-2JEU3AH0KUJ51" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\P5\AdminOpiekunViewController.m-1PV4FSKUEESP5" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\HE\AdminPrzedmiotyViewController.h-HRL8EJYY3CHE" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\HJ\AdminPrzedmiotyViewController.h-1S8C1X5TW0XHJ" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\N1\AdminKlasyProfileViewController.h-CZOB754XAVN1" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\F4\AdminLekcjeViewController.h-1715R4U9K7CF4" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\L4\AdminKlasyProfileViewController.m-3ML69D2G2QOL4" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\O5\AdminLekcjeView.h-3P4DPMAAZ6CO5" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\FY\AdminPrzedmiotyView.h-1KJGMBHZ1ZBFY" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\LP\AdminSaleViewController.h-YQ5OXLHAP8LP" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\OV\AdminSaleViewController.m-3A24BVUXH4JOV" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\ED\AdminOpiekunViewController.m-10XSSAEWWJ9ED" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\FL\AdminPrzedmiotyViewController.m-3PUEEKEG04UFL" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\WJ\AdminLekcjeView.m-1DZ94FZJS1RWJ" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\2R\AdminOpiekunViewController.h-2OPAZCLYPNX2R" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\29\AdminUczenViewController.h-3J9GT5GGENU29" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\4J\AdminLekcjeViewController.m-763X9KBP14J" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\8H\AdminPrzedmiotyViewController.h-WGAPKAQSAO8H" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\TQ\AdminOpiekunViewController.h-17VRUZ7Y82JTQ" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\86\AdminKlasyProfileView.h-GQUGPHC1UM86" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\2H\AdminPrzedmiotyViewController.h-35WLKNFLYMJ2H" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\ZN\AdminUczenViewController.m-1E5PPL8LADXZN" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\38\AdminUczenViewController.h-3A7QE6KNRVK38" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\YF\AdminJednostkiViewController.h-1QANLZ9W3I8YF" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\36\AdminPrzedmiotyView.m-RYE9L5OJ2136" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\PU\AdminPrzedmiotyViewController.h-38CI3XNPP89PU" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\SZ\AdminOpiekunViewController.m-8L3QFA83WMSZ" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\PG\AdminKlasyProfileViewController.h-341OOCBDASJPG" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\96\AdminOpiekunViewController.h-1XDFG259H4W96" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\ZO\AdminOpiekunViewController.m-13SDHCXAPTWZO" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\9G\AdminJednostkiViewController.h-15NNEN61S4G9G" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\SR\AdminLekcjeViewController.m-1LDSVN8N0RDSR" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\9U\AdminPrzedmiotyViewController.m-OM0TQJN2QL9U" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\3N\AdminPrzedmiotyViewController.h-Y156VZQAFG3N" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\AG\AdminJednostkiViewController.m-1BILARMJS8UAG" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\H1\AdminOpiekunViewController.h-3EAJT5LC4DOH1" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\HT\AdminSaleView.h-1SUUHATJB9MHT" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\MW\AdminUczenViewController.m-36WKFU5EKVHMW" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\DW\AdminSaleViewController.m-1EH8XVH9ZR1DW" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\A6\AdminSaleViewController.h-1NAG0MS6ZUXA6" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\CQ\AdminKlasyProfileView.m-B8Y28E0Y2RCQ" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\OU\AdminKlasyProfileViewController.m-2JE4FV5MIIAOU" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\ER\AdminUczenViewController.h-27JF1NC6HPEER" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\W7\AdminSaleViewController.h-14V1E2AX7K7W7" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\R3\AdminSaleView.m-1A82FXZORNKR3" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\R4\AdminJednostkiView.m-1N2AFUN5DMAR4" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\1P\AdminPrzedmiotyViewController.m-XXH5UIVAO81P" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\82\AdminLekcjeViewController.h-1XZSIECWD8U82" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\Q3\AdminLekcjeViewController.h-NYC9GV4Q12Q3" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\XK\AdminOpiekunViewController.h-1406CLHK71XK" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\TG\AdminKlasyProfileViewController.h-2C4C3BUAS3ETG" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AdminNauczycieleView.o-3JDFT1HVF3JBW" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AdminPrzedmiotyView.o-37W4Y79GXG9F9" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AdminSaleView.o-32FMNFAJOTOHN" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\XPC-3LIAJY90PG03M.pcm-1CVTDFPC2ZX7D" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\DiskArbitration-1YS8ZT252YZXQ.pcm-2GIYOC1QYXYQY" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreGraphics-MC4FPA2MN9QR.pcm-31APXZFGNUYL6" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AdminPrzedmiotyViewController.o-4I2T2ZST8PQP" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\OpenGL-2SRSU83KOCQ0D.pcm-2QLLCNU10R804" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\Dispatch-2M9AOUJY3TW9V.pcm-ZRSZXY1JRKCG" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AdminLekcjeViewController.o-3Q2RI33TOLDRX" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AppKit-1LWHB1MWS5AWP.pcm-HAV5QN6LW3BH" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AdminLekcjeView.o-2CNWKNJPIB4C1" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\ViewController.o-2EGSLTEO3IJRS" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\QuartzCore-1LT8XAPDT2LBF.pcm-2Q47W5SWJJYUV" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AdminJednostkiView.o-2RCSUEESP3O07" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AdminKlasyProfileView.o-E5O1C02WCQ4Z" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\MachO-2UHIFKDZCI0YX.pcm-23AP5ZSGW9RJA" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\libkern-1IVCWVLR6MT9T.pcm-17KPVUCRH3DXI" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\launch-1IVCWVLR6MT9T.pcm-2YGTVLIT3ETJQ" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\ApplicationServices-SV8UEN8TMBAR.pcm-WQS5V5UK0V3X" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\IOSurface-GCVS5NOA7EOF.pcm-20W2M1KILD01E" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreVideo-J9HZM7HTOIXH.pcm-3J4TAWVZUQ6D9" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AdminOpiekunViewController.o-389ZWZAUNJ309" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\Metal-LZGKTAAK5A7P.pcm-1PTC0Z3LB1J85" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AppDelegate.o-18OWJB3365790" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AdminViewController.o-4LJ3LFOV0RIW" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\ImageIO-SV8UEN8TMBAR.pcm-18S140DMWPYVG" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreImage-2H41H5QLPV8GG.pcm-2GAKIWOOP9598" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\_Builtin_stddef_max_align_t-3FD15YQY6KNNR.pcm-NO91F54KA1HE" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\ColorSync-SV8UEN8TMBAR.pcm-3JPXVH9UDV04R" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreFoundation-RZX25862PY17.pcm-29JFYJQIPOBTZ" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AdminUczenView.o-3PL4X4LAQQ5CH" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AdminOpiekunView.o-3JEW20HT6OXGP" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AdminKlasyProfileViewController.o-28UJZX30IFGBP" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreText-4BX5WGXMXE7W.pcm-ZL8TB5K37JK8" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\Foundation-2FJBXN8U6QRTS.pcm-10XYY6TH7UGVQ" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\os_object-1IVCWVLR6MT9T.pcm-2U74SK7TY16Y0" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AdminSaleViewController.o-3PMWXO590SLLI" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\ObjectiveC-1A3ZNHZR9RRLF.pcm-33XHNKRDLS020" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AdminView.o-1GRDAZZJBXZQA" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AdminNauczycieleViewController.o-2QZAU4907Y287" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\_Builtin_intrinsics-3FD15YQY6KNNR.pcm-1HYU8TXPXIU74" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AdminJednostkiViewController.o-2ZOVZNNTA96YY" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreServices-2SRTBNLRER772.pcm-1XPWKUSUP6H0L" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CFNetwork-WOPYBVYTVV3P.pcm-3BOOQSK8IDFVJ" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\CoreData-1DHIL9VVBSYDQ.pcm-2U8LIY492MC35" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\IOKit-2OU2NY71U259J.pcm-2PWBN2KU7IKFB" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\Darwin-1IVCWVLR6MT9T.pcm-1MB7OAWHC7IQQ" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\AdminUczenViewController.o-1H9BWIO11KPZX" />
+    <BundleResource Include="Resources\Index\DataStore\v5\units\Security-2RB2R7QDU33DQ.pcm-1JD3O5LUD2957" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\94\AdminUczenViewController.m-1E1QWOH1LUS94" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\P2\AdminLekcjeViewController.h-19QJ6G2TSXMP2" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\AQ\AdminOpiekunViewController.h-39DJMASUAOYAQ" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\I0\AdminPrzedmiotyViewController.m-3BCLNTW8UFPI0" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\IA\AdminJednostkiViewController.h-3UU4KGGCG0EIA" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\73\AdminJednostkiViewController.m-2013F9D0S6X73" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\YA\AdminOpiekunViewController.m-1FU96VTRHLGYA" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\3A\AdminPrzedmiotyViewController.h-32P85PJ441C3A" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\V3\AdminUczenViewController.h-VX5X8HAAXUV3" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\BH\AdminKlasyProfileViewController.h-EX60WUIOLOBH" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\NJ\AdminLekcjeViewController.m-1V67XOLCY32NJ" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\GW\AdminSaleViewController.h-7691Y722IVGW" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\I3\AdminKlasyProfileViewController.m-MULR13KSL3I3" />
+    <BundleResource Include="Resources\Index\DataStore\v5\records\47\AdminSaleViewController.m-18MZ7T9ZUY447" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
 </Project>

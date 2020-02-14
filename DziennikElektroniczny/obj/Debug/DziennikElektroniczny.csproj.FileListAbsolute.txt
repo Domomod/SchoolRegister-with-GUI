@@ -36,3 +36,13 @@
 /Users/admin/Projects/DziennikElektroniczny/DziennikElektroniczny/obj/Debug/ibtool/AdminUczenView.nib
 /Users/admin/Projects/DziennikElektroniczny/DziennikElektroniczny/obj/Debug/ibtool/Main.storyboardc/NSViewController-QTX-kn-Bpq.nib
 /Users/admin/Projects/DziennikElektroniczny/DziennikElektroniczny/obj/Debug/ibtool/Main.storyboardc/QTX-kn-Bpq-view-4wy-ZA-onC.nib
+/Users/admin/Projects/DziennikElektroniczny/DziennikElektroniczny/obj/Debug/ibtool-manifests/AdminJednostkiView.nib
+/Users/admin/Projects/DziennikElektroniczny/DziennikElektroniczny/obj/Debug/ibtool-manifests/AdminKlasyProfileView.nib
+/Users/admin/Projects/DziennikElektroniczny/DziennikElektroniczny/obj/Debug/ibtool-manifests/AdminLekcjeView.nib
+/Users/admin/Projects/DziennikElektroniczny/DziennikElektroniczny/obj/Debug/ibtool-manifests/AdminPrzedmiotyView.nib
+/Users/admin/Projects/DziennikElektroniczny/DziennikElektroniczny/obj/Debug/ibtool-manifests/AdminSaleView.nib
+/Users/admin/Projects/DziennikElektroniczny/DziennikElektroniczny/obj/Debug/ibtool/AdminPrzedmiotyView.nib
+/Users/admin/Projects/DziennikElektroniczny/DziennikElektroniczny/obj/Debug/ibtool/AdminLekcjeView.nib
+/Users/admin/Projects/DziennikElektroniczny/DziennikElektroniczny/obj/Debug/ibtool/AdminKlasyProfileView.nib
+/Users/admin/Projects/DziennikElektroniczny/DziennikElektroniczny/obj/Debug/ibtool/AdminSaleView.nib
+/Users/admin/Projects/DziennikElektroniczny/DziennikElektroniczny/obj/Debug/ibtool/AdminJednostkiView.nib
