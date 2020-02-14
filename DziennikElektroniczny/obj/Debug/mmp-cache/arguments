@@ -1,0 +1,21 @@
+# Version: 6.4.0.2 (xcode11.1): e37549bc)
+# [first argument, ignore] # /Library/Frameworks/Xamarin.Mac.framework/Versions/6.4.0.2/lib/mmp/mmp.exe
+/Library/Frameworks/Xamarin.Mac.framework/Versions/6.4.0.2/lib/mmp/mmp.exe \
+	/verbose \
+	' /debug' \
+	/output:/Users/admin/Projects/DziennikElektroniczny/DziennikElektroniczny/bin/Debug/ \
+	/name:DziennikElektroniczny \
+	' /profile:Xamarin.Mac,Version=v2.0,Profile=Mobile' \
+	' /arch:x86_64' \
+	' --http-message-handler=HttpClientHandler' \
+	' /minos=10.13' \
+	' /nolink' \
+	/assembly:/Library/Frameworks/Xamarin.Mac.framework/Versions/Current/lib/mono/Xamarin.Mac/mscorlib.dll \
+	/assembly:/Library/Frameworks/Xamarin.Mac.framework/Versions/Current/lib/mono/Xamarin.Mac/System.Core.dll \
+	/assembly:/Library/Frameworks/Xamarin.Mac.framework/Versions/Current/lib/mono/Xamarin.Mac/System.dll \
+	/assembly:/Library/Frameworks/Xamarin.Mac.framework/Versions/Current/lib/mono/Xamarin.Mac/Facades/System.Drawing.Common.dll \
+	/assembly:/Library/Frameworks/Xamarin.Mac.framework/Versions/Current/lib/mono/Xamarin.Mac/Xamarin.Mac.dll \
+	/root-assembly:/Users/admin/Projects/DziennikElektroniczny/DziennikElektroniczny/bin/Debug/DziennikElektroniczny.exe \
+	/sdkroot:/Applications/Xcode.app/Contents/Developer \
+	--cache:/Users/admin/Projects/DziennikElektroniczny/DziennikElektroniczny/obj/Debug/mmp-cache \
+	@/Users/admin/Projects/DziennikElektroniczny/DziennikElektroniczny/obj/Debug/response-file.rsp \
