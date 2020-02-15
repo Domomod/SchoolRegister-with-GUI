@@ -46,7 +46,7 @@ namespace DziennikElektroniczny
 		AppKit.NSTextField SearchTextCell { get; set; }
 
 		[Outlet]
-		AppKit.NSScrollView StatusTextField { get; set; }
+		AppKit.NSTextField StatusTextField { get; set; }
 
 		[Outlet]
 		AppKit.NSTextField TelefonTextField { get; set; }
@@ -59,6 +59,11 @@ namespace DziennikElektroniczny
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (NazwiskoTextField != null) {
+				NazwiskoTextField.Dispose ();
+				NazwiskoTextField = null;
+			}
+
 			if (AdresTextField != null) {
 				AdresTextField.Dispose ();
 				AdresTextField = null;
@@ -97,11 +102,6 @@ namespace DziennikElektroniczny
 			if (NazwiskoTableColumn != null) {
 				NazwiskoTableColumn.Dispose ();
 				NazwiskoTableColumn = null;
-			}
-
-			if (NazwiskoTextField != null) {
-				NazwiskoTextField.Dispose ();
-				NazwiskoTextField = null;
 			}
 
 			if (PeselTextField != null) {

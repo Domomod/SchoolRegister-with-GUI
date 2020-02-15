@@ -44,5 +44,14 @@ namespace DziennikElektroniczny.AdminOpiekunView
                 return (AdminOpiekunView)base.View;
             }
         }
+        partial void OnDodajOpiekunaButtonPressed(Foundation.NSObject sender)
+        {
+            var k = Database.Instance;
+            var telefon = TelefonTextCell.StringValue != "Telefon" ? TelefonTextCell.StringValue : "";
+            var mail = EmailTextCell.StringValue != "Email" ? EmailTextCell.StringValue : "";
+            var adres = AdresTextCell.StringValue != "Adres" ? AdresTextCell.StringValue : "";
+            k.AddParent(PeselTextCell.StringValue, ImieTextCell.StringValue, NazwiskoTextCell.StringValue, adres, telefon, mail, DochodTextCell.StringValue);
+        }
+
     }
 }

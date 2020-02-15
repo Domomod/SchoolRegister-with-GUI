@@ -11,7 +11,7 @@ namespace DziennikElektroniczny
         #region Private Members
 
         private NSMutableIndexSet hiddenRows { get; } = new NSMutableIndexSet();
-
+        private NauczycielTableDataSource NauczycieleDataSource;
         #endregion
 
         #region Constructors
@@ -41,12 +41,10 @@ namespace DziennikElektroniczny
 
             // Create the Product Table Data Source and populate it
             var DataSource = new NauczycielTableDataSource();
-            DataSource.Nauczyciele.Add(new Nauczyciel("Ryszard", "Czarnecki"));
-            DataSource.Nauczyciele.Add(new Nauczyciel("Maria", "Poznanianka"));
-            DataSource.Nauczyciele.Add(new Nauczyciel("Marcin", "Żelazny"));
 
             // Populate the Product Table
             NauczycieleTableView.DataSource = DataSource;
+            NauczycieleDataSource = (NauczycielTableDataSource)NauczycieleTableView.DataSource; //To avoid type casting
             NauczycieleTableView.Delegate = new NauczycielTableDelegate(this, DataSource);
         }
 
@@ -103,11 +101,28 @@ namespace DziennikElektroniczny
             }
         }
 
+        public void SetStatusTextField(string msg) {
+            StatusTextField.StringValue = msg;
+        }
 
         partial void DodajButton(Foundation.NSObject sender)
         {
-            var k = Database.Instance;
-            var mess= k.AddTeacher(PeselTextField.StringValue, ImieTextField.StringValue, NazwiskoTextField.StringValue, TelefonTextField.StringValue, AdresTextField.StringValue, EmailTextField.StringValue, EtatTextField.StringValue);
+            var imie = ImieTextField.StringValue;
+            var nazwisko = NazwiskoTextField.StringValue;
+            var pesel = PeselTextField.StringValue;
+            var telefon = TelefonTextField.StringValue != "Telefon" ? TelefonTextField.StringValue : "";
+            var adres = AdresTextField.StringValue != "Adres" ? AdresTextField.StringValue : "";
+            var email = EmailTextField.StringValue != "Email" ? EmailTextField.StringValue : "";
+            var etat = EtatTextField.StringValue;
+            try
+            {
+                NauczycieleDataSource.AddNauczyciel(new Nauczyciel(imie, nazwisko, pesel, telefon, adres, email, etat));
+                StatusTextField.StringValue = $"Nauczyciel {imie} {nazwisko} został dodany";
+                ReloadTable();
+            }
+            catch (Exception e) {
+                StatusTextField.StringValue = e.Message;
+            }
         }
 
     }

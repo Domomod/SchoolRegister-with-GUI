@@ -44,5 +44,12 @@ namespace DziennikElektroniczny.AdminKlasyProfile
                 return (AdminKlasyProfileView)base.View;
             }
         }
+
+        partial void OnDodajProfilButtonPressed(Foundation.NSObject sender)
+        {
+            var k = Database.Instance;
+            k.AddProfile(ProfilTextField.StringValue);
+        }
+
     }
 }

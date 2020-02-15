@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using MySql.Data.MySqlClient;
 
@@ -41,8 +42,42 @@ namespace DziennikElektroniczny
             sqlConnection.Close();
         }
 
+        public List<Nauczyciel> GetTeachers()
+        {
+            command.CommandText = $"SELECT imie, nazwisko, pesel, etat, adres_zamieszkania, numer_telefonu, email FROM dane_osobowe JOIN nauczyciel on pesel=dane_osobowe_pesel where pesel!=666 ";
+            dataReader = command.ExecuteReader();
+            List<Nauczyciel> list = new List<Nauczyciel>();
+            while (dataReader.Read())
+            {
+                list.Add(new Nauczyciel(dataReader[0].ToString(), dataReader[1].ToString(), dataReader[2].ToString(), dataReader[5].ToString(), dataReader[4].ToString(),dataReader[6].ToString(), dataReader[3].ToString()));
+            }
+            dataReader.Close();
+            return list;
+        }
 
-    public string AddTeacher(string pesel, string names, string lastName, string phoneNum, string home, string mail, string etat)
+
+        public void AddRoom(string floor, string number, string chairs)
+        {
+            command.CommandText = $"INSERT INTO sala VALUES ({floor},{number},{chairs})";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
+        }
+
+        public void AddUnit(string hour, string minute)
+        {
+            command.CommandText = $"INSERT INTO jednostka VALUES ({hour},{minute})";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
+        }
+
+        public void AddProfile(string profilname)
+        {
+            command.CommandText = $"INSERT INTO profil VALUES('{profilname}') ";
+            dataReader = command.ExecuteReader();
+            dataReader.Close();
+        }
+
+        public string AddTeacher(string pesel, string names, string lastName, string phoneNum, string home, string mail, string etat)
         {
             
                 command.CommandType = CommandType.StoredProcedure;
@@ -113,5 +148,99 @@ namespace DziennikElektroniczny
             return messsage;
         }
 
+
+        public void UpdateTeacher()
+        {
+
+        }
+
+        public void UpdateParent(string pesel)
+        {
+
+        }
+
+        public void UpdateStudent()
+        {
+
+        }
+
+        public void DeleteTeacher(string teacher)
+        {
+            try
+            {
+                var pesel = teacher.Split("(")[1];
+                pesel = pesel.Remove(pesel.Length - 1);
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "usun_nauczyciela";
+                command.Parameters.AddWithValue("@arg_pesel", pesel);
+                dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    if (dataReader[0].ToString() != "ok")
+                        throw new Exception();
+                }
+                dataReader.Close();
+                command.CommandType = CommandType.Text;
+            }
+            catch (Exception)
+            {
+                dataReader.Close();
+                command.CommandType = CommandType.Text;
+                throw new Exception();
+            }
+
+        }
+
+        public void DeleteStudent(string student)
+        {
+            var pesel = student.Split("(")[1];
+            pesel = pesel.Remove(pesel.Length - 1);
+            try
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "usun_ucznia";
+                command.Parameters.AddWithValue("@arg_pesel", pesel);
+                dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    if (dataReader[0].ToString() != "ok")
+                        throw new Exception();
+                }
+                dataReader.Close();
+                command.CommandType = CommandType.Text;
+            }
+            catch (Exception)
+            {
+                dataReader.Close();
+                command.CommandType = CommandType.Text;
+                throw new Exception();
+            }
+        }
+
+        public void DeleteParent(string parent)
+        {
+            var pesel = parent.Split("(")[1];
+            pesel = pesel.Remove(pesel.Length - 1);
+            try
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "usun_opiekuna";
+                command.Parameters.AddWithValue("@arg_pesel", pesel);
+                dataReader = command.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    if (dataReader[0].ToString() != "ok")
+                        throw new Exception();
+                }
+                dataReader.Close();
+                command.CommandType = CommandType.Text;
+            }
+            catch (Exception)
+            {
+                dataReader.Close();
+                command.CommandType = CommandType.Text;
+                throw new Exception();
+            }
+        }
     }
 }

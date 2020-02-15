@@ -44,5 +44,15 @@ namespace DziennikElektroniczny.AdminUczenView
                 return (AdminUczenView)base.View;
             }
         }
+
+        partial void OnDodajUczniaButtonPressed(Foundation.NSObject sender)
+        {
+            var k = Database.Instance;
+            var telefon = TelefonTextField.StringValue != "Telefon" ? TelefonTextField.StringValue : "";
+            var mail = EmailTextField.StringValue != "Email" ? EmailTextField.StringValue : "";
+            var adres = AdresTextField.StringValue != "Adres" ? AdresTextField.StringValue : "";
+            k.AddStudent(PeselTextField.StringValue, ImieTextField.StringValue, NazwiskoTextField.StringValue, adres, telefon, mail, KlasaCombobox.StringValue);
+        }
+
     }
 }

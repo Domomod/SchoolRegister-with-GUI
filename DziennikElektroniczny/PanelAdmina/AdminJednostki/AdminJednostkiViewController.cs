@@ -14,6 +14,7 @@ namespace DziennikElektroniczny.AdminJednostki
         public AdminJednostkiViewController(IntPtr handle) : base(handle)
         {
             Initialize();
+
         }
 
         // Called when created directly from a XIB file
@@ -44,5 +45,12 @@ namespace DziennikElektroniczny.AdminJednostki
                 return (AdminJednostkiView)base.View;
             }
         }
+
+        partial void OnDodajJednostkeButtonPressed(Foundation.NSObject sender)
+        {
+            var k = Database.Instance;
+            k.AddUnit(GodzinaCombobox.StringValue, MinutaCombobox.StringValue);
+        }
+
     }
 }

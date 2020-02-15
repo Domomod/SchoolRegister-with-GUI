@@ -44,5 +44,13 @@ namespace DziennikElektroniczny.AdminSale
                 return (AdminSaleView)base.View;
             }
         }
+
+
+        partial void OnDodajSaleButtonPressed(Foundation.NSObject sender)
+        {
+            var k = Database.Instance;
+            k.AddRoom(PietroTextField.StringValue, SalaTextField.StringValue, LiczbaMiejscTextField.StringValue);
+        }
+
     }
 }

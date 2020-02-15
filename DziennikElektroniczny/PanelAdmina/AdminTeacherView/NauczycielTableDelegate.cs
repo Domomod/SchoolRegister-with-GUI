@@ -45,46 +45,101 @@ namespace DziennikElektroniczny
                 switch (tableColumn.Title)
                 {
                     case "Imie":
-                        view.TextField = new NSTextField(new CGRect(20, 0, 400, 16));
+                        view.TextField = new NSTextField(new CGRect(0, 0, 400, 16));
                         ConfigureTextField(view, row);
                         break;
                     case "Nazwisko":
                         view.TextField = new NSTextField(new CGRect(0, 0, 400, 16));
                         ConfigureTextField(view, row);
                         break;
-                    case "Usuń":
-                        // Stwórz przycisk
-                        var button = new NSButton(new CGRect(0, 0, 81, 16));
-                        button.SetButtonType(NSButtonType.MomentaryPushIn);
-                        button.Title = "Usuń";
-                        button.Tag = row;
+                    case "Pesel":
+                        view.TextField = new NSTextField(new CGRect(0, 0, 400,16));
+                        ConfigureTextField(view, row);
+                        break;
+                    case "Telefon":
+                        view.TextField = new NSTextField(new CGRect(0, 0, 400, 16));
+                        ConfigureTextField(view, row);
+                        break;
+                    case "Email":
+                        view.TextField = new NSTextField(new CGRect(0, 0, 400, 16));
+                        ConfigureTextField(view, row);
+                        break;
+                    case "Adres":
+                        view.TextField = new NSTextField(new CGRect(0, 0, 400, 16));
+                        ConfigureTextField(view, row);
+                        break;
+                    case "Etat":
+                        view.TextField = new NSTextField(new CGRect(0, 0, 400, 16));
+                        ConfigureTextField(view, row);
+                        break;
+                    case "Zapisz":
+                        {
+                            var button = new NSButton(new CGRect(0, 0, 43, 16));
+                            button.Cell = new NSButtonCell { BackgroundColor = NSColor.Green };
+                            button.SetButtonType(NSButtonType.MomentaryPushIn);
+                            button.Title = "+";
+                            button.Tag = row;
 
-                        // Przypisz zachowanie do przycisku.
-                        button.Activated += (sender, e) => {
-                            var przycisk = sender as NSButton;
-                            var rekord = DataSource.Nauczyciele[(int)przycisk.Tag];
-
-                            // Show a popup alllert
-                            var alert = new NSAlert()
+                            // Przypisz zachowanie do przycisku.
+                            button.Activated += (sender, e) =>
                             {
-                                AlertStyle = NSAlertStyle.Informational,
-                                InformativeText = $"Czy na pewno chcesz usunąć {rekord.Imie} {rekord.Nazwisko}? Taka operacja jest permamentna.",
-                                MessageText = $"Usunąć {rekord.Imie}?",
-                            };
-                            alert.AddButton("Anuluj");
-                            alert.AddButton("Usuń");
-                            var result = alert.RunModal();
-                            if (result == 1001) {
+                                var przycisk = sender as NSButton;
+                                var rekord = DataSource.Nauczyciele[(int)przycisk.Tag];
+
+                                try
+                                {
+                                    DataSource.UpdateAt((int)przycisk.Tag);
+                                    var nauczyciel = DataSource.Nauczyciele[(int)przycisk.Tag];
+                                    ViewController.SetStatusTextField($"Zmodyfikowano {nauczyciel.Imie} {nauczyciel.Nazwisko}");
+                                }
+                                catch (Exception exception) {
+                                    ViewController.SetStatusTextField(exception.Message);
+                                }
                                 // Remove the given row from the dataset
-                                DataSource.Nauczyciele.RemoveAt((int)przycisk.Tag);
-                                ViewController.ReloadTable();
-                            }
+                            };
+
+                            // Add to view
+                            view.AddSubview(button);
+                        }
+                        break;
+                    case "Usuń":
+                        {
+                            // Stwórz przycisk
+                            var button = new NSButton(new CGRect(0, 0, 43, 16));
+                            button.Cell = new NSButtonCell { BackgroundColor = NSColor.Red };
+                            button.SetButtonType(NSButtonType.MomentaryPushIn);
+                            button.Title = "X";
+                            button.Tag = row;
+
+                            // Przypisz zachowanie do przycisku.
+                            button.Activated += (sender, e) =>
+                            {
+                                var przycisk = sender as NSButton;
+                                var rekord = DataSource.Nauczyciele[(int)przycisk.Tag];
+
+                                // Show a popup alllert
+                                var alert = new NSAlert()
+                                {
+                                    AlertStyle = NSAlertStyle.Informational,
+                                    InformativeText = $"Czy na pewno chcesz usunąć {rekord.Imie} {rekord.Nazwisko}? Taka operacja jest permamentna.",
+                                    MessageText = $"Usunąć {rekord.Imie}?",
+                                };
+                                alert.AddButton("Anuluj");
+                                alert.AddButton("Usuń");
+                                var result = alert.RunModal();
+                                if (result == 1001)
+                                {
+                                    // Remove the given row from the dataset
+                                    DataSource.Nauczyciele.RemoveAt((int)przycisk.Tag);
+                                    ViewController.ReloadTable();
+                                }
 
 
-                        };
+                            };
 
-                        // Add to view
-                        view.AddSubview(button);
+                            // Add to view
+                            view.AddSubview(button);
+                        }
                         break;
                 }
 
@@ -101,6 +156,27 @@ namespace DziennikElektroniczny
                     view.TextField.StringValue = DataSource.Nauczyciele[(int)row].Nazwisko;
                     view.TextField.Tag = row;
                     break;
+                case "Pesel":
+                    view.TextField.StringValue = DataSource.Nauczyciele[(int)row].Pesel;
+                    view.TextField.Tag = row;
+                    break;
+                case "Telefon":
+                    view.TextField.StringValue = DataSource.Nauczyciele[(int)row].Telefon;
+                    view.TextField.Tag = row;
+                    break;
+                case "Email":
+                    view.TextField.StringValue = DataSource.Nauczyciele[(int)row].Email;
+                    view.TextField.Tag = row;
+                    break;
+                case "Adres":
+                    view.TextField.StringValue = DataSource.Nauczyciele[(int)row].Adres;
+                    view.TextField.Tag = row;
+                    break;
+                case "Etat":
+                    view.TextField.StringValue = DataSource.Nauczyciele[(int)row].Etat;
+                    view.TextField.Tag = row;
+                    break;
+                case "Zapisz":
                 case "Usuń":
                     foreach (NSView subview in view.Subviews)
                     {
@@ -135,14 +211,36 @@ namespace DziennikElektroniczny
             view.TextField.EditingEnded += (sender, e) => {
 
                 // Take action based on type
-                switch (view.Identifier)
+                try
                 {
-                    case "Imie":
-                        DataSource.Nauczyciele[(int)view.TextField.Tag].Imie = view.TextField.StringValue;
-                        break;
-                    case "Nazwisko":
-                        DataSource.Nauczyciele[(int)view.TextField.Tag].Nazwisko = view.TextField.StringValue;
-                        break;
+                    switch (view.Identifier)
+                    {
+                        case "Imie":
+                            DataSource.Nauczyciele[(int)view.TextField.Tag].Imie = view.TextField.StringValue;
+                            break;
+                        case "Nazwisko":
+                            DataSource.Nauczyciele[(int)view.TextField.Tag].Nazwisko = view.TextField.StringValue;
+                            break;
+                        case "Etat":
+                            DataSource.Nauczyciele[(int)view.TextField.Tag].Etat = view.TextField.StringValue;
+                            break;
+                        case "Pesel":
+                            DataSource.Nauczyciele[(int)view.TextField.Tag].Pesel = view.TextField.StringValue;
+                            break;
+                        case "Adres":
+                            DataSource.Nauczyciele[(int)view.TextField.Tag].Adres = view.TextField.StringValue;
+                            break;
+                        case "Email":
+                            DataSource.Nauczyciele[(int)view.TextField.Tag].Email = view.TextField.StringValue;
+                            break;
+                        case "Telefon":
+                            DataSource.Nauczyciele[(int)view.TextField.Tag].Telefon = view.TextField.StringValue;
+                            break;
+                    }
+                }
+                catch(Exception exception)
+                {
+                    ViewController.SetStatusTextField(exception.Message);
                 }
             };
 
@@ -160,7 +258,22 @@ namespace DziennikElektroniczny
                     return StringValue.Contains(searchString); 
                 case "Nazwisko":
                     StringValue = DataSource.Nauczyciele[(int)row].Nazwisko;
-                    return StringValue.Contains(searchString); 
+                    return StringValue.Contains(searchString);
+                case "Etat":
+                    StringValue = DataSource.Nauczyciele[(int)row].Etat;
+                    return StringValue.Contains(searchString);
+                case "Pesel":
+                    StringValue = DataSource.Nauczyciele[(int)row].Pesel;
+                    return StringValue.Contains(searchString);
+                case "Adres":
+                    StringValue = DataSource.Nauczyciele[(int)row].Adres;
+                    return StringValue.Contains(searchString);
+                case "Email":
+                    StringValue = DataSource.Nauczyciele[(int)row].Email;
+                    return StringValue.Contains(searchString);
+                case "Telefon":
+                    StringValue = DataSource.Nauczyciele[(int)row].Telefon;
+                    return StringValue.Contains(searchString);
                 default:
                     return true;
             }

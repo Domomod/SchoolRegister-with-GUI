@@ -43,6 +43,9 @@ namespace DziennikElektroniczny.AdminUczenView
 		AppKit.NSTextView StatusTextView { get; set; }
 
 		[Outlet]
+		AppKit.NSTextField TelefonTextField { get; set; }
+
+		[Outlet]
 		AppKit.NSTextField TextField { get; set; }
 
 		[Outlet]
@@ -59,29 +62,9 @@ namespace DziennikElektroniczny.AdminUczenView
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (ImieTextField != null) {
-				ImieTextField.Dispose ();
-				ImieTextField = null;
-			}
-
-			if (NazwiskoTextField != null) {
-				NazwiskoTextField.Dispose ();
-				NazwiskoTextField = null;
-			}
-
-			if (PeselTextField != null) {
-				PeselTextField.Dispose ();
-				PeselTextField = null;
-			}
-
-			if (KlasaCombobox != null) {
-				KlasaCombobox.Dispose ();
-				KlasaCombobox = null;
-			}
-
-			if (EmailTextField != null) {
-				EmailTextField.Dispose ();
-				EmailTextField = null;
+			if (TelefonTextField != null) {
+				TelefonTextField.Dispose ();
+				TelefonTextField = null;
 			}
 
 			if (AdresTextField != null) {
@@ -89,24 +72,29 @@ namespace DziennikElektroniczny.AdminUczenView
 				AdresTextField = null;
 			}
 
-			if (TextField != null) {
-				TextField.Dispose ();
-				TextField = null;
+			if (EmailTextField != null) {
+				EmailTextField.Dispose ();
+				EmailTextField = null;
 			}
 
-			if (StatusTextView != null) {
-				StatusTextView.Dispose ();
-				StatusTextView = null;
+			if (ImieTextField != null) {
+				ImieTextField.Dispose ();
+				ImieTextField = null;
 			}
 
-			if (UczniowieTableView != null) {
-				UczniowieTableView.Dispose ();
-				UczniowieTableView = null;
+			if (KlasaCombobox != null) {
+				KlasaCombobox.Dispose ();
+				KlasaCombobox = null;
 			}
 
-			if (OpiekunowieTableView != null) {
-				OpiekunowieTableView.Dispose ();
-				OpiekunowieTableView = null;
+			if (NazwiskoTextField != null) {
+				NazwiskoTextField.Dispose ();
+				NazwiskoTextField = null;
+			}
+
+			if (ObecnościTableView != null) {
+				ObecnościTableView.Dispose ();
+				ObecnościTableView = null;
 			}
 
 			if (OcenyTableView != null) {
@@ -114,14 +102,34 @@ namespace DziennikElektroniczny.AdminUczenView
 				OcenyTableView = null;
 			}
 
+			if (OpiekunowieTableView != null) {
+				OpiekunowieTableView.Dispose ();
+				OpiekunowieTableView = null;
+			}
+
+			if (PeselTextField != null) {
+				PeselTextField.Dispose ();
+				PeselTextField = null;
+			}
+
+			if (StatusTextView != null) {
+				StatusTextView.Dispose ();
+				StatusTextView = null;
+			}
+
+			if (TextField != null) {
+				TextField.Dispose ();
+				TextField = null;
+			}
+
+			if (UczniowieTableView != null) {
+				UczniowieTableView.Dispose ();
+				UczniowieTableView = null;
+			}
+
 			if (UwagiTableView != null) {
 				UwagiTableView.Dispose ();
 				UwagiTableView = null;
-			}
-
-			if (ObecnościTableView != null) {
-				ObecnościTableView.Dispose ();
-				ObecnościTableView = null;
 			}
 		}
 	}

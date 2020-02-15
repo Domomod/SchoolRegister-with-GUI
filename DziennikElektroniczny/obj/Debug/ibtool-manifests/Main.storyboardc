@@ -36,6 +36,21 @@
 				<integer>13</integer>
 			</dict>
 		</array>
+		<key>3Td-zl-EqB</key>
+		<array>
+			<dict>
+				<key>affected-objects</key>
+				<array>
+					<string>3Td-zl-EqB</string>
+				</array>
+				<key>message</key>
+				<string>View is clipping its content</string>
+				<key>type</key>
+				<string>IBIssueTypeClippedContent</string>
+				<key>type-value</key>
+				<integer>13</integer>
+			</dict>
+		</array>
 		<key>801-og-KQ7</key>
 		<array>
 			<dict>
@@ -102,6 +117,21 @@
 				<key>affected-objects</key>
 				<array>
 					<string>IWn-4d-fRc</string>
+				</array>
+				<key>message</key>
+				<string>View is clipping its content</string>
+				<key>type</key>
+				<string>IBIssueTypeClippedContent</string>
+				<key>type-value</key>
+				<integer>13</integer>
+			</dict>
+		</array>
+		<key>JZF-uQ-Cb4</key>
+		<array>
+			<dict>
+				<key>affected-objects</key>
+				<array>
+					<string>JZF-uQ-Cb4</string>
 				</array>
 				<key>message</key>
 				<string>View is clipping its content</string>
@@ -246,6 +276,36 @@
 				<integer>13</integer>
 			</dict>
 		</array>
+		<key>gPP-WH-aaK</key>
+		<array>
+			<dict>
+				<key>affected-objects</key>
+				<array>
+					<string>gPP-WH-aaK</string>
+				</array>
+				<key>message</key>
+				<string>View is clipping its content</string>
+				<key>type</key>
+				<string>IBIssueTypeClippedContent</string>
+				<key>type-value</key>
+				<integer>13</integer>
+			</dict>
+		</array>
+		<key>kWA-6x-hHP</key>
+		<array>
+			<dict>
+				<key>affected-objects</key>
+				<array>
+					<string>kWA-6x-hHP</string>
+				</array>
+				<key>message</key>
+				<string>View is clipping its content</string>
+				<key>type</key>
+				<string>IBIssueTypeClippedContent</string>
+				<key>type-value</key>
+				<integer>13</integer>
+			</dict>
+		</array>
 		<key>lQH-dy-YGG</key>
 		<array>
 			<dict>
@@ -282,6 +342,21 @@
 				<key>affected-objects</key>
 				<array>
 					<string>mYi-ig-gYD</string>
+				</array>
+				<key>message</key>
+				<string>View is clipping its content</string>
+				<key>type</key>
+				<string>IBIssueTypeClippedContent</string>
+				<key>type-value</key>
+				<integer>13</integer>
+			</dict>
+		</array>
+		<key>tBJ-rn-f0I</key>
+		<array>
+			<dict>
+				<key>affected-objects</key>
+				<array>
+					<string>tBJ-rn-f0I</string>
 				</array>
 				<key>message</key>
 				<string>View is clipping its content</string>
