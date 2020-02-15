@@ -30,5 +30,12 @@ namespace DziennikElektroniczny
                 // Update the view, if already loaded.
             }
         }
+
+        partial void ZamknijButton(Foundation.NSObject sender)
+        {
+            var k = Database.Instance;
+            k.Close();
+            System.Diagnostics.Process.GetCurrentProcess().Kill();
+        }
     }
 }

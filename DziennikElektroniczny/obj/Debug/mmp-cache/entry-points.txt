@@ -55,8 +55,6 @@ Function=xamarin_timezone_get_names
 	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.4.0.2/lib/mono/Xamarin.Mac/mscorlib.dll
 Function=xamarin_timezone_get_data
 	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.4.0.2/lib/mono/Xamarin.Mac/mscorlib.dll
-Function=SystemNative_GetDomainSocketSizes
-	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.4.0.2/lib/mono/Xamarin.Mac/System.Core.dll
 Function=NetSecurityNative_ReleaseGssBuffer
 	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.4.0.2/lib/mono/Xamarin.Mac/System.dll
 Function=NetSecurityNative_DisplayMinorStatus
@@ -87,6 +85,30 @@ Function=NetSecurityNative_Unwrap
 	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.4.0.2/lib/mono/Xamarin.Mac/System.dll
 Function=mono_pal_init
 	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.4.0.2/lib/mono/Xamarin.Mac/System.dll
+Function=SystemNative_GetDomainSocketSizes
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.4.0.2/lib/mono/Xamarin.Mac/System.Core.dll
+Function=BrotliDecoderCreateInstance
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.4.0.2/lib/mono/Xamarin.Mac/System.IO.Compression.dll
+Function=BrotliDecoderDecompressStream
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.4.0.2/lib/mono/Xamarin.Mac/System.IO.Compression.dll
+Function=BrotliDecoderDecompress
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.4.0.2/lib/mono/Xamarin.Mac/System.IO.Compression.dll
+Function=BrotliDecoderDestroyInstance
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.4.0.2/lib/mono/Xamarin.Mac/System.IO.Compression.dll
+Function=BrotliDecoderIsFinished
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.4.0.2/lib/mono/Xamarin.Mac/System.IO.Compression.dll
+Function=BrotliEncoderCreateInstance
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.4.0.2/lib/mono/Xamarin.Mac/System.IO.Compression.dll
+Function=BrotliEncoderSetParameter
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.4.0.2/lib/mono/Xamarin.Mac/System.IO.Compression.dll
+Function=BrotliEncoderCompressStream
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.4.0.2/lib/mono/Xamarin.Mac/System.IO.Compression.dll
+Function=BrotliEncoderHasMoreOutput
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.4.0.2/lib/mono/Xamarin.Mac/System.IO.Compression.dll
+Function=BrotliEncoderDestroyInstance
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.4.0.2/lib/mono/Xamarin.Mac/System.IO.Compression.dll
+Function=BrotliEncoderCompress
+	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.4.0.2/lib/mono/Xamarin.Mac/System.IO.Compression.dll
 Function=xamarin_find_protocol_wrapper_type
 	/Library/Frameworks/Xamarin.Mac.framework/Versions/6.4.0.2/lib/x86_64/mobile/Xamarin.Mac.dll
 Function=xamarin_get_block_descriptor

@@ -51,49 +51,17 @@ namespace DziennikElektroniczny
 		[Outlet]
 		AppKit.NSTextField TelefonTextField { get; set; }
 
+		[Action ("DodajButton:")]
+		partial void DodajButton (Foundation.NSObject sender);
+
 		[Action ("OnSearchTextCellChange:")]
 		partial void OnSearchTextCellChange (Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (ImieTextField != null) {
-				ImieTextField.Dispose ();
-				ImieTextField = null;
-			}
-
-			if (NazwiskoTextField != null) {
-				NazwiskoTextField.Dispose ();
-				NazwiskoTextField = null;
-			}
-
-			if (PeselTextField != null) {
-				PeselTextField.Dispose ();
-				PeselTextField = null;
-			}
-
-			if (EtatTextField != null) {
-				EtatTextField.Dispose ();
-				EtatTextField = null;
-			}
-
-			if (EmailTextField != null) {
-				EmailTextField.Dispose ();
-				EmailTextField = null;
-			}
-
 			if (AdresTextField != null) {
 				AdresTextField.Dispose ();
 				AdresTextField = null;
-			}
-
-			if (TelefonTextField != null) {
-				TelefonTextField.Dispose ();
-				TelefonTextField = null;
-			}
-
-			if (StatusTextField != null) {
-				StatusTextField.Dispose ();
-				StatusTextField = null;
 			}
 
 			if (DodajTextField != null) {
@@ -101,9 +69,24 @@ namespace DziennikElektroniczny
 				DodajTextField = null;
 			}
 
+			if (EmailTextField != null) {
+				EmailTextField.Dispose ();
+				EmailTextField = null;
+			}
+
+			if (EtatTextField != null) {
+				EtatTextField.Dispose ();
+				EtatTextField = null;
+			}
+
 			if (ImieTableColumn != null) {
 				ImieTableColumn.Dispose ();
 				ImieTableColumn = null;
+			}
+
+			if (ImieTextField != null) {
+				ImieTextField.Dispose ();
+				ImieTextField = null;
 			}
 
 			if (NauczycieleTableView != null) {
@@ -116,9 +99,29 @@ namespace DziennikElektroniczny
 				NazwiskoTableColumn = null;
 			}
 
+			if (NazwiskoTextField != null) {
+				NazwiskoTextField.Dispose ();
+				NazwiskoTextField = null;
+			}
+
+			if (PeselTextField != null) {
+				PeselTextField.Dispose ();
+				PeselTextField = null;
+			}
+
 			if (SearchTextCell != null) {
 				SearchTextCell.Dispose ();
 				SearchTextCell = null;
+			}
+
+			if (StatusTextField != null) {
+				StatusTextField.Dispose ();
+				StatusTextField = null;
+			}
+
+			if (TelefonTextField != null) {
+				TelefonTextField.Dispose ();
+				TelefonTextField = null;
 			}
 		}
 	}

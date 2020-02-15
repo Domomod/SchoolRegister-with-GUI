@@ -28,6 +28,8 @@ namespace DziennikElektroniczny
         {
         }
 
+        
+
         #endregion
     }
 }

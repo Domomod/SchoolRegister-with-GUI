@@ -1,2 +1,2 @@
-2020-02-14 16:10:52.485 DziennikElektroniczny[9103:1977653] Failed to connect (NauczycieleTableHeaders) outlet from (AdminNauczycieleViewController) to (NSTableHeaderView): missing setter or instance variable
-2020-02-14 16:10:52.499 DziennikElektroniczny[9103:1977653] Failed to connect (TableView) outlet from (AdminNauczycieleViewController) to (NSTableView): missing setter or instance variable
+2020-02-15 12:50:19.522 DziennikElektroniczny[24614:2247643] Failed to connect (NauczycieleTableHeaders) outlet from (AdminNauczycieleViewController) to (NSTableHeaderView): missing setter or instance variable
+2020-02-15 12:50:19.541 DziennikElektroniczny[24614:2247643] Failed to connect (TableView) outlet from (AdminNauczycieleViewController) to (NSTableView): missing setter or instance variable

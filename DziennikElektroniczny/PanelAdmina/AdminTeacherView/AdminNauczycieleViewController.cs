@@ -102,5 +102,13 @@ namespace DziennikElektroniczny
                 return (AdminNauczycieleView)base.View;
             }
         }
+
+
+        partial void DodajButton(Foundation.NSObject sender)
+        {
+            var k = Database.Instance;
+            var mess= k.AddTeacher(PeselTextField.StringValue, ImieTextField.StringValue, NazwiskoTextField.StringValue, TelefonTextField.StringValue, AdresTextField.StringValue, EmailTextField.StringValue, EtatTextField.StringValue);
+        }
+
     }
 }

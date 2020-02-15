@@ -6,12 +6,117 @@
 	<dict/>
 	<key>com.apple.ibtool.document.notices</key>
 	<dict>
+		<key>1sV-1j-Zn8</key>
+		<array>
+			<dict>
+				<key>affected-objects</key>
+				<array>
+					<string>1sV-1j-Zn8</string>
+				</array>
+				<key>message</key>
+				<string>View is clipping its content</string>
+				<key>type</key>
+				<string>IBIssueTypeClippedContent</string>
+				<key>type-value</key>
+				<integer>13</integer>
+			</dict>
+		</array>
+		<key>1vq-h3-zU8</key>
+		<array>
+			<dict>
+				<key>affected-objects</key>
+				<array>
+					<string>1vq-h3-zU8</string>
+				</array>
+				<key>message</key>
+				<string>View is clipping its content</string>
+				<key>type</key>
+				<string>IBIssueTypeClippedContent</string>
+				<key>type-value</key>
+				<integer>13</integer>
+			</dict>
+		</array>
+		<key>801-og-KQ7</key>
+		<array>
+			<dict>
+				<key>affected-objects</key>
+				<array>
+					<string>801-og-KQ7</string>
+				</array>
+				<key>message</key>
+				<string>View is clipping its content</string>
+				<key>type</key>
+				<string>IBIssueTypeClippedContent</string>
+				<key>type-value</key>
+				<integer>13</integer>
+			</dict>
+		</array>
+		<key>9Jg-1u-EFd</key>
+		<array>
+			<dict>
+				<key>affected-objects</key>
+				<array>
+					<string>9Jg-1u-EFd</string>
+				</array>
+				<key>message</key>
+				<string>View is clipping its content</string>
+				<key>type</key>
+				<string>IBIssueTypeClippedContent</string>
+				<key>type-value</key>
+				<integer>13</integer>
+			</dict>
+		</array>
 		<key>BRl-2x-u8C</key>
 		<array>
 			<dict>
 				<key>affected-objects</key>
 				<array>
 					<string>BRl-2x-u8C</string>
+				</array>
+				<key>message</key>
+				<string>View is clipping its content</string>
+				<key>type</key>
+				<string>IBIssueTypeClippedContent</string>
+				<key>type-value</key>
+				<integer>13</integer>
+			</dict>
+		</array>
+		<key>GOI-AG-7np</key>
+		<array>
+			<dict>
+				<key>affected-objects</key>
+				<array>
+					<string>GOI-AG-7np</string>
+				</array>
+				<key>message</key>
+				<string>View is clipping its content</string>
+				<key>type</key>
+				<string>IBIssueTypeClippedContent</string>
+				<key>type-value</key>
+				<integer>13</integer>
+			</dict>
+		</array>
+		<key>IWn-4d-fRc</key>
+		<array>
+			<dict>
+				<key>affected-objects</key>
+				<array>
+					<string>IWn-4d-fRc</string>
+				</array>
+				<key>message</key>
+				<string>View is clipping its content</string>
+				<key>type</key>
+				<string>IBIssueTypeClippedContent</string>
+				<key>type-value</key>
+				<integer>13</integer>
+			</dict>
+		</array>
+		<key>ODN-jG-MqR</key>
+		<array>
+			<dict>
+				<key>affected-objects</key>
+				<array>
+					<string>ODN-jG-MqR</string>
 				</array>
 				<key>message</key>
 				<string>View is clipping its content</string>
@@ -36,12 +141,117 @@
 				<integer>13</integer>
 			</dict>
 		</array>
+		<key>Qi9-m6-ed0</key>
+		<array>
+			<dict>
+				<key>affected-objects</key>
+				<array>
+					<string>Qi9-m6-ed0</string>
+				</array>
+				<key>message</key>
+				<string>View is clipping its content</string>
+				<key>type</key>
+				<string>IBIssueTypeClippedContent</string>
+				<key>type-value</key>
+				<integer>13</integer>
+			</dict>
+		</array>
+		<key>Rsp-dq-O1n</key>
+		<array>
+			<dict>
+				<key>affected-objects</key>
+				<array>
+					<string>Rsp-dq-O1n</string>
+				</array>
+				<key>message</key>
+				<string>View is clipping its content</string>
+				<key>type</key>
+				<string>IBIssueTypeClippedContent</string>
+				<key>type-value</key>
+				<integer>13</integer>
+			</dict>
+		</array>
 		<key>U2j-kZ-0ja</key>
 		<array>
 			<dict>
 				<key>affected-objects</key>
 				<array>
 					<string>U2j-kZ-0ja</string>
+				</array>
+				<key>message</key>
+				<string>View is clipping its content</string>
+				<key>type</key>
+				<string>IBIssueTypeClippedContent</string>
+				<key>type-value</key>
+				<integer>13</integer>
+			</dict>
+		</array>
+		<key>YnS-hh-QRx</key>
+		<array>
+			<dict>
+				<key>affected-objects</key>
+				<array>
+					<string>YnS-hh-QRx</string>
+				</array>
+				<key>message</key>
+				<string>View is clipping its content</string>
+				<key>type</key>
+				<string>IBIssueTypeClippedContent</string>
+				<key>type-value</key>
+				<integer>13</integer>
+			</dict>
+		</array>
+		<key>YvV-Q0-Azk</key>
+		<array>
+			<dict>
+				<key>affected-objects</key>
+				<array>
+					<string>YvV-Q0-Azk</string>
+				</array>
+				<key>message</key>
+				<string>View is clipping its content</string>
+				<key>type</key>
+				<string>IBIssueTypeClippedContent</string>
+				<key>type-value</key>
+				<integer>13</integer>
+			</dict>
+		</array>
+		<key>cBD-ph-t4f</key>
+		<array>
+			<dict>
+				<key>affected-objects</key>
+				<array>
+					<string>cBD-ph-t4f</string>
+				</array>
+				<key>message</key>
+				<string>View is clipping its content</string>
+				<key>type</key>
+				<string>IBIssueTypeClippedContent</string>
+				<key>type-value</key>
+				<integer>13</integer>
+			</dict>
+		</array>
+		<key>cs7-aO-jzM</key>
+		<array>
+			<dict>
+				<key>affected-objects</key>
+				<array>
+					<string>cs7-aO-jzM</string>
+				</array>
+				<key>message</key>
+				<string>View is clipping its content</string>
+				<key>type</key>
+				<string>IBIssueTypeClippedContent</string>
+				<key>type-value</key>
+				<integer>13</integer>
+			</dict>
+		</array>
+		<key>lQH-dy-YGG</key>
+		<array>
+			<dict>
+				<key>affected-objects</key>
+				<array>
+					<string>lQH-dy-YGG</string>
 				</array>
 				<key>message</key>
 				<string>View is clipping its content</string>
@@ -66,8 +276,99 @@
 				<integer>13</integer>
 			</dict>
 		</array>
+		<key>mYi-ig-gYD</key>
+		<array>
+			<dict>
+				<key>affected-objects</key>
+				<array>
+					<string>mYi-ig-gYD</string>
+				</array>
+				<key>message</key>
+				<string>View is clipping its content</string>
+				<key>type</key>
+				<string>IBIssueTypeClippedContent</string>
+				<key>type-value</key>
+				<integer>13</integer>
+			</dict>
+		</array>
 	</dict>
 	<key>com.apple.ibtool.document.warnings</key>
-	<dict/>
+	<dict>
+		<key>Zik-Ix-ess</key>
+		<array>
+			<dict>
+				<key>affected-objects</key>
+				<array>
+					<string>Zik-Ix-ess</string>
+				</array>
+				<key>message</key>
+				<string>???View Controller??? is unreachable because it has no entry points, and no identifier for runtime access via -[NSStoryboard instantiateControllerWithIdentifier:]</string>
+				<key>type</key>
+				<string>IBIssueTypeUnsupportedConfiguration</string>
+				<key>type-value</key>
+				<integer>9</integer>
+			</dict>
+		</array>
+		<key>f00-yI-1gR</key>
+		<array>
+			<dict>
+				<key>affected-objects</key>
+				<array>
+					<string>f00-yI-1gR</string>
+				</array>
+				<key>message</key>
+				<string>???View Controller??? is unreachable because it has no entry points, and no identifier for runtime access via -[NSStoryboard instantiateControllerWithIdentifier:]</string>
+				<key>type</key>
+				<string>IBIssueTypeUnsupportedConfiguration</string>
+				<key>type-value</key>
+				<integer>9</integer>
+			</dict>
+		</array>
+		<key>l14-28-KTo</key>
+		<array>
+			<dict>
+				<key>affected-objects</key>
+				<array>
+					<string>l14-28-KTo</string>
+				</array>
+				<key>message</key>
+				<string>???View Controller??? is unreachable because it has no entry points, and no identifier for runtime access via -[NSStoryboard instantiateControllerWithIdentifier:]</string>
+				<key>type</key>
+				<string>IBIssueTypeUnsupportedConfiguration</string>
+				<key>type-value</key>
+				<integer>9</integer>
+			</dict>
+		</array>
+		<key>lG9-UO-R7h</key>
+		<array>
+			<dict>
+				<key>affected-objects</key>
+				<array>
+					<string>lG9-UO-R7h</string>
+				</array>
+				<key>message</key>
+				<string>???View Controller??? is unreachable because it has no entry points, and no identifier for runtime access via -[NSStoryboard instantiateControllerWithIdentifier:]</string>
+				<key>type</key>
+				<string>IBIssueTypeUnsupportedConfiguration</string>
+				<key>type-value</key>
+				<integer>9</integer>
+			</dict>
+		</array>
+		<key>oOZ-5G-ED2</key>
+		<array>
+			<dict>
+				<key>affected-objects</key>
+				<array>
+					<string>oOZ-5G-ED2</string>
+				</array>
+				<key>message</key>
+				<string>???View Controller??? is unreachable because it has no entry points, and no identifier for runtime access via -[NSStoryboard instantiateControllerWithIdentifier:]</string>
+				<key>type</key>
+				<string>IBIssueTypeUnsupportedConfiguration</string>
+				<key>type-value</key>
+				<integer>9</integer>
+			</dict>
+		</array>
+	</dict>
 </dict>
 </plist>
