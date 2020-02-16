@@ -42,10 +42,12 @@ namespace DziennikElektroniczny
             // Create the Product Table Data Source and populate it
             var DataSource = new NauczycielTableDataSource();
 
+            var StatusTextFieldProxy = new NSTextFieldProxy(ref StatusTextField); 
+            
             // Populate the Product Table
             NauczycieleTableView.DataSource = DataSource;
             NauczycieleDataSource = (NauczycielTableDataSource)NauczycieleTableView.DataSource; //To avoid type casting
-            NauczycieleTableView.Delegate = new NauczycielTableDelegate(this, DataSource);
+            NauczycieleTableView.Delegate = new UniversalTableDelegate(this, DataSource, StatusTextFieldProxy);
         }
 
         // Shared initialization code
@@ -60,20 +62,10 @@ namespace DziennikElektroniczny
         #region Actions
         partial void OnSearchTextCellChange(Foundation.NSObject sender) {
             String searchString = SearchTextCell.StringValue;
-            String columnName = "";
+            String columnName = NauczycieleDataSource.GetColumnNameByRow(NauczycieleTableView.SelectedColumn);
 
             NauczycieleTableView.UnhideRows(hiddenRows, 0);
-
-            switch (NauczycieleTableView.SelectedColumn) {
-                case -1:
-                case 0:
-                    columnName = "Imie";
-                    break;
-                case 1:
-                    columnName = "Nazwisko";
-                    break;
-            }
-
+            
             hiddenRows.Clear();
 
             for (nint row = 0; row < NauczycieleTableView.RowCount; row++) {
@@ -116,7 +108,7 @@ namespace DziennikElektroniczny
             var etat = EtatTextField.StringValue;
             try
             {
-                NauczycieleDataSource.AddNauczyciel(new Nauczyciel(imie, nazwisko, pesel, telefon, adres, email, etat));
+                NauczycieleDataSource.Add(new Nauczyciel(imie, nazwisko, pesel, telefon, adres, email, etat));
                 StatusTextField.StringValue = $"Nauczyciel {imie} {nazwisko} został dodany";
                 ReloadTable();
             }

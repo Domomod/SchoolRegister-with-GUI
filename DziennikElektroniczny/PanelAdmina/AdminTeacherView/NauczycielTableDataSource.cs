@@ -7,54 +7,73 @@ using System.Collections.Generic;
 
 namespace DziennikElektroniczny
 {
-    public class NauczycielTableDataSource : NSTableViewDataSource
+    public class NauczycielTableDataSource : AbstractOsobaTableDataSource
     {
-        Database database;
-
-        #region Public Variables
-        public List<Nauczyciel> Nauczyciele = new List<Nauczyciel>();
-        #endregion
-
         #region Constructors
-        public NauczycielTableDataSource()
+        public NauczycielTableDataSource() : base()
         {
-            database = Database.Instance;
-            ReloadTable();
         }
         #endregion
 
-        #region Override Methods
-        public override nint GetRowCount(NSTableView tableView)
-        {
-            return Nauczyciele.Count;
-        }
-        #endregion
 
-        #region Public Methods
-        //TODO
-        //Jak się nie powiedzie to rzucaj wyjątek. Odwoływać się do funkcji add i remove powinnaś z klasy NauczycielTableDelegate.
-        //Ten delegat ma referencję do AdminNauczycieleViewControler, więc możesz z jego poziomu zmodyfikować StatusTextField, żeby
-        //wyświetlić komunikat (więc to w nim łap wyjątki). Kocham Cię ;*, jak już to zrobisz to usuń ten komentarz. A i odowłania do TextFields'ów proszę zrób
-        //też w delegacie, tutaj przekaż już same stringi + sprawdź ich poprawność -> niepoprawne rzuć wyjątek.
-        public void AddNauczyciel(Nauczyciel nauczyciel) {
+
+        #region Implement Methods
+        public abstract void Add(Object obj) 
+        {
+            var nauczyciel = obj as Nauczyciel;
             var message = database.AddTeacher(nauczyciel.Pesel, nauczyciel.Imie, nauczyciel.Nazwisko, nauczyciel.Telefon, nauczyciel.Adres, nauczyciel.Email, nauczyciel.Etat);
             ReloadTable();
         }
 
-        public void UpdateAt(int i) {
-            database.UpdateParent(Nauczyciele[i].Pesel);
+        public abstract void UpdateAt(int i)
+        {
+            var nauczyciel = Data[i] as Nauczyciel;
+            database.UpdateParent(nauczyciel.Pesel);
+        }
+        public abstract void RemoveAt(int i)
+        {
+            var nauczyciel = Data[i] as Nauczyciel;
+            database.DeleteParent(nauczyciel.Pesel);
         }
 
-        public void RemoveNauczyciel(int i) {
-            database.DeleteParent(Nauczyciele[i].Pesel);
-            //Tu usuń z bazy + podepnij pod przycisk
+        public abstract string GetAt(string fieldName, int i) {
+            ref Nauczyciel nauczyciel = (Nauczyciel)Data[i];
+            switch (fieldName) {
+                case "Etat":
+                    return nauczyciel.Etat;
+                    break;
+                default:
+                    return base.GetAt(fieldName, i);
+            }
         }
 
-        public void ReloadTable() {
-            Nauczyciele = database.GetTeachers();
-            //Tu pobierz z bazy
+        public abstract void SetAt(string fieldName, string value, int i) {
+            ref Nauczyciel nauczyciel = (Nauczyciel)Data[i];
+            switch (fieldName)
+            {
+                case "Etat":
+                    nauczyciel.Etat = value;
+                    break;
+                default:
+                    base.SetAt(fieldName, value, i);
+            }
         }
 
+        public abstract string GetColumnNameByRowNumber(int i)
+        {
+            switch (i)
+            {
+                case 6:
+                    return "Etat";
+                    break;
+                default:
+                    return base.GetColumnNameByRowNumber(i);
+            }
+        }
+
+        public abstract void ReloadTable() {
+            Data = database.GetTeachers();
+        }
         #endregion
     }
 }
